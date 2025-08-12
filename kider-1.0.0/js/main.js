@@ -45,7 +45,7 @@
         {
             image: "img/carousel-1.jpg",
             title: "Main Street School",
-            description: "A non-profit educational institution in Norwalk, Iowa serving preschool through 12th grade students with personalized learning and small class sizes."
+            description: "Building Life Long Learners Since 2006. A non-profit educational institution in Norwalk, Iowa serving preschool through 12th grade students with personalized learning and small class sizes."
         },
         {
             image: "img/carousel-2.jpg",

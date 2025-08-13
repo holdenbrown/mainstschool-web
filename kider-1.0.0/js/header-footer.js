@@ -88,6 +88,15 @@ class HeaderFooterManager {
                 showPageHeader: true,
                 pageTitle: 'Meet Our Team',
                 breadcrumb: ['Home', 'Meet Our Team']
+            },
+            'dei': {
+                title: 'Main Street School - DEI Statement',
+                pageType: 'standard',
+                activeNav: 'dei',
+                showCarousel: false,
+                showPageHeader: true,
+                pageTitle: 'DEI Statement',
+                breadcrumb: ['Home', 'DEI Statement']
             }
         };
         return configs[this.currentPage] || configs['index'];
@@ -139,6 +148,7 @@ class HeaderFooterManager {
                             <div class="dropdown-menu rounded-0 rounded-bottom border-0 m-0">
                                 <a href="facility.html" class="dropdown-item">School Facilities</a>
                                 <a href="team.html" class="dropdown-item ${isActive('team')}">Meet Our Team</a>
+                        <a href="about.html#dei-statement" class="dropdown-item ${isActive('dei')}">DEI Statement</a>
                                 <a href="call-to-action.html" class="dropdown-item">Become A Teachers</a>
                                 <a href="appointment.html" class="dropdown-item">Make Appointment</a>
                                 <a href="testimonial.html" class="dropdown-item">Testimonial</a>

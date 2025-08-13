@@ -38,20 +38,51 @@ class TeamManager {
                 position: "Founder, Director, Science Teacher",
                 description: "I received my BS in Biology, science teaching certification and Masters in Education for Transformative School Leadership from Iowa State University. I started my teaching career as a high school science teacher but finally found my niche creating an independent learning community. I have been leading Main Street School since its inception in 2006. Apart from a passion for teaching, I enjoy spending time with my 3 kids and 2 dogs, travelling, digging in the dirt and playing in nature.",
                 photo_url: "img/staff/tanya-apana.jpg",
-                email: "tanya@mainstschool.org"
+                email: "tanya@mainstschool.org",
+                type: "teacher"
             },
             // Add more fallback data as needed
         ];
     }
 
-    // Render the staff grid
+    // Render the staff grid with separate sections
     renderStaffGrid() {
         const container = document.getElementById('staff-grid');
         if (!container) return;
 
         container.innerHTML = '';
 
-        this.staffData.forEach(staff => {
+        // Separate teachers and board members
+        const teachers = this.staffData.filter(staff => staff.type === 'teacher');
+        const boardMembers = this.staffData.filter(staff => staff.type === 'board');
+
+        // Render Teachers Section
+        this.renderSection(container, teachers, 'Our Dedicated Teachers', 'Meet the passionate educators who bring learning to life at Main Street School. Each teacher brings unique expertise and dedication to creating an exceptional educational experience for every student.');
+
+        // Add spacing between sections
+        const spacingDiv = document.createElement('div');
+        spacingDiv.className = 'col-12 mb-5';
+        container.appendChild(spacingDiv);
+
+        // Render Board Members Section
+        this.renderSection(container, boardMembers, 'Board of Directors', 'Our board members provide strategic leadership and governance, ensuring Main Street School continues to fulfill its mission of providing exceptional, individualized education for all students.');
+    }
+
+    // Render a section with title and description
+    renderSection(container, staffList, title, description) {
+        // Section header
+        const headerDiv = document.createElement('div');
+        headerDiv.className = 'col-12 mb-4';
+        headerDiv.innerHTML = `
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h2 class="mb-3">${title}</h2>
+                <p class="mb-4">${description}</p>
+            </div>
+        `;
+        container.appendChild(headerDiv);
+
+        // Staff cards
+        staffList.forEach(staff => {
             const staffCard = this.createStaffCard(staff);
             container.appendChild(staffCard);
         });
@@ -60,7 +91,7 @@ class TeamManager {
     // Create individual staff card
     createStaffCard(staff) {
         const card = document.createElement('div');
-        card.className = 'col-lg-6 col-md-12 mb-5';
+        card.className = 'col-lg-6 col-md-12 mb-4';
         card.innerHTML = `
             <div class="staff-card bg-light rounded p-4 h-100 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="row g-4">
@@ -99,17 +130,17 @@ class TeamManager {
         return 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9Ijc1IiBjeT0iNjAiIHI9IjI1IiBmaWxsPSIjQ0NDIi8+CjxwYXRoIGQ9Ik0yNSA5NUMzNSA4NSAzNSA3NSA0NSA2NUM1NSA1NSA3NSA1NSA4NSA2NUM5NSA3NSA5NSA4NSA5NSA5NUgyNVoiIGZpbGw9IiNDQ0MiLz4KPC9zdmc+';
     }
 
-    // Truncate description to fit within limits
-    truncateDescription(description) {
-        if (description.length <= this.maxDescriptionLength) {
-            return this.escapeHtml(description);
+    // Truncate description text
+    truncateDescription(text) {
+        if (text.length <= this.maxDescriptionLength) {
+            return this.escapeHtml(text);
         }
-        return this.escapeHtml(description.substring(0, this.maxDescriptionLength)) + '...';
+        return this.escapeHtml(text.substring(0, this.maxDescriptionLength)) + '...';
     }
 
-    // Check if description needs "Read More" button
-    shouldShowReadMore(description) {
-        return description.length > this.maxDescriptionLength;
+    // Check if read more button should be shown
+    shouldShowReadMore(text) {
+        return text.length > this.maxDescriptionLength;
     }
 
     // Escape HTML to prevent XSS
@@ -121,59 +152,38 @@ class TeamManager {
 
     // Initialize hover effects and read more functionality
     initializeHoverEffects() {
-        // Add click handlers for read more buttons
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('read-more-btn')) {
-                this.toggleReadMore(e.target);
+        // Read more button functionality
+        $(document).on('click', '.read-more-btn', function() {
+            const card = $(this).closest('.staff-card');
+            const description = card.find('.staff-description');
+            const button = $(this);
+            
+            if (description.hasClass('expanded')) {
+                description.removeClass('expanded');
+                button.text('Read More');
+            } else {
+                description.addClass('expanded');
+                button.text('Read Less');
             }
         });
 
-        // Add hover effects for long descriptions
-        document.addEventListener('mouseenter', (e) => {
-            if (e.target.classList.contains('staff-description')) {
-                this.showFullDescription(e.target);
+        // Tooltip functionality for truncated descriptions
+        $(document).on('mouseenter', '.staff-description:not(.expanded)', function() {
+            const fullText = $(this).data('full-text');
+            const truncatedText = $(this).text();
+            
+            if (fullText && fullText.length > truncatedText.length) {
+                $(this).attr('title', fullText);
             }
-        }, true);
+        });
 
-        document.addEventListener('mouseleave', (e) => {
-            if (e.target.classList.contains('staff-description')) {
-                this.hideFullDescription(e.target);
-            }
-        }, true);
-    }
-
-    // Toggle read more functionality
-    toggleReadMore(button) {
-        const description = button.previousElementSibling;
-        const fullText = description.getAttribute('data-full-text');
-        const isExpanded = description.classList.contains('expanded');
-
-        if (isExpanded) {
-            description.innerHTML = this.truncateDescription(fullText);
-            description.classList.remove('expanded');
-            button.textContent = 'Read More';
-        } else {
-            description.innerHTML = this.escapeHtml(fullText);
-            description.classList.add('expanded');
-            button.textContent = 'Read Less';
-        }
-    }
-
-    // Show full description on hover
-    showFullDescription(description) {
-        const fullText = description.getAttribute('data-full-text');
-        if (fullText && fullText.length > this.maxDescriptionLength) {
-            description.setAttribute('title', fullText);
-        }
-    }
-
-    // Hide full description on hover out
-    hideFullDescription(description) {
-        description.removeAttribute('title');
+        $(document).on('mouseleave', '.staff-description', function() {
+            $(this).removeAttr('title');
+        });
     }
 }
 
-// Initialize team manager when DOM is ready
+// Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     new TeamManager();
 });

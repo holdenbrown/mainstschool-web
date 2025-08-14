@@ -5,12 +5,176 @@
     --dark: #103741;
 }
 
+/* Ensure body background is white */
+body {
+    background-color: white;
+}
+
+/* Updated back-to-top button - positioned within content column */
 .back-to-top {
     position: fixed;
     display: none;
-    right: 45px;
-    bottom: 45px;
+    right: 2rem;
+    bottom: 2rem;
     z-index: 99;
+    /* Enhanced styling for better visibility */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.back-to-top:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Hybrid layout system - full-width page headers, contained content sections */
+
+/* Full-width container for page headers and navigation sections */
+.container-full-width {
+    width: 100%;
+    max-width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    position: relative;
+}
+
+/* Cap full-width sections on ultra-wide screens (1400px+) */
+@media (min-width: 1400px) {
+    .container-full-width {
+        max-width: 1400px;
+    }
+}
+
+/* Ensure page headers and navigation sections are full-width */
+.page-header,
+.navbar,
+.container-fluid {
+    width: 100%;
+    max-width: 100vw;
+}
+
+/* Contained container for content sections (95% width) */
+.container-responsive {
+    width: 95%;
+    max-width: 95vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    position: relative;
+    background-color: white;
+}
+
+/* Ensure content doesn't get too wide on ultra-wide screens */
+@media (min-width: 1400px) {
+    .container-responsive {
+        max-width: 1330px; /* 95% of 1400px */
+    }
+}
+
+/* Smaller contained container for text-heavy content */
+.container-responsive-sm {
+    width: 90%;
+    max-width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Ensure text-heavy content doesn't get too wide on ultra-wide screens */
+@media (min-width: 1400px) {
+    .container-responsive-sm {
+        max-width: 1260px; /* 90% of 1400px */
+    }
+}
+
+/* Enhanced responsive behavior for existing Bootstrap containers */
+.container {
+    width: 95%;
+    max-width: 95vw;
+}
+
+/* Ensure Bootstrap containers don't get too wide on ultra-wide screens */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1330px; /* 95% of 1400px */
+    }
+}
+
+/* Ensure carousel and full-width elements work properly */
+.container-fluid {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Additional ultra-wide screen improvements */
+@media (min-width: 2560px) {
+    .container-full-width {
+        max-width: 1800px;
+    }
+    
+    .container-responsive {
+        max-width: 1710px; /* 95% of 1800px */
+    }
+    
+    .container-responsive-sm {
+        max-width: 1620px; /* 90% of 1800px */
+    }
+    
+    .container {
+        max-width: 1710px; /* 95% of 1800px */
+    }
+}
+
+/* Responsive padding utilities */
+.px-responsive {
+    padding-left: clamp(1rem, 3vw, 2rem);
+    padding-right: clamp(1rem, 3vw, 2rem);
+}
+
+.py-responsive {
+    padding-top: clamp(2rem, 5vw, 4rem);
+    padding-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+/* Card responsive improvements */
+.classes-item,
+.testimonial-item,
+.team-item,
+.facility-item {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Ensure consistent card text rendering */
+.classes-item .bg-light,
+.testimonial-item,
+.team-item .bg-light,
+.facility-item .bg-light {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Responsive text sizing for cards */
+.classes-item h3,
+.testimonial-item h5,
+.team-item h5,
+.facility-item h5 {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    line-height: 1.3;
+}
+
+.classes-item p,
+.testimonial-item p,
+.team-item p,
+.facility-item p {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    line-height: 1.5;
 }
 
 

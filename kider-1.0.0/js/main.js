@@ -26,9 +26,9 @@
     });
     
     
-    // Back to top button
+    // Back to top button - always visible and positioned within content column
     $(window).scroll(function () {
-        if ($(this).scrollTop() > 300) {
+        if ($(this).scrollTop() > 100) {
             $('.back-to-top').fadeIn('slow');
         } else {
             $('.back-to-top').fadeOut('slow');

@@ -8,5 +8,11 @@
 </head>
 <body>
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <script>
+    // Handle local backend for testing
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      console.log('Running in local mode - authentication bypassed');
+    }
+  </script>
 </body>
 </html>

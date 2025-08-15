@@ -1,0 +1,59 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# For local testing - this bypasses authentication
+local_backend:
+  url: http://localhost:8081/api/v1
+  allowed_hosts: ['localhost']
+
+# Disable authentication for local testing
+publish_mode: editorial_workflow
+
+# Root-level media folder
+media_folder: "media"
+public_folder: "/media"
+
+collections:
+  - name: "staff"
+    label: "Staff Members"
+    files:
+      - label: "Staff Data"
+        name: "staffData"
+        file: "content/staff/staff-data.json"
+        format: "json"
+        fields:
+          - label: "Staff Members"
+            name: "staff"
+            widget: "list"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Position", name: "position", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - {label: "Email", name: "email", widget: "string", required: false}
+              - {label: "Photo", name: "photo_url", widget: "image", choose_url: false, accept: "image/*"}
+              - {label: "Video (Optional)", name: "video_url", widget: "file", required: false, accept: "video/*"}
+              - {label: "Type", name: "type", widget: "select", options: ["teacher", "board"]}
+              - {label: "Display Order", name: "order", widget: "number", default: 999, hint: "Lower numbers appear first"}
+
+  - name: "blog"
+    label: "Blog Posts"
+    files:
+      - label: "Posts"
+        name: "posts"
+        file: "content/blog/posts.json"
+        format: "json"
+        fields:
+          - label: "Posts"
+            name: "posts"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Category", name: "category", widget: "select", options: ["News", "Events", "Student Achievements", "Educational Insights", "Community Updates"]}
+              - {label: "Author", name: "author", widget: "string"}
+              - {label: "Featured Image", name: "featured_image", widget: "image", required: false, accept: "image/*"}
+              - {label: "Featured Video (Optional)", name: "featured_video", widget: "file", required: false, accept: "video/*"}
+              - {label: "Excerpt", name: "excerpt", widget: "text", required: false}
+              - {label: "Content", name: "body", widget: "markdown"}
+              - {label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false}
+              - {label: "Draft", name: "draft", widget: "boolean", default: true}

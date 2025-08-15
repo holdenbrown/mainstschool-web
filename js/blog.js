@@ -8,6 +8,7 @@ class BlogManager {
         this.postsPerPage = 6;
         this.currentPage = 0;
         this.filteredPosts = [];
+        this.expandedPostIds = new Set();
         this.init();
     }
 
@@ -21,8 +22,26 @@ class BlogManager {
     // Load blog posts from CMS
     async loadBlogPosts() {
         try {
-            // For now, we'll use a fallback approach since we need to set up the actual CMS
-            // In production, this would fetch from the CMS API
+            const response = await fetch('content/blog/posts.json', { cache: 'no-store' });
+            if (response.ok) {
+                const data = await response.json();
+                if (data && Array.isArray(data.posts)) {
+                    this.blogPosts = data.posts.map((post, index) => ({
+                        id: post.id ?? index + 1,
+                        title: post.title,
+                        category: post.category || 'News',
+                        author: post.author || 'Main Street School',
+                        excerpt: post.excerpt || '',
+                        body: post.body || '',
+                        date: post.date || new Date().toISOString().slice(0,10),
+                        featured_image: post.featured_image || null,
+                        featured_video: post.featured_video || null,
+                        draft: post.draft === true,
+                    }));
+                    return;
+                }
+            }
+            // fallback
             this.blogPosts = this.getFallbackBlogPosts();
         } catch (error) {
             console.error('Error loading blog posts:', error);
@@ -42,28 +61,6 @@ class BlogManager {
                 body: "This is our first blog post. We'll be sharing regular updates about school events, student achievements, and educational insights.",
                 date: "2024-01-15",
                 featured_image: "img/blog/welcome-post.jpg",
-                draft: false
-            },
-            {
-                id: 2,
-                title: "Science Fair Success",
-                category: "Student Achievements",
-                author: "Tanya Apana",
-                excerpt: "Our students showcased amazing projects at this year's science fair, demonstrating creativity and scientific thinking.",
-                body: "The annual science fair was a tremendous success this year. Students from all grade levels presented innovative projects that showcased their understanding of scientific principles and their creativity in problem-solving.",
-                date: "2024-01-10",
-                featured_image: "img/blog/science-fair.jpg",
-                draft: false
-            },
-            {
-                id: 3,
-                title: "Upcoming Spring Events",
-                category: "Events",
-                author: "Main Street School",
-                excerpt: "Mark your calendars for our exciting spring events including the annual picnic and art showcase.",
-                body: "Spring is just around the corner, and we have several exciting events planned. Join us for our annual spring picnic, art showcase, and end-of-year celebration.",
-                date: "2024-01-05",
-                featured_image: "img/blog/spring-events.jpg",
                 draft: false
             }
         ];
@@ -107,12 +104,9 @@ class BlogManager {
         const card = document.createElement('div');
         card.className = 'col-lg-4 col-md-6 mb-4';
         card.innerHTML = `
-            <div class="blog-card bg-light rounded p-4 h-100 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="blog-card bg-light rounded p-4 h-100 wow fadeInUp" data-wow-delay="0.1s" data-post-id="${post.id}">
                 <div class="blog-image-container mb-3">
-                    <img class="img-fluid rounded blog-image" 
-                         src="${this.getImageUrl(post.featured_image)}" 
-                         alt="${post.title}"
-                         onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjVGNUY1Ii8+Cjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkJsb2cgSW1hZ2U8L3RleHQ+Cjwvc3ZnPg=='">
+                    ${this.getMediaContent(post)}
                 </div>
                 <div class="blog-content">
                     <div class="blog-meta mb-2">
@@ -120,18 +114,46 @@ class BlogManager {
                         <small class="text-muted">${this.formatDate(post.date)}</small>
                     </div>
                     <h5 class="blog-title mb-3">
-                        <a href="#" class="text-decoration-none text-dark">${post.title}</a>
+                        <a href="blog-post.html?slug=${this.createPostSlug(post)}" class="text-decoration-none text-dark" data-post-id="${post.id}" data-slug="${this.createPostSlug(post)}">${post.title}</a>
                     </h5>
                     <p class="blog-excerpt mb-3">${post.excerpt || this.truncateText(post.body, 120)}</p>
                     <div class="blog-footer">
                         <small class="text-muted">By ${post.author}</small>
-                        <button class="btn btn-sm btn-outline-primary float-end read-more-btn" data-post-id="${post.id}">Read More</button>
+                        <button class="btn btn-sm btn-outline-primary float-end read-more-btn" data-post-id="${post.id}" data-slug="${this.createPostSlug(post)}">Read More</button>
                     </div>
+                    
                 </div>
             </div>
         `;
 
         return card;
+    }
+
+    // Get media content (image or video) for blog cards
+    getMediaContent(post) {
+        if (post.featured_video) {
+            return `
+                <video controls class="img-fluid rounded blog-image" style="object-fit: cover;">
+                    <source src="${post.featured_video}" type="video/mp4">
+                    <source src="${post.featured_video}" type="video/webm">
+                    <source src="${post.featured_video}" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+            `;
+        } else if (post.featured_image) {
+            return `
+                <img class="img-fluid rounded blog-image" 
+                     src="${this.getImageUrl(post.featured_image)}" 
+                     alt="${post.title}"
+                     onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjVGNUY1Ii8+Cjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkJsb2cgSW1hZ2U8L3RleHQ+Cjwvc3ZnPg=='">
+            `;
+        } else {
+            return `
+                <img class="img-fluid rounded blog-image" 
+                     src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjVGNUY1Ii8+Cjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l5ZT0iMTQiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkJsb2cgSW1hZ2U8L3RleHQ+Cjwvc3ZnPg==" 
+                     alt="${post.title}">
+            `;
+        }
     }
 
     // Get image URL with fallback
@@ -190,12 +212,15 @@ class BlogManager {
             this.loadMorePosts();
         });
 
-        // Read more buttons
+        // Read more buttons -> navigate to detail page
         $(document).on('click', '.read-more-btn', (e) => {
             e.preventDefault();
-            const postId = $(e.target).data('post-id');
-            this.showPostDetail(postId);
+            const slug = String($(e.currentTarget).data('slug') || '');
+            if (slug) {
+                window.location.href = `blog-post.html?slug=${slug}`;
+            }
         });
+        // Let title anchor use default navigation via href
     }
 
     // Filter posts by category
@@ -216,13 +241,37 @@ class BlogManager {
         this.renderBlogGrid();
     }
 
-    // Show post detail (placeholder for now)
-    showPostDetail(postId) {
-        const post = this.blogPosts.find(p => p.id === postId);
-        if (post) {
-            // For now, just show an alert. In a real implementation, this would open a modal or navigate to a detail page
-            alert(`Post: ${post.title}\n\n${post.body}`);
-        }
+    // Render body text safely with basic formatting
+    formatBody(text) {
+        if (!text) return '';
+        const escaped = this.escapeHtml(String(text));
+        // Convert double newlines to paragraphs and single newlines to <br>
+        return escaped
+            .split(/\n{2,}/)
+            .map(par => `<p>${par.replace(/\n/g, '<br>')}</p>`)
+            .join('');
+    }
+
+    // Escape HTML to avoid XSS
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    // Create a stable slug from date + title
+    createPostSlug(post) {
+        const datePart = (post.date || '').toString();
+        const titlePart = (post.title || '').toString();
+        return this.slugify(`${datePart}-${titlePart}`);
+    }
+
+    slugify(text) {
+        return String(text)
+            .toLowerCase()
+            .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '');
     }
 }
 

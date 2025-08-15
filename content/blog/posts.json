@@ -1,0 +1,24 @@
+{
+  "posts": [
+    {
+      "excerpt": "We're excited to launch our new blog where we'll share news, events, and insights from our school community.",
+      "draft": false,
+      "body": "This is our first blog post. We'll be sharing regular updates about school events, student achievements, and educational insights.",
+      "featured_image": "img/carousel-1.jpg",
+      "author": "Main Street School",
+      "date": "2024-01-15",
+      "title": "Welcome to Our New Blog!",
+      "id": 1,
+      "category": "News"
+    },
+    {
+      "draft": false,
+      "date": "2025-08-15",
+      "title": "...",
+      "category": "News",
+      "author": "...",
+      "featured_image": "/media/petscreening.png",
+      "body": "...."
+    }
+  ]
+}

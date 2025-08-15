@@ -1,0 +1,36 @@
+{
+  "staff": [
+    {
+      "order": 1,
+      "name": "asdf",
+      "position": "asdf",
+      "description": "asdf",
+      "type": "teacher",
+      "photo_url": "/media/ollie.jpg"
+    },
+    {
+      "order": 1,
+      "name": "asdfdfdfdf",
+      "position": "asdfdfdfd",
+      "description": "asdfsdf",
+      "photo_url": "/media/screenshot-2024-10-29-143709.png",
+      "type": "teacher"
+    },
+    {
+      "order": 999,
+      "name": "asda",
+      "position": "sdasd",
+      "description": "asdasd",
+      "photo_url": "/media/530_lab_1_2.png",
+      "type": "teacher"
+    },
+    {
+      "order": 999,
+      "name": "ll",
+      "position": "ll",
+      "description": "ll",
+      "photo_url": "/media/petscreening.png",
+      "type": "teacher"
+    }
+  ]
+}

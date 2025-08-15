@@ -89,6 +89,15 @@ class HeaderFooterManager {
                 pageTitle: 'Meet Our Team',
                 breadcrumb: ['Home', 'Meet Our Team']
             },
+            'blog': {
+                title: 'Main Street School - Blog',
+                pageType: 'standard',
+                activeNav: 'blog',
+                showCarousel: false,
+                showPageHeader: true,
+                pageTitle: 'Blog',
+                breadcrumb: ['Home', 'Blog']
+            },
             'dei': {
                 title: 'Main Street School - DEI Statement',
                 pageType: 'standard',
@@ -156,6 +165,7 @@ class HeaderFooterManager {
                             </div>
                         </div>
                         <a href="contact.html" class="nav-item nav-link ${isActive('contact')}">Contact Us</a>
+                        <a href="blog.html" class="nav-item nav-link ${isActive('blog')}">Blog</a>
                     </div>
                     <a href="https://app.tuiopay.com/donation/3a8c62fc819d1f645288f6ce955bfce0" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Donate Now!<i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
@@ -254,7 +264,7 @@ class HeaderFooterManager {
                         <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>515-981-1275</p>
                         <p class="mb-2"><i class="fa fa-envelope me-3"></i>office@mainstschool.org</p>
                         <div class="d-flex pt-2">
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/mainstreetschool.iowa" target="_blank"><i class="fab fa-facebook-f"></i></a>
                             <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-instagram"></i></a>
                             <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
                         </div>

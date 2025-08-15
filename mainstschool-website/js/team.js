@@ -16,12 +16,24 @@ class TeamManager {
         this.initializeHoverEffects();
     }
 
-    // Load staff data from JSON file
+    // Load staff data from CMS
     async loadStaffData() {
         try {
-            const response = await fetch('js/staff-data.json');
-            const data = await response.json();
-            this.staffData = data.staff;
+            // First try to load from the new CMS structure
+            const response = await fetch('content/staff/staff-data.json');
+            if (response.ok) {
+                const data = await response.json();
+                this.staffData = data.staff;
+            } else {
+                // Fallback to old location
+                const oldResponse = await fetch('js/staff-data.json');
+                if (oldResponse.ok) {
+                    const data = await oldResponse.json();
+                    this.staffData = data.staff;
+                } else {
+                    throw new Error('No staff data found');
+                }
+            }
         } catch (error) {
             console.error('Error loading staff data:', error);
             // Fallback to hardcoded data if JSON fails to load

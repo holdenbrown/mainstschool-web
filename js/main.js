@@ -68,22 +68,26 @@
             const slideElement = document.createElement('div');
             slideElement.className = 'owl-carousel-item position-relative';
             slideElement.innerHTML = `
-                <img class="img-fluid" src="${slide.image}" alt="">
+                <div class="carousel-image-container">
+                    <img class="carousel-image" src="${slide.image}" alt="">
+                </div>
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 0, 0, .2);">
                     <div class="container">
                         <div class="row justify-content-start">
-                            <div class="col-10 col-lg-8">
+                            <div class="col-10 col-lg-8 carousel-content-mobile">
                                 <h1 class="display-2 text-white animated slideInDown mb-4">${slide.title}</h1>
                                 <p class="fs-5 fw-medium text-white mb-4 pb-2">${slide.description}</p>
-                                <a href="" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Schedule A Tour</a>
-                                <div class="dropdown d-inline-block animated slideInRight">
-                                    <button class="btn btn-primary rounded-pill py-sm-3 px-sm-5 dropdown-toggle" type="button" id="enrollDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Enroll Now
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="enrollDropdown">
-                                        <li><a class="dropdown-item" href=https://app.tuiopay.com/registration/t6ff7e6>New Students</a></li>
-                                        <li><a class="dropdown-item" href=https://app.tuiopay.com/registration/z9884b8>Returning Students</a></li>
-                                    </ul>
+                                <div class="d-flex flex-column flex-sm-row gap-3 align-items-start carousel-buttons">
+                                    <a href="" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInLeft">Schedule A Tour</a>
+                                    <div class="dropdown animated slideInRight">
+                                        <button class="btn btn-primary rounded-pill py-sm-3 px-sm-5 dropdown-toggle" type="button" id="enrollDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Enroll Now
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="enrollDropdown">
+                                            <li><a class="dropdown-item" href=https://app.tuiopay.com/registration/t6ff7e6>New Students</a></li>
+                                            <li><a class="dropdown-item" href=https://app.tuiopay.com/registration/z9884b8>Returning Students</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -162,8 +166,7 @@
             relationship: "Parent"
         },
         {
-            text: "I started attending Main Street School at the age of 10 and was well behind my expected academic level—not even knowing how to read or do basic arithmetic. To say the least, I didn't have much hope for an academic future. However, the teachers and culture made me feel accepted and motivated to learn. Within the first week, I learned how to read at a basic level, bolstering my confidence in myself and the instructors' ability to teach. Now, at 23, no one’s the wiser about my rough start in academics. I completed my B.S. at ISU in Software Engineering and am pursuing an M.S. in Computer Engineering with a focus on Secure and Reliable Computing. I can confidently say I couldn't have done it without the help of Main Street School.",
-            author: "H.B.",
+            text: "I started attending Main Street School at the age of 11 and was well behind my expected academic level not even knowing how to read or do basic math. To say the least, I didn't have much hope for an academic future. However, the teachers and culture made me feel accepted and motivated to learn. Within the first week, I learned how to read at a basic level, improving my confidence in myself and the instructors' ability to teach. Now, at 23, no one’s the wiser about my rough start in academics. I completed my B.S. at ISU in Software Engineering and am pursuing an M.S. in Computer Engineering with a focus on Secure and Reliable Computing. I can confidently say I couldn't have done it without the help of Main Street School.",            author: "H.B.",
             relationship: "Alumni"
         },
         {
@@ -193,8 +196,8 @@
             testimonialElement.className = 'testimonial-item bg-light rounded p-5';
             testimonialElement.innerHTML = `
                 <div class="testimonial-content">
-                    <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                    <p class="fs-5 mb-4">"${testimonial.text}"</p>
+                    <i class="fa fa-quote-left fa-2x text-primary mb-2 testimonial-quote-icon"></i>
+                    <p class="testimonial-text mb-4">"${testimonial.text}"</p>
                     <div class="testimonial-author">
                         <h5 class="mb-1">${testimonial.author}</h5>
                         <span class="text-muted">${testimonial.relationship}</span>

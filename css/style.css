@@ -348,19 +348,35 @@ h6,
     background: url(../img/bg-header-bottom.png) center center repeat-x;
 }
 
+/* Carousel aspect ratio container */
+.carousel-image-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+}
+
+.carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.header-carousel .owl-carousel-item {
+    position: relative;
+}
+
+/* Mobile-specific carousel adjustments */
 @media (max-width: 768px) {
-    .header-carousel .owl-carousel-item {
-        position: relative;
-        min-height: 500px;
+    .carousel-image-container {
+        padding-bottom: 75%; /* 4:3 aspect ratio for mobile */
     }
     
-    .header-carousel .owl-carousel-item img {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
     .header-carousel .owl-carousel-item p {
         font-size: 16px !important;
         font-weight: 400 !important;
@@ -369,6 +385,41 @@ h6,
     .header-carousel .owl-carousel-item h1 {
         font-size: 30px;
         font-weight: 600;
+    }
+    
+    /* Ensure overlay covers entire carousel */
+    .header-carousel .owl-carousel-item .position-absolute {
+        height: 100% !important;
+    }
+    
+    /* Mobile carousel content positioning */
+    .carousel-content-mobile {
+        margin-left: 15% !important; /* Move content 15% from left */
+        max-width: 80% !important; /* Adjust width to prevent overflow */
+    }
+    
+    /* Ensure buttons align to left start position */
+    .carousel-buttons {
+        align-items: flex-start !important;
+    }
+    
+    .carousel-buttons .btn,
+    .carousel-buttons .dropdown {
+        align-self: flex-start;
+    }
+}
+
+/* Tablet-specific carousel height */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .carousel-image-container {
+        padding-bottom: 66.67%; /* 3:2 aspect ratio for tablet */
+    }
+}
+
+/* Desktop-specific carousel height */
+@media (min-width: 1025px) {
+    .carousel-image-container {
+        padding-bottom: 56.25%; /* 16:9 aspect ratio for desktop */
     }
 }
 
@@ -512,10 +563,33 @@ h6,
 /*** Classes ***/
 .classes-item {
     transition: .5s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 400px; /* Ensure consistent minimum height */
 }
 
 .classes-item:hover {
     margin-top: -10px;
+}
+
+/* Responsive adjustments for class cards */
+@media (max-width: 768px) {
+    .classes-item {
+        min-height: 350px; /* Slightly smaller on mobile */
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .classes-item {
+        min-height: 380px; /* Medium height for tablets */
+    }
+}
+
+@media (min-width: 1025px) {
+    .classes-item {
+        min-height: 400px; /* Full height for desktop */
+    }
 }
 
 
@@ -554,7 +628,7 @@ h6,
         padding-left: 4rem;
         padding-right: 4rem;
         padding-top: 30px;
-        padding-bottom: 30px;
+        padding-bottom: 10px !important;
     }
 }
 
@@ -676,6 +750,85 @@ h6,
     border-right: none;
 }
 
+/* Footer text editing improvements */
+.footer p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+    word-break: break-word; /* Allows long addresses to wrap nicely */
+}
+
+.footer p i {
+    margin-right: 10px;
+    color: var(--primary);
+    width: 16px; /* Fixed width for icon alignment */
+}
+
+/* Mobile footer layout adjustments */
+@media (max-width: 767.98px) {
+    .footer .container .row {
+        justify-content: center;
+    }
+    
+    .footer .container .row .col-6 {
+        padding-left: 4px;
+        padding-right: 10px;
+        flex: 0 0 auto;
+        max-width: none;
+    }
+    
+    /* Center the two-column layout but keep content left-aligned */
+    .footer .container .row .col-6:nth-child(1),
+    .footer .container .row .col-6:nth-child(2) {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+    
+    /* Ensure social buttons and quick links stay left-aligned */
+    .footer .d-flex,
+    .footer .social-links {
+        justify-content: flex-start;
+    }
+    
+    .footer h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 1rem;
+    }
+    
+    .footer p {
+        font-size: 13px;
+        margin-bottom: 0.5rem;
+        line-height: 1.5;
+    }
+    
+    .footer p i {
+        margin-right: 8px;
+        width: 3px;
+    }
+    
+    .footer .btn-link {
+        font-size: 13px !important;
+        margin-bottom: 0.2rem !important;
+        padding: 0.1rem 0;
+    }
+    
+    .footer .btn-social {
+        width: 36px !important;
+        height: 36px !important;
+        margin-right: 5px !important;
+    }
+    
+    /* Keep copyright section left-aligned */
+    .footer .copyright {
+        text-align: left !important;
+    }
+    
+    .footer .copyright .row .col-md-6 {
+        text-align: left !important;
+    }
+}
+
 /*** Blog Styles ***/
 .blog-card {
     transition: all 0.3s ease;
@@ -765,7 +918,7 @@ h6,
 .testimonial-item {
     min-height: 400px;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 1px !important;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -782,12 +935,16 @@ h6,
     flex-direction: column;
 }
 
-.testimonial-content p {
-    line-height: 1.8;
+.testimonial-quote-icon {
+    margin-bottom: 0.5rem !important; /* Move quote icon closer to text */
+}
+
+.testimonial-text {
+    line-height: 1.5 !important;
     color: #555;
-    font-style: italic;
     font-size: 18px;
     margin-bottom: 30px;
+    padding: 0 10px; /* Add slight padding to bring text closer to borders */
 }
 
 .testimonial-author {
@@ -813,11 +970,18 @@ h6,
 @media (max-width: 768px) {
     .testimonial-item {
         min-height: 350px;
-        padding: 30px 20px;
+        padding: 1.5rem !important; /* Tighter padding for mobile */
     }
     
-    .testimonial-content p {
-        font-size: 16px !important;
+    .testimonial-quote-icon {
+        font-size: 1.5rem !important; /* Smaller quote icon on mobile */
+        margin-bottom: 0.25rem !important;
+    }
+    
+    .testimonial-text {
+        font-size: 14px !important; /* Smaller text for mobile */
+        line-height: 1.2 !important;
+        padding: 5px !important; /* Bring text even closer to borders */
     }
 }
 
@@ -860,6 +1024,10 @@ h6,
 .fact-card {
     transition: all 0.3s ease;
     border: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 280px; /* Ensure consistent minimum height */
 }
 
 .fact-card:hover {
@@ -869,6 +1037,7 @@ h6,
 
 .fact-icon {
     transition: all 0.3s ease;
+    flex-shrink: 0; /* Prevent icon from shrinking */
 }
 
 .fact-card:hover .fact-icon {
@@ -878,11 +1047,73 @@ h6,
 .fact-card h4 {
     color: var(--dark);
     font-weight: 600;
+    margin-bottom: 1rem;
+    flex-shrink: 0; /* Prevent title from shrinking */
 }
 
 .fact-card p {
     color: #666;
     line-height: 1.6;
+    flex-grow: 1; /* Allow paragraph to fill remaining space */
+    margin-bottom: 0;
+}
+
+/* Responsive adjustments for QuickFacts grid */
+@media (max-width: 768px) {
+    .fact-card {
+        min-height: 160px; /* Smaller for 2x3 grid */
+        padding: 0.5rem !important; /* Tighter padding */
+        margin-bottom: 0.5rem; /* Closer together */
+    }
+    
+    .fact-card .fact-icon {
+        width: 45px !important; /* Smaller icon circle */
+        height: 45px !important;
+        margin-bottom: 0.5rem !important; /* Reduced spacing */
+    }
+    
+    .fact-card .fact-icon i {
+        font-size: 1.25rem !important; /* Smaller icon size */
+    }
+    
+    .fact-card h4 {
+        font-size: 1rem; /* Smaller title */
+        margin-bottom: 0.4rem; /* Reduced spacing */
+        line-height: 1.2;
+    }
+    
+    .fact-card p {
+        font-size: 0.85rem; /* Smaller body text */
+        line-height: 1.2;
+        margin-bottom: 0;
+    }
+    
+    /* Force 2 columns on mobile for QuickFacts section */
+    .row.g-4 .col-lg-4.col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding-left: 5px !important; /* Closer to screen edge */
+        padding-right: 5px !important; /* Closer to screen edge */
+        margin-top: 10px !important;
+    }
+    
+    /* Reduce overall container padding on mobile */
+    .container {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .fact-card {
+        min-height: 260px; /* Medium height for tablets */
+    }
+}
+
+@media (min-width: 1025px) {
+    .fact-card {
+        min-height: 280px; /* Full height for desktop */
+    }
 }
 
 /* Compact cards variant for tighter layout in Who We Are */

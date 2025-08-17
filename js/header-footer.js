@@ -258,19 +258,18 @@ class HeaderFooterManager {
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">
                 <div class="row g-5">
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-6 col-6">
                         <h3 class="text-white mb-4">Get In Touch</h3>
                         <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>925 Main St, Norwalk, IA 50211</p>
                         <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>515-981-1275</p>
                         <p class="mb-2"><i class="fa fa-envelope me-3"></i>office@mainstschool.org</p>
                         <div class="d-flex pt-2">
                             <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/mainstreetschool.iowa" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-instagram"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-6 col-6">
                         <h3 class="text-white mb-4">Quick Links</h3>
+                        <a class="btn btn-link text-white-50" href="https://app.tuiopay.com/donation/3a8c62fc819d1f645288f6ce955bfce0" target="_blank">Donate Now</a>
                         <a class="btn btn-link text-white-50" href="about.html">About Us</a>
                         <a class="btn btn-link text-white-50" href="contact.html">Contact Us</a>
                         <a class="btn btn-link text-white-50" href="early-childhood.html">Early Childhood</a>
@@ -278,7 +277,7 @@ class HeaderFooterManager {
                         <a class="btn btn-link text-white-50" href="middle-school.html">Middle School</a>
                         <a class="btn btn-link text-white-50" href="high-school.html">High School</a>
                     </div>
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-12">
                         <h3 class="text-white mb-4">Stay Connected</h3>
                         <p>Subscribe to our newsletter for updates on school events, student achievements, and educational insights.</p>
                         <div class="position-relative mx-auto" style="max-width: 400px;">
@@ -299,12 +298,7 @@ class HeaderFooterManager {
                             <br>Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
                         </div>
                         <div class="col-md-6 text-center text-md-end">
-                            <div class="footer-menu">
-                                <a href="index.html">Home</a>
-                                <a href="about.html">About</a>
-                                <a href="contact.html">Contact</a>
-                                <a href="https://app.tuiopay.com/donation/3a8c62fc819d1f645288f6ce955bfce0">Donate</a>
-                            </div>
+                            <!-- Footer menu removed as requested -->
                         </div>
                     </div>
                 </div>

@@ -829,6 +829,25 @@ h6,
     }
 }
 
+/* Fix footer email form alignment */
+.footer .position-relative {
+    text-align: left;
+}
+
+.footer .form-control {
+    text-align: left;
+}
+
+/* Ensure Stay Connected section content is left-aligned */
+.footer .col-lg-4.col-12 {
+    text-align: left;
+}
+
+.footer .col-lg-4.col-12 h3,
+.footer .col-lg-4.col-12 p {
+    text-align: left;
+}
+
 /*** Blog Styles ***/
 .blog-card {
     transition: all 0.3s ease;
@@ -1131,6 +1150,46 @@ h6,
 }
 .compact-cards .fact-card p {
     font-size: 0.95rem;
+}
+
+/* Fix program page layout issues */
+/* Key Features section - prevent it from extending too wide */
+.bg-peach.fact-card {
+    max-width: 100%;
+    width: auto;
+    flex: none;
+}
+
+/* Ensure proper spacing between sections and footer */
+.bg-primary.rounded.p-5.mt-4,
+.bg-warning.rounded.p-5.mt-4 {
+    margin-bottom: 3rem !important;
+}
+
+/* Fix the col-lg-4 layout for Key Features */
+.col-lg-4 .bg-peach.fact-card {
+    height: auto;
+    min-height: auto;
+    max-width: 100%;
+}
+
+/* Ensure proper container behavior */
+.container .row .col-lg-4 {
+    flex: 0 0 auto;
+    max-width: 33.333333%;
+}
+
+@media (max-width: 991.98px) {
+    .container .row .col-lg-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    /* Add bottom margin on mobile to prevent footer overlap */
+    .bg-primary.rounded.p-5.mt-4,
+    .bg-warning.rounded.p-5.mt-4 {
+        margin-bottom: 2rem !important;
+    }
 }
 
 /*** Team Page Styles ***/

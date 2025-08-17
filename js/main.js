@@ -44,18 +44,18 @@
     const carouselData = [
         {
             image: "img/carousel-1.jpg",
-            title: "Main Street School",
-            description: "Building Life Long Learners Since 2006. A non-profit educational institution in Norwalk, Iowa serving preschool through 12th grade students with personalized learning and small class sizes."
+            title: "Feeding Curiosity Since 2006",
+            description: ""
         },
         {
             image: "img/carousel-2.jpg",
-            title: "Main Street School",
-            description: "A non-profit educational institution in Norwalk, Iowa serving preschool through 12th grade students with personalized learning and small class sizes."
+            title: "Feeding Curiosity Since 2006",
+            description: ""
         },
         {
             image: "img/carousel-3.jpg",
-            title: "Main Street School",
-            description: "A non-profit educational institution in Norwalk, Iowa serving preschool through 12th grade students with personalized learning and small class sizes."
+            title: "Feeding Curiosity Since 2006",
+            description: ""
         },
     ];
 

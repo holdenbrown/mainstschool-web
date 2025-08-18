@@ -168,7 +168,7 @@ class HeaderFooterManager {
                         <a href="contact.html" class="nav-item nav-link ${isActive('contact')}">Contact Us</a>
                         <a href="blog.html" class="nav-item nav-link ${isActive('blog')}">Blog</a>
                     </div>
-                    <a href="https://app.tuiopay.com/donation/3a8c62fc819d1f645288f6ce955bfce0" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Donate Now!<i class="fa fa-arrow-right ms-3"></i></a>
+                    <a href="https://app.tuiopay.com/donation/3a8c62fc819d1f645288f6ce955bfce0" class="btn btn-primary rounded-pill px-3 d-none d-lg-block"><span class="donate-text">Donate Now!</span><span class="donate-text-short">Donate</span><i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
             </nav>
             <!-- Navbar End -->`;

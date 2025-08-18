@@ -39,6 +39,20 @@
         return false;
     });
 
+    // Read More button functionality
+    $(document).ready(function() {
+        $('[data-bs-toggle="collapse"]').on('click', function() {
+            const target = $(this).attr('data-bs-target');
+            const isExpanded = $(this).attr('aria-expanded') === 'true';
+            
+            // Toggle the collapse
+            $(target).collapse('toggle');
+            
+            // Update aria-expanded attribute
+            $(this).attr('aria-expanded', !isExpanded);
+        });
+    });
+
 
     // Carousel data configuration system
     const carouselConfigurations = {

@@ -50,25 +50,37 @@
                 <div class="row g-5 align-items-start">
                     <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
                         <h1 class="mb-3"><i class="fa fa-users me-3 text-primary"></i>Who We Are</h1>
-                        <p class="mb-3 fs-5">Building a community of learners through personalized education</p>
 
                         <p class="mb-4">Main Street School officially started in August of 2006 as ASK Learning Center by Tanya Apana. Our intention was to provide an alternative learning environment for students and families who were looking for a smaller, more personalized atmosphere that provided an experiential or project-based curriculum.</p>
 
                         <p class="mb-4">Our students come from various learning environments. For some, this is their first taste of school, and our home-like atmosphere is a welcoming introduction. Some come to us from a homeschooling background, and our flexibility and multi-age classrooms allow for an easy transition.</p>
 
-                        <p class="mb-4">Still others transition to Main Street from other private or public schools. Our students come not only from Norwalk, but also many other metro communities. We have had students from Waukee, Urbandale, West Des Moines, Des Moines, Indianola, Martensdale and as far south as St. Mary's and as far north as Ames.</p>
+                        <div class="collapse" id="whoWeAreMore">
+                            <p class="mb-4">Still others transition to Main Street from other private or public schools. Our students come not only from Norwalk, but also many other metro communities. We have had students from Waukee, Urbandale, West Des Moines, Des Moines, Indianola, Martensdale and as far south as St. Mary's and as far north as Ames.</p>
 
-                        <p class="mb-4">Children are taught using individual curriculums based on the needs of the whole child. We subscribe to the premise that a quality education focuses on emotional, physical, social and academic development. We work to create a safe and welcoming environment by creating strong relationships amongst teachers, students and families.</p>
+                            <p class="mb-4">Children are taught using individual curriculums based on the needs of the whole child. We subscribe to the premise that a quality education focuses on emotional, physical, social and academic development. We work to create a safe and welcoming environment by creating strong relationships amongst teachers, students and families.</p>
+                        </div>
+
+                        <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#whoWeAreMore" aria-expanded="false" aria-controls="whoWeAreMore">
+                            <span class="read-more-text">Read More</span>
+                            <span class="read-less-text" style="display: none;">Read Less</span>
+                        </button>
                     </div>
 
+                    <!-- ================================= -->
+                    <!-- OUR CORE VALUES SECTION -->
+                    <!-- ================================= -->
+                    <!-- This section contains the "Our Core Values" card on the right side of the "Who We Are" section
+                         To edit: Change the content in the h4, h6, and small elements
+                         To style: Modify the bg-peach class or add custom CSS -->
                     <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="bg-peach rounded p-5 fact-card">
-                            <h4 class="mb-4">Our Core Values</h4>
+                        <div class="bg-peach rounded p-4 fact-card core-values-card">
+                            <h4 class="mb-4 core-values-title">Our Core Values</h4>
                             <div class="row g-3">
                                 <div class="col-12">
                                     <div class="d-flex align-items-start">
-                                        <div class="fact-icon bg-info rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; min-width: 40px;">
-                                            <i class="fa fa-user-graduate text-white" style="font-size: 1rem;"></i>
+                                        <div class="fact-icon bg-info rounded-circle d-inline-flex align-items-center justify-content-center me-3 core-values-icon">
+                                            <i class="fa fa-user-graduate text-white"></i>
                                         </div>
                                         <div>
                                             <h6 class="mb-1">Individualized Curriculum</h6>
@@ -78,8 +90,8 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="d-flex align-items-start">
-                                        <div class="fact-icon bg-success rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; min-width: 40px;">
-                                            <i class="fa fa-heart text-white" style="font-size: 1rem;"></i>
+                                        <div class="fact-icon bg-success rounded-circle d-inline-flex align-items-center justify-content-center me-3 core-values-icon">
+                                            <i class="fa fa-heart text-white"></i>
                                         </div>
                                         <div>
                                             <h6 class="mb-1">Whole Child Focus</h6>
@@ -89,23 +101,12 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="d-flex align-items-start">
-                                        <div class="fact-icon bg-warning rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; min-width: 40px;">
-                                            <i class="fa fa-home text-white" style="font-size: 1rem;"></i>
+                                        <div class="fact-icon bg-warning rounded-circle d-inline-flex align-items-center justify-content-center me-3 core-values-icon">
+                                            <i class="fa fa-lightbulb text-white"></i>
                                         </div>
                                         <div>
-                                            <h6 class="mb-1">Home-Like Atmosphere</h6>
-                                            <small class="text-muted">A welcoming environment that feels like a second home for students and families.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="d-flex align-items-start">
-                                        <div class="fact-icon bg-secondary rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; min-width: 40px;">
-                                            <i class="fa fa-handshake text-white" style="font-size: 1rem;"></i>
-                                        </div>
-                                        <div>
-                                            <h6 class="mb-1">Community Partnerships</h6>
-                                            <small class="text-muted">Connecting learning to our community through integrated projects and local partnerships.</small>
+                                            <h6 class="mb-1">Project-Based Learning</h6>
+                                            <small class="text-muted">Interdisciplinary practice with many skills at once.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -118,22 +119,33 @@
 
         <!-- Hero Section removed per requirements -->
 
-        <!-- Vision & Mission Section -->
+        <!-- ================================= -->
+        <!-- OUR VISION & MISSION SECTION -->
+        <!-- ================================= -->
+        <!-- This section contains the Vision & Mission cards and Core Values cards
+             To edit Vision/Mission cards: Change the h2 text and p text in the first row
+             To edit Core Values cards: Change the h5 text and p text in the second row
+             To style: Modify the vision-mission-card class in CSS
+             Layout: Desktop shows 2 cards side-by-side, then 3 cards below (2 side-by-side, 1 centered)
+             Mobile shows 2x2 grid with last card centered -->
         <div class="container-responsive py-responsive">
-            <div class="container">
+            <div class="container" style="padding-left: 0px !important; padding-right: 0px !important;">
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                     <h1 class="mb-3"><i class="fa fa-eye me-3 text-primary"></i>Our Vision & Mission</h1>
                     <p class="mb-0">Guiding principles that drive our educational approach</p>
                 </div>
                 
-                <div class="row g-4">
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <!-- Vision and Mission Cards - Always display side-by-side -->
+                <div class="row g-4 mt-4">
+                    <!-- Our Vision Card - Edit h2 and p text to change content -->
+                    <div class="col-lg-6 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="vision-mission-card bg-light rounded p-4 text-center h-100">
                             <h2 class="text-primary mb-3">Our Vision</h2>
                             <p class="mb-0 fs-5">To inspire each other in becoming our authentic selves and to pursue purposeful action in the world</p>
                         </div>
                     </div>
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <!-- Our Mission Card - Edit h2 and p text to change content -->
+                    <div class="col-lg-6 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="vision-mission-card bg-light rounded p-4 text-center h-100">
                             <h2 class="text-success mb-3">Our Mission</h2>
                             <p class="mb-0 fs-5">To provide young people with real world, purposeful curriculum and a learning environment that respects their individuality and goals.</p>
@@ -141,8 +153,10 @@
                     </div>
                 </div>
                 
-                <div class="row g-4 mt-4">
-                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                <!-- Core Values Cards - Desktop: 3 cards in a row, Mobile: 2x2 with last centered -->
+                <div class="row g-4 mt-4" style="padding-top: 0% !important; margin-top: 0% !important;">
+                    <!-- Question & Solve Card - Edit h5 and p text, change icon class and color -->
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" style="padding-top: 1% !important; margin-top: 0% !important;" data-wow-delay="0.1s">
                         <div class="vision-mission-card bg-light rounded p-4 h-100">
                             <div class="text-center mb-3">
                                 <i class="fa fa-lightbulb fa-3x text-primary"></i>
@@ -151,7 +165,8 @@
                             <p class="text-center mb-0">A central part of our learning process is to engage our students in asking questions, solving problems and making decisions that will allow them to act with thoughtfulness, understanding, and compassion for others.</p>
                         </div>
                     </div>
-                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                    <!-- Student Development Card - Edit h5 and p text, change icon class and color -->
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" style="padding-top: 1% !important; margin-top: 0% !important;" data-wow-delay="0.3s">
                         <div class="vision-mission-card bg-light rounded p-4 h-100">
                             <div class="text-center mb-3">
                                 <i class="fa fa-child fa-3x text-success"></i>
@@ -160,7 +175,8 @@
                             <p class="text-center mb-0">We are committed to developing students' natural resiliency, adaptability, knowledge, and desire for lifelong learning.</p>
                         </div>
                     </div>
-                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                    <!-- Global Citizens Card - Edit h5 and p text, change icon class and color -->
+                    <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s" style="padding-top: 1% !important; margin-top: 0% !important;">
                         <div class="vision-mission-card bg-light rounded p-4 h-100">
                             <div class="text-center mb-3">
                                 <i class="fa fa-globe fa-3x text-warning"></i>
@@ -173,26 +189,32 @@
             </div>
         </div>
 
-        <!-- History Section -->
+        <!-- ================================= -->
+        <!-- OUR HISTORY SECTION -->
+        <!-- ================================= -->
+        <!-- This section contains the history content and images
+             To edit images: Change the src attribute and alt text
+             To edit text: Modify the p elements and headings
+             To style images: Modify the history-image-no-bg class in CSS -->
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                     <h1 class="mb-3"><i class="fa fa-history me-3 text-primary"></i>Our History</h1>
                 </div>
                 
-                <!-- Historic Schoolhouse Image and Tanya Apana Photo -->
+                <!-- Historic Schoolhouse Image and Tanya Apana Photo - Always display side-by-side -->
                 <div class="row justify-content-center mb-5">
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <!-- Old Schoolhouse Image - Edit src and alt text to change image -->
+                    <div class="col-lg-6 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="position-relative d-flex flex-column align-items-center">
-                            <img class="img-fluid rounded shadow-lg history-image" src="img/old_school_house.jpg" alt="Historic Main Street School Building" 
-                                 style="width: 473px; height: 400px; object-fit: contain; border-radius: 15px; background: #fff;">
+                            <img class="img-fluid rounded shadow-lg history-image-no-bg" src="img/old_school_house.jpg" alt="Historic Main Street School Building">
                         </div>
                         <h5 class="text-center mt-3 mb-1"><i class="fa fa-map-marker-alt me-1"></i>925 Main Street, Norwalk, Iowa</h5>
                     </div>
-                    <div class="col-lg-4 wow fadeInUp text-center" data-wow-delay="0.5s">
+                    <!-- Tanya Apana Photo - Edit src and alt text to change image -->
+                    <div class="col-lg-6 col-md-6 col-sm-6 wow fadeInUp text-center" data-wow-delay="0.5s">
                         <div class="position-relative d-flex flex-column align-items-center">
-                            <img class="img-fluid rounded shadow-lg history-image" src="img/Tanya_headshot.jpg" alt="Tanya Apana - Founder" 
-                                 style="width: 100%; height: 400px; object-fit: cover; object-position: top center; border-radius: 15px;">
+                            <img class="img-fluid rounded shadow-lg history-image-no-bg" src="img/Tanya_headshot.jpg" alt="Tanya Apana - Founder">
                         </div>
                         <div class="text-center mt-3">
                             <h5 class="mb-1">Tanya Apana</h5>
@@ -210,7 +232,8 @@
                             <!-- Foundation Features -->
                             <div class="bg-light rounded p-5 mb-4 fact-card">
                                 <div class="row g-4">
-                                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                                    <!-- Desktop: 3 columns side-by-side, Mobile: 2 columns top row, 1 centered bottom -->
+                                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                                         <div class="text-center">
                                             <div class="mb-3">
                                                 <i class="fa fa-users-cog fa-3x text-primary"></i>
@@ -219,7 +242,7 @@
                                             <p class="mb-0">As a 501c3 non-profit with board oversight, we're not profit-driven but focused on helping children learn and become lifelong learners.</p>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                                         <div class="text-center">
                                             <div class="mb-3">
                                                 <i class="fa fa-laptop fa-3x text-success"></i>
@@ -228,7 +251,7 @@
                                             <p class="mb-0">Partnered with Jordahl Academy in 2023-24 to offer online programs for grades 5-12 across Iowa.</p>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                                    <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
                                         <div class="text-center">
                                             <div class="mb-3">
                                                 <i class="fa fa-heart fa-3x text-warning"></i>

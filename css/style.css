@@ -2260,6 +2260,16 @@ h6,
     color: #666;
     line-height: 1.4;
     font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Core Values collapse animation */
+.core-values-card .collapse {
+    transition: all 0.3s ease;
+}
+
+.core-values-card .collapse.show {
+    margin-top: 0.25rem;
 }
 
 /* Mobile responsive layout for Core Values */
@@ -2268,17 +2278,17 @@ h6,
     .col-lg-4.wow.fadeInUp {
         margin-top: 2rem !important;
     }
-    
+
     .core-values-card {
         padding: 1.5rem !important;
     }
-    
+
     .core-values-title {
         font-size: 1.25rem !important;
         margin-bottom: 1rem !important;
         text-align: center;
     }
-    
+
     /* Horizontal layout for Core Values on mobile */
     .core-values-card .row.g-3 {
         display: flex !important;
@@ -2286,19 +2296,19 @@ h6,
         flex-wrap: wrap !important;
         gap: 1rem !important;
     }
-    
+
     .core-values-card .col-12 {
         flex: 0 0 calc(50% - 0.5rem) !important;
         max-width: calc(50% - 0.5rem) !important;
         padding: 0 !important;
     }
-    
+
     .core-values-card .d-flex {
         flex-direction: column !important;
         text-align: center !important;
         align-items: center !important;
     }
-    
+
     .core-values-icon {
         margin-right: 0 !important;
         margin-bottom: 0.5rem !important;
@@ -2307,19 +2317,25 @@ h6,
         min-width: 35px !important;
         min-height: 35px !important;
     }
-    
+
     .core-values-icon i {
         font-size: 0.9rem !important;
     }
-    
+
     .core-values-card h6 {
         font-size: 0.9rem !important;
         margin-bottom: 0.25rem !important;
     }
-    
+
     .core-values-card small {
         font-size: 0.75rem !important;
         line-height: 1.2 !important;
+    }
+
+    /* Core Values Read More button mobile styling */
+    .core-value-read-more {
+        font-size: 0.75rem !important;
+        margin-top: 0.125rem !important;
     }
 }
 
@@ -2360,19 +2376,225 @@ h6,
     box-shadow: 0 0 0 0.2rem rgba(254, 93, 55, 0.25);
 }
 
+/* Core Values Read More button styling */
+.core-value-read-more {
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: 0.25rem;
+}
+
+.core-value-read-more:hover {
+    text-decoration: underline;
+    color: var(--primary) !important;
+}
+
+.core-value-read-more:focus {
+    box-shadow: none;
+    text-decoration: underline;
+}
+
 /* Read More button text switching */
-.btn-outline-primary[aria-expanded="true"] .read-more-text {
+.btn-outline-primary[aria-expanded="true"] .read-more-text,
+.core-value-read-more[aria-expanded="true"] .read-more-text {
     display: none !important;
 }
 
-.btn-outline-primary[aria-expanded="true"] .read-less-text {
+.btn-outline-primary[aria-expanded="true"] .read-less-text,
+.core-value-read-more[aria-expanded="true"] .read-less-text {
     display: inline !important;
 }
 
-.btn-outline-primary[aria-expanded="false"] .read-more-text {
+.btn-outline-primary[aria-expanded="false"] .read-more-text,
+.core-value-read-more[aria-expanded="false"] .read-more-text {
     display: inline !important;
 }
 
-.btn-outline-primary[aria-expanded="false"] .read-less-text {
+.btn-outline-primary[aria-expanded="false"] .read-less-text,
+.core-value-read-more[aria-expanded="false"] .read-less-text {
     display: none !important;
+}
+
+/* ================================= */
+/* ELEMENTARY PAGE SPECIFIC STYLING */
+/* ================================= */
+/* Controls the layout and responsiveness of the elementary program page
+   Fixes alignment issues and ensures proper stacking on mobile */
+
+/* Elementary Overview Section - Grade Levels and Learning Model */
+#elementary-overview {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+#elementary-overview .col-sm-6 {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+#elementary-overview .d-flex {
+    align-items: center;
+    padding: 0.5rem;
+    margin: 0 !important;
+}
+
+/* Teaching Philosophy Section - Mobile vertical stacking */
+@media (max-width: 767px) {
+    #teaching-philosophy .row.g-4 {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    #teaching-philosophy .col-md-6 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    #teaching-philosophy .col-md-6:last-child {
+        margin-bottom: 0 !important;
+    }
+}
+
+/* Approach Special Section - Mobile vertical stacking */
+@media (max-width: 767px) {
+    #approach-special .row.g-3 {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    #approach-special .col-12.col-sm-6 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 0.5rem !important; /* Reduced from 1rem to closer spacing */
+    }
+
+    #approach-special .col-12.col-sm-6:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    #approach-special .d-flex {
+        align-items: flex-start;
+        padding: 0.25rem 0; /* Reduced from 0.5rem to closer spacing */
+    }
+}
+
+/* Learning Philosophy in Action Section - Mobile vertical stacking */
+@media (max-width: 767px) {
+    #learning-philosophy-action .row.g-4 {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    #learning-philosophy-action .col-lg-6.col-sm-6 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 1rem !important;
+    }
+
+    #learning-philosophy-action .col-lg-6.col-sm-6:last-child {
+        margin-bottom: 0 !important;
+    }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 767px) {
+    /* Elementary Overview - better alignment on mobile */
+    #elementary-overview .col-sm-6 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 0rem !important;
+    }
+    
+    #elementary-overview .d-flex {
+        justify-content: flex-start;
+        padding: 0.75rem;
+    }
+    
+    /* Teaching Philosophy - ensure proper spacing */
+    #teaching-philosophy .col-md-6 {
+        margin-bottom: 2rem !important;
+    }
+    
+    #teaching-philosophy .bg-peach {
+        padding: 1.5rem !important;
+    }
+    
+    /* Approach Special - better mobile layout */
+    #approach-special .d-flex {
+        padding: 0.5rem 0; /* Reduced from 0.75rem for closer spacing */
+    }
+    
+    /* Learning Philosophy in Action - ensure proper spacing on mobile */
+    #learning-philosophy-action .col-lg-6.col-sm-6 {
+        margin-bottom: 1.5rem !important;
+    }
+    
+    #learning-philosophy-action .bg-peach {
+        padding: 1.5rem !important;
+    }
+    
+    #approach-special .fact-icon {
+        width: 35px !important;
+        height: 35px !important;
+        min-width: 35px !important;
+        margin-right: 0.75rem !important;
+    }
+    
+    #approach-special .fact-icon i {
+        font-size: 0.9rem !important;
+    }
+    
+    #approach-special .flex-grow-1 {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    
+    #approach-special .flex-grow-1 strong {
+        font-size: 0.95rem;
+    }
+}
+
+/* Very small mobile screens */
+@media (max-width: 575px) {
+    #elementary-overview .d-flex {
+        padding: 0.5rem;
+    }
+    
+    #teaching-philosophy .bg-peach {
+        padding: 1rem !important;
+    }
+    
+    #learning-philosophy-action .col-lg-6.col-sm-6 {
+        margin-bottom: 1rem !important;
+    }
+    
+    #learning-philosophy-action .bg-peach {
+        padding: 1rem !important;
+    }
+    
+    #approach-special .d-flex {
+        padding: 0.25rem 0; /* Reduced from 0.5rem for even closer spacing on small screens */
+    }
+    
+    #approach-special .fact-icon {
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px !important;
+        margin-right: 0.5rem !important;
+    }
+    
+    #approach-special .fact-icon i {
+        font-size: 0.8rem !important;
+    }
+    
+    #approach-special .flex-grow-1 {
+        font-size: 0.85rem;
+        line-height: 1.3;
+    }
+    
+    #approach-special .flex-grow-1 strong {
+        font-size: 0.9rem;
+    }
 }

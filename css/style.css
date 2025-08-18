@@ -670,10 +670,22 @@ h6,
 
 
 /*** Footer ***/
+/* CSS Custom Properties for easy footer column editing */
+:root {
+    --footer-column-top-margin: 0px;
+    --footer-column-top-padding: 20px;
+}
+
 .footer.container-fluid {
     width: 100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
+}
+
+/* Apply custom properties to footer columns */
+.footer-column {
+    margin-top: var(--footer-column-top-margin);
+    padding-top: var(--footer-column-top-padding);
 }
 
 .footer .btn.btn-social {
@@ -764,58 +776,57 @@ h6,
     width: 16px; /* Fixed width for icon alignment */
 }
 
-/* Mobile footer layout adjustments */
+/* Responsive footer text sizing - scales from 375px to larger screens */
+.footer h3 {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem) !important;
+    margin-bottom: 1rem;
+}
+
+.footer p {
+    font-size: clamp(0.75rem, 2vw, 1rem) !important;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.footer .btn-link {
+    font-size: clamp(0.75rem, 2vw, 1rem) !important;
+    margin-bottom: 0.2rem !important;
+    padding: 0.1rem 0;
+}
+
+/* Small screens: GetInTouch and QuickLinks side-by-side, StayConnected below */
 @media (max-width: 767.98px) {
-    .footer .container .row {
-        justify-content: center;
+    .footer .footer-column:nth-child(1),
+    .footer .footer-column:nth-child(2) {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+        width: 50% !important;
+        padding-left: 8px;
+        padding-right: 8px;
     }
     
-    .footer .container .row .col-6 {
-        padding-left: 4px;
-        padding-right: 10px;
-        flex: 0 0 auto;
-        max-width: none;
+    .footer .footer-column:nth-child(3) {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin-top: 1.5rem;
     }
     
-    /* Center the two-column layout but keep content left-aligned */
-    .footer .container .row .col-6:nth-child(1),
-    .footer .container .row .col-6:nth-child(2) {
-        display: flex;
-        flex-direction: column;
-        text-align: left;
+    /* Closer icon spacing for Get In Touch on small screens */
+    .footer .footer-column:nth-child(1) p i {
+        margin-right: 4px !important;
+        width: 12px !important;
     }
     
-    /* Ensure social buttons and quick links stay left-aligned */
-    .footer .d-flex,
-    .footer .social-links {
-        justify-content: flex-start;
-    }
-    
-    .footer h3 {
-        font-size: 1.2rem !important;
-        margin-bottom: 1rem;
-    }
-    
-    .footer p {
-        font-size: 13px;
-        margin-bottom: 0.5rem;
-        line-height: 1.5;
-    }
-    
+    /* Regular icon spacing for other elements */
     .footer p i {
-        margin-right: 8px;
-        width: 3px;
-    }
-    
-    .footer .btn-link {
-        font-size: 13px !important;
-        margin-bottom: 0.2rem !important;
-        padding: 0.1rem 0;
+        margin-right: 6px;
+        width: 14px;
     }
     
     .footer .btn-social {
-        width: 36px !important;
-        height: 36px !important;
+        width: clamp(32px, 8vw, 40px) !important;
+        height: clamp(32px, 8vw, 40px) !important;
         margin-right: 5px !important;
     }
     
@@ -829,13 +840,52 @@ h6,
     }
 }
 
+/* Medium screens: GetInTouch and QuickLinks side-by-side, StayConnected below */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .footer .footer-column:nth-child(1),
+    .footer .footer-column:nth-child(2) {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+        width: 50% !important;
+    }
+    
+    .footer .footer-column:nth-child(3) {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin-top: 2rem;
+    }
+}
+
+/* Large screens: All three columns side-by-side */
+@media (min-width: 992px) {
+    .footer .footer-column {
+        flex: 0 0 33.333333% !important;
+        max-width: 33.333333% !important;
+        width: 33.333333% !important;
+    }
+}
+
 /* Fix footer email form alignment */
 .footer .position-relative {
-    text-align: left;
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
 }
 
 .footer .form-control {
-    text-align: left;
+    text-align: left !important;
+}
+
+/* Ensure Stay Connected content is left-aligned */
+.footer .footer-column:nth-child(3) {
+    text-align: left !important;
+}
+
+.footer .footer-column:nth-child(3) h3,
+.footer .footer-column:nth-child(3) p,
+.footer .footer-column:nth-child(3) div {
+    text-align: left !important;
 }
 
 /* Ensure Stay Connected section content is left-aligned */

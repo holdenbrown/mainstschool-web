@@ -258,16 +258,16 @@ class HeaderFooterManager {
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">
                 <div class="row g-5">
-                    <div class="col-lg-4 col-md-6 col-6">
+                    <div class="footer-column col-lg-4 col-md-6">
                         <h3 class="text-white mb-4">Get In Touch</h3>
-                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>925 Main St, Norwalk, IA 50211</p>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>925 Main St, Norwalk, IA</p>
                         <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>515-981-1275</p>
                         <p class="mb-2"><i class="fa fa-envelope me-3"></i>office@mainstschool.org</p>
                         <div class="d-flex pt-2">
                             <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/mainstreetschool.iowa" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-6">
+                    <div class="footer-column col-lg-4 col-md-6">
                         <h3 class="text-white mb-4">Quick Links</h3>
                         <a class="btn btn-link text-white-50" href="https://app.tuiopay.com/donation/3a8c62fc819d1f645288f6ce955bfce0" target="_blank">Donate Now</a>
                         <a class="btn btn-link text-white-50" href="about.html">About Us</a>
@@ -277,10 +277,10 @@ class HeaderFooterManager {
                         <a class="btn btn-link text-white-50" href="middle-school.html">Middle School</a>
                         <a class="btn btn-link text-white-50" href="high-school.html">High School</a>
                     </div>
-                    <div class="col-lg-4 col-12">
+                    <div class="footer-column col-lg-4 col-12">
                         <h3 class="text-white mb-4">Stay Connected</h3>
                         <p>Subscribe to our newsletter for updates on school events, student achievements, and educational insights.</p>
-                        <div class="position-relative mx-auto" style="max-width: 400px;">
+                        <div class="position-relative" style="max-width: 400px;">
                             <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
                             <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Subscribe</button>
                         </div>

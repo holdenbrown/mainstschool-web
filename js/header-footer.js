@@ -31,7 +31,7 @@ class HeaderFooterManager {
                 pageType: 'program',
                 activeNav: 'early-childhood',
                 showCarousel: false,
-                showPageHeader: true,
+                showPageHeader: false,
                 pageTitle: 'Early Childhood',
                 breadcrumb: ['Home', 'Programs', 'Early Childhood']
             },
@@ -40,7 +40,7 @@ class HeaderFooterManager {
                 pageType: 'program',
                 activeNav: 'elementary',
                 showCarousel: false,
-                showPageHeader: true,
+                showPageHeader: false,
                 pageTitle: 'Elementary',
                 breadcrumb: ['Home', 'Programs', 'Elementary']
             },
@@ -49,7 +49,7 @@ class HeaderFooterManager {
                 pageType: 'program',
                 activeNav: 'middle-school',
                 showCarousel: false,
-                showPageHeader: true,
+                showPageHeader: false,
                 pageTitle: 'Middle School',
                 breadcrumb: ['Home', 'Programs', 'Middle School']
             },
@@ -58,7 +58,7 @@ class HeaderFooterManager {
                 pageType: 'program',
                 activeNav: 'high-school',
                 showCarousel: false,
-                showPageHeader: true,
+                showPageHeader: false,
                 pageTitle: 'High School',
                 breadcrumb: ['Home', 'Programs', 'High School']
             },

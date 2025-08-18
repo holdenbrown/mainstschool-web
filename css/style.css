@@ -1395,6 +1395,60 @@ h6,
 
 
 /* ================================= */
+/* APPROACH SPECIAL SECTION STYLING */
+/* ================================= */
+
+.approach-special-section {
+    padding: 1.5rem 0;
+}
+
+.approach-special-section .fact-icon {
+    transition: none;
+}
+
+.approach-special-section .d-flex {
+    transition: none;
+}
+
+.approach-special-section .d-flex:hover {
+    transform: none;
+    box-shadow: none;
+    background-color: transparent;
+}
+
+/* Mobile responsive adjustments for approach special section */
+@media (max-width: 575px) {
+    .approach-special-section .col-12 {
+        margin-bottom: 1rem;
+    }
+    
+    .approach-special-section .d-flex {
+        align-items: flex-start;
+        margin-bottom: 0.75rem;
+    }
+    
+    .approach-special-section .fact-icon {
+        width: 35px !important;
+        height: 35px !important;
+        min-width: 35px !important;
+        margin-right: 0.75rem !important;
+    }
+    
+    .approach-special-section .fact-icon i {
+        font-size: 0.9rem !important;
+    }
+    
+    .approach-special-section .flex-grow-1 {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    
+    .approach-special-section .flex-grow-1 strong {
+        font-size: 0.95rem;
+    }
+}
+
+/* ================================= */
 /* PROGRAM FEATURES STYLING SECTION */
 /* ================================= */
 

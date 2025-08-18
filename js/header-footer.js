@@ -30,7 +30,7 @@ class HeaderFooterManager {
                 title: 'Main Street School - Early Childhood',
                 pageType: 'program',
                 activeNav: 'early-childhood',
-                showCarousel: false,
+                showCarousel: true,
                 showPageHeader: false,
                 pageTitle: 'Early Childhood',
                 breadcrumb: ['Home', 'Programs', 'Early Childhood']
@@ -39,7 +39,7 @@ class HeaderFooterManager {
                 title: 'Main Street School - Elementary',
                 pageType: 'program',
                 activeNav: 'elementary',
-                showCarousel: false,
+                showCarousel: true,
                 showPageHeader: false,
                 pageTitle: 'Elementary',
                 breadcrumb: ['Home', 'Programs', 'Elementary']
@@ -48,7 +48,7 @@ class HeaderFooterManager {
                 title: 'Main Street School - Middle School',
                 pageType: 'program',
                 activeNav: 'middle-school',
-                showCarousel: false,
+                showCarousel: true,
                 showPageHeader: false,
                 pageTitle: 'Middle School',
                 breadcrumb: ['Home', 'Programs', 'Middle School']
@@ -57,11 +57,12 @@ class HeaderFooterManager {
                 title: 'Main Street School - High School',
                 pageType: 'program',
                 activeNav: 'high-school',
-                showCarousel: false,
+                showCarousel: true,
                 showPageHeader: false,
                 pageTitle: 'High School',
                 breadcrumb: ['Home', 'Programs', 'High School']
             },
+
             'about': {
                 title: 'Main Street School - About Us',
                 pageType: 'standard',

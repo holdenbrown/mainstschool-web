@@ -1138,7 +1138,7 @@ h6,
     .fact-card .fact-icon {
         width: 30px !important; /* Smaller icon circle */
         height: 30px !important;
-        margin-bottom: 0.1rem !important; /* Reduced spacing */
+        margin-right: 0.5rem !important; /* Reduced spacing */
     }
     
     .fact-card .fact-icon i {
@@ -1390,6 +1390,98 @@ h6,
     background-color: inherit !important;
     transform: none !important;
     box-shadow: none !important;
+}
+
+
+
+/* ================================= */
+/* PROGRAM FEATURES STYLING SECTION */
+/* ================================= */
+
+/* Program Features Cards - Desktop */
+.program-features .fact-card {
+    transition: all 0.3s ease;
+    border: none;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.program-features .fact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.program-features .fact-icon {
+    transition: all 0.3s ease;
+    width: 45px !important;
+    height: 45px !important;
+}
+.program-features .fact-icon i {
+    font-size: 1.7rem !important;
+}
+
+.program-features .fact-card:hover .fact-icon {
+    transform: scale(1.1);
+}
+
+.program-features .fact-card h4 {
+    color: var(--dark);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    flex-shrink: 0;
+}
+
+.program-features .fact-card p {
+    color: #666;
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 0;
+}
+
+/* Program Features - Mobile Responsive */
+@media (max-width: 768px) {
+    .program-features .fact-card {
+        min-height: 130px;
+        padding: 0.8rem !important;
+        margin-bottom: 0.5rem;
+    }
+    
+    .program-features .fact-card .fact-icon {
+        width: 30px !important;
+        height: 30px !important;
+        margin-right: 0.5rem !important;
+    }
+    
+    .program-features .fact-icon i {
+        font-size: 1rem !important;
+    }
+    
+    .program-features .fact-card h4 {
+        font-size: 1rem;
+        margin-top: 0.2rem;
+        line-height: 1.2;
+    }
+    
+    .program-features .fact-card p {
+        font-size: 0.85rem;
+        line-height: 1.2;
+        margin-bottom: 0;
+    }
+    .col-lg-3 {
+        padding: 0.5rem !important;
+        margin-top: 0rem !important;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .program-features .fact-card {
+    }
+}
+
+@media (min-width: 1025px) {
+    .program-features .fact-card {
+    }
 }
 
 /* Program Features responsive styling */

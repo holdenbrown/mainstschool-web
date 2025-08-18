@@ -40,33 +40,81 @@
     });
 
 
-    // Carousel data - standardized text across all slides
-    const carouselData = [
-        {
-            image: "img/carousel-1.jpg",
-            title: "Feeding Curiosity Since 2006",
-            description: ""
-        },
-        {
-            image: "img/carousel-2.jpg",
-            title: "Feeding Curiosity Since 2006",
-            description: ""
-        },
-        {
-            image: "img/carousel-3.jpg",
-            title: "Feeding Curiosity Since 2006",
-            description: ""
-        },
-    ];
+    // Carousel data configuration system
+    const carouselConfigurations = {
+        'home': [
+            {
+                image: "img/carousel-1.jpg",
+                title: "Feeding Curiosity Since 2006",
+                description: "",
+                showButtons: true
+            },
+            {
+                image: "img/carousel-2.jpg",
+                title: "Feeding Curiosity Since 2006",
+                description: "",
+                showButtons: true
+            },
+            {
+                image: "img/carousel-3.jpg",
+                title: "Feeding Curiosity Since 2006",
+                description: "",
+                showButtons: true
+            },
+        ],
+        'programs': [
+            {
+                image: "img/carousel-1.jpg",
+                title: "Personalized Learning Journey",
+                description: "Every student receives individualized attention in our small, nurturing classroom environment",
+                showButtons: false
+            },
+            {
+                image: "img/carousel-2.jpg",
+                title: "Project-Based Discovery",
+                description: "Students learn through meaningful, hands-on projects that integrate multiple subjects and real-world applications",
+                showButtons: false
+            },
+            {
+                image: "img/carousel-3.jpg",
+                title: "Community & Character",
+                description: "Building lifelong friendships while developing empathy, kindness, and strong character in a supportive learning community",
+                showButtons: false
+            }
+        ]
+    };
 
-    // Generate carousel slides dynamically
-    function generateCarouselSlides() {
-        const carouselContainer = document.getElementById('headerCarousel');
-        if (!carouselContainer) return;
+    // Reusable carousel generator function
+    function generateCarouselSlides(pageType = 'home', carouselId = 'headerCarousel') {
+        const carouselContainer = document.getElementById(carouselId);
+        if (!carouselContainer) {
+            console.log('Carousel container not found:', carouselId);
+            return;
+        }
+        
+        console.log('Initializing carousel for pageType:', pageType);
+
+        const carouselData = carouselConfigurations[pageType] || carouselConfigurations['home'];
 
         carouselData.forEach(slide => {
             const slideElement = document.createElement('div');
             slideElement.className = 'owl-carousel-item position-relative';
+            
+            const buttonSection = slide.showButtons ? `
+                <div class="d-flex flex-column flex-sm-row gap-3 align-items-start carousel-buttons">
+                    <a href="" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInLeft">Schedule A Tour</a>
+                    <div class="dropdown animated slideInRight">
+                        <button class="btn btn-primary rounded-pill py-sm-3 px-sm-5 dropdown-toggle" type="button" id="enrollDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Enroll Now
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="enrollDropdown">
+                            <li><a class="dropdown-item" href=https://app.tuiopay.com/registration/t6ff7e6>New Students</a></li>
+                            <li><a class="dropdown-item" href=https://app.tuiopay.com/registration/z9884b8>Returning Students</a></li>
+                        </ul>
+                    </div>
+                </div>
+            ` : '';
+
             slideElement.innerHTML = `
                 <div class="carousel-image-container">
                     <img class="carousel-image" src="${slide.image}" alt="">
@@ -77,18 +125,7 @@
                             <div class="col-10 col-lg-8 carousel-content-mobile">
                                 <h1 class="display-2 text-white animated slideInDown mb-4">${slide.title}</h1>
                                 <p class="fs-5 fw-medium text-white mb-4 pb-2">${slide.description}</p>
-                                <div class="d-flex flex-column flex-sm-row gap-3 align-items-start carousel-buttons">
-                                    <a href="" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInLeft">Schedule A Tour</a>
-                                    <div class="dropdown animated slideInRight">
-                                        <button class="btn btn-primary rounded-pill py-sm-3 px-sm-5 dropdown-toggle" type="button" id="enrollDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Enroll Now
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="enrollDropdown">
-                                            <li><a class="dropdown-item" href=https://app.tuiopay.com/registration/t6ff7e6>New Students</a></li>
-                                            <li><a class="dropdown-item" href=https://app.tuiopay.com/registration/z9884b8>Returning Students</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                ${buttonSection}
                             </div>
                         </div>
                     </div>
@@ -98,8 +135,23 @@
         });
     }
 
-    // Initialize carousel after generating slides
-    generateCarouselSlides();
+    // Global function to initialize carousel for any page
+    window.initializeCarousel = function(pageType = null, carouselId = 'headerCarousel') {
+        // Auto-detect page type if not provided
+        if (!pageType) {
+            const path = window.location.pathname;
+            if (path.includes('early-childhood') || path.includes('elementary') || 
+                path.includes('middle-school') || path.includes('high-school')) {
+                pageType = 'programs';
+            } else {
+                pageType = 'home';
+            }
+        }
+        generateCarouselSlides(pageType, carouselId);
+    };
+
+    // Initialize carousel after generating slides - auto-detect page type
+    window.initializeCarousel();
 
     // Header carousel
     let headerCarousel = $(".header-carousel").owlCarousel({

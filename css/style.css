@@ -394,7 +394,7 @@ h6,
     
     /* Mobile carousel content positioning */
     .carousel-content-mobile {
-        margin-left: 15% !important; /* Move content 15% from left */
+        margin-left: 1% !important; /* Move content 15% from left */
         max-width: 80% !important; /* Adjust width to prevent overflow */
     }
     

@@ -32,10 +32,10 @@ $(document).ready(function() {
         hideSpinner();
     });
     
-    // Also hide spinner after a timeout to prevent it from showing forever
-    setTimeout(function() {
+    // Hide spinner immediately if page is already loaded
+    if (document.readyState === 'complete') {
         hideSpinner();
-    }, 3000);
+    }
     
     // =================================
     // CORE APPLICATION INITIALIZATION

@@ -36,13 +36,13 @@
 
 <body>
     <div class="bg-white p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
+            <!-- Spinner Start -->
+    <div id="spinner" class="bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
         </div>
-        <!-- Spinner End -->
+    </div>
+    <!-- Spinner End -->
 
         <!-- Header will be dynamically loaded here -->
         <div id="header-placeholder"></div>
@@ -50,7 +50,7 @@
         <!-- Who We Are Section -->
         <div class="container-responsive py-responsive">
             <div class="container">
-                <div class="row g-5 align-items-start">
+                <div class="row align-items-start">
                     <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
                         <h1 class="mb-3"><i class="fa fa-users me-3 text-primary"></i>Who We Are</h1>
 
@@ -82,52 +82,34 @@
                             <div class="row g-3">
                                 <div class="col-12">
                                     <div class="d-flex align-items-start">
-                                        <div class="fact-icon bg-info rounded-circle d-inline-flex align-items-center justify-content-center me-3 core-values-icon">
-                                            <i class="fa fa-user-graduate text-white"></i>
+                                        <div class="fact-icon bg-info rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: clamp(2rem, 4vw, 2.5rem); height: clamp(2rem, 4vw, 2.5rem);">
+                                            <i class="fa fa-user-graduate text-white" style="font-size: clamp(0.8rem, 2vw, 1rem);"></i>
                                         </div>
                                         <div class="flex-grow-1">
                                             <h6 class="mb-1">Individualized Curriculum</h6>
-                                            <div class="collapse" id="coreValue1More">
-                                                <small class="text-muted">Meeting students where they're at, not expecting them to meet the classroom.</small>
-                                            </div>
-                                            <button class="btn btn-link btn-sm p-0 text-primary core-value-read-more" type="button" data-bs-toggle="collapse" data-bs-target="#coreValue1More" aria-expanded="false" aria-controls="coreValue1More">
-                                                <span class="read-more-text">Read More</span>
-                                                <span class="read-less-text" style="display: none;">Read Less</span>
-                                            </button>
+                                            <small class="text-muted">Meeting students where they're at, not expecting them to meet the classroom.</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="d-flex align-items-start">
-                                        <div class="fact-icon bg-success rounded-circle d-inline-flex align-items-center justify-content-center me-3 core-values-icon">
-                                            <i class="fa fa-heart text-white"></i>
+                                        <div class="fact-icon bg-success rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: clamp(2rem, 4vw, 2.5rem); height: clamp(2rem, 4vw, 2.5rem);">
+                                            <i class="fa fa-heart text-white" style="font-size: clamp(0.8rem, 2vw, 1rem);"></i>
                                         </div>
                                         <div class="flex-grow-1">
                                             <h6 class="mb-1">Whole Child Focus</h6>
-                                            <div class="collapse" id="coreValue2More">
-                                                <small class="text-muted">Emotional, physical, social, and academic development equally important in our approach.</small>
-                                            </div>
-                                            <button class="btn btn-link btn-sm p-0 text-primary core-value-read-more" type="button" data-bs-toggle="collapse" data-bs-target="#coreValue2More" aria-expanded="false" aria-controls="coreValue2More">
-                                                <span class="read-more-text">Read More</span>
-                                                <span class="read-less-text" style="display: none;">Read Less</span>
-                                            </button>
+                                            <small class="text-muted">Emotional, physical, social, and academic development equally important in our approach.</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="d-flex align-items-start">
-                                        <div class="fact-icon bg-warning rounded-circle d-inline-flex align-items-center justify-content-center me-3 core-values-icon">
-                                            <i class="fa fa-lightbulb text-white"></i>
+                                        <div class="fact-icon bg-warning rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: clamp(2rem, 4vw, 2.5rem); height: clamp(2rem, 4vw, 2.5rem);">
+                                            <i class="fa fa-lightbulb text-white" style="font-size: clamp(0.8rem, 2vw, 1rem);"></i>
                                         </div>
                                         <div class="flex-grow-1">
                                             <h6 class="mb-1">Project-Based Learning</h6>
-                                            <div class="collapse" id="coreValue3More">
-                                                <small class="text-muted">Interdisciplinary practice with many skills at once.</small>
-                                            </div>
-                                            <button class="btn btn-link btn-sm p-0 text-primary core-value-read-more" type="button" data-bs-toggle="collapse" data-bs-target="#coreValue3More" aria-expanded="false" aria-controls="coreValue3More">
-                                                <span class="read-more-text">Read More</span>
-                                                <span class="read-less-text" style="display: none;">Read Less</span>
-                                            </button>
+                                            <small class="text-muted">Interdisciplinary practice with many skills at once.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -150,60 +132,80 @@
              Layout: Desktop shows 2 cards side-by-side, then 3 cards below (2 side-by-side, 1 centered)
              Mobile shows 2x2 grid with last card centered -->
         <div class="container-responsive py-responsive">
-            <div class="container" style="padding-left: 0px !important; padding-right: 0px !important;">
+            <div class="container" >
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                     <h1 class="mb-3"><i class="fa fa-eye me-3 text-primary"></i>Our Vision & Mission</h1>
                     <p class="mb-0">Guiding principles that drive our educational approach</p>
                 </div>
                 
                 <!-- Vision and Mission Cards - Always display side-by-side -->
-                <div class="row g-4 mt-4">
+                <div class="row g-2 g-md-4 g-lg-4">
                     <!-- Our Vision Card - Edit h2 and p text to change content -->
-                    <div class="col-lg-6 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="vision-mission-card bg-light rounded p-4 text-center h-100">
+                    <div class="col-lg-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="bg-light rounded text-center h-100 p-2 p-sm-4 p-md-4 transition-all" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.backgroundColor='#f8f9fa';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.backgroundColor='#f8f9fa';">
+                            <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: clamp(2rem, 5vw, 3rem); height: clamp(2rem, 5vw, 3rem);">
+                                <i class="fa fa-eye text-white" style="font-size: clamp(1rem, 2.5vw, 1.5rem);"></i>
+                            </div>
                             <h2 class="text-primary mb-3">Our Vision</h2>
-                            <p class="mb-0 fs-5">To inspire each other in becoming our authentic selves and to pursue purposeful action in the world</p>
+                            <p class="mb-0 fs-6">To inspire each other in becoming our authentic selves and to pursue purposeful action in the world</p>
                         </div>
                     </div>
+
+                    
                     <!-- Our Mission Card - Edit h2 and p text to change content -->
-                    <div class="col-lg-6 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="vision-mission-card bg-light rounded p-4 text-center h-100">
+                    <div class="col-lg-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="bg-light rounded text-center h-100 p-2 p-sm-2 p-md-4 p-lg-4 transition-all" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.backgroundColor='#f8f9fa';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.backgroundColor='#f8f9fa';">
+                            <div class="bg-success rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: clamp(2rem, 5vw, 3rem); height: clamp(2rem, 5vw, 3rem);">
+                                <i class="fa fa-bullseye text-white" style="font-size: clamp(1rem, 2.5vw, 1.5rem);"></i>
+                            </div>
                             <h2 class="text-success mb-3">Our Mission</h2>
-                            <p class="mb-0 fs-5">To provide young people with real world, purposeful curriculum and a learning environment that respects their individuality and goals.</p>
+                            <p class="mb-0 fs-6">To provide young people with real world, purposeful curriculum and a learning environment that respects their individuality and goals.</p>
                         </div>
                     </div>
                 </div>
                 
+
+                
                 <!-- Core Values Cards - Desktop: 3 cards in a row, Mobile: 2x2 with last centered -->
-                <div class="row g-4 mt-4" style="padding-top: 0% !important; margin-top: 0% !important;">
+                <div class="row g-2 g-md-4 g-lg-4">
                     <!-- Question & Solve Card - Edit h5 and p text, change icon class and color -->
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" style="padding-top: 1% !important; margin-top: 0% !important;" data-wow-delay="0.1s">
-                        <div class="vision-mission-card bg-light rounded p-4 h-100">
+                    <div class="col-lg-4 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="bg-light rounded h-100 p-2 p-md-4 p-lg-4 transition-all" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
                             <div class="text-center mb-3">
-                                <i class="fa fa-lightbulb fa-3x text-primary"></i>
+                                <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: clamp(3rem, 6vw, 4rem); height: clamp(3rem, 6vw, 4rem);">
+                                    <i class="fa fa-lightbulb text-white" style="font-size: clamp(1.2rem, 3vw, 2rem);"></i>
+                                </div>
                             </div>
                             <h5 class="text-center mb-3">Question & Solve</h5>
                             <p class="text-center mb-0">A central part of our learning process is to engage our students in asking questions, solving problems and making decisions that will allow them to act with thoughtfulness, understanding, and compassion for others.</p>
                         </div>
                     </div>
                     <!-- Student Development Card - Edit h5 and p text, change icon class and color -->
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" style="padding-top: 1% !important; margin-top: 0% !important;" data-wow-delay="0.3s">
-                        <div class="vision-mission-card bg-light rounded p-4 h-100">
+                    <div class="col-lg-4 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="bg-light rounded h-100 p-4 p-sm-2 p-md-4 p-lg-4 transition-all" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
                             <div class="text-center mb-3">
-                                <i class="fa fa-child fa-3x text-success"></i>
+                                <div class="bg-success rounded-circle d-inline-flex align-items-center justify-content-center" style="width: clamp(3rem, 6vw, 4rem); height: clamp(3rem, 6vw, 4rem);">
+                                    <i class="fa fa-child text-white" style="font-size: clamp(1.2rem, 3vw, 2rem);"></i>
+                                </div>
                             </div>
                             <h5 class="text-center mb-3">Student Development</h5>
                             <p class="text-center mb-0">We are committed to developing students' natural resiliency, adaptability, knowledge, and desire for lifelong learning.</p>
                         </div>
                     </div>
                     <!-- Global Citizens Card - Edit h5 and p text, change icon class and color -->
-                    <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s" style="padding-top: 1% !important; margin-top: 0% !important;">
-                        <div class="vision-mission-card bg-light rounded p-4 h-100">
-                            <div class="text-center mb-3">
-                                <i class="fa fa-globe fa-3x text-warning"></i>
+                    <div class="col-lg-4 col-12 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="row justify-content-center">
+                            <div class="col-sm-8 col-md-8 col-lg-12">
+                                <div class="bg-light rounded h-100 p-4 p-sm-2 p-md-4 p-lg-4 fs-6 transition-all" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                                    <div class="text-center mb-3">
+                                        <div class="bg-warning rounded-circle d-inline-flex align-items-center justify-content-center" style="width: clamp(3rem, 6vw, 4rem); height: clamp(3rem, 6vw, 4rem);">
+                                            <i class="fa fa-globe text-white" style="font-size: clamp(1.2rem, 3vw, 2rem);"></i>
+                                        </div>
+                                    </div>
+                                    <h5 class="text-center mb-3">Global Citizens</h5>
+                                    <p class="text-center mb-0">Active involvement from our families allows us to create a community of learners with exceptional human potential who will become personally fulfilled, interdependent, socially responsible global citizens.</p>
+                                </div>
                             </div>
-                            <h5 class="text-center mb-3">Global Citizens</h5>
-                            <p class="text-center mb-0">Active involvement from our families allows us to create a community of learners with exceptional human potential who will become personally fulfilled, interdependent, socially responsible global citizens.</p>
                         </div>
                     </div>
                 </div>
@@ -224,22 +226,22 @@
                 </div>
                 
                 <!-- Historic Schoolhouse Image and Tanya Apana Photo - Always display side-by-side -->
-                <div class="row justify-content-center mb-5">
+                <div class="row justify-content-center mb-5 g-3">
                     <!-- Old Schoolhouse Image - Edit src and alt text to change image -->
-                    <div class="col-lg-6 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="col-lg-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="position-relative d-flex flex-column align-items-center">
-                            <img class="img-fluid rounded shadow-lg history-image-no-bg" src="img/old_school_house.jpg" alt="Historic Main Street School Building">
+                            <img class="img-fluid rounded shadow-lg history-image-no-bg" src="img/old_school_house.jpg" alt="Historic Main Street School Building" style="max-height: 300px; object-fit: cover; width: 100%;">
                         </div>
-                        <h5 class="text-center mt-3 mb-1"><i class="fa fa-map-marker-alt me-1"></i>925 Main Street, Norwalk, Iowa</h5>
+                        <h5 class="text-center mt-3 mb-1" style="font-size: clamp(0.9rem, 2.5vw, 1.25rem);"><i class="fa fa-map-marker-alt me-1"></i>925 Main Street, Norwalk, Iowa</h5>
                     </div>
                     <!-- Tanya Apana Photo - Edit src and alt text to change image -->
-                    <div class="col-lg-6 col-md-6 col-sm-6 wow fadeInUp text-center" data-wow-delay="0.5s">
+                    <div class="col-lg-6 col-md-6 col-6 wow fadeInUp text-center" data-wow-delay="0.5s">
                         <div class="position-relative d-flex flex-column align-items-center">
-                            <img class="img-fluid rounded shadow-lg history-image-no-bg" src="img/Tanya_headshot.jpg" alt="Tanya Apana - Founder">
+                            <img class="img-fluid rounded shadow-lg history-image-no-bg" src="img/Tanya_headshot.jpg" alt="Tanya Apana - Founder" style="max-height: 300px; object-fit: cover; width: 100%;">
                         </div>
                         <div class="text-center mt-3">
-                            <h5 class="mb-1">Tanya Apana</h5>
-                            <small class="text-muted d-block">Founder & Director</small>
+                            <h5 class="mb-1" style="font-size: clamp(0.9rem, 2.5vw, 1.25rem);">Tanya Apana</h5>
+                            <small class="text-muted d-block" style="font-size: clamp(0.75rem, 2vw, 0.875rem);">Founder & Director</small>
                         </div>
                     </div>
                 </div>

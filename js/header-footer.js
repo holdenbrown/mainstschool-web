@@ -168,7 +168,7 @@ class HeaderFooterManager {
                         <a href="contact.html" class="nav-item nav-link ${isActive('contact')}">Contact Us</a>
                         <a href="blog.html" class="nav-item nav-link ${isActive('blog')}">Blog</a>
                     </div>
-                    <a href="https://app.tuiopay.com/donation/3a8c62fc819d1f645288f6ce955bfce0" class="btn btn-primary rounded-pill px-3 d-none d-lg-block"><span class="donate-text">Donate Now!</span><span class="donate-text-short">Donate</span><i class="fa fa-arrow-right ms-3"></i></a>
+                    <a href="https://app.tuiopay.com/donation/3a8c62fc819d1f645288f6ce955bfce0" class="btn btn-primary rounded-pill px-3 d-none d-lg-block"><span class="donate-text">Donate</span><i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
             </nav>
             <!-- Navbar End -->`;
@@ -259,31 +259,55 @@ class HeaderFooterManager {
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">
                 <div class="row g-5">
-                    <div class="footer-column col-lg-4 col-md-6">
+                    <!-- Get In Touch and Quick Links - Side by side on small screens -->
+                    <div class="col-lg-4 col-md-6 col-6">
                         <h3 class="text-white mb-4">Get In Touch</h3>
-                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>925 Main St, Norwalk, IA</p>
-                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>515-981-1275</p>
-                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>office@mainstschool.org</p>
+                        <div class="d-flex align-items-start mb-2">
+                            <i class="fa fa-map-marker-alt me-3 mt-1" style="width: 16px;"></i>
+                            <span>925 Main St, Norwalk, IA</span>
+                        </div>
+                        <div class="d-flex align-items-start mb-2">
+                            <i class="fa fa-phone-alt me-3 mt-1" style="width: 16px;"></i>
+                            <span>515-981-1275</span>
+                        </div>
+                        <div class="d-flex align-items-start mb-2">
+                            <i class="fa fa-envelope me-3 mt-1" style="width: 16px;"></i>
+                            <span class="text-break">office@mainstschool.org</span>
+                        </div>
                         <div class="d-flex pt-2">
                             <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/mainstreetschool.iowa" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         </div>
                     </div>
-                    <div class="footer-column col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-6 col-6">
                         <h3 class="text-white mb-4">Quick Links</h3>
-                        <a class="btn btn-link text-white-50" href="https://app.tuiopay.com/donation/3a8c62fc819d1f645288f6ce955bfce0" target="_blank">Donate Now</a>
-                        <a class="btn btn-link text-white-50" href="about.html">About Us</a>
-                        <a class="btn btn-link text-white-50" href="contact.html">Contact Us</a>
-                        <a class="btn btn-link text-white-50" href="early-childhood.html">Early Childhood</a>
-                        <a class="btn btn-link text-white-50" href="elementary.html">Elementary</a>
-                        <a class="btn btn-link text-white-50" href="middle-school.html">Middle School</a>
-                        <a class="btn btn-link text-white-50" href="high-school.html">High School</a>
+                        <div class="d-flex flex-column">
+                            <a class="btn btn-link text-white-50 text-start p-0 mb-1" href="https://app.tuiopay.com/donation/3a8c62fc819d1f645288f6ce955bfce0" target="_blank"></i>Donate Now</a>
+                            <a class="btn btn-link text-white-50 text-start p-0 mb-1" href="about.html"></i>About Us</a>
+                            <a class="btn btn-link text-white-50 text-start p-0 mb-1" href="contact.html"></i>Contact Us</a>
+                            <a class="btn btn-link text-white-50 text-start p-0 mb-1" href="early-childhood.html"></i>Early Childhood</a>
+                            <a class="btn btn-link text-white-50 text-start p-0 mb-1" href="elementary.html"></i>Elementary</a>
+                            <a class="btn btn-link text-white-50 text-start p-0 mb-1" href="middle-school.html"></i>Middle School</a>
+                            <a class="btn btn-link text-white-50 text-start p-0 mb-1" href="high-school.html"></i>High School</a>
+                        </div>
                     </div>
-                    <div class="footer-column col-lg-4 col-12">
+                    <!-- Stay Connected - Below on smaller screens, third column on larger screens -->
+                    <div class="col-lg-4 col-12">
                         <h3 class="text-white mb-4">Stay Connected</h3>
                         <p>Subscribe to our newsletter for updates on school events, student achievements, and educational insights.</p>
                         <div class="position-relative" style="max-width: 400px;">
-                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Subscribe</button>
+                            <style>
+                                #newsletterEmail::placeholder {
+                                    color: rgba(255, 255, 255, 0.7) !important;
+                                }
+                                #newsletterEmail::-webkit-input-placeholder {
+                                    color: rgba(255, 255, 255, 0.7) !important;
+                                }
+                                #newsletterEmail::-moz-placeholder {
+                                    color: rgba(255, 255, 255, 0.7) !important;
+                                }
+                            </style>
+                            <input id="newsletterEmail" class="form-control bg-transparent w-100 py-3 ps-4 pe-5 text-white" type="email" placeholder="Your Email" style="color: white !important; border-color: rgba(255,255,255,0.3);">
+                            <button type="button" class="btn btn-primary py-2 px-3 position-absolute top-50 end-0 translate-middle-y me-2">Subscribe</button>
                         </div>
                     </div>
                 </div>

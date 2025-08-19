@@ -179,11 +179,12 @@ generateHeaderHTML(config) {
                         </div>
                         <a href="contact.html" class="nav-item nav-link ${isActive('contact')}">Contact Us</a>
                         <a href="blog.html" class="nav-item nav-link ${isActive('blog')}">Blog</a>
-                                                 <div class="navbar-nav d-flex align-items-center">
-                             <a href="https://app.tuiopay.com/donation/3a8c62fc819d1f645288f6ce955bfce0" class="btn btn-primary rounded-3 px-3 py-2">
-                                 Donate
-                             </a>
-                         </div>
+                        <div class="navbar-nav d-flex align-items-center">
+                            <a href="https://app.tuiopay.com/donation/3a8c62fc819d1f645288f6ce955bfce0" class="btn btn-primary rounded-3 px-4 py-2 d-flex align-items-center">
+                                <span class="me-2">Donate</span>
+                                <i class="fa fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

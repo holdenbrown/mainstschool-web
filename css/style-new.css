@@ -1,0 +1,457 @@
+/* ================================= */
+/* MAIN STYLESHEET - MAIN STREET SCHOOL */
+/* ================================= */
+
+/* ================================= */
+/* CSS VARIABLES & ROOT STYLES */
+/* ================================= */
+:root {
+    --primary: #fe5d37;
+    --secondary: #f39c12;
+    --dark: #2c3e50;
+    --light: #ecf0f1;
+    --success: #27ae60;
+    --info: #3498db;
+    --warning: #f1c40f;
+    --danger: #e74c3c;
+    --white: #ffffff;
+    --gray-100: #f8f9fa;
+    --gray-200: #e9ecef;
+    --gray-300: #dee2e6;
+    --gray-400: #ced4da;
+    --gray-500: #adb5bd;
+    --gray-600: #6c757d;
+    --gray-700: #495057;
+    --gray-800: #343a40;
+    --gray-900: #212529;
+}
+
+/* ================================= */
+/* GLOBAL STYLES & RESETS */
+/* ================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark);
+    background-color: var(--white);
+}
+
+/* ================================= */
+/* LAYOUT & CONTAINER STYLES */
+/* ================================= */
+.container-responsive {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.py-responsive {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+    .py-responsive {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+}
+
+/* ================================= */
+/* TYPOGRAPHY */
+/* ================================= */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.5rem; }
+    h4 { font-size: 1.25rem; }
+    h5 { font-size: 1.1rem; }
+    h6 { font-size: 0.95rem; }
+}
+
+/* ================================= */
+/* BUTTON STYLES */
+/* ================================= */
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+.btn-outline-primary {
+    border-color: var(--primary);
+    color: var(--primary);
+    background-color: transparent;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+}
+
+.btn-outline-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(254, 93, 55, 0.25);
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    color: var(--primary);
+    text-decoration: none;
+    padding: 0;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+    color: var(--primary);
+}
+
+/* Read More/Read Less button text switching */
+.btn[aria-expanded="true"] .read-more-text,
+.core-value-read-more[aria-expanded="true"] .read-more-text {
+    display: none !important;
+}
+
+.btn[aria-expanded="true"] .read-less-text,
+.core-value-read-more[aria-expanded="true"] .read-less-text {
+    display: inline !important;
+}
+
+.btn[aria-expanded="false"] .read-more-text,
+.core-value-read-more[aria-expanded="false"] .read-more-text {
+    display: inline !important;
+}
+
+.btn[aria-expanded="false"] .read-less-text,
+.core-value-read-more[aria-expanded="false"] .read-less-text {
+    display: none !important;
+}
+
+/* ================================= */
+/* CARD & COMPONENT STYLES */
+/* ================================= */
+.fact-card {
+    background: var(--white);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: all 0.3s ease;
+}
+
+.fact-icon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+.fact-icon i {
+    font-size: 1.25rem;
+    color: var(--white);
+}
+
+/* ================================= */
+/* CORE VALUES SECTION */
+/* ================================= */
+.core-values-card {
+    transition: all 0.3s ease;
+    border: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.core-values-title {
+    color: var(--dark);
+    font-weight: 700;
+    font-size: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    flex-shrink: 0;
+}
+
+.core-values-icon {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    flex-shrink: 0 !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.core-values-icon i {
+    font-size: 1rem !important;
+    color: var(--white) !important;
+}
+
+.core-values-card h6 {
+    color: var(--dark);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.core-values-card small {
+    color: var(--gray-600);
+    line-height: 1.4;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.core-values-card .collapse {
+    transition: all 0.3s ease;
+}
+
+.core-values-card .collapse.show {
+    margin-top: 0.25rem;
+}
+
+/* Core Values Read More button styling */
+.core-value-read-more {
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: 0.25rem;
+}
+
+.core-value-read-more:hover {
+    text-decoration: underline;
+    color: var(--primary) !important;
+}
+
+.core-value-read-more:focus {
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+/* ================================= */
+/* RESPONSIVE LAYOUTS */
+/* ================================= */
+
+/* Desktop Layout (≥992px) */
+@media (min-width: 992px) {
+    .core-values-card .row.g-3 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 0;
+    }
+    
+    .core-values-card .col-12 {
+        flex: 0 0 calc(33.333% - 0.67rem) !important;
+        max-width: calc(33.333% - 0.67rem) !important;
+    }
+}
+
+/* Tablet Layout (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .core-values-card .col-12 {
+        flex: 0 0 calc(50% - 0.5rem) !important;
+        max-width: calc(50% - 0.5rem) !important;
+        margin-bottom: 1rem;
+    }
+    
+    .core-values-card .col-12:nth-child(3) {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+/* Mobile Layout (≤767px) */
+@media (max-width: 767px) {
+    /* Move Core Values to horizontal layout below Who We Are on mobile */
+    .col-lg-4.wow.fadeInUp {
+        margin-top: 2rem !important;
+    }
+
+    .core-values-card {
+        padding: 1.5rem !important;
+    }
+
+    .core-values-title {
+        font-size: 1.25rem !important;
+        margin-bottom: 1rem !important;
+        text-align: center;
+    }
+
+    /* Horizontal layout for Core Values on mobile */
+    .core-values-card .row.g-3 {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 1rem !important;
+    }
+
+    .core-values-card .col-12 {
+        flex: 0 0 calc(50% - 0.5rem) !important;
+        max-width: calc(50% - 0.5rem) !important;
+        padding: 0 !important;
+    }
+
+    .core-values-card .d-flex {
+        flex-direction: column !important;
+        text-align: center !important;
+        align-items: center !important;
+    }
+
+    .core-values-icon {
+        margin-right: 0 !important;
+        margin-bottom: 0.5rem !important;
+        width: 35px !important;
+        height: 35px !important;
+        min-width: 35px !important;
+        min-height: 35px !important;
+    }
+
+    .core-values-icon i {
+        font-size: 0.9rem !important;
+    }
+
+    .core-values-card h6 {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+
+    .core-values-card small {
+        font-size: 0.75rem !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Core Values Read More button mobile styling */
+    .core-value-read-more {
+        font-size: 0.75rem !important;
+        margin-top: 0.125rem !important;
+    }
+}
+
+/* Small Mobile Layout (≤575px) */
+@media (max-width: 575px) {
+    .core-values-card .col-12 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .core-values-card .d-flex {
+        flex-direction: row !important;
+        text-align: left !important;
+        align-items: flex-start !important;
+    }
+    
+    .core-values-icon {
+        margin-right: 0.75rem !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+/* ================================= */
+/* UTILITY CLASSES */
+/* ================================= */
+.bg-peach {
+    background-color: #ffe6e0 !important;
+}
+
+.text-primary {
+    color: var(--primary) !important;
+}
+
+.text-success {
+    color: var(--success) !important;
+}
+
+.text-warning {
+    color: var(--warning) !important;
+}
+
+.text-info {
+    color: var(--info) !important;
+}
+
+.bg-info {
+    background-color: var(--info) !important;
+}
+
+.bg-success {
+    background-color: var(--success) !important;
+}
+
+.bg-warning {
+    background-color: var(--warning) !important;
+}
+
+/* ================================= */
+/* ANIMATIONS & TRANSITIONS */
+/* ================================= */
+.wow {
+    visibility: hidden;
+}
+
+.fadeInUp {
+    animation-name: fadeInUp;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 40px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* ================================= */
+/* PRINT STYLES */
+/* ================================= */
+@media print {
+    .btn,
+    .collapse,
+    .wow {
+        display: none !important;
+    }
+    
+    .core-values-card {
+        break-inside: avoid;
+    }
+}

@@ -1,0 +1,58 @@
+{
+  "name": "main-street-school-website",
+  "version": "1.0.0",
+  "description": "A modern, responsive website for Main Street School built with HTML5, CSS3, and JavaScript",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 8000",
+    "serve": "python -m http.server 8000",
+    "build": "echo 'Build process would go here'",
+    "lint": "echo 'Linting would go here'",
+    "test": "echo 'Testing would go here'",
+    "clean": "echo 'Clean process would go here'",
+    "deploy": "echo 'Deploy process would go here'"
+  },
+  "keywords": [
+    "education",
+    "school",
+    "website",
+    "responsive",
+    "html5",
+    "css3",
+    "javascript",
+    "bootstrap"
+  ],
+  "author": "Main Street School",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mainstreetschool/website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mainstreetschool/website/issues"
+  },
+  "homepage": "https://mainstreetschool.org",
+  "devDependencies": {
+    "browser-sync": "^2.29.3",
+    "cssnano": "^6.0.1",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0",
+    "autoprefixer": "^10.4.16"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.2",
+    "jquery": "^3.7.1",
+    "font-awesome": "^6.4.2"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
+}

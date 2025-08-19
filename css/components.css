@@ -1,0 +1,2539 @@
+/*** Facility ***/
+.facility-item .facility-icon {
+    position: relative;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.facility-item .facility-icon::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, .9);
+    transition: .5s;
+    z-index: 1;
+}
+
+.facility-item .facility-icon span {
+    position: absolute;
+    content: "";
+    width: 15px;
+    height: 30px;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+}
+
+.facility-item .facility-icon span:last-child {
+    left: auto;
+    right: 0;
+}
+
+.facility-item .facility-icon i {
+    position: relative;
+    z-index: 2;
+}
+
+.facility-item .facility-text {
+    position: relative;
+    min-height: 250px;
+    padding: 30px;
+    border-radius: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.facility-item .facility-text::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, .9);
+    transition: .5s;
+    z-index: 1;
+}
+
+.facility-item .facility-text * {
+    position: relative;
+    z-index: 2;
+}
+
+.facility-item:hover .facility-icon::before,
+.facility-item:hover .facility-text::before {
+    background: transparent;
+}
+
+.facility-item * {
+    transition: .5s;
+}
+
+.facility-item:hover * {
+    color: #FFFFFF !important;
+}
+
+/*** About ***/
+.about-img img {
+    transition: .5s;
+}
+
+.about-img img:hover {
+    background: var(--primary) !important;
+}
+
+/*** Classes ***/
+.classes-item {
+    transition: .5s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 400px; /* Ensure consistent minimum height */
+}
+
+.classes-item:hover {
+    margin-top: -10px;
+}
+
+/* Responsive adjustments for class cards */
+@media (max-width: 768px) {
+    .classes-item {
+        min-height: 350px; /* Slightly smaller on mobile */
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .classes-item {
+        min-height: 380px; /* Medium height for tablets */
+    }
+}
+
+@media (min-width: 1025px) {
+    .classes-item {
+        min-height: 400px; /* Full height for desktop */
+    }
+}
+
+/*** Team ***/
+.team-item .team-text {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(254, 93, 55, .9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 250px;
+    transition: .5s;
+    opacity: 0;
+}
+
+.team-item:hover .team-text {
+    opacity: 1;
+}
+
+.team-item .team-text h4 {
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.team-item .team-text p {
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.team-item .team-social {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .5s;
+    z-index: 1;
+}
+
+.team-item .team-social a {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #FFFFFF;
+    border-radius: 35px;
+    font-size: 16px;
+    color: #FFFFFF;
+    margin: 0 3px;
+    z-index: 3;
+    transition: .5s;
+}
+
+.team-item .team-social a:hover {
+    color: var(--primary);
+    background: #FFFFFF;
+}
+
+.team-item .team-social::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .5);
+    transition: .5s;
+    z-index: 2;
+    opacity: 0;
+}
+
+.team-item:hover .team-social::before {
+    opacity: 1;
+}
+
+/*** Team Page Styles ***/
+.staff-card {
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+    height: 100%;
+}
+
+.staff-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.staff-photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 4px solid var(--primary);
+    transition: all 0.3s ease;
+}
+
+.staff-card:hover .staff-photo {
+    transform: scale(1.05);
+    border-color: var(--success);
+}
+
+.staff-info h4 {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.staff-info h6 {
+    color: var(--success);
+    font-weight: 500;
+}
+
+.staff-description {
+    color: #6c757d;
+    line-height: 1.6;
+    max-height: 120px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.staff-description.expanded {
+    max-height: none;
+}
+
+.read-more-btn {
+    font-size: 0.875rem;
+    padding: 0.375rem 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.read-more-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Video styling for staff and blog */
+.staff-video video,
+.blog-image-container video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.staff-video video:hover,
+.blog-image-container video:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+/* Gallery styling */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.gallery-item img,
+.gallery-item video {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img,
+.gallery-item:hover video {
+    transform: scale(1.05);
+}
+
+/* Team page section spacing */
+#staff-grid .col-12.mb-5 {
+    margin-bottom: 3rem !important;
+}
+
+#staff-grid .col-lg-6.mb-4 {
+    margin-bottom: 1.5rem !important;
+}
+
+/* About Us page icon circle fixes */
+.about-icon-circle {
+    width: 50px !important;
+    height: 50px !important;
+    min-width: 50px !important;
+    min-height: 50px !important;
+    flex-shrink: 0 !important;
+    border-radius: 50% !important;
+}
+
+/* About Us page card hover effects */
+.about-card {
+    transition: all 0.3s ease;
+    border: none;
+}
+
+/* Peach background card hover effects */
+.bg-peach {
+    background-color: #FFE5D3 !important;
+    transition: all 0.3s ease;
+}
+
+.bg-peach:hover {
+    background-color: #FFD4B8 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Disable hover effects for daily schedule */
+.daily-schedule-no-hover:hover {
+    background-color: inherit !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* ================================= */
+/* NAVIGATION DONATE BUTTON RESPONSIVE */
+/* ================================= */
+/* Controls the Donate button text switching from "Donate Now!" to "Donate" 
+   to prevent button deformation at intermediate screen sizes */
+
+/* Medium-large screens (992px-1200px): Show shortened "Donate" text */
+@media (max-width: 1200px) and (min-width: 992px) {
+    .navbar .btn-primary {
+        font-size: 0.9rem;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    .navbar .btn-primary .donate-text {
+        display: none; /* Hide "Donate Now!" text */
+    }
+    
+    .navbar .btn-primary .donate-text-short {
+        display: inline; /* Show "Donate" text */
+    }
+}
+
+/* Small-medium screens (≤991px): Show shortened "Donate" text */
+@media (max-width: 991px) {
+    .navbar .btn-primary .donate-text {
+        display: none; /* Hide "Donate Now!" text */
+    }
+    
+    .navbar .btn-primary .donate-text-short {
+        display: inline; /* Show "Donate" text */
+    }
+}
+
+/* Large screens (≥1201px): Show full "Donate Now!" text */
+@media (min-width: 1201px) {
+    .navbar .btn-primary .donate-text {
+        display: inline; /* Show "Donate Now!" text */
+    }
+    
+    .navbar .btn-primary .donate-text-short {
+        display: none; /* Hide "Donate" text */
+    }
+}
+
+/* ================================= */
+/* ELEMENTARY CONTENT WRAPPER */
+/* ================================= */
+/* Controls the overall margins and padding around the entire elementary page content
+   This wrapper allows easy adjustment of page spacing without affecting other pages */
+
+/* Desktop: Generous spacing around elementary page content */
+.elementary-content-wrapper {
+    margin: 2rem; /* 32px margin on all sides */
+    padding: 1rem; /* 16px internal padding */
+}
+
+/* Reduce spacing between content sections within the wrapper */
+.elementary-content-wrapper .col-12 {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+}
+
+/* Add extra space above grid sections */
+.elementary-content-wrapper .g-3 {
+    margin-top: 25px !important;
+}
+
+/* Tablet screens (≤768px): Reduce margins and padding */
+@media (max-width: 768px) {
+    .elementary-content-wrapper {
+        margin: 1rem; /* 16px margin on all sides */
+        padding: 0.5rem; /* 8px internal padding */
+    }
+}
+
+/* Mobile screens (≤575px): Minimal margins and padding */
+@media (max-width: 575px) {
+    .elementary-content-wrapper {
+        margin: 0.5rem; /* 8px margin on all sides */
+        padding: 0.25rem; /* 4px internal padding */
+    }
+}
+
+/* ================================= */
+/* APPROACH SPECIAL SECTION STYLING */
+/* ================================= */
+/* Controls the "What Makes Our Approach Special" section on the elementary page
+   Removes background and hover effects, improves mobile formatting */
+
+/* Remove background and add minimal padding */
+.approach-special-section {
+    padding: 1.5rem 0; /* Only vertical padding, no background */
+}
+
+/* Disable all hover effects and transitions */
+.approach-special-section .fact-icon {
+    transition: none; /* No hover animations */
+}
+
+.approach-special-section .d-flex {
+    transition: none; /* No hover animations */
+}
+
+/* Ensure no hover effects are applied */
+.approach-special-section .d-flex:hover {
+    transform: none; /* No movement on hover */
+    box-shadow: none; /* No shadow on hover */
+    background-color: transparent; /* No background change */
+}
+
+/* Mobile screens (≤575px): Optimize layout and sizing for small screens */
+@media (max-width: 575px) {
+    /* Add spacing between items */
+    .approach-special-section .col-12 {
+        margin-bottom: 1rem;
+    }
+    
+    /* Align items to top and reduce spacing */
+    .approach-special-section .d-flex {
+        align-items: flex-start; /* Align to top instead of center */
+        margin-bottom: 0.75rem; /* Reduce spacing between items */
+    }
+    
+    /* Smaller icons for mobile */
+    .approach-special-section .fact-icon {
+        width: 35px !important; /* Smaller icon circle */
+        height: 35px !important;
+        min-width: 35px !important;
+        margin-right: 0.75rem !important; /* Reduced spacing */
+    }
+    
+    /* Smaller icon size */
+    .approach-special-section .fact-icon i {
+        font-size: 0.9rem !important; /* Smaller icon */
+    }
+    
+    /* Smaller text for mobile */
+    .approach-special-section .flex-grow-1 {
+        font-size: 0.9rem; /* Smaller body text */
+        line-height: 1.4; /* Tighter line spacing */
+    }
+    
+    /* Slightly larger bold text */
+    .approach-special-section .flex-grow-1 strong {
+        font-size: 0.95rem; /* Bold text slightly larger than body */
+    }
+}
+
+/* ================================= */
+/* PROGRAM FEATURES STYLING SECTION */
+/* ================================= */
+/* Controls the Program Features section on the elementary page
+   Creates a 4-column desktop / 2x2 mobile grid layout with hover effects */
+
+/* Desktop: Program Features Cards with hover effects */
+.program-features .fact-card {
+    transition: all 0.3s ease; /* Smooth hover animations */
+    border: none; /* Remove default borders */
+    min-height: 200px; /* Ensure consistent card height */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+}
+
+/* Hover effect: lift card and add shadow */
+.program-features .fact-card:hover {
+    transform: translateY(-5px); /* Lift card up */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Add shadow */
+}
+
+/* Icon styling and animations */
+.program-features .fact-icon {
+    transition: all 0.3s ease; /* Smooth icon animations */
+    width: 45px !important; /* Fixed icon size */
+    height: 45px !important;
+}
+.program-features .fact-icon i {
+    font-size: 1.7rem !important; /* Icon size */
+}
+
+/* Icon scale effect on hover */
+.program-features .fact-card:hover .fact-icon {
+    transform: scale(1.1); /* Grow icon slightly */
+}
+
+/* Card title styling */
+.program-features .fact-card h4 {
+    color: var(--dark);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    flex-shrink: 0; /* Prevent title from shrinking */
+}
+
+/* Card description styling */
+.program-features .fact-card p {
+    color: #666;
+    line-height: 1.6;
+    flex-grow: 1; /* Allow text to fill remaining space */
+    margin-bottom: 0;
+}
+
+/* Mobile screens (≤768px): Optimize for 2x2 grid layout */
+@media (max-width: 768px) {
+    .program-features .fact-card {
+        min-height: 130px; /* Smaller height for mobile */
+        padding: 0.8rem !important; /* Tighter padding */
+        margin-bottom: 0.5rem; /* Reduce spacing between cards */
+    }
+    
+    /* Smaller icons for mobile */
+    .program-features .fact-card .fact-icon {
+        width: 30px !important; /* Smaller icon circle */
+        height: 30px !important;
+        margin-right: 0.5rem !important; /* Reduced spacing */
+    }
+    
+    .program-features .fact-icon i {
+        font-size: 1rem !important; /* Smaller icon */
+    }
+    
+    /* Smaller text for mobile */
+    .program-features .fact-card h4 {
+        font-size: 1rem; /* Smaller title */
+        margin-top: 0.2rem;
+        line-height: 1.2; /* Tighter line spacing */
+    }
+    
+    .program-features .fact-card p {
+        font-size: 0.85rem; /* Smaller body text */
+        line-height: 1.2;
+        margin-bottom: 0;
+    }
+    
+    /* Reduce column padding for tighter mobile layout */
+    .col-lg-3 {
+        padding: 0.5rem !important; /* Tighter column spacing */
+        margin-top: 0rem !important;
+    }
+}
+
+/* Tablet screens (769px-1024px): Medium sizing */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .program-features .fact-card {
+        /* Uses default desktop sizing */
+    }
+}
+
+/* Desktop screens (≥1025px): Full sizing */
+@media (min-width: 1025px) {
+    .program-features .fact-card {
+        /* Uses default desktop sizing */
+    }
+}
+
+/* Program Features responsive styling */
+@media (max-width: 575px) {
+    .vision-mission-card {
+        padding: 1rem !important;
+    }
+    
+    .vision-mission-card i {
+        font-size: 2rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+    
+    .vision-mission-card h5 {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.5rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    .vision-mission-card p {
+        font-size: 0.75rem !important;
+        line-height: 1.3 !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .vision-mission-card {
+        padding: 1.5rem !important;
+    }
+    
+    .vision-mission-card i {
+        font-size: 2.5rem !important;
+    }
+    
+    .vision-mission-card h5 {
+        font-size: 1rem !important;
+    }
+    
+    .vision-mission-card p {
+        font-size: 0.85rem !important;
+    }
+}
+
+/* ================================= */
+/* DAILY SCHEDULE RESPONSIVE STYLING */
+/* ================================= */
+/* Controls the Daily Schedule section on the elementary page
+   Creates a 2-column grid layout on small screens with compact styling */
+
+/* Mobile screens (≤575px): 2-column grid layout for daily schedule */
+@media (max-width: 575px) {
+    /* Convert to CSS Grid for precise 2-column layout */
+    .daily-schedule-no-hover {
+        display: grid !important; /* Use CSS Grid instead of flexbox */
+        grid-template-columns: 1fr 1fr !important; /* Two equal columns */
+        gap: 8px 12px !important; /* Small gaps between items */
+        align-items: start !important; /* Align items to top */
+    }
+    
+    /* Remove Bootstrap row structure */
+    .daily-schedule-no-hover .row {
+        display: contents !important; /* Remove row wrapper */
+    }
+    
+    /* Remove Bootstrap column structure */
+    .daily-schedule-no-hover .col-sm-6 {
+        display: contents !important; /* Remove column wrapper */
+    }
+    
+    /* Individual schedule item styling */
+    .daily-schedule-item {
+        display: flex !important; /* Horizontal layout for icon + text */
+        align-items: center !important; /* Center items vertically */
+        width: 100% !important; /* Full width within grid cell */
+        margin-bottom: 0 !important; /* Remove bottom margin */
+        padding: 4px !important; /* Minimal padding */
+        justify-self: start !important; /* Align to start of grid cell */
+    }
+    
+    /* Smaller icon circles for mobile */
+    .daily-schedule-item .bg-primary,
+    .daily-schedule-item .bg-warning,
+    .daily-schedule-item .bg-info,
+    .daily-schedule-item .bg-success,
+    .daily-schedule-item .bg-secondary,
+    .daily-schedule-item .bg-danger {
+        width: 24px !important; /* Smaller icon circle */
+        height: 24px !important;
+        min-width: 24px !important;
+        margin-right: 6px !important; /* Reduced spacing */
+    }
+    
+    /* Smaller icons for mobile */
+    .daily-schedule-item .bg-primary i,
+    .daily-schedule-item .bg-warning i,
+    .daily-schedule-item .bg-info i,
+    .daily-schedule-item .bg-success i,
+    .daily-schedule-item .bg-secondary i,
+    .daily-schedule-item .bg-danger i {
+        font-size: 0.75rem !important; /* Smaller icon size */
+    }
+    
+    /* Compact time text */
+    .daily-schedule-item h6 {
+        font-size: 0.75rem !important; /* Smaller time text */
+        margin-bottom: 0 !important;
+        line-height: 0.5 !important; /* Very tight line spacing */
+        font-weight: 800 !important; /* Bold for readability */
+        margin-top: 3px !important; /* Small top margin */
+    }
+    
+    /* Compact activity description */
+    .daily-schedule-item small {
+        font-size: 0.65rem !important; /* Very small description text */
+        line-height: 1.1 !important; /* Tight line spacing */
+        word-wrap: break-word !important; /* Allow text to wrap */
+        max-width: 140px !important; /* Limit text width */
+    }
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.about-icon {
+    transition: all 0.3s ease;
+}
+
+.about-card:hover .about-icon {
+    transform: scale(1.1);
+}
+
+.about-card h5 {
+    color: var(--dark);
+    font-weight: 600;
+}
+
+.about-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* ================================= */
+/* VISION & MISSION CARDS STYLING */
+/* ================================= */
+/* Controls the Vision & Mission cards on the About Us page
+   These are the "Our Vision", "Our Mission", "Question & Solve", "Student Development", and "Global Citizens" cards */
+
+/* Vision & Mission card hover effects - Controls all vision-mission-card elements */
+.vision-mission-card {
+    transition: all 0.3s ease;
+    border: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.vision-mission-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.vision-mission-card i {
+    transition: all 0.3s ease;
+    color: var(--primary);
+}
+
+.vision-mission-card:hover i {
+    transform: scale(1.1);
+}
+
+.vision-mission-card h5 {
+    color: var(--dark);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.vision-mission-card p {
+    color: #666;
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 0;
+}
+
+/* ================================= */
+/* VISION & MISSION RESPONSIVE LAYOUT */
+/* ================================= */
+/* Controls how Vision & Mission cards display on different screen sizes
+   Ensures proper scaling and layout on tablets and mobile devices */
+
+/* Tablet screens (≤767px): Medium sizing for Vision & Mission cards */
+@media (max-width: 767px) {
+    .vision-mission-card {
+        padding: 1rem !important; /* Reduced padding for tablets */
+        margin-bottom: 0.5rem; /* Reduced space between cards */
+    }
+    
+    /* Vision and Mission headings (h2) - smaller font size */
+    .vision-mission-card h2 {
+        font-size: 1.5rem !important; /* Smaller heading size */
+        margin-bottom: 0.5rem !important; /* Reduced spacing */
+    }
+    
+    /* Core Values headings (h5) - smaller font size */
+    .vision-mission-card h5 {
+        font-size: 1.1rem !important; /* Smaller heading size */
+        margin-bottom: 0.5rem !important; /* Reduced spacing */
+    }
+    
+    /* Card paragraph text - smaller font size */
+    .vision-mission-card p {
+        font-size: 0.9rem !important; /* Smaller text size */
+        line-height: 1.4 !important; /* Tighter line spacing */
+    }
+    
+    /* Card icons - smaller size */
+    .vision-mission-card i {
+        font-size: 2rem !important; /* Smaller icon size */
+        margin-bottom: 0.5rem !important; /* Reduced spacing */
+    }
+}
+
+/* Mobile screens (≤575px): Compact sizing for Vision & Mission cards */
+@media (max-width: 575px) {
+    .vision-mission-card {
+        padding: 0.5rem !important; /* Minimal padding for mobile */
+        margin-bottom: 0rem; /* No bottom margin */
+    }
+    
+    /* Vision and Mission headings (h2) - very small font size */
+    .vision-mission-card h2 {
+        font-size: 1.25rem !important; /* Very small heading size */
+        margin-bottom: 0.5rem !important; /* Minimal spacing */
+    }
+    
+    /* Core Values headings (h5) - very small font size */
+    .vision-mission-card h5 {
+        font-size: 1rem !important; /* Very small heading size */
+        margin-bottom: 0.4rem !important; /* Minimal spacing */
+    }
+    
+    /* Card paragraph text - very small font size */
+    .vision-mission-card p {
+        font-size: 0.8rem !important; /* Very small text size */
+        line-height: 1.3 !important; /* Very tight line spacing */
+    }
+    
+    /* Card icons - very small size */
+    .vision-mission-card i {
+        font-size: 1.5rem !important; /* Very small icon size */
+        margin-bottom: 0.4rem !important; /* Minimal spacing */
+    }
+    
+    /* Force "Student Development" card to be centered on very small screens */
+    .col-lg-4.col-md-12 {
+        display: flex; /* Use flexbox for centering */
+        justify-content: center; /* Center the card horizontally */
+    }
+    
+    /* Limit width of centered card */
+    .col-lg-4.col-md-12 .vision-mission-card {
+        max-width: 80%; /* Card takes 80% of available width */
+    }
+}
+
+/* History card hover effects */
+.history-card {
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.history-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.history-icon {
+    transition: all 0.3s ease;
+}
+
+.history-card:hover .history-icon {
+    transform: scale(1.1);
+}
+
+.history-card h5 {
+    color: var(--dark);
+    font-weight: 600;
+}
+
+.history-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Peach background for feature cards */
+.bg-peach {
+    background-color: #FFEDE1 !important;
+}
+
+/* History section image styles */
+.history-image {
+    transition: all 0.3s ease;
+    border-radius: 15px !important;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.history-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* ================================= */
+/* HISTORY IMAGES STYLING */
+/* ================================= */
+/* Controls the history section images on the About Us page
+   Ensures images display without backgrounds and maintain aspect ratios */
+
+/* History images without background - for About page */
+.history-image-no-bg {
+    transition: all 0.3s ease; /* Smooth hover animations */
+    border-radius: 15px !important; /* Rounded corners */
+    width: 100%; /* Full width of container */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Don't exceed container width */
+    object-fit: contain; /* Show entire image without cropping */
+    background: transparent !important; /* No background */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important; /* Subtle shadow */
+}
+
+/* Hover effect: slight scale and enhanced shadow */
+.history-image-no-bg:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25) !important; /* Enhanced shadow */
+}
+
+/* Responsive adjustments for history images */
+@media (max-width: 768px) {
+    /* Regular history images: limit height and crop if needed */
+    .history-image {
+        max-height: 300px; /* Limit height on tablets */
+        object-fit: cover; /* Crop to fit if needed */
+    }
+    
+    /* No-background images: maintain aspect ratio */
+    .history-image-no-bg {
+        max-height: none; /* No height limit */
+        object-fit: contain; /* Show entire image */
+    }
+}
+
+@media (max-width: 576px) {
+    /* Regular history images: further limit height */
+    .history-image {
+        max-height: 250px; /* Smaller height limit on mobile */
+        object-fit: cover; /* Crop to fit if needed */
+    }
+    
+    /* No-background images: maintain aspect ratio */
+    .history-image-no-bg {
+        max-height: none; /* No height limit */
+        object-fit: contain; /* Show entire image */
+    }
+}
+
+/* ================================= */
+/* ABOUT PAGE RESPONSIVE LAYOUT */
+/* ================================= */
+/* Controls the responsive layout for Vision & Mission cards and history images
+   Ensures proper side-by-side display on all screen sizes */
+
+/* Ensure all Vision & Mission cards have identical spacing and widths */
+.row.g-4 {
+    margin: 0 !important; /* Remove default row margins */
+}
+
+.row.g-4 > div {
+    padding: 0.5rem !important; /* Consistent padding for all cards */
+}
+
+/* Vision & Mission cards - make them same width as Core Values cards */
+.row.g-4 .col-lg-6 {
+    flex: 0 0 50% !important; /* Keep 50% width for Vision & Mission */
+    max-width: 50% !important;
+}
+
+/* Core Values cards - make them same width as Vision & Mission cards */
+.row.g-4 .col-lg-4 {
+    flex: 0 0 50% !important; /* Make them 50% width to match Vision & Mission */
+    max-width: 50% !important;
+}
+
+/* Ensure the third Core Values card (Global Citizens) takes full width on desktop */
+.row.g-4 .col-lg-4.col-md-12 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+}
+
+/* Reduce spacing between Vision & Mission section and Core Values section */
+.row.g-4.mt-4 {
+    margin-top: 1rem !important; /* Reduce top margin from 1.5rem to 1rem */
+}
+
+/* Ensure Vision & Mission cards display side-by-side on all screen sizes */
+@media (max-width: 767px) {
+    .col-sm-6 {
+        flex: 0 0 50% !important; /* Force 50% width for side-by-side layout */
+        max-width: 50% !important; /* Prevent expansion beyond 50% */
+    }
+    
+    /* Further reduce spacing on mobile */
+    .row.g-4.mt-4 {
+        margin-top: 0.5rem !important; /* Even less spacing on mobile */
+    }
+}
+
+/* Ensure history images display side-by-side and scale properly */
+@media (max-width: 767px) {
+    .history-image-no-bg {
+        max-width: 100%; /* Full width within column */
+        height: auto; /* Maintain aspect ratio */
+        object-fit: contain; /* Show entire image without cropping */
+    }
+}
+
+/* ================================= */
+/* FOUNDATION FEATURES RESPONSIVE LAYOUT */
+/* ================================= */
+/* Controls the responsive layout for Foundation Features cards
+   Desktop: 3 columns side-by-side
+   Tablet: 2 columns top row, 1 centered bottom
+   Mobile: 2 columns top row, 1 centered bottom with better spacing */
+
+/* Foundation Features cards - ensure proper spacing and alignment */
+.fact-card .row.g-4 {
+    margin: 0 !important;
+}
+
+.fact-card .row.g-4 > div {
+    padding: 0.5rem !important;
+}
+
+/* Desktop: 3 equal columns */
+@media (min-width: 992px) {
+    .fact-card .col-lg-4 {
+        flex: 0 0 33.333333% !important;
+        max-width: 33.333333% !important;
+    }
+}
+
+/* Tablet: 2 columns top, 1 centered bottom */
+@media (min-width: 768px) and (max-width: 991px) {
+    .fact-card .col-md-6 {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+    
+    .fact-card .col-md-12 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        margin-top: 1rem !important;
+    }
+    
+    /* Center the third card on tablet */
+    .fact-card .col-md-12 > div {
+        max-width: 66.666667% !important;
+        margin: 0 auto !important;
+    }
+}
+
+/* Mobile: 2 columns top, 1 centered bottom with improved spacing */
+@media (max-width: 767px) {
+    .fact-card .col-md-6 {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+    
+    .fact-card .col-md-12 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        margin-top: 1rem !important;
+    }
+    
+    /* Center the third card on mobile with smaller max-width */
+    .fact-card .col-md-12 > div {
+        max-width: 85% !important;
+        margin: 0 auto !important;
+    }
+    
+    /* Reduce icon size on mobile for better fit */
+    .fact-card .fa-3x {
+        font-size: 1.75rem !important;
+    }
+    
+    /* Adjust text size for better mobile readability */
+    .fact-card h5 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+    
+    .fact-card p {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    /* Reduce padding on mobile for better space utilization */
+    .fact-card {
+        padding: 0.5rem !important;
+    }
+    .mb-3 {
+        margin-bottom: 0.5rem !important;
+    }
+}
+
+/* Ensure images don't appear translucent */
+.about-history-image {
+    opacity: 1 !important;
+    background: transparent !important;
+}
+
+/* History page image styles */
+.history-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* Ensure images don't appear translucent */
+.about-history-image {
+    opacity: 1 !important;
+    background: transparent !important;
+}
+
+/* Responsive adjustments for team page */
+@media (max-width: 768px) {
+    .staff-photo {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .staff-card .row {
+        text-align: center;
+    }
+    
+    .staff-info {
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .staff-photo {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* ================================= */
+/* CORE VALUES SECTION STYLING */
+/* ================================= */
+/* Controls the Core Values section on the About Us page
+   Ensures proper icon rendering and responsive layout */
+
+/* Core Values card styling */
+.core-values-card {
+    transition: all 0.3s ease;
+    border: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Core Values title - ensure it stays larger than h6 elements */
+.core-values-title {
+    color: var(--dark);
+    font-weight: 700;
+    font-size: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    flex-shrink: 0;
+}
+
+/* Core Values icons - ensure they stay circular */
+.core-values-icon {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    flex-shrink: 0 !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.core-values-icon i {
+    font-size: 1rem !important;
+    color: white !important;
+}
+
+/* Core Values content styling */
+.core-values-card h6 {
+    color: var(--dark);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.core-values-card small {
+    color: #666;
+    line-height: 1.4;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Core Values collapse animation */
+.core-values-card .collapse {
+    transition: all 0.3s ease;
+}
+
+.core-values-card .collapse.show {
+    margin-top: 0.25rem;
+}
+
+/* Mobile responsive layout for Core Values */
+@media (max-width: 767px) {
+    /* Move Core Values to horizontal layout below Who We Are on mobile */
+    .col-lg-4.wow.fadeInUp {
+        margin-top: 2rem !important;
+    }
+
+    .core-values-card {
+        padding: 1.5rem !important;
+    }
+
+    .core-values-title {
+        font-size: 1.25rem !important;
+        margin-bottom: 1rem !important;
+        text-align: center;
+    }
+
+    /* Horizontal layout for Core Values on mobile */
+    .core-values-card .row.g-3 {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 1rem !important;
+    }
+
+    .core-values-card .col-12 {
+        flex: 0 0 calc(50% - 0.5rem) !important;
+        max-width: calc(50% - 0.5rem) !important;
+        padding: 0 !important;
+    }
+
+    .core-values-card .d-flex {
+        flex-direction: column !important;
+        text-align: center !important;
+        align-items: center !important;
+    }
+
+    .core-values-icon {
+        margin-right: 0 !important;
+        margin-bottom: 0.5rem !important;
+        width: 35px !important;
+        height: 35px !important;
+        min-width: 35px !important;
+        min-height: 35px !important;
+    }
+
+    .core-values-icon i {
+        font-size: 0.9rem !important;
+    }
+
+    .core-values-card h6 {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+
+    .core-values-card small {
+        font-size: 0.75rem !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Core Values Read More button mobile styling */
+    .core-value-read-more {
+        font-size: 0.75rem !important;
+        margin-top: 0.125rem !important;
+    }
+}
+
+/* Very small mobile screens */
+@media (max-width: 575px) {
+    .core-values-card .col-12 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .core-values-card .d-flex {
+        flex-direction: row !important;
+        text-align: left !important;
+        align-items: flex-start !important;
+    }
+    
+    .core-values-icon {
+        margin-right: 0.75rem !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+/* Read More button styling */
+.btn-outline-primary {
+    border-color: var(--primary);
+    color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.btn-outline-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(254, 93, 55, 0.25);
+}
+
+/* Core Values Read More button styling */
+.core-value-read-more {
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: 0.25rem;
+}
+
+.core-value-read-more:hover {
+    text-decoration: underline;
+    color: var(--primary) !important;
+}
+
+.core-value-read-more:focus {
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+/* Read More button text switching */
+.btn-outline-primary[aria-expanded="true"] .read-more-text,
+.core-value-read-more[aria-expanded="true"] .read-more-text {
+    display: none !important;
+}
+
+.btn-outline-primary[aria-expanded="true"] .read-less-text,
+.core-value-read-more[aria-expanded="true"] .read-less-text {
+    display: inline !important;
+}
+
+.btn-outline-primary[aria-expanded="false"] .read-more-text,
+.core-value-read-more[aria-expanded="false"] .read-more-text {
+    display: inline !important;
+}
+
+.btn-outline-primary[aria-expanded="false"] .read-less-text,
+.core-value-read-more[aria-expanded="false"] .read-less-text {
+    display: none !important;
+}
+
+/* ================================= */
+/* ELEMENTARY PAGE SPECIFIC STYLING */
+/* ================================= */
+/* Controls the layout and responsiveness of the elementary program page
+   Fixes alignment issues and ensures proper stacking on mobile */
+
+/* Elementary Overview Section - Grade Levels and Learning Model */
+#elementary-overview {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+#elementary-overview .col-sm-6 {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+#elementary-overview .d-flex {
+    align-items: center;
+    padding: 0.5rem;
+    margin: 0 !important;
+}
+
+/* Teaching Philosophy Section - Mobile vertical stacking */
+@media (max-width: 767px) {
+    #teaching-philosophy .row.g-4 {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    #teaching-philosophy .col-md-6 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    #teaching-philosophy .col-md-6:last-child {
+        margin-bottom: 0 !important;
+    }
+}
+
+/* Approach Special Section - Mobile vertical stacking */
+@media (max-width: 767px) {
+    #approach-special .row.g-3 {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    #approach-special .col-12.col-sm-6 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 0.5rem !important; /* Reduced from 1rem to closer spacing */
+    }
+
+    #approach-special .col-12.col-sm-6:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    #approach-special .d-flex {
+        align-items: flex-start;
+        padding: 0.25rem 0; /* Reduced from 0.5rem to closer spacing */
+    }
+}
+
+/* Learning Philosophy in Action Section - Mobile vertical stacking */
+@media (max-width: 767px) {
+    #learning-philosophy-action .row.g-4 {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    #learning-philosophy-action .col-lg-6.col-sm-6 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 1rem !important;
+    }
+
+    #learning-philosophy-action .col-lg-6.col-sm-6:last-child {
+        margin-bottom: 0 !important;
+    }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 767px) {
+    /* Elementary Overview - better alignment on mobile */
+    #elementary-overview .col-sm-6 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 0rem !important;
+    }
+    
+    #elementary-overview .d-flex {
+        justify-content: flex-start;
+        padding: 0.75rem;
+    }
+    
+    /* Teaching Philosophy - ensure proper spacing */
+    #teaching-philosophy .col-md-6 {
+        margin-bottom: 2rem !important;
+    }
+    
+    #teaching-philosophy .bg-peach {
+        padding: 1.5rem !important;
+    }
+    
+    /* Approach Special - better mobile layout */
+    #approach-special .d-flex {
+        padding: 0.5rem 0; /* Reduced from 0.75rem for closer spacing */
+    }
+    
+    /* Learning Philosophy in Action - ensure proper spacing on mobile */
+    #learning-philosophy-action .col-lg-6.col-sm-6 {
+        margin-bottom: 1.5rem !important;
+    }
+    
+    #learning-philosophy-action .bg-peach {
+        padding: 1.5rem !important;
+    }
+    
+    #approach-special .fact-icon {
+        width: 35px !important;
+        height: 35px !important;
+        min-width: 35px !important;
+        margin-right: 0.75rem !important;
+    }
+    
+    #approach-special .fact-icon i {
+        font-size: 0.9rem !important;
+    }
+    
+    #approach-special .flex-grow-1 {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    
+    #approach-special .flex-grow-1 strong {
+        font-size: 0.95rem;
+    }
+}
+
+/* Very small mobile screens */
+@media (max-width: 575px) {
+    #elementary-overview .d-flex {
+        padding: 0.5rem;
+    }
+    
+    #teaching-philosophy .bg-peach {
+        padding: 1rem !important;
+    }
+    
+    #learning-philosophy-action .col-lg-6.col-sm-6 {
+        margin-bottom: 1rem !important;
+    }
+    
+    #learning-philosophy-action .bg-peach {
+        padding: 1rem !important;
+    }
+    
+    #approach-special .d-flex {
+        padding: 0.25rem 0; /* Reduced from 0.5rem for even closer spacing on small screens */
+    }
+    
+    #approach-special .fact-icon {
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px !important;
+        margin-right: 0.5rem !important;
+    }
+    
+    #approach-special .fact-icon i {
+        font-size: 0.8rem !important;
+    }
+    
+    #approach-special .flex-grow-1 {
+        font-size: 0.85rem;
+        line-height: 1.3;
+    }
+    
+    #approach-special .flex-grow-1 strong {
+        font-size: 0.9rem;
+    }
+}
+
+/*** Testimonial ***/
+.testimonial-carousel {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+@media (min-width: 576px) {
+    .testimonial-carousel {
+        padding-left: 4rem;
+        padding-right: 4rem;
+        padding-top: 30px;
+        padding-bottom: 10px !important;
+    }
+}
+
+.testimonial-carousel .testimonial-item .border {
+    border: 1px dashed rgba(0, 185, 142, .3) !important;
+}
+
+.testimonial-carousel .testimonial-item {
+    text-align: center;
+}
+
+.testimonial-carousel .testimonial-item .testimonial-img {
+    position: relative;
+    margin: 0 auto 15px auto;
+    width: 100px;
+    height: 100px;
+}
+
+.testimonial-carousel .testimonial-item .testimonial-img img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    border: 5px solid #FFFFFF;
+}
+
+.testimonial-carousel .testimonial-item .testimonial-img::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(254, 93, 55, .9);
+    border-radius: 100px;
+    transition: .5s;
+    opacity: 0;
+}
+
+.testimonial-carousel .testimonial-item:hover .testimonial-img::before {
+    opacity: 1;
+}
+
+.testimonial-carousel .testimonial-item .testimonial-img::after {
+    position: absolute;
+    content: "\f10d";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 30px;
+    color: #FFFFFF;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .5s;
+    opacity: 0;
+}
+
+.testimonial-carousel .testimonial-item:hover .testimonial-img::after {
+    opacity: 1;
+}
+
+.testimonial-carousel .owl-nav {
+    position: absolute;
+    width: 100%;
+    height: 45px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.testimonial-carousel .owl-nav .owl-prev,
+.testimonial-carousel .owl-nav .owl-next {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    background: var(--primary);
+    border-radius: 45px;
+    font-size: 20px;
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-nav .owl-prev:hover,
+.testimonial-carousel .owl-nav .owl-next:hover {
+    background: var(--dark);
+}
+
+/* Enhanced Testimonials */
+.testimonial-item {
+    min-height: 400px;
+    max-width: 800px;
+    margin: 1px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 40px;
+}
+
+.testimonial-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-quote-icon {
+    margin-bottom: 0.5rem !important; /* Move quote icon closer to text */
+}
+
+.testimonial-text {
+    line-height: 1.5 !important;
+    color: #555;
+    font-size: 18px;
+    margin-bottom: 30px;
+    padding: 0 10px; /* Add slight padding to bring text closer to borders */
+}
+
+.testimonial-author {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 2px solid var(--primary);
+    text-align: center;
+}
+
+.testimonial-author h5 {
+    color: var(--dark);
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.testimonial-author span {
+    font-size: 14px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .testimonial-item {
+        min-height: 350px;
+        padding: 1.5rem !important; /* Tighter padding for mobile */
+    }
+    
+    .testimonial-quote-icon {
+        font-size: 1.5rem !important; /* Smaller quote icon on mobile */
+        margin-bottom: 0.25rem !important;
+    }
+    
+    .testimonial-text {
+        font-size: 14px !important; /* Smaller text for mobile */
+        line-height: 1.2 !important;
+        padding: 5px !important; /* Bring text even closer to borders */
+    }
+}
+
+/*** Enrollment Dropdown ***/
+.header-carousel .dropdown-menu {
+    z-index: 1050;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 8px;
+    min-width: 200px;
+}
+
+.header-carousel .dropdown-item {
+    color: var(--dark);
+    font-weight: 500;
+    padding: 12px 20px;
+    margin: 4px 0;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    text-align: center;
+    border: 2px solid transparent;
+}
+
+.header-carousel .dropdown-item:hover {
+    background: var(--primary);
+    color: #FFFFFF;
+    transform: translateX(5px);
+    border-color: var(--primary);
+    box-shadow: 0 4px 15px rgba(254, 93, 55, 0.3);
+}
+
+.header-carousel .dropdown-item:active {
+    transform: translateX(5px) scale(0.98);
+}
+
+/*** Footer ***/
+/* CSS Custom Properties for easy footer column editing */
+:root {
+    --footer-column-top-margin: 0px;
+    --footer-column-top-padding: 20px;
+}
+
+.footer.container-fluid {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+/* Apply custom properties to footer columns */
+.footer-column {
+    margin-top: var(--footer-column-top-margin);
+    padding-top: var(--footer-column-top-padding);
+}
+
+.footer .btn.btn-social {
+    margin-right: 5px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 45px;
+    transition: .3s;
+}
+
+.footer .btn.btn-social:hover {
+    border-color: var(--primary);
+    background: var(--primary);
+}
+
+.footer .btn.btn-link {
+    display: block;
+    margin-bottom: 5px;
+    padding: 0;
+    text-align: left;
+    font-size: 16px;
+    font-weight: normal;
+    text-transform: capitalize;
+    transition: .3s;
+}
+
+.footer .btn.btn-link::before {
+    position: relative;
+    content: "\f105";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 10px;
+}
+
+.footer .btn.btn-link:hover {
+    color: var(--primary) !important;
+    letter-spacing: 1px;
+    box-shadow: none;
+}
+
+.footer .form-control {
+    border-color: rgba(255,255,255,0.5);
+}
+
+.footer .copyright {
+    padding: 25px 0;
+    font-size: 15px;
+    border-top: 1px solid rgba(256, 256, 256, .1);
+}
+
+.footer .copyright a {
+    color: #FFFFFF;
+}
+
+.footer .footer-menu a {
+    margin-right: 15px;
+    padding-right: 15px;
+    border-right: 1px solid rgba(255, 255, 255, .1);
+}
+
+.footer .copyright a:hover,
+.footer .footer-menu a:hover {
+    color: var(--primary) !important;
+}
+
+.footer .footer-menu a:last-child {
+    margin-right: 0;
+    padding-right: 0;
+    border-right: none;
+}
+
+/* Footer text editing improvements */
+.footer p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+    word-break: break-word; /* Allows long addresses to wrap nicely */
+}
+
+.footer p i {
+    margin-right: 10px;
+    color: var(--primary);
+    width: 16px; /* Fixed width for icon alignment */
+}
+
+/* Responsive footer text sizing - scales from 375px to larger screens */
+.footer h3 {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem) !important;
+    margin-bottom: 1rem;
+}
+
+.footer p {
+    font-size: clamp(0.75rem, 2vw, 1rem) !important;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.footer .btn-link {
+    font-size: clamp(0.75rem, 2vw, 1rem) !important;
+    margin-bottom: 0.2rem !important;
+    padding: 0.1rem 0;
+}
+
+/* Small screens: GetInTouch and QuickLinks side-by-side, StayConnected below */
+@media (max-width: 767.98px) {
+    .footer .footer-column:nth-child(1),
+    .footer .footer-column:nth-child(2) {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+        width: 50% !important;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    
+    .footer .footer-column:nth-child(3) {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin-top: 1.5rem;
+    }
+    
+    /* Closer icon spacing for Get In Touch on small screens */
+    .footer .footer-column:nth-child(1) p i {
+        margin-right: 4px !important;
+        width: 12px !important;
+    }
+    
+    /* Regular icon spacing for other elements */
+    .footer p i {
+        margin-right: 6px;
+        width: 14px;
+    }
+    
+    .footer .btn-social {
+        width: clamp(32px, 8vw, 40px) !important;
+        height: clamp(32px, 8vw, 40px) !important;
+        margin-right: 5px !important;
+    }
+    
+    /* Keep copyright section left-aligned */
+    .footer .copyright {
+        text-align: left !important;
+    }
+    
+    .footer .copyright .row .col-md-6 {
+        text-align: left !important;
+    }
+}
+
+/* Medium screens: GetInTouch and QuickLinks side-by-side, StayConnected below */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .footer .footer-column:nth-child(1),
+    .footer .footer-column:nth-child(2) {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+        width: 50% !important;
+    }
+    
+    .footer .footer-column:nth-child(3) {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin-top: 2rem;
+    }
+}
+
+/* Large screens: All three columns side-by-side */
+@media (min-width: 992px) {
+    .footer .footer-column {
+        flex: 0 0 33.333333% !important;
+        max-width: 33.333333% !important;
+        width: 33.333333% !important;
+    }
+}
+
+/* Fix footer email form alignment */
+.footer .position-relative {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+.footer .form-control {
+    text-align: left !important;
+}
+
+/* Ensure Stay Connected content is left-aligned */
+.footer .footer-column:nth-child(3) {
+    text-align: left !important;
+}
+
+.footer .footer-column:nth-child(3) h3,
+.footer .footer-column:nth-child(3) p,
+.footer .footer-column:nth-child(3) div {
+    text-align: left !important;
+}
+
+/* Ensure Stay Connected section content is left-aligned */
+.footer .col-lg-4.col-12 {
+    text-align: left;
+}
+
+.footer .col-lg-4.col-12 h3,
+.footer .col-lg-4.col-12 p {
+    text-align: left;
+}
+
+/*** Core Values ***/
+.core-values-card {
+    background: var(--light);
+    border-radius: 15px;
+    padding: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.core-values-card h3 {
+    color: var(--primary);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.core-value-item {
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.core-value-item:last-child {
+    margin-bottom: 0;
+}
+
+.core-value-item h5 {
+    color: var(--dark);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+.core-value-item h5 i {
+    color: var(--primary);
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.core-value-subtext {
+    color: var(--gray-600);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-top: 8px;
+    padding-left: 25px;
+}
+
+/* Mobile-specific core values styling */
+@media (max-width: 767px) {
+    .core-values-card {
+        padding: 20px;
+    }
+    
+    .core-value-item {
+        margin-bottom: 15px;
+    }
+    
+    .core-value-item h5 {
+        font-size: 1rem;
+    }
+    
+    .core-value-subtext {
+        font-size: 0.85rem;
+        padding-left: 20px;
+    }
+}
+
+/* Desktop-specific core values layout */
+@media (min-width: 992px) {
+    .core-values-card .row {
+        display: flex;
+        align-items: stretch;
+    }
+    
+    .core-values-card .col-lg-4 {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .core-value-item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/*** Quick Facts & ESA Section ***/
+.fact-card {
+    transition: all 0.3s ease;
+    border: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 280px; /* Ensure consistent minimum height */
+}
+
+.fact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.fact-icon {
+    transition: all 0.3s ease;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.fact-card:hover .fact-icon {
+    transform: scale(1.1);
+}
+
+.fact-card h4 {
+    color: var(--dark);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    flex-shrink: 0; /* Prevent title from shrinking */
+}
+
+.fact-card p {
+    color: #666;
+    line-height: 1.6;
+    flex-grow: 1; /* Allow paragraph to fill remaining space */
+    margin-bottom: 0;
+}
+
+/* Responsive adjustments for QuickFacts grid */
+@media (max-width: 768px) {
+    .fact-card {
+        min-height: 160px; /* Smaller for 2x3 grid */
+        padding: 0.5rem !important; /* Tighter padding */
+        margin-bottom: 0.5rem; /* Closer together */
+    }
+    
+    .fact-card .fact-icon {
+        width: 30px !important; /* Smaller icon circle */
+        height: 30px !important;
+        margin-right: 0.5rem !important; /* Reduced spacing */
+    }
+    
+    .fact-card .fact-icon i {
+        font-size: 1rem !important; /* Smaller icon size */
+    }
+    
+    .fact-card h4 {
+        font-size: 1rem; /* Smaller title */
+        margin-bottom: 0.4rem; /* Reduced spacing */
+        line-height: 1.2;
+    }
+    
+    .fact-card p {
+        font-size: 0.85rem; /* Smaller body text */
+        line-height: 1.2;
+        margin-bottom: 0;
+    }
+    
+    /* Force 2 columns on mobile for QuickFacts section */
+    .row.g-4 .col-lg-4.col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding-left: 5px !important; /* Closer to screen edge */
+        padding-right: 5px !important; /* Closer to screen edge */
+        margin-top: 10px !important;
+    }
+    
+    /* Reduce overall container padding on mobile */
+    .container {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+    .container-responsive {
+        padding-left: 1.5% !important;
+        padding-right: 1.5% !important;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .fact-card {
+        min-height: 260px; /* Medium height for tablets */
+    }
+}
+
+@media (min-width: 1025px) {
+    .fact-card {
+        min-height: 280px; /* Full height for desktop */
+    }
+}
+
+/* Compact cards variant for tighter layout in Who We Are */
+.compact-cards .fact-card {
+    padding: 1rem !important;
+}
+.compact-cards .fact-icon {
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 1rem !important;
+}
+.compact-cards .fact-card h4 {
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem !important;
+}
+.compact-cards .fact-card p {
+    font-size: 0.95rem;
+}
+
+/* Fix program page layout issues */
+/* Key Features section - prevent it from extending too wide */
+.bg-peach.fact-card {
+    max-width: 100%;
+    width: auto;
+    flex: none;
+}
+
+/* Ensure proper spacing between sections and footer */
+.bg-primary.rounded.p-5.mt-4,
+.bg-warning.rounded.p-5.mt-4 {
+    margin-bottom: 3rem !important;
+}
+
+/* Fix the col-lg-4 layout for Key Features */
+.col-lg-4 .bg-peach.fact-card {
+    height: auto;
+    min-height: auto;
+    max-width: 100%;
+}
+
+/* Ensure proper container behavior */
+.container .row .col-lg-4 {
+    flex: 0 0 auto;
+    max-width: 33.333333%;
+}
+
+@media (max-width: 991.98px) {
+    .container .row .col-lg-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    /* Add bottom margin on mobile to prevent footer overlap */
+    .bg-primary.rounded.p-5.mt-4,
+    .bg-warning.rounded.p-5.mt-4 {
+        margin-bottom: 2rem !important;
+    }
+}
+
+/*** Call to Action ***/
+.call-to-action {
+    background: linear-gradient(rgba(254, 93, 55, .9), rgba(254, 93, 55, .9)), url(../img/call-to-action.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+.call-to-action .btn {
+    border: 2px solid #FFFFFF;
+}
+
+.call-to-action .btn:hover {
+    background: #FFFFFF;
+    color: var(--primary);
+}
+
+/*** Blog Styles ***/
+.blog-card {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.blog-image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.blog-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.blog-card:hover .blog-image {
+    transform: scale(1.05);
+}
+
+.blog-title a {
+    color: var(--dark);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.blog-title a:hover {
+    color: var(--primary);
+}
+
+.blog-excerpt {
+    color: #666;
+    line-height: 1.6;
+}
+
+.blog-meta .badge {
+    font-size: 0.75rem;
+}
+
+.blog-footer {
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding-top: 1rem;
+    margin-top: auto;
+}
+
+/* Category filter buttons */
+.btn-group .btn {
+    border-radius: 20px;
+    margin: 0 2px;
+}
+
+.btn-group .btn.active {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+/* About page: equalize history images and keep rounded edges */
+.history-equal-image {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+@media (max-width: 992px) {
+    .history-equal-image {
+        height: 320px;
+    }
+}
+
+@media (max-width: 576px) {
+    .history-equal-image {
+        height: 240px;
+    }
+}
+
+/*** Blog ***/
+.blog-item {
+    transition: .5s;
+}
+
+.blog-item:hover {
+    margin-top: -10px;
+}
+
+.blog-item .blog-img {
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-item .blog-img img {
+    transition: .5s;
+}
+
+.blog-item:hover .blog-img img {
+    transform: scale(1.1);
+}
+
+.blog-item .blog-meta {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, .5);
+    transition: .5s;
+    opacity: 0;
+}
+
+.blog-item:hover .blog-meta {
+    opacity: 1;
+}
+
+.blog-item .blog-meta a {
+    display: inline-block;
+    margin: 0 5px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #FFFFFF;
+    border-radius: 35px;
+    color: #FFFFFF;
+    font-size: 16px;
+    transition: .5s;
+}
+
+.blog-item .blog-meta a:hover {
+    color: var(--primary);
+    background: #FFFFFF;
+}
+
+.blog-item .blog-text {
+    position: relative;
+    padding: 30px;
+    border: 1px solid #EEEEEE;
+    border-top: none;
+}
+
+.blog-item .blog-text h3 {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.blog-item .blog-text h3 a {
+    color: var(--dark);
+}
+
+.blog-item .blog-text h3 a:hover {
+    color: var(--primary);
+}
+
+.blog-item .blog-text p {
+    margin: 0;
+}
+
+.blog-item .blog-text .blog-meta {
+    position: relative;
+    display: flex;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #EEEEEE;
+    opacity: 1;
+    background: none;
+}
+
+.blog-item .blog-text .blog-meta a {
+    color: var(--gray-500);
+    border: none;
+    margin: 0 10px 0 0;
+    font-size: 14px;
+}
+
+.blog-item .blog-text .blog-meta a:hover {
+    color: var(--primary);
+    background: none;
+}
+
+.blog-item .blog-text .blog-meta a i {
+    margin-right: 5px;
+}
+
+/*** Search ***/
+.search .search-form {
+    position: relative;
+    max-width: 500px;
+}
+
+.search .search-form input {
+    height: 50px;
+    padding-right: 50px;
+    border: 1px solid #EEEEEE;
+}
+
+.search .search-form button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background: var(--primary);
+    color: #FFFFFF;
+    border-radius: 0 5px 5px 0;
+}
+
+/*** Category ***/
+.category .category-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.category .category-item::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .5);
+    transition: .5s;
+    z-index: 1;
+}
+
+.category .category-item:hover::before {
+    background: rgba(254, 93, 55, .9);
+}
+
+.category .category-item .category-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+}
+
+.category .category-item .category-text h4 {
+    color: #FFFFFF;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.category .category-item .category-text p {
+    color: #FFFFFF;
+    margin: 0;
+    font-size: 14px;
+}
+
+/*** Tag ***/
+.tag .tag-item {
+    margin-bottom: 10px;
+}
+
+.tag .tag-item a {
+    display: inline-block;
+    padding: 8px 15px;
+    background: var(--light);
+    border-radius: 25px;
+    color: var(--dark);
+    font-size: 14px;
+    transition: .5s;
+}
+
+.tag .tag-item a:hover {
+    background: var(--primary);
+    color: #FFFFFF;
+}

@@ -1,306 +1,440 @@
-(function ($) {
-    "use strict";
+/* ================================= */
+/* MAIN JAVASCRIPT - MAIN STREET SCHOOL */
+/* ================================= */
 
-    // Initiate the wowjs
-    new WOW().init();
-
-
-    // Spinner
-    var spinner = function () {
-        setTimeout(function () {
-            if ($('#spinner').length > 0) {
-                $('#spinner').removeClass('show');
+$(document).ready(function() {
+    'use strict';
+    
+    // =================================
+    // INITIALIZATION
+    // =================================
+    initializeApp();
+    
+    // =================================
+    // SPINNER MANAGEMENT
+    // =================================
+    
+    /**
+     * Hide the loading spinner
+     */
+    function hideSpinner() {
+        const spinner = $('#spinner');
+        if (spinner.length) {
+            spinner.removeClass('show');
+            setTimeout(function() {
+                spinner.hide();
+            }, 500);
+        }
+    }
+    
+    // Hide spinner when page is loaded
+    $(window).on('load', function() {
+        hideSpinner();
+    });
+    
+    // Also hide spinner after a timeout to prevent it from showing forever
+    setTimeout(function() {
+        hideSpinner();
+    }, 3000);
+    
+    // =================================
+    // CORE APPLICATION INITIALIZATION
+    // =================================
+    
+    /**
+     * Initialize the main application
+     */
+    function initializeApp() {
+        console.log('Main Street School - Initializing application...');
+        
+        // Initialize all components
+        initializeReadMoreButtons();
+        initializeCoreValuesButtons();
+        initializeAnimations();
+        initializeAccessibility();
+        
+        // Set up event listeners
+        setupEventListeners();
+        
+        // Run error checking
+        handleMissingElements();
+        
+        console.log('Main Street School - Application initialized successfully');
+    }
+    
+    // =================================
+    // READ MORE/LESS FUNCTIONALITY
+    // =================================
+    
+    /**
+     * Initialize Read More buttons for main content sections
+     */
+    function initializeReadMoreButtons() {
+        const mainReadMoreBtn = $('[data-bs-target="#whoWeAreMore"]');
+        const mainCollapseEl = $('#whoWeAreMore');
+        
+        if (mainReadMoreBtn.length && mainCollapseEl.length) {
+            // Set initial state
+            updateButtonText(mainReadMoreBtn, false);
+            
+            // Listen for collapse events
+            mainCollapseEl.on('show.bs.collapse', function() {
+                updateButtonText(mainReadMoreBtn, true);
+            });
+            
+            mainCollapseEl.on('hide.bs.collapse', function() {
+                updateButtonText(mainReadMoreBtn, false);
+            });
+        }
+    }
+    
+    /**
+     * Initialize Core Values individual Read More buttons
+     */
+    function initializeCoreValuesButtons() {
+        const coreValueButtons = $('.core-value-read-more');
+        
+        coreValueButtons.each(function() {
+            const button = $(this);
+            const targetId = button.attr('data-bs-target');
+            const collapseEl = $(targetId);
+            
+            if (collapseEl.length) {
+                // Set initial state
+                updateButtonText(button, false);
+                
+                // Listen for collapse events
+                collapseEl.on('show.bs.collapse', function() {
+                    updateButtonText(button, true);
+                });
+                
+                collapseEl.on('hide.bs.collapse', function() {
+                    updateButtonText(button, false);
+                });
             }
-        }, 1);
-    };
-    spinner();
-
-
-    // Sticky Navbar
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 300) {
-            $('.sticky-top').addClass('shadow-sm').css('top', '0px');
-        } else {
-            $('.sticky-top').removeClass('shadow-sm').css('top', '-100px');
-        }
-    });
-    
-    
-    // Back to top button - always visible and positioned within content column
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 100) {
-            $('.back-to-top').fadeIn('slow');
-        } else {
-            $('.back-to-top').fadeOut('slow');
-        }
-    });
-    $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
-        return false;
-    });
-
-    // Read More button functionality
-    $(document).ready(function() {
-        $('[data-bs-toggle="collapse"]').on('click', function() {
-            const target = $(this).attr('data-bs-target');
-            const isExpanded = $(this).attr('aria-expanded') === 'true';
-            
-            // Toggle the collapse
-            $(target).collapse('toggle');
-            
-            // Update aria-expanded attribute
-            $(this).attr('aria-expanded', !isExpanded);
         });
-    });
-
-
-    // Carousel data configuration system
-    const carouselConfigurations = {
-        'home': [
-            {
-                image: "img/carousel-1.jpg",
-                title: "Feeding Curiosity Since 2006",
-                description: "",
-                showButtons: true
-            },
-            {
-                image: "img/carousel-2.jpg",
-                title: "Feeding Curiosity Since 2006",
-                description: "",
-                showButtons: true
-            },
-            {
-                image: "img/carousel-3.jpg",
-                title: "Feeding Curiosity Since 2006",
-                description: "",
-                showButtons: true
-            },
-        ],
-        'programs': [
-            {
-                image: "img/carousel-1.jpg",
-                title: "Personalized Learning Journey",
-                description: "Every student receives individualized attention in our small, nurturing classroom environment",
-                showButtons: false
-            },
-            {
-                image: "img/carousel-2.jpg",
-                title: "Project-Based Discovery",
-                description: "Students learn through meaningful, hands-on projects that integrate multiple subjects and real-world applications",
-                showButtons: false
-            },
-            {
-                image: "img/carousel-3.jpg",
-                title: "Community & Character",
-                description: "Building lifelong friendships while developing empathy, kindness, and strong character in a supportive learning community",
-                showButtons: false
+    }
+    
+    /**
+     * Update button text based on expanded state
+     * @param {jQuery} button - The button element
+     * @param {boolean} isExpanded - Whether the content is expanded
+     */
+    function updateButtonText(button, isExpanded) {
+        const readMoreText = button.find('.read-more-text');
+        const readLessText = button.find('.read-less-text');
+        
+        if (isExpanded) {
+            readMoreText.hide();
+            readLessText.show();
+            button.attr('aria-expanded', 'true');
+        } else {
+            readMoreText.show();
+            readLessText.hide();
+            button.attr('aria-expanded', 'false');
+        }
+    }
+    
+    // =================================
+    // ANIMATION INITIALIZATION
+    // =================================
+    
+    /**
+     * Initialize animations and scroll effects
+     */
+    function initializeAnimations() {
+        // Initialize WOW.js if available
+        if (typeof WOW !== 'undefined') {
+            new WOW().init();
+        }
+        
+        // Custom scroll animations
+        initializeScrollAnimations();
+    }
+    
+    /**
+     * Initialize custom scroll animations
+     */
+    function initializeScrollAnimations() {
+        const animatedElements = $('.wow');
+        
+        if (animatedElements.length) {
+            // Use Intersection Observer if available
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.visibility = 'visible';
+                            entry.target.classList.add('animated');
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+                
+                animatedElements.each(function() {
+                    observer.observe(this);
+                });
+            } else {
+                // Fallback for older browsers
+                animatedElements.each(function() {
+                    $(this).css('visibility', 'visible');
+                });
             }
-        ]
-    };
-
-    // Reusable carousel generator function
-    function generateCarouselSlides(pageType = 'home', carouselId = 'headerCarousel') {
-        const carouselContainer = document.getElementById(carouselId);
-        if (!carouselContainer) {
-            console.log('Carousel container not found:', carouselId);
+        }
+    }
+    
+    // =================================
+    // ACCESSIBILITY INITIALIZATION
+    // =================================
+    
+    /**
+     * Initialize accessibility features
+     */
+    function initializeAccessibility() {
+        // Add keyboard support for Read More buttons
+        $('[data-bs-toggle="collapse"], .core-value-read-more').on('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                $(this).click();
+            }
+        });
+        
+        // Add focus management for collapsed content
+        $('[data-bs-toggle="collapse"]').on('shown.bs.collapse', function() {
+            const target = $($(this).attr('data-bs-target'));
+            if (target.length) {
+                // Focus the first focusable element in the expanded content
+                const firstFocusable = target.find('a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])').first();
+                if (firstFocusable.length) {
+                    firstFocusable.focus();
+                }
+            }
+        });
+        
+        // Add skip links functionality
+        initializeSkipLinks();
+    }
+    
+    /**
+     * Initialize skip links for keyboard navigation
+     */
+    function initializeSkipLinks() {
+        $('.skip-link').on('click', function(e) {
+            e.preventDefault();
+            const target = $($(this).attr('href'));
+            if (target.length) {
+                target.focus();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+    
+    // =================================
+    // EVENT LISTENERS SETUP
+    // =================================
+    
+    /**
+     * Set up all event listeners
+     */
+    function setupEventListeners() {
+        // Handle window resize with debouncing
+        $(window).on('resize', debounce(handleWindowResize, 250));
+        
+        // Handle scroll events with debouncing
+        $(window).on('scroll', debounce(handleScroll, 100));
+        
+        // Handle form submissions
+        $('form').on('submit', handleFormSubmit);
+        
+        // Handle external links
+        $('a[href^="http"]').on('click', handleExternalLinks);
+        
+        // Handle image loading errors
+        $('img').on('error', handleImageError);
+    }
+    
+    /**
+     * Handle window resize events
+     */
+    function handleWindowResize() {
+        // Recalculate any layout-dependent elements
+        // This is where you'd add any resize-specific logic
+        console.log('Window resized - recalculating layout');
+    }
+    
+    /**
+     * Handle scroll events
+     */
+    function handleScroll() {
+        // Handle scroll-based animations or effects
+        // This is where you'd add any scroll-specific logic
+    }
+    
+    /**
+     * Handle form submissions
+     */
+    function handleFormSubmit(e) {
+        const form = $(e.target);
+        const submitBtn = form.find('button[type="submit"]');
+        
+        // Prevent double submission
+        if (submitBtn.hasClass('submitting')) {
+            e.preventDefault();
             return;
         }
         
-        console.log('Initializing carousel for pageType:', pageType);
-
-        const carouselData = carouselConfigurations[pageType] || carouselConfigurations['home'];
-
-        carouselData.forEach(slide => {
-            const slideElement = document.createElement('div');
-            slideElement.className = 'owl-carousel-item position-relative';
-            
-            const buttonSection = slide.showButtons ? `
-                <div class="d-flex flex-column flex-sm-row gap-3 align-items-start carousel-buttons">
-                    <a href="" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInLeft">Schedule A Tour</a>
-                    <div class="dropdown animated slideInRight">
-                        <button class="btn btn-primary rounded-pill py-sm-3 px-sm-5 dropdown-toggle" type="button" id="enrollDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            Enroll Now
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="enrollDropdown">
-                            <li><a class="dropdown-item" href=https://app.tuiopay.com/registration/t6ff7e6>New Students</a></li>
-                            <li><a class="dropdown-item" href=https://app.tuiopay.com/registration/z9884b8>Returning Students</a></li>
-                        </ul>
-                    </div>
-                </div>
-            ` : '';
-
-            slideElement.innerHTML = `
-                <div class="carousel-image-container">
-                    <img class="carousel-image" src="${slide.image}" alt="">
-                </div>
-                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 0, 0, .2);">
-                    <div class="container">
-                        <div class="row justify-content-start">
-                            <div class="col-10 col-lg-8 carousel-content-mobile">
-                                <h1 class="display-2 text-white animated slideInDown mb-4">${slide.title}</h1>
-                                <p class="fs-5 fw-medium text-white mb-4 pb-2">${slide.description}</p>
-                                ${buttonSection}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-            carouselContainer.appendChild(slideElement);
+        // Add loading state
+        submitBtn.addClass('submitting').prop('disabled', true);
+        
+        // You can add form validation and submission logic here
+        
+        // Remove loading state after a delay (for demo purposes)
+        setTimeout(() => {
+            submitBtn.removeClass('submitting').prop('disabled', false);
+        }, 2000);
+    }
+    
+    /**
+     * Handle external links
+     */
+    function handleExternalLinks(e) {
+        const link = $(e.target);
+        const href = link.attr('href');
+        
+        // Open external links in new tab
+        if (href && !href.includes(window.location.hostname)) {
+            link.attr('target', '_blank');
+            link.attr('rel', 'noopener noreferrer');
+        }
+    }
+    
+    /**
+     * Handle image loading errors
+     */
+    function handleImageError(e) {
+        const img = $(e.target);
+        const fallbackSrc = img.data('fallback') || 'img/placeholder.jpg';
+        
+        // Set fallback image
+        img.attr('src', fallbackSrc);
+        img.addClass('image-error');
+        
+        console.warn('Image failed to load:', img.attr('src'));
+    }
+    
+    // =================================
+    // UTILITY FUNCTIONS
+    // =================================
+    
+    /**
+     * Debounce function to limit how often a function can be called
+     * @param {Function} func - The function to debounce
+     * @param {number} wait - The wait time in milliseconds
+     * @returns {Function} - The debounced function
+     */
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+    
+    /**
+     * Check if element is in viewport
+     * @param {jQuery} element - The element to check
+     * @returns {boolean} - Whether the element is in viewport
+     */
+    function isInViewport(element) {
+        const rect = element[0].getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+    
+    /**
+     * Smooth scroll to element
+     * @param {string|jQuery} target - The target element
+     * @param {number} offset - Offset from top
+     */
+    function smoothScrollTo(target, offset = 0) {
+        const element = typeof target === 'string' ? $(target) : target;
+        if (element.length) {
+            const elementTop = element.offset().top - offset;
+            $('html, body').animate({
+                scrollTop: elementTop
+            }, 800, 'easeInOutQuart');
+        }
+    }
+    
+    // =================================
+    // ERROR HANDLING
+    // =================================
+    
+    /**
+     * Handle missing elements gracefully
+     */
+    function handleMissingElements() {
+        const requiredElements = [
+            { selector: '[data-bs-target="#whoWeAreMore"]', name: 'Main Read More button' },
+            { selector: '#whoWeAreMore', name: 'Main collapse element' },
+            { selector: '.core-value-read-more', name: 'Core Values buttons' }
+        ];
+        
+        requiredElements.forEach(function(item) {
+            if ($(item.selector).length === 0) {
+                console.warn(`Missing element: ${item.name} (${item.selector})`);
+            }
         });
     }
-
-    // Global function to initialize carousel for any page
-    window.initializeCarousel = function(pageType = null, carouselId = 'headerCarousel') {
-        // Auto-detect page type if not provided
-        if (!pageType) {
-            const path = window.location.pathname;
-            if (path.includes('early-childhood') || path.includes('elementary') || 
-                path.includes('middle-school') || path.includes('high-school')) {
-                pageType = 'programs';
-            } else {
-                pageType = 'home';
-            }
-        }
-        generateCarouselSlides(pageType, carouselId);
-    };
-
-    // Initialize carousel after generating slides - auto-detect page type
-    window.initializeCarousel();
-
-    // Header carousel
-    let headerCarousel = $(".header-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1500,
-        items: 1,
-        dots: true,
-        loop: true,
-        nav : true,
-        navText : [
-            '<i class="bi bi-chevron-left"></i>',
-            '<i class="bi bi-chevron-right"></i>'
-        ]
-    });
-
-    // Stop carousel when dropdown is opened, resume when closed
-    $(document).on('show.bs.dropdown', function (e) {
-        // Check if the dropdown is within the carousel
-        if ($(e.target).closest('.header-carousel').length) {
-            headerCarousel.trigger('stop.owl.autoplay');
-        }
-    });
-
-    $(document).on('hide.bs.dropdown', function (e) {
-        // Check if the dropdown is within the carousel
-        if ($(e.target).closest('.header-carousel').length) {
-            headerCarousel.trigger('play.owl.autoplay');
-        }
-    });
-
-    // Alternative approach: Stop on hover, resume on mouse leave
-    $(document).on('mouseenter', '.header-carousel .dropdown', function() {
-        headerCarousel.trigger('stop.owl.autoplay');
-    });
-
-    $(document).on('mouseleave', '.header-carousel .dropdown', function() {
-        // Only resume if dropdown is not open
-        if (!$(this).hasClass('show')) {
-            headerCarousel.trigger('play.owl.autoplay');
-        }
-    });
-
-
-    // Testimonial data
-    const testimonialData = [
-        {
-            text: "We couldn’t be happier with the academic preparation that Main Street gave our daughter.  She has since gone on to graduate high school and college and is now a teacher herself because of the inspiration of Tanya.  It also appropriately prepared our youngest daughter for her high school experience.  We also appreciated the lessons in citizenship that our children received.  They learned the why behind the what in all instances and that made them better critical thinkers.  Most importantly, they learned to love and respect people for who they are.  This fit so well with our family philosophy.  It was a Godsend to have our personal philosophy and our children’s educational experience so aligned.",
-            author: "M.F.",
-            relationship: "Parent"
-        },
-        {
-            text: "We commuted from Ames to Main Street School when our son was in 7th and 8th grades. We sought individualized academics, experiential learning and a small class size. The experience was nothing short of transformative for him. He matured, he gained both study and social skills and he had the experience of teachers who would not give up on him and would not let him get away with not trying. Public school doesn't always work for all children. When a student needs an alternative, Main Street School is a shining example of what that can be. We were so relieved to find it, and so delighted with the results. We feel so strongly that Main Street School has the power to improve lives that we continue to give a small monthly donation even though we now live out of state.",
-            author: "A.M.",
-            relationship: "Parent"
-        },
-        {
-            text: "We have been part of Main Street for 10 years now and both girls have benefited greatly from the experience.  The classes are small, sometimes one-on-one, so individual needs are recognized and met.  The adult-to-student ratio is high so misbehavior is quickly seen and discussed calmly and sometimes introspectively (can we talk about why you said/did that?)  All ages mingle, older students read to younger ones, and students work and play together at recess. The students learn to interact with all ages from 3 to adults.I would highly recommend Main Street School to anyone who wants their child(ren) to have a personal academic and life-skills education in a rich, caring, comfortable environment.",
-            author: "S.L.S",
-            relationship: "Parent"
-        },
-        {
-            text: "Main Street literally saved our child. He was completely disengaged in public school, truly believed that he couldn’t do the work, and got in fights with his peers instead of working. The willingness of the Main Street teachers to get to know him as a person, a child, and a learner made such a difference in his life. He was challenged and succeeded for the first time in school. He was prepared for high school in a way that would have been impossible if he’d stayed in public school. And he learned how to deal with conflict and personality differences without violence. We will forever be grateful that we spent a couple of years driving an hour each way to get our child engaged in learning.",
-            author: "B.C.",
-            relationship: "Parent"
-        },
-        {
-            text: "I started attending Main Street School at the age of 11 and was well behind my expected academic level not even knowing how to read or do basic math. To say the least, I didn't have much hope for an academic future. However, the teachers and culture made me feel accepted and motivated to learn. Within the first week, I learned how to read at a basic level, improving my confidence in myself and the instructors' ability to teach. Now, at 23, no one’s the wiser about my rough start in academics. I completed my B.S. at ISU in Software Engineering and am pursuing an M.S. in Computer Engineering with a focus on Secure and Reliable Computing. I can confidently say I couldn't have done it without the help of Main Street School.",            author: "H.B.",
-            relationship: "Alumni"
-        },
-        {
-            text: "Main Street School is more than a school, it is a family. My experience at Main Street School helped me grow as a human and academically. I could not have asked for a safer or more accepting environment that also expanded my learning horizons.",
-            author: "C.B.",
-            relationship: "Alumni"
-        },
-        {
-            text: "It is incredibly special to feel inspired, seen, supported, creative and free in a learning environment. Main Street School helped me feel all of those things every day. I am immensely grateful for that education and highly recommend this school.",
-            author: "E.W.",
-            relationship: "Alumni"
-        },
-        {
-            text: "Looking back, I’m grateful for the unique experiences of being part of a small learning environment. It allowed for more hands-on learning with lessons tailored to the students interests and many field trips, things not possible in a large public school.",
-            author: "I.A.",
-            relationship: "Alumni"
-        }
-    ];
-
-    // Generate testimonials dynamically
-    function generateTestimonials() {
-        const testimonialContainer = document.getElementById('testimonialCarousel');
-        if (!testimonialContainer) return;
-
-        testimonialData.forEach(testimonial => {
-            const testimonialElement = document.createElement('div');
-            testimonialElement.className = 'testimonial-item bg-light rounded p-5';
-            testimonialElement.innerHTML = `
-                <div class="testimonial-content">
-                    <i class="fa fa-quote-left fa-2x text-primary mb-2 testimonial-quote-icon"></i>
-                    <p class="testimonial-text mb-4">"${testimonial.text}"</p>
-                    <div class="testimonial-author">
-                        <h5 class="mb-1">${testimonial.author}</h5>
-                        <span class="text-muted">${testimonial.relationship}</span>
-                    </div>
-                </div>
-            `;
-            testimonialContainer.appendChild(testimonialElement);
-        });
-    }
-
-    // Initialize testimonials after generating content
-    generateTestimonials();
-
-    // Testimonials carousel
-    $(".testimonial-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1000,
-        margin: 0,
-        dots: true,
-        loop: true,
-        nav : true,
-        navText : [
-            '<i class="bi bi-arrow-left"></i>',
-            '<i class="bi bi-arrow-right"></i>'
-        ],
-        responsive: {
-            0:{
-                items:1
-            },
-            768:{
-                items:1
-            },
-            992:{
-                items:1
-            }
-        }
+    
+    // Global error handler for JavaScript errors
+    window.addEventListener('error', function(e) {
+        console.error('JavaScript error:', e.error);
+        // You could add error reporting here
     });
     
-})(jQuery);
+    // =================================
+    // PERFORMANCE OPTIMIZATIONS
+    // =================================
+    
+    // Use passive event listeners where possible
+    if ('addEventListener' in window) {
+        window.addEventListener('scroll', function() {}, { passive: true });
+        window.addEventListener('resize', function() {}, { passive: true });
+    }
+    
+    // =================================
+    // DEBUGGING HELPERS
+    // =================================
+    
+    // Add debug logging if needed
+    if (window.location.search.includes('debug=true')) {
+        console.log('Main Street School JavaScript initialized');
+        console.log('Read More buttons found:', $('[data-bs-toggle="collapse"]').length);
+        console.log('Core Values buttons found:', $('.core-value-read-more').length);
+        console.log('WOW elements found:', $('.wow').length);
+    }
+    
+    // =================================
+    // PUBLIC API (for other scripts)
+    // =================================
+    
+    // Expose useful functions to global scope
+    window.MainStreetSchool = {
+        smoothScrollTo: smoothScrollTo,
+        isInViewport: isInViewport,
+        debounce: debounce,
+        updateButtonText: updateButtonText
+    };
+});
 

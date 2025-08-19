@@ -127,21 +127,33 @@ class HeaderFooterManager {
     }
 
     // Generate header HTML
-    generateHeaderHTML(config) {
-        const isActive = (navItem) => config.activeNav === navItem ? 'active' : '';
-        const isProgramActive = config.pageType === 'program' ? 'active' : '';
-        
-        let headerHTML = `
-            <!-- Navbar Start -->
-            <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
-                <a href="index.html" class="navbar-brand">
-                    <h1 class="m-0 text-primary"><i class="fa fa-book-reader me-3"></i>Main Street School</h1>
-                </a>
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+// Generate header HTML
+generateHeaderHTML(config) {
+    const isActive = (navItem) => config.activeNav === navItem ? 'active' : '';
+    const isProgramActive = config.pageType === 'program' ? 'active' : '';
+    
+    let headerHTML = `
+        <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-sm bg-white navbar-light sticky-top px-4 px-sm-5 py-sm-0">
+            <div class="container-fluid d-flex flex-column d-sm-block">
+                
+                <!-- Top row: Logo and Mobile Toggle -->
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <a href="index.html" class="navbar-brand">
+                        <h1 class="m-0 text-primary">
+                            <i class="fa fa-book-reader me-3"></i>Main Street School
+                        </h1>
+                    </a>
+                    
+                    <!-- Mobile Nav Toggle - positioned on the right -->
+                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                
+                <!-- Nav Row - Desktop: centered below logo, Mobile: full width dropdown -->
                 <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav mx-auto">
+                    <div class="navbar-nav mx-auto mt-2 mt-sm-0">
                         <a href="index.html" class="nav-item nav-link ${isActive('home')}">Home</a>
                         <a href="about.html" class="nav-item nav-link ${isActive('about')}">About Us</a>
                         <div class="nav-item dropdown">
@@ -158,8 +170,8 @@ class HeaderFooterManager {
                             <div class="dropdown-menu rounded-0 rounded-bottom border-0 m-0">
                                 <a href="facility.html" class="dropdown-item">School Facilities</a>
                                 <a href="team.html" class="dropdown-item ${isActive('team')}">Meet Our Team</a>
-                        <a href="about.html#dei-statement" class="dropdown-item ${isActive('dei')}">DEI Statement</a>
-                                <a href="call-to-action.html" class="dropdown-item">Become A Teachers</a>
+                                <a href="about.html#dei-statement" class="dropdown-item ${isActive('dei')}">DEI Statement</a>
+                                <a href="call-to-action.html" class="dropdown-item">Become A Teacher</a>
                                 <a href="appointment.html" class="dropdown-item">Make Appointment</a>
                                 <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                                 <a href="404.html" class="dropdown-item">404 Error</a>
@@ -167,50 +179,55 @@ class HeaderFooterManager {
                         </div>
                         <a href="contact.html" class="nav-item nav-link ${isActive('contact')}">Contact Us</a>
                         <a href="blog.html" class="nav-item nav-link ${isActive('blog')}">Blog</a>
+                                                 <div class="navbar-nav d-flex align-items-center">
+                             <a href="https://app.tuiopay.com/donation/3a8c62fc819d1f645288f6ce955bfce0" class="btn btn-primary rounded-3 px-3 py-2">
+                                 Donate
+                             </a>
+                         </div>
                     </div>
-                    <a href="https://app.tuiopay.com/donation/3a8c62fc819d1f645288f6ce955bfce0" class="btn btn-primary rounded-pill px-3 d-none d-lg-block"><span class="donate-text">Donate</span><i class="fa fa-arrow-right ms-3"></i></a>
-                </div>
-            </nav>
-            <!-- Navbar End -->`;
-
-        // Add carousel for home page
-        if (config.showCarousel) {
-            headerHTML += `
-            <!-- Header Carousel Start -->
-            <div class="container-fluid p-0 mb-5">
-                <div class="owl-carousel header-carousel position-relative">
-                    <!-- Carousel items will be dynamically generated -->
                 </div>
             </div>
-            <!-- Header Carousel End -->`;
-        }
+        </nav>
+        <!-- Navbar End -->`;
 
-        // Add page header for other pages
-        if (config.showPageHeader) {
-            headerHTML += `
-            <!-- Page Header Start -->
-            <div class="container-xxl py-5 page-header position-relative mb-5">
-                <div class="container py-5">
-                    <h1 class="display-2 text-white animated slideInDown mb-4">${config.pageTitle}</h1>
-                    <nav aria-label="breadcrumb animated slideInDown">
-                        <ol class="breadcrumb">
-                            ${config.breadcrumb.map((item, index) => {
-                                if (index === config.breadcrumb.length - 1) {
-                                    return `<li class="breadcrumb-item text-white active" aria-current="page">${item}</li>`;
-                                } else {
-                                    const href = index === 0 ? 'index.html' : '#';
-                                    return `<li class="breadcrumb-item"><a href="${href}">${item}</a></li>`;
-                                }
-                            }).join('')}
-                        </ol>
-                    </nav>
-                </div>
+    // Carousel for home page
+    if (config.showCarousel) {
+        headerHTML += `
+        <!-- Header Carousel Start -->
+        <div class="container-fluid p-0 mb-5">
+            <div class="owl-carousel header-carousel position-relative">
+                <!-- Carousel items dynamically generated -->
             </div>
-            <!-- Page Header End -->`;
-        }
-
-        return headerHTML;
+        </div>
+        <!-- Header Carousel End -->`;
     }
+
+    // Page header for other pages
+    if (config.showPageHeader) {
+        headerHTML += `
+        <!-- Page Header Start -->
+        <div class="container-xxl py-5 page-header position-relative mb-5">
+            <div class="container py-5">
+                <h1 class="display-2 text-white animated slideInDown mb-4">${config.pageTitle}</h1>
+                <nav aria-label="breadcrumb animated slideInDown">
+                    <ol class="breadcrumb">
+                        ${config.breadcrumb.map((item, index) => {
+                            if (index === config.breadcrumb.length - 1) {
+                                return `<li class="breadcrumb-item text-white active" aria-current="page">${item}</li>`;
+                            } else {
+                                const href = index === 0 ? 'index.html' : '#';
+                                return `<li class="breadcrumb-item"><a href="${href}">${item}</a></li>`;
+                            }
+                        }).join('')}
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!-- Page Header End -->`;
+    }
+
+    return headerHTML;
+}
 
     // Replace header content
     replaceHeaderContent(config) {

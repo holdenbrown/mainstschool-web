@@ -9,14 +9,10 @@ $(document).ready(function() {
     // HEADER CAROUSEL INITIALIZATION
     // =================================
     
-    /**
-     * Initialize the header carousel
-     */
     function initializeHeaderCarousel() {
         const headerCarousel = $('#headerCarousel');
         
         if (headerCarousel.length) {
-            // Carousel content data
             const carouselSlides = [
                 {
                     image: 'img/carousel-1.jpg',
@@ -50,7 +46,6 @@ $(document).ready(function() {
                 }
             ];
             
-            // Populate carousel with slides
             carouselSlides.forEach(function(slide) {
                 const slideHtml = `
                     <div class="owl-carousel-item position-relative overflow-hidden">
@@ -82,7 +77,6 @@ $(document).ready(function() {
                 headerCarousel.append(slideHtml);
             });
             
-            // Initialize Owl Carousel
             headerCarousel.owlCarousel({
                 items: 1,
                 loop: true,
@@ -98,136 +92,23 @@ $(document).ready(function() {
                     '<i class="bi bi-chevron-right"></i>'
                 ],
                 responsive: {
-                    0: {
-                        items: 1
-                    },
-                    768: {
-                        items: 1
-                    },
-                    992: {
-                        items: 1
-                    }
+                    0: { items: 1 },
+                    768: { items: 1 },
+                    992: { items: 1 }
                 }
             });
         }
     }
     
     // =================================
-    // CAROUSEL ARROW POSITIONING UTILITY
+    // SHOWCASE CAROUSEL INITIALIZATION
     // =================================
     
-    /**
-     * Position carousel navigation arrows at screen edges
-     */
-    function positionCarouselArrows(carousel, name) {
-        const navContainer = carousel.find('.owl-nav');
-        console.log(name + ' - Nav container found:', navContainer.length);
+    function initializeShowcaseCarousel(carouselId, slides) {
+        const carousel = $(carouselId);
         
-        if (navContainer.length === 0) {
-            console.log(name + ' - No nav container found, retrying...');
-            setTimeout(function() {
-                positionCarouselArrows(carousel, name);
-            }, 500);
-            return;
-        }
-        
-        navContainer.addClass('position-absolute w-100 d-flex justify-content-between align-items-center');
-        navContainer.css({
-            'top': '50%',
-            'transform': 'translateY(-50%)',
-            'pointer-events': 'none',
-            'z-index': '1000'
-        });
-        
-        const prevBtn = navContainer.find('.owl-prev');
-        const nextBtn = navContainer.find('.owl-next');
-        
-        console.log(name + ' - Prev button found:', prevBtn.length);
-        console.log(name + ' - Next button found:', nextBtn.length);
-        
-        if (prevBtn.length === 0 || nextBtn.length === 0) {
-            console.log(name + ' - Navigation buttons not found, retrying...');
-            setTimeout(function() {
-                positionCarouselArrows(carousel, name);
-            }, 500);
-            return;
-        }
-        
-        prevBtn.addClass('position-absolute start-0 ms-3 ms-md-4');
-        nextBtn.addClass('position-absolute end-0 me-3 me-md-4');
-        
-        prevBtn.css({
-            'pointer-events': 'auto',
-            'background': 'rgba(0,0,0,0.7)',
-            'border-radius': '50%',
-            'width': '50px',
-            'height': '50px',
-            'display': 'flex',
-            'align-items': 'center',
-            'justify-content': 'center',
-            'color': 'white',
-            'font-size': '1.5rem'
-        });
-        
-        nextBtn.css({
-            'pointer-events': 'auto',
-            'background': 'rgba(0,0,0,0.7)',
-            'border-radius': '50%',
-            'width': '50px',
-            'height': '50px',
-            'display': 'flex',
-            'align-items': 'center',
-            'justify-content': 'center',
-            'color': 'white',
-            'font-size': '1.5rem'
-        });
-        
-        console.log(name + ' - Navigation arrows positioned successfully');
-    }
-    
-    // =================================
-    // EARLY CHILDHOOD SHOWCASE INITIALIZATION
-    // =================================
-    
-    /**
-     * Initialize the early childhood showcase carousel
-     */
-    function initializeEarlyChildhoodShowcase() {
-        const earlyChildhoodShowcase = $('#earlyChildhoodShowcase');
-        console.log('Early Childhood Showcase element found:', earlyChildhoodShowcase.length);
-        
-        if (earlyChildhoodShowcase.length) {
-            // Early childhood showcase data
-            const showcaseSlides = [
-                {
-                    image: 'img/carousel-11.jpeg',
-                    title: 'Play-Based Learning',
-                    description: 'Children learn through play, exploration, and hands-on activities in a nurturing environment.'
-                },
-                {
-                    image: 'img/carousel-12.webp',
-                    title: 'Mixed Age Groups',
-                    description: 'Natural leadership development and peer learning in a supportive community setting.'
-                },
-                {
-                    image: 'img/carousel-1.jpg',
-                    title: 'Individualized Attention',
-                    description: 'Each child receives personalized care and instruction tailored to their unique needs.'
-                },
-                {
-                    image: 'img/carousel-2.jpg',
-                    title: 'Creative Expression',
-                    description: 'Art, music, and creative activities encourage self-expression and imagination.'
-                },
-                {
-                    image: 'img/carousel-3.jpg',
-                    title: 'Outdoor Play',
-                    description: 'Our playground provides opportunities for physical development and outdoor exploration.'
-                }
-            ];
-            
-            // Populate early childhood showcase carousel
-            showcaseSlides.forEach(function(slide) {
+        if (carousel.length) {
+            slides.forEach(function(slide) {
                 const slideHtml = `
                     <div class="showcase-item">
                         <div class="showcase-image-container position-relative overflow-hidden rounded">
@@ -243,12 +124,10 @@ $(document).ready(function() {
                         </div>
                     </div>
                 `;
-                earlyChildhoodShowcase.append(slideHtml);
+                carousel.append(slideHtml);
             });
             
-            // Initialize Owl Carousel
-            console.log('Initializing Early Childhood Owl Carousel...');
-            earlyChildhoodShowcase.owlCarousel({
+            carousel.owlCarousel({
                 items: 1,
                 loop: true,
                 margin: 30,
@@ -263,374 +142,22 @@ $(document).ready(function() {
                     '<i class="bi bi-chevron-right"></i>'
                 ],
                 responsive: {
-                    0: {
-                        items: 1,
-                        margin: 15
-                    },
-                    768: {
-                        items: 2,
-                        margin: 30
-                    },
-                    992: {
-                        items: 3,
-                        margin: 30
-                    }
+                    0: { items: 1, margin: 15 },
+                    768: { items: 2, margin: 30 },
+                    992: { items: 3, margin: 30 }
                 }
             });
-            console.log('Early Childhood Owl Carousel initialized');
-            
-            // Position navigation arrows at screen edges
-            earlyChildhoodShowcase.on('initialized.owl.carousel', function() {
-                console.log('Early Childhood Showcase initialized');
-                positionCarouselArrows(earlyChildhoodShowcase, 'Early Childhood');
-            });
-            
-            // Fallback positioning if event doesn't fire
-            setTimeout(function() {
-                if (earlyChildhoodShowcase.hasClass('owl-loaded')) {
-                    console.log('Fallback positioning for Early Childhood Showcase');
-                    positionCarouselArrows(earlyChildhoodShowcase, 'Early Childhood');
-                }
-            }, 1000);
         }
     }
-
-    // =================================
-    // MIDDLE SCHOOL SHOWCASE INITIALIZATION
-    // =================================
     
-    /**
-     * Initialize the middle school showcase carousel
-     */
-    function initializeMiddleSchoolShowcase() {
-        const middleSchoolShowcase = $('#middleSchoolShowcase');
-        console.log('Middle School Showcase element found:', middleSchoolShowcase.length);
-        
-        if (middleSchoolShowcase.length) {
-            // Middle school showcase data
-            const showcaseSlides = [
-                {
-                    image: 'img/carousel-4.webp',
-                    title: 'Project-Based Learning',
-                    description: 'Students engage in meaningful, long-term projects that connect to real-world issues.'
-                },
-                {
-                    image: 'img/carousel-5.webp',
-                    title: 'Community Histories',
-                    description: 'Multi-year storytelling projects that preserve and share local community stories.'
-                },
-                {
-                    image: 'img/carousel-6.webp',
-                    title: 'Technology Integration',
-                    description: 'Audio production, editing, and digital storytelling skills development.'
-                },
-                {
-                    image: 'img/carousel-7.webp',
-                    title: 'Critical Thinking',
-                    description: 'Students develop analytical skills through research and problem-solving.'
-                },
-                {
-                    image: 'img/carousel-8.webp',
-                    title: 'Communication Skills',
-                    description: 'Public speaking, interviewing, and presentation skills development.'
-                }
-            ];
-            
-            // Populate middle school showcase carousel
-            showcaseSlides.forEach(function(slide) {
-                const slideHtml = `
-                    <div class="showcase-item">
-                        <div class="showcase-image-container position-relative overflow-hidden rounded">
-                            <div class="carousel-image-container">
-                                <img class="carousel-image" src="${slide.image}" alt="${slide.title}">
-                            </div>
-                            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-end" style="background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));">
-                                <div class="p-4 w-100">
-                                    <h5 class="text-white mb-2">${slide.title}</h5>
-                                    <p class="text-white-50 mb-0">${slide.description}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                middleSchoolShowcase.append(slideHtml);
-            });
-            
-            // Initialize Owl Carousel
-            middleSchoolShowcase.owlCarousel({
-                items: 1,
-                loop: true,
-                margin: 30,
-                nav: true,
-                dots: true,
-                autoplay: true,
-                autoplayTimeout: 5000,
-                autoplayHoverPause: true,
-                smartSpeed: 1000,
-                navText: [
-                    '<i class="bi bi-chevron-left"></i>',
-                    '<i class="bi bi-chevron-right"></i>'
-                ],
-                responsive: {
-                    0: {
-                        items: 1,
-                        margin: 15
-                    },
-                    768: {
-                        items: 2,
-                        margin: 30
-                    },
-                    992: {
-                        items: 3,
-                        margin: 30
-                    }
-                }
-            });
-            
-            // Position navigation arrows at screen edges
-            middleSchoolShowcase.on('initialized.owl.carousel', function() {
-                console.log('Middle School Showcase initialized');
-                positionCarouselArrows(middleSchoolShowcase, 'Middle School');
-            });
-            
-            // Fallback positioning if event doesn't fire
-            setTimeout(function() {
-                if (middleSchoolShowcase.hasClass('owl-loaded')) {
-                    console.log('Fallback positioning for Middle School Showcase');
-                    positionCarouselArrows(middleSchoolShowcase, 'Middle School');
-                }
-            }, 1000);
-        }
-    }
-
-    // =================================
-    // HIGH SCHOOL SHOWCASE INITIALIZATION
-    // =================================
-    
-    /**
-     * Initialize the high school showcase carousel
-     */
-    function initializeHighSchoolShowcase() {
-        const highSchoolShowcase = $('#highSchoolShowcase');
-        console.log('High School Showcase element found:', highSchoolShowcase.length);
-        
-        if (highSchoolShowcase.length) {
-            // High school showcase data
-            const showcaseSlides = [
-                {
-                    image: 'img/carousel-9.webp',
-                    title: 'College Preparation',
-                    description: 'Rigorous academic curriculum designed to prepare students for higher education.'
-                },
-                {
-                    image: 'img/carousel-10.webp',
-                    title: 'Critical Thinking',
-                    description: 'Advanced analytical and problem-solving skills development.'
-                },
-                {
-                    image: 'img/carousel-11.jpeg',
-                    title: 'Independent Learning',
-                    description: 'Students develop self-motivation and autonomous learning skills.'
-                },
-                {
-                    image: 'img/carousel-12.webp',
-                    title: 'Leadership Development',
-                    description: 'Opportunities for students to take on leadership roles and responsibilities.'
-                },
-                {
-                    image: 'img/carousel-1.jpg',
-                    title: 'Future-Ready Skills',
-                    description: 'Preparation for success in college, career, and life beyond high school.'
-                }
-            ];
-            
-            // Populate high school showcase carousel
-            showcaseSlides.forEach(function(slide) {
-                const slideHtml = `
-                    <div class="showcase-item">
-                        <div class="showcase-image-container position-relative overflow-hidden rounded">
-                            <div class="carousel-image-container">
-                                <img class="carousel-image" src="${slide.image}" alt="${slide.title}">
-                            </div>
-                            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-end" style="background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));">
-                                <div class="p-4 w-100">
-                                    <h5 class="text-white mb-2">${slide.title}</h5>
-                                    <p class="text-white-50 mb-0">${slide.description}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                highSchoolShowcase.append(slideHtml);
-            });
-            
-            // Initialize Owl Carousel
-            highSchoolShowcase.owlCarousel({
-                items: 1,
-                loop: true,
-                margin: 30,
-                nav: true,
-                dots: true,
-                autoplay: true,
-                autoplayTimeout: 5000,
-                autoplayHoverPause: true,
-                smartSpeed: 1000,
-                navText: [
-                    '<i class="bi bi-chevron-left"></i>',
-                    '<i class="bi bi-chevron-right"></i>'
-                ],
-                responsive: {
-                    0: {
-                        items: 1,
-                        margin: 15
-                    },
-                    768: {
-                        items: 2,
-                        margin: 30
-                    },
-                    992: {
-                        items: 3,
-                        margin: 30
-                    }
-                }
-            });
-            
-            // Position navigation arrows at screen edges
-            highSchoolShowcase.on('initialized.owl.carousel', function() {
-                console.log('High School Showcase initialized');
-                positionCarouselArrows(highSchoolShowcase, 'High School');
-            });
-            
-            // Fallback positioning if event doesn't fire
-            setTimeout(function() {
-                if (highSchoolShowcase.hasClass('owl-loaded')) {
-                    console.log('Fallback positioning for High School Showcase');
-                    positionCarouselArrows(highSchoolShowcase, 'High School');
-                }
-            }, 1000);
-        }
-    }
-
-    // =================================
-    // ELEMENTARY SCHOOL SHOWCASE INITIALIZATION
-    // =================================
-    
-    /**
-     * Initialize the elementary school showcase carousel
-     */
-    function initializeElementaryShowcase() {
-        const elementaryShowcase = $('#elementaryShowcase');
-        console.log('Elementary Showcase element found:', elementaryShowcase.length);
-        
-        if (elementaryShowcase.length) {
-            // Elementary showcase data
-            const showcaseSlides = [
-                {
-                    image: 'img/carousel-6.webp',
-                    title: 'Hands-On Learning',
-                    description: 'Students engage in meaningful, project-based activities that make learning come alive.'
-                },
-                {
-                    image: 'img/carousel-7.webp',
-                    title: 'Creative Expression',
-                    description: 'Art, music, and creative projects are integral parts of our elementary curriculum.'
-                },
-                {
-                    image: 'img/carousel-8.webp',
-                    title: 'Outdoor Education',
-                    description: 'Our newly built playground provides opportunities for physical development and outdoor learning.'
-                },
-                {
-                    image: 'img/carousel-9.webp',
-                    title: 'Individualized Attention',
-                    description: 'Small class sizes allow for personalized instruction and support for each student.'
-                },
-                {
-                    image: 'img/carousel-10.webp',
-                    title: 'Community Building',
-                    description: 'Students learn to work together, share, and build meaningful relationships.'
-                }
-            ];
-            
-            // Populate elementary showcase carousel
-            showcaseSlides.forEach(function(slide) {
-                const slideHtml = `
-                    <div class="showcase-item">
-                        <div class="showcase-image-container position-relative overflow-hidden rounded">
-                            <div class="carousel-image-container">
-                                <img class="carousel-image" src="${slide.image}" alt="${slide.title}">
-                            </div>
-                            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-end" style="background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));">
-                                <div class="p-4 w-100">
-                                    <h5 class="text-white mb-2">${slide.title}</h5>
-                                    <p class="text-white-50 mb-0">${slide.description}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                elementaryShowcase.append(slideHtml);
-            });
-            
-            // Initialize Owl Carousel
-            elementaryShowcase.owlCarousel({
-                items: 1,
-                loop: true,
-                margin: 30,
-                nav: true,
-                dots: true,
-                autoplay: true,
-                autoplayTimeout: 5000,
-                autoplayHoverPause: true,
-                smartSpeed: 1000,
-                navText: [
-                    '<i class="bi bi-chevron-left"></i>',
-                    '<i class="bi bi-chevron-right"></i>'
-                ],
-                responsive: {
-                    0: {
-                        items: 1,
-                        margin: 15
-                    },
-                    768: {
-                        items: 2,
-                        margin: 30
-                    },
-                    992: {
-                        items: 3,
-                        margin: 30
-                    }
-                }
-            });
-            
-            // Position navigation arrows at screen edges
-            elementaryShowcase.on('initialized.owl.carousel', function() {
-                console.log('Elementary Showcase initialized');
-                positionCarouselArrows(elementaryShowcase, 'Elementary');
-            });
-            
-            // Fallback positioning if event doesn't fire
-            setTimeout(function() {
-                if (elementaryShowcase.hasClass('owl-loaded')) {
-                    console.log('Fallback positioning for Elementary Showcase');
-                    positionCarouselArrows(elementaryShowcase, 'Elementary');
-                }
-            }, 1000);
-        }
-    }
-
     // =================================
     // TESTIMONIAL CAROUSEL INITIALIZATION
     // =================================
     
-    /**
-     * Initialize the testimonial carousel
-     */
     function initializeTestimonialCarousel() {
         const testimonialCarousel = $('#testimonialCarousel');
         
         if (testimonialCarousel.length) {
-            // Sample testimonial data - this should be loaded from a data source
             const testimonials = [
                 {
                     quote: "Main Street School has been an incredible experience for our family. The individualized attention and whole-child approach have made all the difference in our child's development.",
@@ -654,7 +181,6 @@ $(document).ready(function() {
                 }
             ];
             
-            // Populate testimonial carousel
             testimonials.forEach(function(testimonial) {
                 const testimonialHtml = `
                     <div class="testimonial-item px-3">
@@ -678,7 +204,6 @@ $(document).ready(function() {
                 testimonialCarousel.append(testimonialHtml);
             });
             
-            // Initialize Owl Carousel
             testimonialCarousel.owlCarousel({
                 items: 1,
                 loop: true,
@@ -694,18 +219,9 @@ $(document).ready(function() {
                     '<i class="bi bi-chevron-right"></i>'
                 ],
                 responsive: {
-                    0: {
-                        items: 1,
-                        margin: 15
-                    },
-                    768: {
-                        items: 1,
-                        margin: 30
-                    },
-                    992: {
-                        items: 1,
-                        margin: 30
-                    }
+                    0: { items: 1, margin: 15 },
+                    768: { items: 1, margin: 30 },
+                    992: { items: 1, margin: 30 }
                 }
             });
         }
@@ -715,41 +231,69 @@ $(document).ready(function() {
     // INITIALIZATION
     // =================================
     
-    /**
-     * Initialize all carousels
-     */
     function initializeCarousels() {
-        console.log('Main Street School - Initializing carousels...');
+        console.log('Initializing carousels...');
         
-        // Wait a bit for DOM to be fully ready
-        setTimeout(function() {
-            console.log('Starting carousel initialization...');
-            initializeHeaderCarousel();
-            initializeTestimonialCarousel();
-            initializeElementaryShowcase();
-            initializeEarlyChildhoodShowcase();
-            initializeMiddleSchoolShowcase();
-            initializeHighSchoolShowcase();
-            console.log('Main Street School - Carousels initialized successfully');
-        }, 500);
+        // Header carousel
+        initializeHeaderCarousel();
+        
+        // Testimonial carousel
+        initializeTestimonialCarousel();
+        
+        // Elementary showcase
+        const elementarySlides = [
+            { image: 'img/carousel-6.webp', title: 'Hands-On Learning', description: 'Students engage in meaningful, project-based activities that make learning come alive.' },
+            { image: 'img/carousel-7.webp', title: 'Creative Expression', description: 'Art, music, and creative projects are integral parts of our elementary curriculum.' },
+            { image: 'img/carousel-8.webp', title: 'Outdoor Education', description: 'Our newly built playground provides opportunities for physical development and outdoor learning.' },
+            { image: 'img/carousel-9.webp', title: 'Individualized Attention', description: 'Small class sizes allow for personalized instruction and support for each student.' },
+            { image: 'img/carousel-10.webp', title: 'Community Building', description: 'Students learn to work together, share, and build meaningful relationships.' }
+        ];
+        initializeShowcaseCarousel('#elementaryShowcase', elementarySlides);
+        
+        // Early childhood showcase
+        const earlyChildhoodSlides = [
+            { image: 'img/carousel-11.jpeg', title: 'Play-Based Learning', description: 'Children learn through play, exploration, and hands-on activities in a nurturing environment.' },
+            { image: 'img/carousel-12.webp', title: 'Mixed Age Groups', description: 'Natural leadership development and peer learning in a supportive community setting.' },
+            { image: 'img/carousel-1.jpg', title: 'Individualized Attention', description: 'Each child receives personalized care and instruction tailored to their unique needs.' },
+            { image: 'img/carousel-2.jpg', title: 'Creative Expression', description: 'Art, music, and creative activities encourage self-expression and imagination.' },
+            { image: 'img/carousel-3.jpg', title: 'Outdoor Play', description: 'Our playground provides opportunities for physical development and outdoor exploration.' }
+        ];
+        initializeShowcaseCarousel('#earlyChildhoodShowcase', earlyChildhoodSlides);
+        
+        // Middle school showcase
+        const middleSchoolSlides = [
+            { image: 'img/carousel-4.webp', title: 'Project-Based Learning', description: 'Students engage in meaningful, long-term projects that connect to real-world issues.' },
+            { image: 'img/carousel-5.webp', title: 'Community Histories', description: 'Multi-year storytelling projects that preserve and share local community stories.' },
+            { image: 'img/carousel-6.webp', title: 'Technology Integration', description: 'Audio production, editing, and digital storytelling skills development.' },
+            { image: 'img/carousel-7.webp', title: 'Critical Thinking', description: 'Students develop analytical skills through research and problem-solving.' },
+            { image: 'img/carousel-8.webp', title: 'Communication Skills', description: 'Public speaking, interviewing, and presentation skills development.' }
+        ];
+        initializeShowcaseCarousel('#middleSchoolShowcase', middleSchoolSlides);
+        
+        // High school showcase
+        const highSchoolSlides = [
+            { image: 'img/carousel-9.webp', title: 'College Preparation', description: 'Rigorous academic curriculum designed to prepare students for higher education.' },
+            { image: 'img/carousel-10.webp', title: 'Critical Thinking', description: 'Advanced analytical and problem-solving skills development.' },
+            { image: 'img/carousel-11.jpeg', title: 'Independent Learning', description: 'Students develop self-motivation and autonomous learning skills.' },
+            { image: 'img/carousel-12.webp', title: 'Leadership Development', description: 'Opportunities for students to take on leadership roles and responsibilities.' },
+            { image: 'img/carousel-1.jpg', title: 'Future-Ready Skills', description: 'Preparation for success in college, career, and life beyond high school.' }
+        ];
+        initializeShowcaseCarousel('#highSchoolShowcase', highSchoolSlides);
+        
+        console.log('Carousels initialized successfully');
     }
     
     // Initialize carousels
     initializeCarousels();
     
-    // Re-initialize carousels on window resize to handle responsive behavior
+    // Handle window resize
     $(window).on('resize', function() {
         setTimeout(function() {
-            const headerCarousel = $('#headerCarousel');
-            const testimonialCarousel = $('#testimonialCarousel');
-            
-            if (headerCarousel.length && headerCarousel.hasClass('owl-loaded')) {
-                headerCarousel.trigger('refresh.owl.carousel');
-            }
-            
-            if (testimonialCarousel.length && testimonialCarousel.hasClass('owl-loaded')) {
-                testimonialCarousel.trigger('refresh.owl.carousel');
-            }
+            $('.owl-carousel').each(function() {
+                if ($(this).hasClass('owl-loaded')) {
+                    $(this).trigger('refresh.owl.carousel');
+                }
+            });
         }, 200);
     });
 });

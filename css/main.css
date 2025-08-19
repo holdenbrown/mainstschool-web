@@ -294,6 +294,19 @@ h6,
     color: var(--dark);
     font-weight: 500;
     outline: none;
+    font-size: 0.9rem;
+}
+
+/* Better screen utilization - spread navigation wider */
+@media (min-width: 576px) {
+    .navbar .navbar-nav {
+        width: 100%;
+        justify-content: space-evenly;
+    }
+    
+    .navbar .navbar-nav .nav-link {
+        padding: 30px 10px;
+    }
 }
 
 .navbar .navbar-nav .nav-link:hover,
@@ -320,14 +333,13 @@ h6,
     transform: rotate(-180deg);
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 575.98px) {
     .navbar .navbar-nav .nav-link  {
         margin-right: 0;
         padding: 10px 0;
     }
 
     .navbar .navbar-nav {
-        margin-top: 15px;
         border-top: 1px solid #EEEEEE;
     }
 }
@@ -433,6 +445,125 @@ h6,
     .carousel-buttons .dropdown {
         align-self: flex-start;
     }
+}
+
+/* Showcase Carousel Navigation Styling */
+.testimonial-carousel,
+#elementaryShowcase,
+#earlyChildhoodShowcase,
+#middleSchoolShowcase,
+#highSchoolShowcase {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+/* Simple navigation positioning - arrows below carousel */
+.testimonial-carousel .owl-nav,
+#elementaryShowcase .owl-nav,
+#earlyChildhoodShowcase .owl-nav,
+#middleSchoolShowcase .owl-nav,
+#highSchoolShowcase .owl-nav {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 1.5rem 0 0 0 !important;
+    padding: 0 !important;
+    z-index: auto !important;
+}
+
+.testimonial-carousel .owl-nav .owl-prev,
+.testimonial-carousel .owl-nav .owl-next,
+#elementaryShowcase .owl-nav .owl-prev,
+#elementaryShowcase .owl-nav .owl-next,
+#earlyChildhoodShowcase .owl-nav .owl-prev,
+#earlyChildhoodShowcase .owl-nav .owl-next,
+#middleSchoolShowcase .owl-nav .owl-prev,
+#middleSchoolShowcase .owl-nav .owl-next,
+#highSchoolShowcase .owl-nav .owl-prev,
+#highSchoolShowcase .owl-nav .owl-next {
+    position: relative !important;
+    margin: 0 0.75rem !important;
+    width: 50px !important;
+    height: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: white !important;
+    background: var(--primary, #00B98E) !important;
+    border: none !important;
+    border-radius: 50% !important;
+    font-size: 1.25rem !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+}
+
+.testimonial-carousel .owl-nav .owl-prev:hover,
+.testimonial-carousel .owl-nav .owl-next:hover,
+#elementaryShowcase .owl-nav .owl-prev:hover,
+#elementaryShowcase .owl-nav .owl-next:hover,
+#earlyChildhoodShowcase .owl-nav .owl-prev:hover,
+#earlyChildhoodShowcase .owl-nav .owl-next:hover,
+#middleSchoolShowcase .owl-nav .owl-prev:hover,
+#middleSchoolShowcase .owl-nav .owl-next:hover,
+#highSchoolShowcase .owl-nav .owl-prev:hover,
+#highSchoolShowcase .owl-nav .owl-next:hover {
+    background: var(--dark, #1C1C1C) !important;
+    transform: scale(1.1) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25) !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .testimonial-carousel .owl-nav,
+    #elementaryShowcase .owl-nav,
+    #earlyChildhoodShowcase .owl-nav,
+    #middleSchoolShowcase .owl-nav,
+    #highSchoolShowcase .owl-nav {
+        margin: 1rem 0 0 0 !important;
+    }
+    
+    .testimonial-carousel .owl-nav .owl-prev,
+    .testimonial-carousel .owl-nav .owl-next,
+    #elementaryShowcase .owl-nav .owl-prev,
+    #elementaryShowcase .owl-nav .owl-next,
+    #earlyChildhoodShowcase .owl-nav .owl-prev,
+    #earlyChildhoodShowcase .owl-nav .owl-next,
+    #middleSchoolShowcase .owl-nav .owl-prev,
+    #middleSchoolShowcase .owl-nav .owl-next,
+    #highSchoolShowcase .owl-nav .owl-prev,
+    #highSchoolShowcase .owl-nav .owl-next {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 1.1rem !important;
+        margin: 0 0.5rem !important;
+    }
+}
+
+/* Carousel dots positioning */
+.testimonial-carousel .owl-dots,
+#elementaryShowcase .owl-dots,
+#earlyChildhoodShowcase .owl-dots,
+#middleSchoolShowcase .owl-dots,
+#highSchoolShowcase .owl-dots {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-top: 1rem !important;
+    z-index: auto !important;
 }
 
 /* Tablet-specific carousel height */

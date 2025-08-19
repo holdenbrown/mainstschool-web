@@ -183,7 +183,7 @@ $(document).ready(function() {
             
             testimonials.forEach(function(testimonial) {
                 const testimonialHtml = `
-                    <div class="testimonial-item px-3">
+                    <div class="testimonial-item px-3 py-4">
                         <div class="card bg-light border-0 shadow rounded p-4 h-100 position-relative">
                             <div class="testimonial-content">
                                 <div class="testimonial-quote-icon position-absolute" style="top: 10px; left: 15px;">

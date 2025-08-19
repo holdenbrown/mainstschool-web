@@ -133,8 +133,8 @@ class HeaderFooterManager {
         
         let headerHTML = `
         <!-- Navbar Start -->
-        <nav class="navbar navbar-expand-sm bg-white navbar-light sticky-top px-4 px-sm-5 py-sm-0">
-            <div class="container-fluid d-flex flex-column d-sm-block">
+        <nav class="navbar navbar-expand-sm bg-white navbar-light px-4 px-sm-5 py-sm-0">
+            <div class="container-fluid d-flex flex-column d-sm-block align-items-start align-items-sm-center">
                 
                 <!-- Top row: Logo and Mobile Toggle -->
                 <div class="d-flex justify-content-between align-items-center w-100">
@@ -152,11 +152,11 @@ class HeaderFooterManager {
                 
                 <!-- Nav Row - Desktop: centered below logo, Mobile: full width dropdown -->
                 <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav mx-auto d-flex flex-row flex-wrap justify-content-around justify-content-sm-center align-items-center w-100">
-                        <a href="index.html" class="nav-item nav-link px-2 px-sm-3 ${isActive('home')}">Home</a>
-                        <a href="about.html" class="nav-item nav-link px-2 px-sm-3 ${isActive('about')}">About</a>
+                    <div class="navbar-nav mx-0 mx-sm-auto d-flex flex-sm-row flex-wrap justify-content-start justify-content-sm-center align-items-start align-items-sm-center w-100">
+                        <a href="index.html" class="nav-item nav-link px-2 px-sm-3 py-1 py-sm-3 ${isActive('home')}">Home</a>
+                        <a href="about.html" class="nav-item nav-link px-2 px-sm-3 py-1 py-sm-3 ${isActive('about')}">About</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle px-2 px-sm-3 ${isProgramActive}" data-bs-toggle="dropdown">Programs</a>
+                            <a href="#" class="nav-link dropdown-toggle px-2 px-sm-3 py-1 py-sm-3 ${isProgramActive}" data-bs-toggle="dropdown">Programs</a>
                             <div class="dropdown-menu rounded-0 rounded-bottom border-0 m-0">
                                 <a href="early-childhood.html" class="dropdown-item ${isActive('early-childhood')}">Early Childhood</a>
                                 <a href="elementary.html" class="dropdown-item ${isActive('elementary')}">Elementary</a>
@@ -165,7 +165,7 @@ class HeaderFooterManager {
                             </div>
                         </div>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle px-2 px-sm-3" data-bs-toggle="dropdown">Pages</a>
+                            <a href="#" class="nav-link dropdown-toggle px-2 px-sm-3 py-1 py-sm-3" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 rounded-bottom border-0 m-0">
                                 <a href="facility.html" class="dropdown-item">School Facilities</a>
                                 <a href="team.html" class="dropdown-item ${isActive('team')}">Meet Our Team</a>
@@ -176,9 +176,9 @@ class HeaderFooterManager {
                                 <a href="404.html" class="dropdown-item">404 Error</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link px-2 px-sm-3 ${isActive('contact')}">Contact</a>
-                        <a href="blog.html" class="nav-item nav-link px-2 px-sm-3 ${isActive('blog')}">Blog</a>
-                        <div class="navbar-nav d-flex align-items-center">
+                        <a href="contact.html" class="nav-item nav-link px-2 px-sm-3 py-1 py-sm-3 ${isActive('contact')}">Contact</a>
+                        <a href="blog.html" class="nav-item nav-link px-2 px-sm-3 py-1 py-sm-3 ${isActive('blog')}">Blog</a>
+                        <div class="navbar-nav d-flex align-items-start align-items-sm-center">
                             <a href="https://app.tuiopay.com/donation/3a8c62fc819d1f645288f6ce955bfce0" class="btn btn-primary rounded-3 px-4 py-2 d-flex align-items-center">
                                 <span class="me-2">Donate</span>
                                 <i class="fa fa-arrow-right"></i>

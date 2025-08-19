@@ -320,35 +320,8 @@ h6,
     transform: rotate(-180deg);
 }
 
-@media (max-width: 991.98px) {
-    .navbar .navbar-nav .nav-link  {
-        margin-right: 0;
-        padding: 10px 0;
-    }
 
-    .navbar .navbar-nav {
-        border-top: 1px solid #EEEEEE;
-    }
-}
 
-@media (min-width: 992px) {
-    .navbar .nav-item .dropdown-menu {
-        display: block;
-        top: calc(100% - 15px);
-        margin-top: 0;
-        opacity: 0;
-        visibility: hidden;
-        transition: .5s;
-        
-    }
-
-    .navbar .nav-item:hover .dropdown-menu {
-        top: 100%;
-        visibility: visible;
-        transition: .5s;
-        opacity: 1;
-    }
-}
 
 /*** Header ***/
 .header-carousel::before,

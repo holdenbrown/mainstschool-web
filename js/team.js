@@ -41,6 +41,8 @@ class TeamManager {
         }
     }
 
+
+
     // Fallback data in case JSON loading fails
     loadFallbackData() {
         this.staffData = [
@@ -87,18 +89,11 @@ class TeamManager {
         const teachers = this.staffData.filter(staff => staff.type === 'teacher');
         const boardMembers = this.staffData.filter(staff => staff.type === 'board');
 
-        // Sort by order field if available, otherwise by name
+        // Sort by ID field (lower numbers first)
         const sortStaff = (staffList) => {
             return staffList.sort((a, b) => {
-                // If both have order fields, sort by order
-                if (a.order !== undefined && b.order !== undefined) {
-                    return a.order - b.order;
-                }
-                // If only one has order, prioritize the one with order
-                if (a.order !== undefined) return -1;
-                if (b.order !== undefined) return 1;
-                // Otherwise sort by name
-                return a.name.localeCompare(b.name);
+                // Sort by ID number (ascending order)
+                return a.id - b.id;
             });
         };
 
@@ -117,6 +112,8 @@ class TeamManager {
         this.renderSection(container, sortedBoardMembers, 'Board of Directors', 'Our board members provide strategic leadership and governance, ensuring Main Street School continues to fulfill its mission of providing exceptional, individualized education for all students.');
     }
 
+
+
     // Render a section with title and description
     renderSection(container, staffList, title, description) {
         // Section header
@@ -130,7 +127,7 @@ class TeamManager {
         `;
         container.appendChild(headerDiv);
 
-        // Staff cards
+        // Staff cards with tighter spacing
         staffList.forEach(staff => {
             const staffCard = this.createStaffCard(staff);
             container.appendChild(staffCard);
@@ -140,11 +137,21 @@ class TeamManager {
     // Create individual staff card
     createStaffCard(staff) {
         const card = document.createElement('div');
-        card.className = 'col-lg-6 col-md-12 mb-4';
+        // Mobile: side-by-side (col-6), Tablet+: half width (col-lg-6), responsive margins
+        card.className = 'col-6 col-lg-6 mb-2 mb-sm-4 staff-card-wrapper';
+        card.setAttribute('data-staff-id', staff.id);
+        
+        const uniqueId = `staff-${staff.id}`;
+        const descriptionId = `desc-${staff.id}`;
+        const hasLongDescription = staff.description && staff.description.length > this.maxDescriptionLength;
+        const hasAdditionalImages = staff.additional_photos && Array.isArray(staff.additional_photos) && staff.additional_photos.length > 0;
+        const hasVideo = staff.video_url;
+        const hasAdditionalContent = hasAdditionalImages || hasVideo;
+        
         card.innerHTML = `
-            <div class="staff-card bg-light rounded p-4 h-100 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="row g-4">
-                    <div class="col-md-4 col-sm-5">
+            <div class="staff-card bg-light rounded p-2 p-sm-4 h-100 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="row g-2 g-sm-4">
+                    <div class="col-12 col-md-4">
                         <div class="staff-photo-container text-center">
                             <img class="img-fluid rounded-circle staff-photo" 
                                  src="${this.getPhotoUrl(staff.photo_url)}" 
@@ -152,29 +159,78 @@ class TeamManager {
                                  onerror="this.src='${this.getPlaceholderImage()}'">
                         </div>
                     </div>
-                    <div class="col-md-8 col-sm-7">
+                    <div class="col-12 col-md-8">
                         <div class="staff-info">
-                            <h4 class="text-primary mb-2">${staff.name}</h4>
-                            <h6 class="text-success mb-3">${staff.position}</h6>
-                                                         <div class="staff-description" data-full-text="${this.escapeHtml(staff.description)}">
-                                 ${this.truncateDescription(staff.description)}
-                             </div>
-                             
-                             ${staff.video_url ? `
-                                 <div class="staff-video mt-3">
-                                     <video controls class="img-fluid rounded" style="max-width: 100%; height: auto;">
-                                         <source src="${staff.video_url}" type="video/mp4">
-                                         <source src="${staff.video_url}" type="video/webm">
-                                         <source src="${staff.video_url}" type="video/ogg">
-                                         Your browser does not support the video tag.
-                                     </video>
-                                 </div>
-                             ` : ''}
-                             
-                             ${this.shouldShowReadMore(staff.description) ? 
-                                 '<button class="btn btn-sm btn-outline-primary mt-2 read-more-btn">Read More</button>' : 
-                                 ''
-                             }
+                            <h4 class="text-primary mb-2 fs-6 fs-sm-5 fs-md-4">${this.escapeHtml(staff.name)}</h4>
+                            <h6 class="text-success mb-2 fs-7 fs-sm-6">${this.escapeHtml(staff.position)}</h6>
+                            
+                            <!-- Description that expands in place -->
+                            <div class="staff-description" id="${descriptionId}" 
+                                 data-full-text="${this.escapeHtml(staff.description || '')}"
+                                 data-truncated="true">
+                                <span class="description-text">
+                                    ${hasLongDescription ? 
+                                        this.truncateDescription(staff.description) : 
+                                        this.escapeHtml(staff.description || '')
+                                    }
+                                </span>
+                            </div>
+                            
+                            ${hasLongDescription ? `
+                                <!-- Read More Button for Description -->
+                                <button class="btn btn-sm btn-outline-primary mt-2 read-more-desc-btn" 
+                                        type="button" 
+                                        data-target="${descriptionId}">
+                                    <span class="when-collapsed">Read More</span>
+                                    <span class="when-expanded d-none">Read Less</span>
+                                </button>
+                            ` : ''}
+                            
+                            ${hasAdditionalContent ? `
+                                <!-- Additional Content Toggle (only shows after description is expanded) -->
+                                <button class="btn btn-sm btn-outline-secondary mt-2 d-none additional-content-btn" 
+                                        type="button" 
+                                        data-bs-toggle="collapse" 
+                                        data-bs-target="#${uniqueId}" 
+                                        aria-expanded="false" 
+                                        aria-controls="${uniqueId}">
+                                    <span class="when-collapsed">Show Photos & Media</span>
+                                    <span class="when-expanded d-none">Hide Photos & Media</span>
+                                </button>
+                                
+                                <!-- Collapsible Additional Content -->
+                                <div class="collapse mt-3" id="${uniqueId}">
+                                    <div class="additional-content p-3 bg-white rounded border">
+                                        ${hasVideo ? `
+                                            <div class="staff-video mb-3">
+                                                <h6 class="text-primary mb-2">Video</h6>
+                                                <video controls class="img-fluid rounded w-100">
+                                                    <source src="${staff.video_url}" type="video/mp4">
+                                                    <source src="${staff.video_url}" type="video/webm">
+                                                    <source src="${staff.video_url}" type="video/ogg">
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            </div>
+                                        ` : ''}
+                                        
+                                        ${hasAdditionalImages ? `
+                                            <div class="additional-photos">
+                                                <h6 class="text-primary mb-3">More Photos</h6>
+                                                <div class="row g-2">
+                                                    ${staff.additional_photos.map(photo => `
+                                                        <div class="col-6 col-sm-4">
+                                                            <img src="${this.getPhotoUrl(photo)}" 
+                                                                 class="img-fluid rounded" 
+                                                                 alt="${this.escapeHtml(staff.name)}"
+                                                                 onerror="this.src='${this.getPlaceholderImage()}'">
+                                                        </div>
+                                                    `).join('')}
+                                                </div>
+                                            </div>
+                                        ` : ''}
+                                    </div>
+                                </div>
+                            ` : ''}
                         </div>
                     </div>
                 </div>
@@ -247,34 +303,118 @@ class TeamManager {
 
     // Initialize hover effects and read more functionality
     initializeHoverEffects() {
-        // Read more button functionality
-        $(document).on('click', '.read-more-btn', function() {
-            const card = $(this).closest('.staff-card');
-            const description = card.find('.staff-description');
-            const button = $(this);
-            
-            if (description.hasClass('expanded')) {
-                description.removeClass('expanded');
-                button.text('Read More');
-            } else {
-                description.addClass('expanded');
-                button.text('Read Less');
+        // Handle description Read More buttons
+        document.addEventListener('click', (event) => {
+            if (event.target.closest('.read-more-desc-btn')) {
+                const button = event.target.closest('.read-more-desc-btn');
+                const targetId = button.getAttribute('data-target');
+                const descriptionDiv = document.getElementById(targetId);
+                const cardWrapper = button.closest('.staff-card-wrapper');
+                const staffGrid = cardWrapper.parentNode;
+                
+                if (descriptionDiv) {
+                    const isTruncated = descriptionDiv.getAttribute('data-truncated') === 'true';
+                    const fullText = descriptionDiv.getAttribute('data-full-text');
+                    const descriptionText = descriptionDiv.querySelector('.description-text');
+                    const whenCollapsed = button.querySelector('.when-collapsed');
+                    const whenExpanded = button.querySelector('.when-expanded');
+                    const additionalContentBtn = button.parentNode.querySelector('.additional-content-btn');
+                    
+                    if (isTruncated) {
+                        // Expand description
+                        descriptionText.innerHTML = this.escapeHtml(fullText);
+                        descriptionDiv.setAttribute('data-truncated', 'false');
+                        
+                        // Update button text
+                        if (whenCollapsed) whenCollapsed.classList.add('d-none');
+                        if (whenExpanded) whenExpanded.classList.remove('d-none');
+                        
+                        // Show additional content button if it exists
+                        if (additionalContentBtn) additionalContentBtn.classList.remove('d-none');
+                        
+                        // Expand card to full width on all screen sizes
+                        cardWrapper.classList.remove('col-6', 'col-lg-6');
+                        cardWrapper.classList.add('col-12');
+                        
+                        // Collapse other expanded cards
+                        const otherCards = staffGrid.querySelectorAll('.staff-card-wrapper.col-12');
+                        otherCards.forEach(otherCard => {
+                            if (otherCard !== cardWrapper) {
+                                this.collapseCard(otherCard);
+                            }
+                        });
+                    } else {
+                        // Collapse description
+                        descriptionText.innerHTML = this.truncateDescription(fullText);
+                        descriptionDiv.setAttribute('data-truncated', 'true');
+                        
+                        // Update button text
+                        if (whenCollapsed) whenCollapsed.classList.remove('d-none');
+                        if (whenExpanded) whenExpanded.classList.add('d-none');
+                        
+                        // Hide additional content button
+                        if (additionalContentBtn) additionalContentBtn.classList.add('d-none');
+                        
+                        // Return to normal width
+                        cardWrapper.classList.remove('col-12');
+                        cardWrapper.classList.add('col-6', 'col-lg-6');
+                        
+                        // Close any additional content that might be open
+                        const additionalContent = button.parentNode.querySelector('.collapse');
+                        if (additionalContent && additionalContent.classList.contains('show')) {
+                            const bsCollapse = new bootstrap.Collapse(additionalContent);
+                            bsCollapse.hide();
+                        }
+                    }
+                }
             }
         });
 
-        // Tooltip functionality for truncated descriptions
-        $(document).on('mouseenter', '.staff-description:not(.expanded)', function() {
-            const fullText = $(this).data('full-text');
-            const truncatedText = $(this).text();
-            
-            if (fullText && fullText.length > truncatedText.length) {
-                $(this).attr('title', fullText);
+        // Handle window resize to ensure proper layout
+        window.addEventListener('resize', () => {
+            // No longer needed - expansion works on all screen sizes
+        });
+
+        // Bootstrap collapse event handlers for additional content
+        document.addEventListener('show.bs.collapse', function(event) {
+            if (event.target.id.startsWith('staff-')) {
+                const button = document.querySelector(`[data-bs-target="#${event.target.id}"]`);
+                if (button) {
+                    const whenCollapsed = button.querySelector('.when-collapsed');
+                    const whenExpanded = button.querySelector('.when-expanded');
+                    if (whenCollapsed) whenCollapsed.classList.add('d-none');
+                    if (whenExpanded) whenExpanded.classList.remove('d-none');
+                }
             }
         });
 
-        $(document).on('mouseleave', '.staff-description', function() {
-            $(this).removeAttr('title');
+        document.addEventListener('hide.bs.collapse', function(event) {
+            if (event.target.id.startsWith('staff-')) {
+                const button = document.querySelector(`[data-bs-target="#${event.target.id}"]`);
+                if (button) {
+                    const whenCollapsed = button.querySelector('.when-collapsed');
+                    const whenExpanded = button.querySelector('.when-expanded');
+                    if (whenCollapsed) whenCollapsed.classList.remove('d-none');
+                    if (whenExpanded) whenExpanded.classList.add('d-none');
+                }
+            }
         });
+
+
+    }
+
+    // Helper method to collapse a card
+    collapseCard(cardWrapper) {
+        const readMoreBtn = cardWrapper.querySelector('.read-more-desc-btn');
+        if (readMoreBtn) {
+            const targetId = readMoreBtn.getAttribute('data-target');
+            const descriptionDiv = document.getElementById(targetId);
+            
+            if (descriptionDiv && descriptionDiv.getAttribute('data-truncated') === 'false') {
+                // Trigger the collapse
+                readMoreBtn.click();
+            }
+        }
     }
 }
 

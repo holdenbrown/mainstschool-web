@@ -160,24 +160,44 @@ $(document).ready(function() {
         if (testimonialCarousel.length) {
             const testimonials = [
                 {
-                    quote: "Main Street School has been an incredible experience for our family. The individualized attention and whole-child approach have made all the difference in our child's development.",
-                    author: "Sarah Johnson",
+                    quote: "We couldn't be happier with the academic preparation that Main Street gave our daughter. She has since gone on to graduate high school and college and is now a teacher herself because of the inspiration of Tanya. It also appropriately prepared our youngest daughter for her high school experience. We also appreciated the lessons in citizenship that our children received. They learned the why behind the what in all instances and that made them better critical thinkers. Most importantly, they learned to love and respect people for who they are. This fit so well with our family philosophy. It was a Godsend to have our personal philosophy and our children's educational experience so aligned.",
+                    author: "M.F.",
                     role: "Parent"
                 },
                 {
-                    quote: "The teachers here truly understand how to nurture each child's unique potential. Our daughter has grown so much academically and socially since starting here.",
-                    author: "Michael Chen",
+                    quote: "We commuted from Ames to Main Street School when our son was in 7th and 8th grades. We sought individualized academics, experiential learning and a small class size. The experience was nothing short of transformative for him. He matured, he gained both study and social skills and he had the experience of teachers who would not give up on him and would not let him get away with not trying. Public school doesn't always work for all children. When a student needs an alternative, Main Street School is a shining example of what that can be. We were so relieved to find it, and so delighted with the results.",
+                    author: "A.M.",
                     role: "Parent"
                 },
                 {
-                    quote: "As an alumni, I can say that Main Street School gave me the foundation I needed for success. The project-based learning approach prepared me well for higher education.",
-                    author: "Emily Rodriguez",
+                    quote: "We have been part of Main Street for 10 years now and both girls have benefited greatly from the experience. The classes are small, sometimes one-on-one, so individual needs are recognized and met. The adult-to-student ratio is high so misbehavior is quickly seen and discussed calmly and sometimes introspectively. All ages mingle, older students read to younger ones, and students work and play together at recess. The students learn to interact with all ages from 3 to adults. I would highly recommend Main Street School to anyone who wants their child(ren) to have a personal academic and life-skills education in a rich, caring, comfortable environment.",
+                    author: "S.L.S",
+                    role: "Parent"
+                },
+                {
+                    quote: "Main Street literally saved our child. He was completely disengaged in public school, truly believed that he couldn't do the work, and got in fights with his peers instead of working. The willingness of the Main Street teachers to get to know him as a person, a child, and a learner made such a difference in his life. He was challenged and succeeded for the first time in school. He was prepared for high school in a way that would have been impossible if he'd stayed in public school. And he learned how to deal with conflict and personality differences without violence.",
+                    author: "B.C.",
+                    role: "Parent"
+                },
+                {
+                    quote: "I started attending Main Street School at the age of 10 and was well behind my expected academic level, not even knowing how to read or do basic math. To say the least, I didn't have much hope for an academic future. However, the teachers and culture made me feel accepted and motivated to learn. Within the first week, I learned how to read at a basic level, improving confidence in myself and the instructors' ability to teach. Now, at 23, no one's the wiser about my rough start in academics. I completed my B.S. at ISU in Software Engineering and am pursuing an M.S. in Computer Engineering with a focus on Secure and Reliable Computing.",
+                    author: "H.B.",
                     role: "Alumni"
                 },
                 {
-                    quote: "The small class sizes and personalized curriculum allow each child to thrive. We couldn't be happier with our choice of Main Street School.",
-                    author: "David Thompson",
-                    role: "Parent"
+                    quote: "Main Street School is more than a school, it is a family. My experience at Main Street School helped me grow as a human and academically. I could not have asked for a safer or more accepting environment that also expanded my learning horizons.",
+                    author: "C.B.",
+                    role: "Alumni"
+                },
+                {
+                    quote: "It is incredibly special to feel inspired, seen, supported, creative and free in a learning environment. Main Street School helped me feel all of those things every day. I am immensely grateful for that education and highly recommend this school.",
+                    author: "E.W.",
+                    role: "Alumni"
+                },
+                {
+                    quote: "Looking back, I'm grateful for the unique experiences of being part of a small learning environment. It allowed for more hands-on learning with lessons tailored to the students interests and many field trips, things not possible in a large public school.",
+                    author: "I.A.",
+                    role: "Alumni"
                 }
             ];
             
@@ -185,12 +205,19 @@ $(document).ready(function() {
                 const testimonialHtml = `
                     <div class="testimonial-item px-3 py-4">
                         <div class="card bg-light border-0 shadow rounded p-4 h-100 position-relative">
+                            <!-- Top-left quote -->
+                            <div class="position-absolute" style="top: 15px; left: 20px;">
+                                <i class="fa fa-quote-left text-primary" style="font-size: 2rem; opacity: 0.6;"></i>
+                            </div>
+                            
+                            <!-- Bottom-right quote -->
+                            <div class="position-absolute" style="bottom: 15px; right: 20px;">
+                                <i class="fa fa-quote-right text-primary" style="font-size: 2rem; opacity: 0.6;"></i>
+                            </div>
+                            
                             <div class="testimonial-content">
-                                <div class="testimonial-quote-icon position-absolute" style="top: 10px; left: 15px;">
-                                    <i class="fa fa-quote-left text-primary" style="font-size: 1.5rem;"></i>
-                                </div>
-                                <div class="testimonial-text text-center mb-4" style="padding-top: 20px;">
-                                    <p class="mb-0">${testimonial.quote}</p>
+                                <div class="testimonial-text mb-4" style="padding: 30px 20px 20px 20px;">
+                                    <p class="mb-0 text-center">${testimonial.quote}</p>
                                 </div>
                                 <hr class="mx-auto mb-3" style="width: 60px; height: 2px; background-color: #dee2e6; border: none;">
                             </div>

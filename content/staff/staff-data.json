@@ -1,36 +1,112 @@
 {
   "staff": [
     {
-      "order": 1,
-      "name": "asdf",
-      "position": "asdf",
-      "description": "asdf",
+      "id": 1,
+      "name": "Tanya Apana",
+      "position": "Founder, Director, Science Teacher",
+      "description": "I received my BS in Biology, science teaching certification and Masters in Education for Transformative School Leadership from Iowa State University. I started my teaching career as a high school science teacher but finally found my niche creating an independent learning community. I have been leading Main Street School since its inception in 2006. Apart from a passion for teaching, I enjoy spending time with my 3 kids and 2 dogs, travelling, digging in the dirt and playing in nature.",
+      "photo_url": "img/tanya_apana.jpg",
+      "email": "tanya@mainstschool.org",
+      "type": "teacher"
+    },
+    {
+      "id": 2,
+      "name": "Sheri Florez",
+      "position": "Secondary Teacher",
+      "description": "I am Ms. Sheri, and I have taught at Main Street School for 9 years which happens to be longer than anywhere else in my 45-year teaching career. I have taught in a variety of schools, in a range of levels, in many different classrooms. I started my teaching career in the 1970s in Peace Corps/Zaire (Democratic Rep. of the Congo now) and went on to teach in Seattle, WA; Houston, TX: Knoxville and Indianola, IA as well as in private international schools in Turkey and Kuwait. Suffice it to say, I like to change climates from time to time. I love new experiences and learning about new places, cultures and people. That's one of the things that brought me to Main Street. I have loved the freedom to teach a curriculum that speaks to the interests of our kids while holding them to high standards. Teaching is said to be a career, but for me it has been my passion. When I am not teaching, you will find me enjoying my other passion: reading history and political science books on my porch with a glass of iced tea or coffee.",
+      "photo_url": "img/sheri_florez.webp",
+      "email": "sheri@mainstschool.org",
+      "type": "teacher"
+    },
+    {
+      "id": 3,
+      "name": "Lori Wiedmaier",
+      "position": "Lead Primary Teacher",
+      "description": "I received my early childhood education at Northwest Missouri State University and have 24 years of experience at the preschool level. The last 6 have been at Main Street School. Each year I have spent in the classroom my heart has grown. I learn so much each day working with children. It truly is like I never have to go to work. I am so very lucky to get to come to Main Street School every day.When not teaching, I enjoy spending time with my family or baking. I am an avid runner and you can often find me out walking with my husband and dog, Benson.",
+      "photo_url": "img/lori_wiedmaier.webp",
+      "email": "lori@mainstschool.org",
+      "type": "teacher"
+    },
+    {
+      "id": 4,
+      "name": "Isaac Anderson",
+      "position": "Primary Assistant",
+      "description": "I graduated from Iowa State University with degrees in Global Resource Systems and World Language and Cultures Spanish and a minor in Sustainable Development during Covid. With my plans for working internationally put on hold, I started at Main Street and found a true passion for working with young humans. My other passions include travelling and being in nature.",
+      "photo_url": "img/isaac_anderson.webp",
+      "email": "isaac@mainstschool.org",
+      "type": "teacher"
+    },
+    {
+      "id": 5,
+      "name": "Kelly Donnelly",
+      "position": "Early Childhood Teacher",
+      "description": "My name is Mrs. Kelly Donnelly (Ms. Kelly), and I have the honor of being your child's teacher this 2025-26 school year. I am originally a Pittsburgh, Pennsylvania, native, and have a great passion for teaching and learning. I currently hold a Bachelor of Science Degree in Early Childhood Education from Indiana University of Pennsylvania (English and History Minor) and recently attained my Master's Degree in Effective Teaching (Endorsement in Gifted and Talented K-12) from Drake University. I have had the opportunity to teach in a variety of amazing places over the past 30 years as an educator in Pennsylvania, Texas, Florida, Iowa & Dublin, Ireland. Over the last 18 years, I have called Iowa home and have been very active in early childhood advocacy and education. I also enjoy spending time with my beautiful family, traveling, meeting new people, and learning about other cultures. My husband, Jason Donnelly, is a commercial photographer, and we have been blessed with four children and our fur baby Teddy.",
+      "photo_url": "img/kelly_donnelly_headshot.jpeg",
+      "email": "kelly@mainstschool.org",
       "type": "teacher",
-      "photo_url": "/media/ollie.jpg"
+      "additional_photos": [
+        "img/Kelly_donnelly_teddy.jpeg",
+        "img/Kelly_donnelly_romeo.jpeg",
+        "img/kelly_donnelly_wedding.jpeg.JPG"
+      ]
     },
     {
-      "order": 1,
-      "name": "asdfdfdfdf",
-      "position": "asdfdfdfd",
-      "description": "asdfsdf",
-      "photo_url": "/media/screenshot-2024-10-29-143709.png",
+      "id": 6,
+      "name": "Sarah Jorgenson",
+      "position": "Music Education",
+      "description": "I have been teaching both privately and in the collegiate setting for nearly 20 years. I began my musical journey by graduating with a classical voice performance degree and extensive master's pedagogy classes from the University of NE- Lincoln. After an exciting career as a professional in musical theater, I met my husband and planted roots in Des Moines where I've taken on my favorite role of being a mama to four amazing kiddos. I am also the founding director of Rising Stars Show Choir 4 Kids, a non-audition fully inclusive choir for children of all ages and abilities and a teaching artist with City Voices Des Moines.",
+      "photo_url": "img/sarah_jorgenson.webp",
+      "email": "sarah@mainstschool.org",
       "type": "teacher"
     },
     {
-      "order": 999,
-      "name": "asda",
-      "position": "sdasd",
-      "description": "asdasd",
-      "photo_url": "/media/530_lab_1_2.png",
+      "id": 7,
+      "name": "Susan Chronister",
+      "position": "Upper Elementary Teacher",
+      "description": "",
+      "photo_url": "",
+      "email": "schronister@mainstschool.org",
       "type": "teacher"
     },
     {
-      "order": 999,
-      "name": "ll",
-      "position": "ll",
-      "description": "ll",
-      "photo_url": "/media/petscreening.png",
-      "type": "teacher"
+      "id": 8,
+      "name": "Amy Desenberg-Wines",
+      "position": "Board Chair",
+      "description": "Amy is a self-employed consultant with expertise in disability inclusion. Amy's daughters attended Main Street School and the school made a significant difference in their lives. Amy served on the School's Board of Directors when it first opened, and early in 2024 joined the Board again as Chair. Amy is passionate about the school as it provides an option for students who need a smaller individualized learning environment. Amy has her MS in Vocational Rehabilitation Counseling, Job Development & Placement and has extensive experience serving on nonprofit boards.",
+      "photo_url": "img/amy_desenberg_wines.webp",
+      "type": "board"
+    },
+    {
+      "id": 9,
+      "name": "Travis Stanley",
+      "position": "Vice Chair",
+      "description": "Travis Stanley is a resident of Norwalk where he has worked as Pastor for Norwalk Christian Church since 2014. He is a father of three kids, two of which attended Main Street School. He is the past-President of the Norwalk Area Chamber of Commerce and current President of the Norwalk Area Ministerial Association. Travis has served on the Main Street School board since 2019.",
+      "photo_url": "img/travis_stanely.webp",
+      "type": "board"
+    },
+    {
+      "id": 10,
+      "name": "Katie Routh",
+      "position": "Secretary",
+      "description": "Katie graduated from Simpson College with a BA in Education and from Drake University with a Masters in Effective Teaching. She was an elementary teacher in the Norwalk Community School system for 33 years. During that time she was also a teacher trainer and helped to develop a multiage, developmentally appropriate, school within the public school. The MAC School was visited by educators from around the world and was part of a LEGO Logo project with Massachusetts Institute of Technology (MIT). Since retirement, she has been an adjunct professor at Simpson College and has worked with Main Street School as a teacher-mentor, substitute teacher, Co-Director and is currently serving as Main Street School Board Chair.",
+      "photo_url": "img/katie_routh.webp",
+      "type": "board"
+    },
+    {
+      "id": 11,
+      "name": "Karen Cavanaugh",
+      "position": "At Large",
+      "description": "Karen has experience in strategic HR and business consulting, specializing in employee relations, organizational development and business strategy. With over 10 years of expertise, SPHR and SHRM-SCP certifications, and an additional 10 years of higher education experience, she plays a pivotal role in shaping organizational success through strategic planning and leadership.",
+      "photo_url": "img/karen_cavanaugh.webp",
+      "type": "board"
+    },
+    {
+      "id": 12,
+      "name": "Karla Fultz",
+      "position": "At Large",
+      "description": "Karla Fultz has worked as an attorney practicing in both the state and federal courts of Iowa in the areas of employment, municipal law and zoning until her retirement in August of 2022. She served as Juvenile Judge in Polk County from 1993 until 2009. During that time, she was the presiding judge for the Polk County Juvenile Drug Court and the Polk County Family Drug Court. Both programs were honored by the Iowa Supreme Court with Court Innovation Awards. She has served her profession, community and state as a member or chair of a multitude of committees, boards and foundations.",
+      "photo_url": "img/karla_fultz.webp",
+      "type": "board"
     }
   ]
 }

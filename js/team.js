@@ -4,8 +4,8 @@
 class TeamManager {
     constructor() {
         this.staffData = [];
-        this.maxDescriptionLength = 200; // Character limit for descriptions
-        this.maxDescriptionHeight = 120; // Pixel height limit for descriptions
+        this.maxDescriptionLength = 150; // Character limit for descriptions (desktop)
+        this.maxDescriptionHeight = 50; // Pixel height limit for descriptions
         this.init();
     }
 
@@ -14,6 +14,25 @@ class TeamManager {
         await this.loadStaffData();
         this.renderStaffGrid();
         this.initializeHoverEffects();
+    }
+
+    // Get responsive character limit based on screen size
+    getResponsiveDescriptionLength() {
+        const screenWidth = window.innerWidth;
+        
+        if (screenWidth < 576) {
+            // Extra small screens (phones) - much shorter
+            return 30;
+        } else if (screenWidth < 768) {
+            // Small screens (large phones) - shorter
+            return 160;
+        } else if (screenWidth < 992) {
+            // Medium screens (tablets) - medium length
+            return 180;
+        } else {
+            // Large screens (desktop) - full length
+            return this.maxDescriptionLength;
+        }
     }
 
     // Load staff data from CMS
@@ -119,7 +138,7 @@ class TeamManager {
             'early-childhood-teachers': [3, 4, 5], // Lori Wiedmaier, Isaac Anderson, Kelly Donnelly
             'elementary-teachers': [7], // Susan Chronister
             'middle-school-teachers': [1], // Tanya Apana
-            'high-school-teachers': [1], // Tanya Apana
+            'high-school-teachers': [1, 2], // Tanya Apana
             'home-music-teachers': [6] // Sarah Jorgenson (for home page)
         };
 
@@ -177,7 +196,11 @@ class TeamManager {
         const descriptions = Array.isArray(staff.description) ? staff.description : [staff.description || ''];
         const firstDescription = descriptions[0] || '';
         const hasMultipleDescriptions = descriptions.length > 1;
-        const hasLongDescription = firstDescription.length > this.maxDescriptionLength;
+        
+        // Use responsive character limit based on screen size
+        const responsiveLimit = this.getResponsiveDescriptionLength();
+        const hasLongDescription = firstDescription.length > responsiveLimit;
+        
         const hasAdditionalImages = staff.additional_photos && Array.isArray(staff.additional_photos) && staff.additional_photos.length > 0;
         const hasVideo = staff.video_url;
         const hasAdditionalContent = hasAdditionalImages || hasVideo || hasMultipleDescriptions;
@@ -198,17 +221,17 @@ class TeamManager {
                     </div>
                     <div class="col-12 col-md-8">
                         <div class="staff-info">
-                            <h4 class="text-primary mb-2 fs-6 fs-sm-5 fs-md-4">${this.escapeHtml(staff.name)}</h4>
-                            <h6 class="text-success mb-2 fs-7 fs-sm-6">${this.escapeHtml(staff.position)}</h6>
+                            <h2 class="mb-2 fs-2 fs-md-4">${this.escapeHtml(staff.name)}</h4>
+                            <h6 class="">${this.escapeHtml(staff.position)}</h6>
                             
                             <!-- Description that expands in place -->
                             <div class="staff-description" id="${descriptionId}" 
                                  data-full-text="${this.escapeHtml(firstDescription)}"
                                  data-all-descriptions='${JSON.stringify(descriptions)}'
                                  data-truncated="true">
-                                <span class="description-text">
+                                <span class="description-text small">
                                     ${hasLongDescription ? 
-                                        this.truncateDescription(firstDescription) : 
+                                        this.truncateDescription(firstDescription, responsiveLimit) : 
                                         this.escapeHtml(firstDescription)
                                     }
                                 </span>
@@ -223,7 +246,6 @@ class TeamManager {
                                         
                                         ${hasAdditionalImages ? `
                                             <div class="additional-photos mt-3">
-                                                <h6 class="text-primary mb-3">Photos</h6>
                                                 <div class="row g-2">
                                                     ${staff.additional_photos.map(photo => {
                                                         // Handle both string URLs and objects with src/caption
@@ -324,12 +346,13 @@ class TeamManager {
         return 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9Ijc1IiBjeT0iNjAiIHI9IjI1IiBmaWxsPSIjQ0NDIi8+CjxwYXRoIGQ9Ik0yNSA5NUMzNSA4NSAzNSA3NSA0NSA2NUM1NSA1NSA3NSA1NSA4NSA2NUM5NSA3NSA5NSA4NSA5NSA5NUgyNVoiIGZpbGw9IiNDQ0MiLz4KPC9zdmc+';
     }
 
-    // Truncate description text
-    truncateDescription(text) {
-        if (text.length <= this.maxDescriptionLength) {
+    // Truncate description text with optional custom limit
+    truncateDescription(text, customLimit = null) {
+        const limit = customLimit || this.maxDescriptionLength;
+        if (text.length <= limit) {
             return this.escapeHtml(text);
         }
-        return this.escapeHtml(text.substring(0, this.maxDescriptionLength)) + '...';
+        return this.escapeHtml(text.substring(0, limit)) + '...';
     }
 
     // Check if read more button should be shown
@@ -394,8 +417,9 @@ class TeamManager {
                         
                     } else {
                         // COLLAPSE: Hide additional content and truncate description if needed
-                        if (fullText.length > this.maxDescriptionLength) {
-                            descriptionText.innerHTML = this.truncateDescription(fullText);
+                        const responsiveLimit = this.getResponsiveDescriptionLength();
+                        if (fullText.length > responsiveLimit) {
+                            descriptionText.innerHTML = this.truncateDescription(fullText, responsiveLimit);
                         } else {
                             descriptionText.innerHTML = this.escapeHtml(fullText);
                         }
@@ -417,9 +441,35 @@ class TeamManager {
             }
         });
 
-        // Handle window resize to ensure proper layout
+        // Handle window resize to update responsive character limits
         window.addEventListener('resize', () => {
-            // No longer needed - expansion works on all screen sizes
+            // Debounce resize events to avoid too many re-renders
+            clearTimeout(this.resizeTimeout);
+            this.resizeTimeout = setTimeout(() => {
+                this.updateResponsiveDescriptions();
+            }, 250);
+        });
+    }
+
+    // Update description truncation when screen size changes
+    updateResponsiveDescriptions() {
+        const responsiveLimit = this.getResponsiveDescriptionLength();
+        
+        // Find all collapsed description elements
+        const allDescriptions = document.querySelectorAll('.staff-description[data-truncated="true"]');
+        
+        allDescriptions.forEach(descriptionDiv => {
+            const fullText = descriptionDiv.getAttribute('data-full-text');
+            const descriptionText = descriptionDiv.querySelector('.description-text');
+            
+            if (fullText && descriptionText) {
+                // Update the truncated text with the new responsive limit
+                if (fullText.length > responsiveLimit) {
+                    descriptionText.innerHTML = this.truncateDescription(fullText, responsiveLimit);
+                } else {
+                    descriptionText.innerHTML = this.escapeHtml(fullText);
+                }
+            }
         });
     }
 

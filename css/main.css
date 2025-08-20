@@ -540,6 +540,39 @@ h6,
     }
 }
 
+/* Learn More button styling for showcase carousels */
+.showcase-item .btn {
+    border-radius: 25px;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.showcase-item .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.showcase-item .btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.showcase-item .btn-primary:hover {
+    background-color: #e54d27;
+    border-color: #e54d27;
+}
+
+/* Responsive button sizing */
+@media (max-width: 768px) {
+    .showcase-item .btn {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
 .header-carousel .owl-nav {
     position: absolute;
     top: 50%;

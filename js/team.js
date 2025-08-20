@@ -57,16 +57,6 @@ class TeamManager {
                 order: 1
             },
             {
-                id: 2,
-                name: "Claire Bennett",
-                position: "Elementary Teacher",
-                description: "I graduated from Simpson College with my degree in Elementary Education and endorsements in Special Education and Reading. I taught in the public school setting for two years before returning to Main Street as a teacher. I say returning because I was a student at Main Street School through my middle school years.",
-                photo_url: "img/staff/claire-bennett.jpg",
-                email: "claire@mainstschool.org",
-                type: "teacher",
-                order: 2
-            },
-            {
                 id: 10,
                 name: "Amy Desenberg-Wines",
                 position: "Board Chair",
@@ -80,9 +70,19 @@ class TeamManager {
 
     // Render the staff grid with separate sections
     renderStaffGrid() {
-        const container = document.getElementById('staff-grid');
-        if (!container) return;
+        // Check if we're on the main team page
+        const teamContainer = document.getElementById('staff-grid');
+        if (teamContainer) {
+            this.renderMainTeamPage(teamContainer);
+            return;
+        }
 
+        // Check for program-specific containers
+        this.renderProgramPages();
+    }
+
+    // Render main team page with full staff
+    renderMainTeamPage(container) {
         container.innerHTML = '';
 
         // Separate teachers and board members
@@ -110,6 +110,35 @@ class TeamManager {
 
         // Render Board Members Section
         this.renderSection(container, sortedBoardMembers, 'Board of Directors', 'Our board members provide strategic leadership and governance, ensuring Main Street School continues to fulfill its mission of providing exceptional, individualized education for all students.');
+    }
+
+    // Render program-specific teacher pages
+    renderProgramPages() {
+        // Define teacher assignments for each program
+        const programAssignments = {
+            'early-childhood-teachers': [3, 4, 5], // Lori Wiedmaier, Isaac Anderson, Kelly Donnelly
+            'elementary-teachers': [7], // Susan Chronister
+            'middle-school-teachers': [1], // Tanya Apana
+            'high-school-teachers': [1], // Tanya Apana
+            'home-music-teachers': [6] // Sarah Jorgenson (for home page)
+        };
+
+        // Check each program container and render appropriate teachers
+        Object.keys(programAssignments).forEach(containerId => {
+            const container = document.getElementById(containerId);
+            if (container) {
+                const teacherIds = programAssignments[containerId];
+                const programTeachers = this.staffData
+                    .filter(staff => teacherIds.includes(staff.id))
+                    .sort((a, b) => teacherIds.indexOf(a.id) - teacherIds.indexOf(b.id));
+                
+                container.innerHTML = '';
+                programTeachers.forEach(teacher => {
+                    const teacherCard = this.createStaffCard(teacher);
+                    container.appendChild(teacherCard);
+                });
+            }
+        });
     }
 
 
@@ -143,12 +172,20 @@ class TeamManager {
         
         const uniqueId = `staff-${staff.id}`;
         const descriptionId = `desc-${staff.id}`;
-        const hasLongDescription = staff.description && staff.description.length > this.maxDescriptionLength;
+        
+        // Handle multiple descriptions (array or single string)
+        const descriptions = Array.isArray(staff.description) ? staff.description : [staff.description || ''];
+        const firstDescription = descriptions[0] || '';
+        const hasMultipleDescriptions = descriptions.length > 1;
+        const hasLongDescription = firstDescription.length > this.maxDescriptionLength;
         const hasAdditionalImages = staff.additional_photos && Array.isArray(staff.additional_photos) && staff.additional_photos.length > 0;
         const hasVideo = staff.video_url;
-        const hasAdditionalContent = hasAdditionalImages || hasVideo;
+        const hasAdditionalContent = hasAdditionalImages || hasVideo || hasMultipleDescriptions;
         
-        card.innerHTML = `
+        // Show Read More if description is long OR if there's additional content
+        const shouldShowReadMore = hasLongDescription || hasAdditionalContent;
+        
+        const cardHTML = `
             <div class="staff-card bg-light rounded p-2 p-sm-4 h-100 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="row g-2 g-sm-4">
                     <div class="col-12 col-md-4">
@@ -166,43 +203,53 @@ class TeamManager {
                             
                             <!-- Description that expands in place -->
                             <div class="staff-description" id="${descriptionId}" 
-                                 data-full-text="${this.escapeHtml(staff.description || '')}"
+                                 data-full-text="${this.escapeHtml(firstDescription)}"
+                                 data-all-descriptions='${JSON.stringify(descriptions)}'
                                  data-truncated="true">
                                 <span class="description-text">
                                     ${hasLongDescription ? 
-                                        this.truncateDescription(staff.description) : 
-                                        this.escapeHtml(staff.description || '')
+                                        this.truncateDescription(firstDescription) : 
+                                        this.escapeHtml(firstDescription)
                                     }
                                 </span>
-                            </div>
-                            
-                            ${hasLongDescription ? `
-                                <!-- Read More Button for Description -->
-                                <button class="btn btn-sm btn-outline-primary mt-2 read-more-desc-btn" 
-                                        type="button" 
-                                        data-target="${descriptionId}">
-                                    <span class="when-collapsed">Read More</span>
-                                    <span class="when-expanded d-none">Read Less</span>
-                                </button>
-                            ` : ''}
-                            
-                            ${hasAdditionalContent ? `
-                                <!-- Additional Content Toggle (only shows after description is expanded) -->
-                                <button class="btn btn-sm btn-outline-secondary mt-2 d-none additional-content-btn" 
-                                        type="button" 
-                                        data-bs-toggle="collapse" 
-                                        data-bs-target="#${uniqueId}" 
-                                        aria-expanded="false" 
-                                        aria-controls="${uniqueId}">
-                                    <span class="when-collapsed">Show Photos & Media</span>
-                                    <span class="when-expanded d-none">Hide Photos & Media</span>
-                                </button>
                                 
-                                <!-- Collapsible Additional Content -->
-                                <div class="collapse mt-3" id="${uniqueId}">
-                                    <div class="additional-content p-3 bg-white rounded border">
+                                <!-- Additional content (photos, videos, extra descriptions) -->
+                                ${hasAdditionalContent ? `
+                                    <div class="additional-content-container" style="display: none;">
+                                        ${hasMultipleDescriptions && descriptions.length > 1 ? 
+                                            descriptions.slice(1).map(desc => `<p class="mt-3 mb-0">${this.escapeHtml(desc)}</p>`).join('')
+                                            : ''
+                                        }
+                                        
+                                        ${hasAdditionalImages ? `
+                                            <div class="additional-photos mt-3">
+                                                <h6 class="text-primary mb-3">Photos</h6>
+                                                <div class="row g-2">
+                                                    ${staff.additional_photos.map(photo => {
+                                                        // Handle both string URLs and objects with src/caption
+                                                        const photoSrc = typeof photo === 'string' ? photo : photo.src;
+                                                        const photoCaption = typeof photo === 'object' && photo.caption ? photo.caption : '';
+                                                        
+                                                        return `
+                                                            <div class="col-6 col-sm-4 mb-3">
+                                                                <div class="text-center">
+                                                                    <img src="${this.getPhotoUrl(photoSrc)}" 
+                                                                         class="img-fluid rounded mb-2" 
+                                                                         alt="${this.escapeHtml(staff.name)}"
+                                                                         onerror="this.src='${this.getPlaceholderImage()}'">
+                                                                    ${photoCaption ? `
+                                                                        <p class="small text-muted mb-0">${this.escapeHtml(photoCaption)}</p>
+                                                                    ` : ''}
+                                                                </div>
+                                                            </div>
+                                                        `;
+                                                    }).join('')}
+                                                </div>
+                                            </div>
+                                        ` : ''}
+                                        
                                         ${hasVideo ? `
-                                            <div class="staff-video mb-3">
+                                            <div class="staff-video mt-3">
                                                 <h6 class="text-primary mb-2">Video</h6>
                                                 <video controls class="img-fluid rounded w-100">
                                                     <source src="${staff.video_url}" type="video/mp4">
@@ -212,30 +259,26 @@ class TeamManager {
                                                 </video>
                                             </div>
                                         ` : ''}
-                                        
-                                        ${hasAdditionalImages ? `
-                                            <div class="additional-photos">
-                                                <h6 class="text-primary mb-3">More Photos</h6>
-                                                <div class="row g-2">
-                                                    ${staff.additional_photos.map(photo => `
-                                                        <div class="col-6 col-sm-4">
-                                                            <img src="${this.getPhotoUrl(photo)}" 
-                                                                 class="img-fluid rounded" 
-                                                                 alt="${this.escapeHtml(staff.name)}"
-                                                                 onerror="this.src='${this.getPlaceholderImage()}'">
-                                                        </div>
-                                                    `).join('')}
-                                                </div>
-                                            </div>
-                                        ` : ''}
                                     </div>
-                                </div>
+                                ` : ''}
+                            </div>
+                            
+                            ${shouldShowReadMore ? `
+                                <!-- Read More Button -->
+                                <button class="btn btn-sm btn-outline-primary mt-2 read-more-desc-btn" 
+                                        type="button" 
+                                        data-target="${descriptionId}">
+                                    <span class="when-collapsed">Read More</span>
+                                    <span class="when-expanded d-none">Read Less</span>
+                                </button>
                             ` : ''}
                         </div>
                     </div>
                 </div>
             </div>
         `;
+        
+        card.innerHTML = cardHTML;
 
         return card;
     }
@@ -310,7 +353,7 @@ class TeamManager {
                 const targetId = button.getAttribute('data-target');
                 const descriptionDiv = document.getElementById(targetId);
                 const cardWrapper = button.closest('.staff-card-wrapper');
-                const staffGrid = cardWrapper.parentNode;
+                const card = cardWrapper.querySelector('.staff-card');
                 
                 if (descriptionDiv) {
                     const isTruncated = descriptionDiv.getAttribute('data-truncated') === 'true';
@@ -318,53 +361,57 @@ class TeamManager {
                     const descriptionText = descriptionDiv.querySelector('.description-text');
                     const whenCollapsed = button.querySelector('.when-collapsed');
                     const whenExpanded = button.querySelector('.when-expanded');
-                    const additionalContentBtn = button.parentNode.querySelector('.additional-content-btn');
+                    const additionalContentContainer = descriptionDiv.querySelector('.additional-content-container');
+                    
+                    // Store card position before expansion for smooth scrolling
+                    const cardRect = card.getBoundingClientRect();
+                    const cardTopOffset = cardRect.top + window.pageYOffset;
                     
                     if (isTruncated) {
-                        // Expand description
+                        // EXPAND: Show full description and additional content
                         descriptionText.innerHTML = this.escapeHtml(fullText);
                         descriptionDiv.setAttribute('data-truncated', 'false');
+                        
+                        // Show additional content (photos, videos, etc.)
+                        if (additionalContentContainer) {
+                            additionalContentContainer.style.display = 'block';
+                        }
                         
                         // Update button text
                         if (whenCollapsed) whenCollapsed.classList.add('d-none');
                         if (whenExpanded) whenExpanded.classList.remove('d-none');
                         
-                        // Show additional content button if it exists
-                        if (additionalContentBtn) additionalContentBtn.classList.remove('d-none');
+                        // Handle card expansion behavior
+                        this.expandCard(cardWrapper);
                         
-                        // Expand card to full width on all screen sizes
-                        cardWrapper.classList.remove('col-6', 'col-lg-6');
-                        cardWrapper.classList.add('col-12');
+                        // Smooth scroll to keep card top visible
+                        setTimeout(() => {
+                            window.scrollTo({
+                                top: Math.max(0, cardTopOffset - 30),
+                                behavior: 'smooth'
+                            });
+                        }, 100);
                         
-                        // Collapse other expanded cards
-                        const otherCards = staffGrid.querySelectorAll('.staff-card-wrapper.col-12');
-                        otherCards.forEach(otherCard => {
-                            if (otherCard !== cardWrapper) {
-                                this.collapseCard(otherCard);
-                            }
-                        });
                     } else {
-                        // Collapse description
-                        descriptionText.innerHTML = this.truncateDescription(fullText);
+                        // COLLAPSE: Hide additional content and truncate description if needed
+                        if (fullText.length > this.maxDescriptionLength) {
+                            descriptionText.innerHTML = this.truncateDescription(fullText);
+                        } else {
+                            descriptionText.innerHTML = this.escapeHtml(fullText);
+                        }
                         descriptionDiv.setAttribute('data-truncated', 'true');
+                        
+                        // Hide additional content
+                        if (additionalContentContainer) {
+                            additionalContentContainer.style.display = 'none';
+                        }
                         
                         // Update button text
                         if (whenCollapsed) whenCollapsed.classList.remove('d-none');
                         if (whenExpanded) whenExpanded.classList.add('d-none');
                         
-                        // Hide additional content button
-                        if (additionalContentBtn) additionalContentBtn.classList.add('d-none');
-                        
-                        // Return to normal width
-                        cardWrapper.classList.remove('col-12');
-                        cardWrapper.classList.add('col-6', 'col-lg-6');
-                        
-                        // Close any additional content that might be open
-                        const additionalContent = button.parentNode.querySelector('.collapse');
-                        if (additionalContent && additionalContent.classList.contains('show')) {
-                            const bsCollapse = new bootstrap.Collapse(additionalContent);
-                            bsCollapse.hide();
-                        }
+                        // Handle card collapse behavior
+                        this.collapseCard(cardWrapper);
                     }
                 }
             }
@@ -374,47 +421,116 @@ class TeamManager {
         window.addEventListener('resize', () => {
             // No longer needed - expansion works on all screen sizes
         });
-
-        // Bootstrap collapse event handlers for additional content
-        document.addEventListener('show.bs.collapse', function(event) {
-            if (event.target.id.startsWith('staff-')) {
-                const button = document.querySelector(`[data-bs-target="#${event.target.id}"]`);
-                if (button) {
-                    const whenCollapsed = button.querySelector('.when-collapsed');
-                    const whenExpanded = button.querySelector('.when-expanded');
-                    if (whenCollapsed) whenCollapsed.classList.add('d-none');
-                    if (whenExpanded) whenExpanded.classList.remove('d-none');
-                }
-            }
-        });
-
-        document.addEventListener('hide.bs.collapse', function(event) {
-            if (event.target.id.startsWith('staff-')) {
-                const button = document.querySelector(`[data-bs-target="#${event.target.id}"]`);
-                if (button) {
-                    const whenCollapsed = button.querySelector('.when-collapsed');
-                    const whenExpanded = button.querySelector('.when-expanded');
-                    if (whenCollapsed) whenCollapsed.classList.remove('d-none');
-                    if (whenExpanded) whenExpanded.classList.add('d-none');
-                }
-            }
-        });
-
-
     }
 
-    // Helper method to collapse a card
-    collapseCard(cardWrapper) {
-        const readMoreBtn = cardWrapper.querySelector('.read-more-desc-btn');
-        if (readMoreBtn) {
-            const targetId = readMoreBtn.getAttribute('data-target');
-            const descriptionDiv = document.getElementById(targetId);
-            
-            if (descriptionDiv && descriptionDiv.getAttribute('data-truncated') === 'false') {
-                // Trigger the collapse
-                readMoreBtn.click();
+    // Expand a card to full width and find its row partner to temporarily hide
+    expandCard(cardWrapper) {
+        const container = cardWrapper.parentNode;
+        
+        // Get only the staff cards in the same logical section
+        const sectionCards = this.getSectionCards(cardWrapper, container);
+        
+        // Find which row this card is in within its section
+        const cardIndex = sectionCards.indexOf(cardWrapper);
+        const cardsPerRow = 2; // Since we use col-6 col-lg-6, there are 2 cards per row
+        const rowStartIndex = Math.floor(cardIndex / cardsPerRow) * cardsPerRow;
+        const rowEndIndex = rowStartIndex + cardsPerRow - 1;
+        
+        // Only hide the other card(s) in the same row within the same section
+        sectionCards.forEach((otherCard, index) => {
+            if (otherCard !== cardWrapper && index >= rowStartIndex && index <= rowEndIndex) {
+                // Store original display state and hide only row partners
+                otherCard.setAttribute('data-original-display', otherCard.style.display || '');
+                otherCard.style.display = 'none';
+            }
+        });
+        
+        // Expand current card to full width
+        cardWrapper.classList.remove('col-6', 'col-lg-6');
+        cardWrapper.classList.add('col-12');
+        cardWrapper.setAttribute('data-expanded', 'true');
+        
+        // Collapse any other expanded cards in different containers
+        const allContainers = document.querySelectorAll('.row');
+        allContainers.forEach(otherContainer => {
+            if (otherContainer !== container) {
+                const expandedCards = otherContainer.querySelectorAll('.staff-card-wrapper[data-expanded="true"]');
+                expandedCards.forEach(expandedCard => {
+                    const readMoreBtn = expandedCard.querySelector('.read-more-desc-btn');
+                    if (readMoreBtn) {
+                        const targetId = readMoreBtn.getAttribute('data-target');
+                        const descriptionDiv = document.getElementById(targetId);
+                        if (descriptionDiv && descriptionDiv.getAttribute('data-truncated') === 'false') {
+                            readMoreBtn.click(); // Trigger collapse
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    // Get staff cards that are in the same logical section (teachers vs board members)
+    getSectionCards(targetCard, container) {
+        const allElements = Array.from(container.children);
+        const targetIndex = allElements.indexOf(targetCard);
+        
+        // Find the section boundaries by looking for dividers (col-12 elements)
+        let sectionStart = 0;
+        let sectionEnd = allElements.length - 1;
+        
+        // Look backwards for the start of this section
+        for (let i = targetIndex - 1; i >= 0; i--) {
+            const element = allElements[i];
+            if (element.classList.contains('col-12')) {
+                sectionStart = i + 1;
+                break;
             }
         }
+        
+        // Look forwards for the end of this section  
+        for (let i = targetIndex + 1; i < allElements.length; i++) {
+            const element = allElements[i];
+            if (element.classList.contains('col-12')) {
+                sectionEnd = i - 1;
+                break;
+            }
+        }
+        
+        // Return only the staff cards within this section
+        return allElements
+            .slice(sectionStart, sectionEnd + 1)
+            .filter(element => element.classList.contains('staff-card-wrapper'));
+    }
+
+    // Collapse a card and restore its row partners
+    collapseCard(cardWrapper) {
+        const container = cardWrapper.parentNode;
+        
+        // Get only the staff cards in the same logical section
+        const sectionCards = this.getSectionCards(cardWrapper, container);
+        
+        // Find which row this card is in within its section
+        const cardIndex = sectionCards.indexOf(cardWrapper);
+        const cardsPerRow = 2;
+        const rowStartIndex = Math.floor(cardIndex / cardsPerRow) * cardsPerRow;
+        const rowEndIndex = rowStartIndex + cardsPerRow - 1;
+        
+        // Restore only the cards in the same row within the same section
+        sectionCards.forEach((otherCard, index) => {
+            if (otherCard !== cardWrapper && index >= rowStartIndex && index <= rowEndIndex) {
+                // Restore original display state
+                const originalDisplay = otherCard.getAttribute('data-original-display');
+                if (originalDisplay !== null) {
+                    otherCard.style.display = originalDisplay;
+                    otherCard.removeAttribute('data-original-display');
+                }
+            }
+        });
+        
+        // Return current card to normal width
+        cardWrapper.classList.remove('col-12');
+        cardWrapper.classList.add('col-6', 'col-lg-6');
+        cardWrapper.removeAttribute('data-expanded');
     }
 }
 

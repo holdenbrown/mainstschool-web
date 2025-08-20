@@ -1,0 +1,107 @@
+/* Team Card Expansion Enhancements */
+
+/* Smooth transition for card expansion */
+.staff-card-wrapper {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Smooth transition for expanded content */
+.expanded-content {
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Enhanced styling for expanded cards */
+.staff-card-wrapper[data-expanded="true"] .staff-card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid #dee2e6;
+}
+
+/* Better spacing for additional photos */
+.additional-photos .row {
+    margin-top: 0.5rem;
+}
+
+.additional-photos img {
+    transition: transform 0.2s ease-in-out;
+    max-height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.additional-photos img:hover {
+    transform: scale(1.05);
+}
+
+/* Ensure images don't cause layout issues */
+.additional-photos .col-6,
+.additional-photos .col-sm-4 {
+    margin-bottom: 1rem;
+}
+
+/* Caption styling */
+.additional-photos .small.text-muted {
+    font-size: 0.75rem;
+    line-height: 1.2;
+    margin-top: 0.25rem;
+}
+
+/* Better button positioning and styling for expanded state */
+.staff-card-wrapper[data-expanded="true"] .read-more-desc-btn {
+    margin-top: 1rem;
+}
+
+/* Ensure proper spacing for multiple paragraphs */
+.additional-content-container p {
+    margin-bottom: 0.75rem;
+}
+
+.additional-content-container p:last-child {
+    margin-bottom: 0;
+}
+
+/* Smooth fade-in effect for expanded content */
+.additional-content-container[style*="display: block"] {
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Minimize layout shift during expansion */
+.staff-card-wrapper[data-expanded="true"] {
+    position: relative;
+    z-index: 10;
+}
+
+/* Better responsive behavior for additional photos */
+@media (max-width: 576px) {
+    .additional-photos .col-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (min-width: 768px) {
+    .additional-photos .col-sm-4 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+}
+
+/* Enhanced card spacing when expanded */
+.staff-card-wrapper[data-expanded="true"] {
+    margin-bottom: 2rem;
+}
+
+/* Ensure proper grid behavior during expansion */
+.row .staff-card-wrapper {
+    transition: all 0.3s ease-in-out;
+}

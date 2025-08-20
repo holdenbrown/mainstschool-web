@@ -32,6 +32,44 @@ body {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
+
+
+.card-hover {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Circle behind icons */
+  .icon-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(2.5rem, 5vw, 3.5rem);
+    height: clamp(2.5rem, 5vw, 3.5rem);
+    border-radius: 50%;
+  }
+  .icon-circle i {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    color: #fff;
+  }
+
+  .icon-shrink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(2.5rem, 5vw, 3.5rem);
+    height: clamp(2.5rem, 5vw, 3.5rem);
+    border-radius: 50%;
+  }
+  .icon-shrink i {
+    font-size: clamp(2rem, 5vw, 1.5rem);
+    color: #fff;
+  }
+
 /* Hybrid layout system - full-width page headers, contained content sections */
 
 /* Full-width container for page headers and navigation sections */
@@ -570,6 +608,88 @@ h6,
     .showcase-item .btn {
         font-size: 0.8rem;
         padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Custom Accordion Styling for High School Classes */
+#coursesAccordion .accordion-item {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+#coursesAccordion .accordion-button {
+    border: none;
+    font-size: 1.1rem;
+    padding: 1.25rem 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: none;
+}
+
+#coursesAccordion .accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem rgba(254, 93, 55, 0.25);
+    border-color: var(--primary);
+}
+
+#coursesAccordion .accordion-button:not(.collapsed) {
+    background-color: #f8f9fa;
+    color: var(--dark);
+}
+
+#coursesAccordion .accordion-button::after {
+    transition: transform 0.3s ease;
+    color: var(--primary);
+}
+
+#coursesAccordion .accordion-body {
+    padding: 1.5rem;
+    line-height: 1.6;
+}
+
+#coursesAccordion .badge {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* Alert styling for Science section */
+#coursesAccordion .alert-info {
+    background-color: rgba(13, 202, 240, 0.1);
+    color: #055160;
+}
+
+/* Responsive accordion adjustments */
+@media (max-width: 768px) {
+    #coursesAccordion .accordion-button {
+        font-size: 1rem;
+        padding: 1rem 1.25rem;
+    }
+    
+    #coursesAccordion .accordion-body {
+        padding: 1.25rem;
+    }
+    
+    #coursesAccordion .badge {
+        font-size: 0.7rem;
+        display: block;
+        margin: 0.25rem 0 0 0;
+        width: fit-content;
+    }
+    
+    #coursesAccordion ul li {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    #coursesAccordion .accordion-button {
+        font-size: 0.95rem;
+        padding: 0.875rem 1rem;
+    }
+    
+    #coursesAccordion .accordion-button i {
+        font-size: 0.9rem;
+        margin-right: 0.75rem !important;
     }
 }
 

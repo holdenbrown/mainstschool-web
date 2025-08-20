@@ -359,12 +359,12 @@ $(document).ready(function () {
 
     // Middle school showcase
     const middleSchoolSlides = [
-      {
-        image: "img/carousel-4.webp",
-        title: "Project-Based Learning",
-        description:
-          "Students engage in meaningful, long-term projects that connect to real-world issues.",
-      },
+    {
+            image: "img/elementary_community_involvment.jpeg",
+            title: "Project Based Learning",
+            description:
+              "Students engage in meaningful, projects that make learning come alive.",
+    },
       {
         image: "img/middle-school-showcase.jpg",
         title: "IPR's Partnership with Young Journalists",
@@ -373,22 +373,10 @@ $(document).ready(function () {
         link: "https://www.iowapublicradio.org/collecting-histories-iprs-partnership-with-young-journalists"
       },
       {
-        image: "img/carousel-6.webp",
-        title: "Technology Integration",
-        description:
-          "Audio production, editing, and digital storytelling skills development.",
-      },
-      {
-        image: "img/carousel-7.webp",
-        title: "Critical Thinking",
-        description:
-          "Students develop analytical skills through research and problem-solving.",
-      },
-      {
-        image: "img/carousel-8.webp",
+        image: "img/discussion.jpg",
         title: "Communication Skills",
         description:
-          "Public speaking, interviewing, and presentation skills development.",
+          "Students learn to communicate their ideas and opinions effectively through classroom discussion.",
       },
     ];
     initializeShowcaseCarousel("#middleSchoolShowcase", middleSchoolSlides);
@@ -396,34 +384,16 @@ $(document).ready(function () {
     // High school showcase
     const highSchoolSlides = [
       {
-        image: "img/carousel-9.webp",
-        title: "College Preparation",
+        image: "img/high-school.jpg",
+        title: "Learning Behond the Classroom",
         description:
-          "Rigorous academic curriculum designed to prepare students for higher education.",
+          "Our high school students take their curiosity into the real world. Whether exploring science at a museum or observing nature outdoors, field experiences extend classroom discussions into hands-on learning opportunities.",
       },
       {
-        image: "img/carousel-10.webp",
-        title: "Critical Thinking",
+        image: "img/high-school-exploring.jpg",
+        title: "Exploring Together, Learning Together",
         description:
           "Advanced analytical and problem-solving skills development.",
-      },
-      {
-        image: "img/carousel-11.jpeg",
-        title: "Independent Learning",
-        description:
-          "Students develop self-motivation and autonomous learning skills.",
-      },
-      {
-        image: "img/carousel-12.webp",
-        title: "Leadership Development",
-        description:
-          "Opportunities for students to take on leadership roles and responsibilities.",
-      },
-      {
-        image: "img/carousel-1.jpg",
-        title: "Future-Ready Skills",
-        description:
-          "Preparation for success in college, career, and life beyond high school.",
       },
     ];
     initializeShowcaseCarousel("#highSchoolShowcase", highSchoolSlides);

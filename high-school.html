@@ -345,16 +345,7 @@
           </div>
         </div>
   
-        <div class="d-flex align-items-center mb-3">
-          <div class="bg-secondary rounded-circle d-inline-flex align-items-center justify-content-center me-2 me-sm-3 flex-shrink-0"
-               style="width: clamp(2rem, 5vw, 2.5rem); height: clamp(2rem, 5vw, 2.5rem);">
-            <i class="fa fa-book-reader text-white" style="font-size: clamp(0.8rem, 2vw, 1rem);"></i>
-          </div>
-          <div>
-            <h6 class="mb-0">Afternoon</h6>
-            <small class="text-muted">Reading Time</small>
-          </div>
-        </div>
+
   
         <div class="d-flex align-items-center mb-3">
           <div class="bg-danger rounded-circle d-inline-flex align-items-center justify-content-center me-2 me-sm-3 flex-shrink-0"
@@ -372,57 +363,160 @@
   
 
                         <div class="mb-5" id="learning-philosophy-action">
-                            <h3 class="mb-4">Classes Offered at This Time</h3>
-                            <div class="row g-4">
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="bg-light rounded p-4 h-100">
-                                        <h5 class="text-primary mb-3"><i class="fa fa-globe me-2"></i>History</h5>
-                                        <ul class="list-unstyled mb-0">
-                                            <li class="mb-1"><strong>Comparative Political Systems:</strong> (1 semester)</li>
-                                            <li class="mb-1"><strong>U.S. Government:</strong> (1 semester)</li>
-                                            <li class="mb-1"><strong>Contemporary World Issues:</strong> (1 semester)</li>
-                                            <li class="mb-1"><strong>U.S. History:</strong> (2 semesters)</li>
-                                            <li class="mb-1"><strong>World History:</strong> (2 semesters)</li>
-                                            <li class="mb-1"><strong>3 Powers:</strong> (1 semester)</li>
-                                        </ul>
+                            <h3 class="mb-4">Currently Offered Classes</h3>
+                            
+                            <!-- Bootstrap Accordion for Course Categories -->
+                            <div class="accordion wow fadeInUp" id="coursesAccordion" data-wow-delay="0.1s">
+
+                                <!-- History Classes -->
+                                <div class="accordion-item border-0 shadow-sm mb-3">
+                                    <h2 class="accordion-header" id="headingHistory">
+                                        <button class="accordion-button bg-light fw-semibold" type="button" data-bs-toggle="collapse" 
+                                                data-bs-target="#collapseHistory" aria-expanded="true" aria-controls="collapseHistory">
+                                            <i class="fa fa-globe text-primary me-3"></i>
+                                            History Classes
+                                        </button>
+                                    </h2>
+                                    <div id="collapseHistory" class="accordion-collapse collapse show" 
+                                         aria-labelledby="headingHistory" data-bs-parent="#coursesAccordion">
+                                        <div class="accordion-body bg-white">
+                                            <ul class="list-unstyled mb-0">
+                                                <li class="mb-3 pb-2 border-bottom border-light">
+                                                    <strong class="text-primary">Comparative Political Systems</strong>: investigates and compares/contrasts political systems from around the world 
+                                                    <span class="badge bg-primary ms-2">1 semester</span>
+                                                </li>
+                                                <li class="mb-3 pb-2 border-bottom border-light">
+                                                    <strong class="text-primary">U.S. Government</strong>: investigates the development, philosophy and  intricacies of our own government 
+                                                    <span class="badge bg-primary ms-2">1 semester</span>
+                                                </li>
+                                                <li class="mb-3 pb-2 border-bottom border-light">
+                                                    <strong class="text-primary">Contemporary World Issues</strong>:  includes discussions and research on issues like terrorism, refugees, democracies in crisis, human rights, and the evolution of AI 
+                                                    <span class="badge bg-primary ms-2">1 semester</span>
+                                                </li>
+                                                <li class="mb-3 pb-2 border-bottom border-light">
+                                                    <strong class="text-primary">U.S. History</strong>: investigates the causes/effects of the early settlement of the United States, its expansion, revolutions and wars, and the development of the American character and values
+                                                    <span class="badge bg-success ms-2">2 semesters</span>
+                                                </li>
+                                                <li class="mb-3 pb-2 border-bottom border-light">
+                                                    <strong class="text-primary">World History</strong>: explores how different societies, countries, and cultures around the world have developed and interacted, influenced each other, and become increasingly interconnected throughout history
+                                                    <span class="badge bg-success ms-2">2 semesters</span>
+                                                </li>
+                                                <li class="mb-0">
+                                                    <strong class="text-primary">3 Powers</strong>: investigates the history and development of Russia, China and the United States as major players on the world stage and how they have impacted each other
+                                                    <span class="badge bg-primary ms-2">1 semester</span>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="bg-light rounded p-4 h-100">
-                                        <h5 class="text-success mb-3"><i class="fa fa-pen-fancy me-2"></i>English</h5>
-                                        <ul class="list-unstyled mb-0">
-                                            <li class="mb-1"><strong>English 9–12:</strong> (2 semesters)</li>
-                                            <li class="mb-1"><strong>Multi-Cultural Literature:</strong> (two 1-semester options)</li>
-                                            <li class="mb-1"><strong>Short Stories:</strong> (1 semester)</li>
-                                            <li class="mb-1"><strong>The World of Ray Bradbury:</strong> (1 semester)</li>
-                                            <li class="mb-1"><strong>Creative Writing:</strong> (1 semester)</li>
-                                            <li class="mb-1"><strong>Speech and Debate:</strong> (1 semester)</li>
-                                        </ul>
+
+                                <!-- English Classes -->
+                                <div class="accordion-item border-0 shadow-sm mb-3">
+                                    <h2 class="accordion-header" id="headingEnglish">
+                                        <button class="accordion-button collapsed bg-light fw-semibold" type="button" data-bs-toggle="collapse" 
+                                                data-bs-target="#collapseEnglish" aria-expanded="false" aria-controls="collapseEnglish">
+                                            <i class="fa fa-pen-fancy text-success me-3"></i>
+                                            English Classes
+                                        </button>
+                                    </h2>
+                                    <div id="collapseEnglish" class="accordion-collapse collapse" 
+                                         aria-labelledby="headingEnglish" data-bs-parent="#coursesAccordion">
+                                        <div class="accordion-body bg-white">
+                                            <ul class="list-unstyled mb-0">
+                                                <li class="mb-3 pb-2 border-bottom border-light">
+                                                    <strong class="text-success">English 9–12</strong>: includes reading both fiction and non fiction novels and short stories/articles, building writing skills through all forms of composition (narrative, analysis, persuasive, informative, etc.) and acquiring skills of analysis of literature, actively seeking feedback from others in order to gain insights into their own thinking, and developing communication skills.
+                                                    <span class="badge bg-success ms-2">2 semesters</span>
+                                                </li>
+                                                <li class="mb-3 pb-2 border-bottom border-light">
+                                                    <strong class="text-success">Multi-Cultural Literature offers two separate semesters:</strong>
+                                                    <ul class="mt-2 ps-3">
+                                                        <li> One focusing on Native American writing and Asian-American pieces.                                                        </li>
+                                                        <li> The second studies Hispanic literature and African-American novels and stories.</li>
+                                                    </ul>
+                                                </li>
+                                                <li class="mb-3 pb-2 border-bottom border-light">
+                                                    <strong class="text-success">Short Stories</strong>: surveys a variety of short stories and asks students to participate in analysis, discussions and writing of said stories.
+                                                    <span class="badge bg-primary ms-2">1 semester</span>
+                                                </li>
+                                                <li class="mb-3 pb-2 border-bottom border-light">
+                                                    <strong class="text-success">The World of Ray Bradbury</strong>: focuses entirely on the short stories and novels of Ray Brandbury.
+                                                    <span class="badge bg-primary ms-2">1 semester</span>
+                                                </li>
+                                                <li class="mb-3 pb-2 border-bottom border-light">
+                                                    <strong class="text-success">Creative Writing</strong>: allows students to explore their own talents in writing short stories, poetry, music or other forms of self-expression.
+                                                    <span class="badge bg-primary ms-2">1 semester</span>
+                                                </li>
+                                                <li class="mb-0">
+                                                    <strong class="text-success">Speech and Debate</strong>: requires students to participate in debates focused on topics of their choice as well as topics of relevance to the world in which we live. Students will also practice public speaking, delivering a variety of kinds of speeches from introductions to storytelling to speeches to inspire.
+                                                    <span class="badge bg-primary ms-2">1 semester</span>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="bg-light rounded p-4 h-100">
-                                        <h5 class="text-warning mb-3"><i class="fa fa-flask me-2"></i>Science & Mathematics</h5>
-                                        <ul class="list-unstyled mb-0">
-                                            <li class="mb-1"><strong>Problem Solving:</strong> Identify, formulate and solve problems using appropriate information.</li>
-                                            <li class="mb-1"><strong>Critical Thinking:</strong> Apply analytical skills to solve scientific data sets.</li>
-                                            <li class="mb-1"><strong>Mathematics:</strong> Classes comprised of all levels 9th-12th grade with individual focus.</li>
-                                            <li class="mb-1"><strong>Data Analysis:</strong> Develop skills in interpreting and analyzing scientific data.</li>
-                                        </ul>
+
+                                <!-- Science & Math Classes -->
+                                <div class="accordion-item border-0 shadow-sm mb-3">
+                                    <h2 class="accordion-header" id="headingScience">
+                                        <button class="accordion-button collapsed bg-light fw-semibold" type="button" data-bs-toggle="collapse" 
+                                                data-bs-target="#collapseScience" aria-expanded="false" aria-controls="collapseScience">
+                                            <i class="fa fa-flask text-warning me-3"></i>
+                                            Science & Math Classes
+                                        </button>
+                                    </h2>
+                                    <div id="collapseScience" class="accordion-collapse collapse" 
+                                         aria-labelledby="headingScience" data-bs-parent="#coursesAccordion">
+                                        <div class="accordion-body bg-white">
+                                            <div class="alert alert-info border-0 mb-4">
+                                                <i class="fa fa-info-circle me-2"></i>
+                                                <strong>Science classes:</strong> (Tanya will need to fill this section in — below is placeholder text from the website)
+                                            </div>
+                                            
+                                            <div class="mb-4">
+                                                <h6 class="text-warning mb-3"><i class="fa fa-microscope me-2"></i>Science Learning Objectives</h6>
+                                                <p class="mb-2">The <strong>science and math curricula</strong> encourage students to:</p>
+                                                <ul class="ps-3">
+                                                    <li class="mb-2">Identify, formulate, and solve problems using appropriate information</li>
+                                                    <li class="mb-2">Apply critical thinking and analytical skills to scientific data sets</li>
+                                                    <li class="mb-0">Test hypotheses and draw inferences using quantitative analysis</li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="mb-4">
+                                                <h6 class="text-warning mb-3"><i class="fa fa-calculator me-2"></i>Mathematics Approach</h6>
+                                                <p class="mb-0"><strong>Math classes:</strong> Since high school classes are 9th–12th mixed levels, math is usually individualized or taught in very small groups.</p>
+                                            </div>
+
+                                            <div>
+                                                <h6 class="text-warning mb-3"><i class="fa fa-brain me-2"></i>Learning Framework</h6>
+                                                <p class="mb-2">Classroom learning is structured around <strong>Bloom's Taxonomy</strong>:</p>
+                                                <div class="row g-2">
+                                                    <div class="col-6 col-md-4">
+                                                        <span class="badge bg-light text-dark border">Knowledge</span>
+                                                    </div>
+                                                    <div class="col-6 col-md-4">
+                                                        <span class="badge bg-light text-dark border">Comprehension</span>
+                                                    </div>
+                                                    <div class="col-6 col-md-4">
+                                                        <span class="badge bg-light text-dark border">Application</span>
+                                                    </div>
+                                                    <div class="col-6 col-md-4">
+                                                        <span class="badge bg-light text-dark border">Analysis</span>
+                                                    </div>
+                                                    <div class="col-6 col-md-4">
+                                                        <span class="badge bg-light text-dark border">Synthesis</span>
+                                                    </div>
+                                                    <div class="col-6 col-md-4">
+                                                        <span class="badge bg-warning text-dark fw-bold">Evaluation (highest level)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="bg-light rounded p-4 h-100">
-                                        <h5 class="text-info mb-3"><i class="fa fa-lightbulb me-2"></i>Learning Approach</h5>
-                                        <ul class="list-unstyled mb-0">
-                                            <li class="mb-1"><strong>Individual Projects:</strong> Students work on projects designed to meet their interests and abilities.</li>
-                                            <li class="mb-1"><strong>Discussions & Debates:</strong> Centered around sharing knowledge and encouraging critical thinking.</li>
-                                            <li class="mb-1"><strong>Friday Flexibility:</strong> Optional attendance if all work is completed from all teachers.</li>
-                                            <li class="mb-1"><strong>Self-Directed Learning:</strong> Students take ownership of their educational journey.</li>
-                                        </ul>
-                                    </div>
-                                </div>
+
                             </div>
+                            <!-- End Bootstrap Accordion -->
 
                         </div>
 

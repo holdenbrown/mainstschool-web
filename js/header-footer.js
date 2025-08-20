@@ -68,7 +68,7 @@ class HeaderFooterManager {
                 pageType: 'standard',
                 activeNav: 'about',
                 showCarousel: false,
-                showPageHeader: true,
+                showPageHeader: false,
                 pageTitle: 'About Us',
                 breadcrumb: ['Home', 'About Us']
             },

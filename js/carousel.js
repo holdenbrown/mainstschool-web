@@ -224,26 +224,26 @@ $(document).ready(function () {
       testimonials.forEach(function (testimonial) {
         const testimonialHtml = `
                     <div class="testimonial-item px-3 py-4">
-                        <div class="card bg-light border-0 shadow rounded p-4 h-100 position-relative">
+                        <div class="card bg-primary border-0 shadow rounded p-4 h-100 position-relative"> <!-- Changed bg-light to bg-primary -->
                             <!-- Top-left quote -->
                             <div class="position-absolute" style="top: 15px; left: 20px;">
-                                <i class="fa fa-quote-left text-primary" style="font-size: 2rem; opacity: 0.6;"></i>
+                                <i class="fa fa-quote-left text-white fs-3 fs-md-4" style="opacity: 0.6;"></i> <!-- Added responsive font-size classes -->
                             </div>
                             
                             <!-- Bottom-right quote -->
                             <div class="position-absolute" style="bottom: 15px; right: 20px;">
-                                <i class="fa fa-quote-right text-primary" style="font-size: 2rem; opacity: 0.6;"></i>
+                                <i class="fa fa-quote-right text-white fs-3 fs-md-4" style="opacity: 0.6;"></i> <!-- Added responsive font-size classes -->
                             </div>
                             
                             <div class="testimonial-content">
-                                <div class="testimonial-text mb-4" style="padding: 30px 20px 20px 20px;">
+                                <div class="testimonial-text mb-2 pt-3 text-white"> <!-- Added text-white -->
                                     <p class="mb-0 text-center">${testimonial.quote}</p>
                                 </div>
-                                <hr class="mx-auto mb-3" style="width: 60px; height: 2px; background-color: #dee2e6; border: none;">
+                                <hr class="mx-auto mb-2 bg-white" style="width: 100px; height: 2px; border: none;"> <!-- Increased width, changed to white -->
                             </div>
                             <div class="testimonial-author text-center">
-                                <h5 class="mb-1 text-primary">${testimonial.author}</h5>
-                                <span class="text-muted">${testimonial.role}</span>
+                                <h5 class="mb-1 text-white">${testimonial.author}</h5> <!-- Changed to white -->
+                                <span class="text-light">${testimonial.role}</span> <!-- Changed to lighter text -->
                             </div>
                         </div>
                     </div>

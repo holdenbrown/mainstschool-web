@@ -1200,14 +1200,28 @@ body:not([style*="font-family"]) {
 }
 
 /* Scalable Icon System - Unified with Circle System */
-.scalable-icon {
-    width: clamp(1.5rem, 4vw, 2.5rem);
-    height: clamp(1.5rem, 4vw, 2.5rem);
+.scalable-icon-sm {
+    width: clamp(1.2rem, 3vw, 2rem);
+    height: clamp(1.2rem, 3vw, 2rem);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(0.7rem, 2vw, 1rem);
+    font-size: clamp(0.6rem, 1.5vw, 0.9rem);
+    transition: var(--transition-normal);
+    color: white !important;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+}
+
+.scalable-icon {
+    width: clamp(2rem, 6vw, 4.5rem);
+    height: clamp(2rem, 6vw, 4.5rem);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1rem, 3vw, 2rem);
     transition: var(--transition-normal);
     color: white !important;
     aspect-ratio: 1 / 1;
@@ -1215,13 +1229,13 @@ body:not([style*="font-family"]) {
 }
 
 .scalable-icon-md {
-    width: clamp(2rem, 5vw, 3.25rem);
-    height: clamp(2rem, 5vw, 3.25rem);
+    width: clamp(3rem, 8vw, 6rem);
+    height: clamp(3rem, 8vw, 6rem);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(0.85rem, 3vw, 1.375rem);
+    font-size: clamp(1.25rem, 4vw, 3rem);
     transition: var(--transition-normal);
     color: white !important;
     aspect-ratio: 1 / 1;
@@ -1229,13 +1243,13 @@ body:not([style*="font-family"]) {
 }
 
 .scalable-icon-lg {
-    width: clamp(2.5rem, 6vw, 4rem);
-    height: clamp(2.5rem, 6vw, 4rem);
+    width: clamp(4rem, 10vw, 8rem);
+    height: clamp(4rem, 10vw, 8rem);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(1rem, 4vw, 1.75rem);
+    font-size: clamp(2rem, 6vw, 3rem);
     transition: var(--transition-normal);
     color: white !important;
     aspect-ratio: 1 / 1;
@@ -1470,6 +1484,7 @@ body:not([style*="font-family"]) {
 /* Color variants for both fixed and scalable icons */
 .icon-circle-primary,
 .scalable-icon.bg-primary,
+.scalable-icon-sm.bg-primary,
 .scalable-circle.bg-primary { 
     background-color: var(--primary);
     color: white !important;
@@ -1477,6 +1492,7 @@ body:not([style*="font-family"]) {
 
 .icon-circle-secondary,
 .scalable-icon.bg-secondary,
+.scalable-icon-sm.bg-secondary,
 .scalable-circle.bg-secondary { 
     background-color: var(--secondary);
     color: white !important;
@@ -1484,6 +1500,7 @@ body:not([style*="font-family"]) {
 
 .icon-circle-success,
 .scalable-icon.bg-success,
+.scalable-icon-sm.bg-success,
 .scalable-circle.bg-success { 
     background-color: var(--success);
     color: white !important;
@@ -1491,6 +1508,7 @@ body:not([style*="font-family"]) {
 
 .icon-circle-info,
 .scalable-icon.bg-info,
+.scalable-icon-sm.bg-info,
 .scalable-circle.bg-info { 
     background-color: var(--info);
     color: white !important;
@@ -1498,6 +1516,7 @@ body:not([style*="font-family"]) {
 
 .icon-circle-warning,
 .scalable-icon.bg-warning,
+.scalable-icon-sm.bg-warning,
 .scalable-circle.bg-warning { 
     background-color: var(--warning);
     color: white !important;
@@ -1505,6 +1524,7 @@ body:not([style*="font-family"]) {
 
 .icon-circle-blue,
 .scalable-icon.bg-blue,
+.scalable-icon-sm.bg-blue,
 .scalable-circle.bg-blue { 
     background-color: var(--blue);
     color: white !important;
@@ -1512,6 +1532,7 @@ body:not([style*="font-family"]) {
 
 .icon-circle-light,
 .scalable-icon.bg-light,
+.scalable-icon-sm.bg-light,
 .scalable-circle.bg-light { 
     background-color: var(--light);
     color: var(--dark) !important;
@@ -1519,6 +1540,7 @@ body:not([style*="font-family"]) {
 
 .icon-circle-dark,
 .scalable-icon.bg-dark,
+.scalable-icon-sm.bg-dark,
 .scalable-circle.bg-dark { 
     background-color: var(--dark);
     color: white !important;
@@ -1526,6 +1548,7 @@ body:not([style*="font-family"]) {
 
 .icon-circle-danger,
 .scalable-icon.bg-danger,
+.scalable-icon-sm.bg-danger,
 .scalable-circle.bg-danger { 
     background-color: var(--danger);
     color: white !important;
@@ -1536,6 +1559,8 @@ body:not([style*="font-family"]) {
 /* Ensure all icons inside scalable icons are white */
 .scalable-icon i,
 .scalable-icon .fa,
+.scalable-icon-sm i,
+.scalable-icon-sm .fa,
 .scalable-circle i,
 .scalable-circle .fa {
     color: white !important;
@@ -1544,6 +1569,8 @@ body:not([style*="font-family"]) {
 /* Special exception for light backgrounds */
 .scalable-icon.bg-light i,
 .scalable-icon.bg-light .fa,
+.scalable-icon-sm.bg-light i,
+.scalable-icon-sm.bg-light .fa,
 .scalable-circle.bg-light i,
 .scalable-circle.bg-light .fa {
     color: var(--dark) !important;

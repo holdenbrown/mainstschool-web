@@ -1,7 +1,7 @@
-# Design System Documentation
+# Main Street School Design System Documentation
 
 ## Overview
-This design system provides a consistent foundation for the Main Street School website. All colors, typography, spacing, and other design tokens are defined as CSS custom properties (variables) in the `:root` selector, making it easy to maintain consistency and make global changes.
+This comprehensive design system ensures consistency across all pages of the Main Street School website. All elements use centralized CSS variables and standardized component classes for easy maintenance and updates.
 
 ## Quick Start Guide
 
@@ -34,20 +34,29 @@ To change the heading font family, edit this line:
 ## Color System
 
 ### Primary Colors
-- `--primary`: Main brand color (#FE5D37)
-- `--primary-light`: Lighter variant (#ff7a5a)
-- `--primary-dark`: Darker variant (#e54a2b)
+- `--primary: #FE5D37` (Main brand orange)
+- `--primary-light: #ff7a5a`
+- `--primary-dark: #e54a2b`
 
 ### Secondary Colors
-- `--secondary`: Secondary brand color (#f39c12)
-- `--secondary-light`: Lighter variant (#f4b350)
-- `--secondary-dark`: Darker variant (#d68910)
+- `--secondary: #f39c12` (Accent yellow/orange)
+- `--blue: #007bff` (Blue for links and accents)
+- `--success: #198754` (Green for success states)
+- `--warning: #ffc107` (Yellow for warnings)
+- `--info: #0dcaf0` (Light blue for information)
 
-### Semantic Colors
-- `--success`: Success states (#198754)
-- `--info`: Information states (#0dcaf0)
-- `--warning`: Warning states (#ffc107)
-- `--danger`: Error states (#dc3545)
+### Neutral Colors
+- `--dark: #103741` (Dark text)
+- `--light: #FFF5F3` (Light background)
+- `--gray-500: #adb5bd` (Muted text)
+- `--gray-600: #6c757d` (Secondary text)
+
+### Usage Classes
+```css
+.text-primary, .text-secondary, .text-blue, .text-success, etc.
+.bg-primary, .bg-secondary, .bg-blue, .bg-success, etc.
+.border-primary, .border-secondary, .border-blue, etc.
+```
 
 ### Neutral Colors
 - `--light`: Light background (#FFF5F3)

@@ -168,7 +168,7 @@ class TeamManager {
         const headerDiv = document.createElement('div');
         headerDiv.className = 'col-12 mb-4';
         headerDiv.innerHTML = `
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <div class="text-center" data-wow-delay="0.1s">
                 <h2 class="mb-3">${title}</h2>
                 <p class="mb-4">${description}</p>
             </div>
@@ -209,7 +209,7 @@ class TeamManager {
         const shouldShowReadMore = hasLongDescription || hasAdditionalContent;
         
         const cardHTML = `
-            <div class="staff-card bg-light rounded p-2 p-sm-4 h-100 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="staff-card bg-light rounded p-2 p-sm-4 h-100" data-wow-delay="0.1s">
                 <div class="row g-2 g-sm-4">
                     <div class="col-12 col-md-4">
                         <div class="staff-photo-container text-center">

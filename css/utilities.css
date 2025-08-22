@@ -14,6 +14,9 @@
 .text-light { color: var(--light) !important; }
 .text-dark { color: var(--dark) !important; }
 .text-white { color: var(--white) !important; }
+.text-blue { color: var(--blue) !important; }
+.text-blue-light { color: var(--blue-light) !important; }
+.text-blue-dark { color: var(--blue-dark) !important; }
 
 /* Background Color Utilities */
 .bg-primary { background-color: var(--primary) !important; }
@@ -29,6 +32,9 @@
 .bg-light { background-color: var(--light) !important; }
 .bg-dark { background-color: var(--dark) !important; }
 .bg-white { background-color: var(--white) !important; }
+.bg-blue { background-color: var(--blue) !important; }
+.bg-blue-light { background-color: var(--blue-light) !important; }
+.bg-blue-dark { background-color: var(--blue-dark) !important; }
 
 /* Text Color Utilities */
 .text-text-primary { color: var(--text-primary) !important; }
@@ -50,6 +56,9 @@
 .border-danger { border-color: var(--danger) !important; }
 .border-light { border-color: var(--light) !important; }
 .border-dark { border-color: var(--dark) !important; }
+.border-blue { border-color: var(--blue) !important; }
+.border-blue-light { border-color: var(--blue-light) !important; }
+.border-blue-dark { border-color: var(--blue-dark) !important; }
 
 /* Border Radius Utilities */
 .rounded-sm { border-radius: var(--border-radius-sm) !important; }
@@ -259,86 +268,3 @@
     color: var(--white);
 }
 
-/* Text Utilities */
-.text-truncate {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.text-break {
-    word-break: break-word;
-    word-wrap: break-word;
-}
-
-/* Display Utilities */
-.d-none { display: none !important; }
-.d-inline { display: inline !important; }
-.d-inline-block { display: inline-block !important; }
-.d-block { display: block !important; }
-.d-flex { display: flex !important; }
-.d-inline-flex { display: inline-flex !important; }
-
-/* Flex Utilities */
-.flex-row { flex-direction: row !important; }
-.flex-column { flex-direction: column !important; }
-.flex-wrap { flex-wrap: wrap !important; }
-.flex-nowrap { flex-wrap: nowrap !important; }
-.justify-start { justify-content: flex-start !important; }
-.justify-end { justify-content: flex-end !important; }
-.justify-center { justify-content: center !important; }
-.justify-between { justify-content: space-between !important; }
-.justify-around { justify-content: space-around !important; }
-.align-start { align-items: flex-start !important; }
-.align-end { align-items: flex-end !important; }
-.align-center { align-items: center !important; }
-.align-baseline { align-items: baseline !important; }
-.align-stretch { align-items: stretch !important; }
-
-/* Position Utilities */
-.position-static { position: static !important; }
-.position-relative { position: relative !important; }
-.position-absolute { position: absolute !important; }
-.position-fixed { position: fixed !important; }
-.position-sticky { position: sticky !important; }
-
-/* Overflow Utilities */
-.overflow-auto { overflow: auto !important; }
-.overflow-hidden { overflow: hidden !important; }
-.overflow-visible { overflow: visible !important; }
-.overflow-scroll { overflow: scroll !important; }
-
-/* Cursor Utilities */
-.cursor-pointer { cursor: pointer !important; }
-.cursor-default { cursor: default !important; }
-.cursor-not-allowed { cursor: not-allowed !important; }
-
-/* User Select Utilities */
-.user-select-none { user-select: none !important; }
-.user-select-auto { user-select: auto !important; }
-.user-select-all { user-select: all !important; }
-
-/* Responsive Utilities */
-@media (max-width: 576px) {
-    .d-sm-none { display: none !important; }
-    .d-sm-block { display: block !important; }
-    .d-sm-flex { display: flex !important; }
-}
-
-@media (max-width: 768px) {
-    .d-md-none { display: none !important; }
-    .d-md-block { display: block !important; }
-    .d-md-flex { display: flex !important; }
-}
-
-@media (max-width: 992px) {
-    .d-lg-none { display: none !important; }
-    .d-lg-block { display: block !important; }
-    .d-lg-flex { display: flex !important; }
-}
-
-@media (max-width: 1200px) {
-    .d-xl-none { display: none !important; }
-    .d-xl-block { display: block !important; }
-    .d-xl-flex { display: flex !important; }
-}

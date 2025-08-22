@@ -17,6 +17,11 @@
     --warning: #ffc107;
     --danger: #dc3545;
     
+    /* Blue Color System */
+    --blue: #007bff;
+    --blue-light: #66b3ff;
+    --blue-dark: #0056b3;
+    
     /* Neutral Colors */
     --light: #FFF5F3;
     --dark: #103741;
@@ -231,6 +236,12 @@ body {
     transform: translateX(5px);
     border-color: var(--primary);
     box-shadow: 0 4px 15px rgba(254, 93, 55, 0.3);
+}
+
+.navbar .dropdown-item.active {
+    background: var(--primary);
+    color: #FFFFFF;
+    font-weight: 600;
 }
 
 .navbar .dropdown-item:active {
@@ -579,6 +590,11 @@ body:not([style*="font-family"]) {
     line-height: inherit !important;
 }
 
+/* Exception: Allow navbar-brand h1 to use heading font */
+.navbar-brand h1.font-headings {
+    font-family: var(--font-family-headings) !important;
+}
+
 /* Ensure footer uses proper colors */
 .footer {
     background-color: var(--dark) !important;
@@ -650,6 +666,13 @@ body:not([style*="font-family"]) {
 .font-bold { font-weight: var(--font-weight-bold) !important; }
 
 /*** Navbar ***/
+/* Add full-width border line for desktop/medium screens */
+@media (min-width: 576px) {
+    .navbar-nav {
+        border-top: 1px solid #EEEEEE;
+    }
+}
+
 .navbar .navbar-nav .nav-link {
     padding: 30px 15px;
     color: var(--dark);
@@ -659,6 +682,10 @@ body:not([style*="font-family"]) {
 
 .navbar .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .nav-link.active {
+    color: var(--primary);
+}
+
+.navbar .dropdown-toggle.active {
     color: var(--primary);
 }
 
@@ -690,7 +717,7 @@ body:not([style*="font-family"]) {
 
     .navbar .navbar-nav {
         margin-top: 15px;
-        border-top: 1px solid #EEEEEE;
+        /* border-top: 1px solid #EEEEEE; */ /* Removed - causing unwanted line above expanded nav */
     }
 }
 
@@ -731,7 +758,7 @@ body:not([style*="font-family"]) {
     
     .navbar .nav-link {
         padding: 0.5rem 0 !important;
-        border-bottom: 1px solid #f8f9fa;
+        /* border-bottom: 1px solid #f8f9fa; */ /* Removed - causing unwanted lines */
     }
     
     .navbar .nav-link:last-child {
@@ -741,6 +768,7 @@ body:not([style*="font-family"]) {
     /* Fix Donate button overline on mobile */
     .navbar .btn {
         border-top: none !important;
+        border-bottom: none !important;
         margin-top: 0.5rem;
     }
 }
@@ -748,12 +776,14 @@ body:not([style*="font-family"]) {
 /* Fix Donate button overline on desktop */
 .navbar .btn-primary {
     border-top: none !important;
+    border-bottom: none !important;
     position: relative;
 }
 
-/* Ensure navbar border only appears where intended */
-.navbar .navbar-nav {
-    border-top: 1px solid #EEEEEE;
+/* Ensure all navbar buttons have no top/bottom borders */
+.navbar .btn {
+    border-top: none !important;
+    border-bottom: none !important;
 }
 
 /* Remove any unwanted borders from nav items */
@@ -1170,12 +1200,50 @@ body:not([style*="font-family"]) {
   
   /* Larger scalable circle + icon */
   .scalable-circle-lg {
-    width: clamp(2.5rem, 5vw, 3.5rem);
-    height: clamp(2.5rem, 5vw, 3.5rem);
+    width: clamp(2.5rem, 8vw, 4.5rem);
+    height: clamp(2.5rem, 8vw, 4.5rem);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(1rem, 3vw, 1.5rem); /* bigger icons */
+    font-size: clamp(1rem, 5vw, 2rem); /* bigger icons */
   }
+
+/* ===== QUICK LINKS HOVER EFFECTS ===== */
+.quick-link {
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+    display: inline-block;
+}
+
+.quick-link:hover,
+.quick-link:focus,
+.quick-link:active {
+    color: var(--blue) !important;
+    border-bottom-color: var(--blue) !important;
+    text-decoration: none !important;
+}
+
+/* Footer section title styling */
+.footer h3,
+.footer .h4 {
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    line-height: 1.3;
+}
+
+/* Footer responsive text sizing */
+@media (max-width: 768px) {
+    .footer h3,
+    .footer .h4 {
+        font-size: 1.25rem !important;
+    }
+}
+
+/* Bootstrap utility classes for blue colors */
+.text-blue { color: var(--blue) !important; }
+.text-blue-light { color: var(--blue-light) !important; }
+.text-blue-dark { color: var(--blue-dark) !important; }
+.border-blue { border-color: var(--blue) !important; }
+.bg-blue { background-color: var(--blue) !important; }
   

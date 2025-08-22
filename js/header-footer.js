@@ -4,7 +4,37 @@
 class HeaderFooterManager {
     constructor() {
         this.currentPage = this.getCurrentPage();
+        this.schoolConfig = this.getSchoolConfig();
         this.init();
+    }
+
+    // Centralized school configuration
+    getSchoolConfig() {
+        return {
+            // Contact Information
+            name: 'Main Street School',
+            address: '925 Main St, Norwalk, IA',
+            phone: '515-981-1275',
+            email: 'office@mainstschool.org',
+            
+            // Social Media
+            facebookUrl: 'https://www.facebook.com/mainstreetschool.iowa',
+            donationUrl: 'https://app.tuiopay.com/donation/3a8c62fc819d1f645288f6ce955bfce0',
+            
+            // Footer Section Titles (easily editable)
+            footerSections: {
+                contact: 'Get In Touch',
+                quickLinks: 'Quick Links', 
+                newsletter: 'Stay Connected'
+            },
+            
+            // Footer Styling
+            footerStyles: {
+                sectionTitleClass: 'h4 text-white mb-4',
+                quickLinkClass: 'link-light text-decoration-none quick-link mb-1',
+                contactTextClass: 'text-white-50'
+            }
+        };
     }
 
     // Get current page from URL
@@ -16,9 +46,10 @@ class HeaderFooterManager {
 
     // Get page configuration
     getPageConfig() {
+        const schoolName = this.schoolConfig.name;
         const configs = {
             'index': {
-                title: 'Main Street School - Home',
+                title: `${schoolName} - Home`,
                 pageType: 'home',
                 activeNav: 'home',
                 showCarousel: true,
@@ -27,7 +58,7 @@ class HeaderFooterManager {
                 breadcrumb: ['Home']
             },
             'early-childhood': {
-                title: 'Main Street School - Early Childhood',
+                title: `${schoolName} - Early Childhood`,
                 pageType: 'program',
                 activeNav: 'early-childhood',
                 showCarousel: true,
@@ -36,7 +67,7 @@ class HeaderFooterManager {
                 breadcrumb: ['Home', 'Programs', 'Early Childhood']
             },
             'elementary': {
-                title: 'Main Street School - Elementary',
+                title: `${schoolName} - Elementary`,
                 pageType: 'program',
                 activeNav: 'elementary',
                 showCarousel: true,
@@ -45,7 +76,7 @@ class HeaderFooterManager {
                 breadcrumb: ['Home', 'Programs', 'Elementary']
             },
             'middle-school': {
-                title: 'Main Street School - Middle School',
+                title: `${schoolName} - Middle School`,
                 pageType: 'program',
                 activeNav: 'middle-school',
                 showCarousel: true,
@@ -54,7 +85,7 @@ class HeaderFooterManager {
                 breadcrumb: ['Home', 'Programs', 'Middle School']
             },
             'high-school': {
-                title: 'Main Street School - High School',
+                title: `${schoolName} - High School`,
                 pageType: 'program',
                 activeNav: 'high-school',
                 showCarousel: true,
@@ -64,7 +95,7 @@ class HeaderFooterManager {
             },
 
             'about': {
-                title: 'Main Street School - About Us',
+                title: `${schoolName} - About Us`,
                 pageType: 'standard',
                 activeNav: 'about',
                 showCarousel: false,
@@ -73,7 +104,7 @@ class HeaderFooterManager {
                 breadcrumb: ['Home', 'About Us']
             },
             'contact': {
-                title: 'Main Street School - Contact Us',
+                title: `${schoolName} - Contact Us`,
                 pageType: 'standard',
                 activeNav: 'contact',
                 showCarousel: false,
@@ -82,7 +113,7 @@ class HeaderFooterManager {
                 breadcrumb: ['Home', 'Contact Us']
             },
             'team': {
-                title: 'Main Street School - Meet Our Team',
+                title: `${schoolName} - Meet Our Team`,
                 pageType: 'standard',
                 activeNav: 'team',
                 showCarousel: false,
@@ -91,7 +122,7 @@ class HeaderFooterManager {
                 breadcrumb: ['Home', 'Meet Our Team']
             },
             'blog': {
-                title: 'Main Street School - Blog',
+                title: `${schoolName} - Blog`,
                 pageType: 'standard',
                 activeNav: 'blog',
                 showCarousel: false,
@@ -100,7 +131,7 @@ class HeaderFooterManager {
                 breadcrumb: ['Home', 'Blog']
             },
             'dei': {
-                title: 'Main Street School - DEI Statement',
+                title: `${schoolName} - DEI Statement`,
                 pageType: 'standard',
                 activeNav: 'dei',
                 showCarousel: false,
@@ -139,8 +170,8 @@ class HeaderFooterManager {
                 <!-- Top row: Logo and Mobile Toggle -->
                 <div class="d-flex justify-content-between align-items-start w-100">
                     <a href="index.html" class="navbar-brand">
-                        <h1 class="m-0 text-primary">
-                            <i class="fa fa-book-reader me-3"></i>Main Street School
+                        <h1 class="m-0 text-primary font-headings">
+                            <i class="fa fa-book-reader me-3"></i>${this.schoolConfig.name}
                         </h1>
                     </a>
                     
@@ -170,13 +201,12 @@ class HeaderFooterManager {
                                 <a href="team.html" class="dropdown-item ${isActive('team')}">Meet Our Team</a>
                                 <a href="about.html#dei-statement" class="dropdown-item ${isActive('dei')}">DEI Statement</a>
                                 <a href="become-a-teacher.html" class="dropdown-item">Become A Teacher</a>
-                                <a href="appointment.html" class="dropdown-item">Make Appointment</a>
                                 <a href="404.html" class="dropdown-item">404 Error</a>
                             </div>
                         </div>
                         <a href="contact.html" class="nav-item nav-link px-0 px-sm-3 py-1 py-sm-3 ${isActive('contact')}">Contact</a>
                         <a href="blog.html" class="nav-item nav-link px-0 px-sm-3 py-1 py-sm-3 ${isActive('blog')}">Blog</a>
-                        <div class="navbar-nav d-flex align-items-start align-items-sm-center">
+                        <div class="d-flex align-items-start align-items-sm-center">
                             <a href="https://app.tuiopay.com/donation/3a8c62fc819d1f645288f6ce955bfce0" class="btn btn-primary rounded-3 px-4 py-2 d-flex align-items-center">
                                 <span class="me-2">Donate</span>
                                 <i class="fa fa-arrow-right"></i>
@@ -269,46 +299,48 @@ class HeaderFooterManager {
 
     // Generate footer HTML
     generateFooterHTML() {
+        const config = this.schoolConfig;
         return `
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">
                 <div class="row g-5">
-                    <!-- Get In Touch and Quick Links - Side by side on small screens -->
+                    <!-- Get In Touch Section -->
                     <div class="col-lg-4 col-md-6 col-6">
-                        <h3 class="text-white mb-4">Get In Touch</h3>
+                        <h3 class="${config.footerStyles.sectionTitleClass}">${config.footerSections.contact}</h3>
                         <div class="d-flex align-items-start mb-2">
                             <i class="fa fa-map-marker-alt me-3 mt-1" style="width: 16px;"></i>
-                            <span>925 Main St, Norwalk, IA</span>
+                            <span class="${config.footerStyles.contactTextClass}">${config.address}</span>
                         </div>
                         <div class="d-flex align-items-start mb-2">
                             <i class="fa fa-phone-alt me-3 mt-1" style="width: 16px;"></i>
-                            <span>515-981-1275</span>
+                            <span class="${config.footerStyles.contactTextClass}">${config.phone}</span>
                         </div>
                         <div class="d-flex align-items-start mb-2">
                             <i class="fa fa-envelope me-3 mt-1" style="width: 16px;"></i>
-                            <span class="text-break">office@mainstschool.org</span>
+                            <span class="${config.footerStyles.contactTextClass} text-break">${config.email}</span>
                         </div>
                         <div class="d-flex pt-2">
-                            <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/mainstreetschool.iowa" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light rounded-circle" style="width: 45px; height: 45px;" href="${config.facebookUrl}" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         </div>
                     </div>
+                    <!-- Quick Links Section -->
                     <div class="col-lg-4 col-md-6 col-6">
-                        <h3 class="text-white mb-4">Quick Links</h3>
-                        <div class="d-flex flex-column">
-                            <a class="btn btn-link text-white-50 text-start p-0 mb-1" href="https://app.tuiopay.com/donation/3a8c62fc819d1f645288f6ce955bfce0" target="_blank"></i>Donate Now</a>
-                            <a class="btn btn-link text-white-50 text-start p-0 mb-1" href="about.html"></i>About Us</a>
-                            <a class="btn btn-link text-white-50 text-start p-0 mb-1" href="contact.html"></i>Contact Us</a>
-                            <a class="btn btn-link text-white-50 text-start p-0 mb-1" href="early-childhood.html"></i>Early Childhood</a>
-                            <a class="btn btn-link text-white-50 text-start p-0 mb-1" href="elementary.html"></i>Elementary</a>
-                            <a class="btn btn-link text-white-50 text-start p-0 mb-1" href="middle-school.html"></i>Middle School</a>
-                            <a class="btn btn-link text-white-50 text-start p-0 mb-1" href="high-school.html"></i>High School</a>
+                        <h3 class="${config.footerStyles.sectionTitleClass}">${config.footerSections.quickLinks}</h3>
+                        <div class="d-flex flex-column align-items-start">
+                            <a class="${config.footerStyles.contactTextClass} text-decoration-none quick-link mb-1" href="${config.donationUrl}" target="_blank">Donate Now</a>
+                            <a class="${config.footerStyles.contactTextClass} text-decoration-none quick-link mb-1" href="about.html">About Us</a>
+                            <a class="${config.footerStyles.contactTextClass} text-decoration-none quick-link mb-1" href="contact.html">Contact Us</a>
+                            <a class="${config.footerStyles.contactTextClass} text-decoration-none quick-link mb-1" href="early-childhood.html">Early Childhood</a>
+                            <a class="${config.footerStyles.contactTextClass} text-decoration-none quick-link mb-1" href="elementary.html">Elementary</a>
+                            <a class="${config.footerStyles.contactTextClass} text-decoration-none quick-link mb-1" href="middle-school.html">Middle School</a>
+                            <a class="${config.footerStyles.contactTextClass} text-decoration-none quick-link mb-1" href="high-school.html">High School</a>
                         </div>
                     </div>
-                    <!-- Stay Connected - Below on smaller screens, third column on larger screens -->
+                    <!-- Stay Connected Section -->
                     <div class="col-lg-4 col-12">
-                        <h3 class="text-white mb-4">Stay Connected</h3>
-                        <p>Subscribe to our newsletter for updates on school events, student achievements, and educational insights.</p>
+                        <h3 class="${config.footerStyles.sectionTitleClass}">${config.footerSections.newsletter}</h3>
+                        <p class="${config.footerStyles.contactTextClass}">Subscribe to our newsletter for updates on school events, student achievements, and educational insights.</p>
                         <div class="position-relative" style="max-width: 400px;">
                             <style>
                                 #newsletterEmail::placeholder {
@@ -331,11 +363,11 @@ class HeaderFooterManager {
                 <div class="copyright">
                     <div class="row">
                         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a class="border-bottom" href="#">Main Street School</a>, All Right Reserved. 
+                            &copy; <a class="" href="#">${config.name}</a>, All Right Reserved. 
                             
                             <!--/*** This template is free as long as you keep the footer author's credit link/attribution link/backlink. If you'd like to use the template without the footer author's credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
-                            <br>Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                            Designed By <a class="" href="https://htmlcodex.com">HTML Codex</a>
+                            <br>Distributed By: <a class="" href="https://themewagon.com" target="_blank">ThemeWagon</a>
                         </div>
                         <div class="col-md-6 text-center text-md-end">
                             <!-- Footer menu removed as requested -->
@@ -365,9 +397,25 @@ class HeaderFooterManager {
             }
         }
     }
+
+    // Static method to get school configuration globally
+    static getGlobalSchoolConfig() {
+        if (window.headerFooterManager) {
+            return window.headerFooterManager.schoolConfig;
+        }
+        // Fallback configuration if manager not initialized
+        return {
+            name: 'Main Street School',
+            address: '925 Main St, Norwalk, IA',
+            phone: '515-981-1275',
+            email: 'office@mainstschool.org',
+            facebookUrl: 'https://www.facebook.com/mainstreetschool.iowa',
+            donationUrl: 'https://app.tuiopay.com/donation/3a8c62fc819d1f645288f6ce955bfce0'
+        };
+    }
 }
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    new HeaderFooterManager();
+    window.headerFooterManager = new HeaderFooterManager();
 });

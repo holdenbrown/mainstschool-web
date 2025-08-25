@@ -1,0 +1,16 @@
+/* ===== MAIN STREET SCHOOL - MODULAR CSS ARCHITECTURE ===== */
+
+/* Base Styles & Design Tokens */
+@import url('./main.css');
+
+/* Component Modules */
+@import url('./components/typography.css');
+@import url('./components/buttons.css');
+@import url('./components/navigation.css');
+@import url('./components/carousels.css');
+
+/* Utility Modules */
+@import url('./utilities/components.css');
+
+/* Keep existing utilities for color/typography utilities */
+/* Note: Consider replacing utilities.css with Bootstrap utilities in the future */

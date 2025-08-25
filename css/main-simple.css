@@ -1,0 +1,83 @@
+/* ===== SIMPLE MAIN STREET SCHOOL CSS ===== */
+
+:root {
+    /* Just the colors you actually use */
+    --primary: #FE5D37;
+    --primary-dark: #e54a2b;
+    --secondary: #f39c12;
+    --dark: #103741;
+    --light: #FFF5F3;
+    --white: #ffffff;
+    
+    /* Just the fonts you actually use */
+    --font-headings: 'Lobster Two', cursive;
+    --font-body: 'Heebo', sans-serif;
+    
+    /* Just the shadows you actually use */
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Base styles */
+body {
+    font-family: var(--font-body);
+    background-color: white;
+}
+
+/* Simple heading styles */
+.fancy-heading {
+    font-family: var(--font-headings);
+    color: var(--primary);
+}
+
+/* Simple button overrides */
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+/* Card hover effect */
+.card-hover {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Spinner */
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+}
+
+#spinner.show {
+    transition: opacity .5s ease-out, visibility 0s linear 0s;
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Back to top button */
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 2rem;
+    bottom: 2rem;
+    z-index: 99;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.back-to-top:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}

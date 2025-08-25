@@ -1,0 +1,96 @@
+/* ===== TYPOGRAPHY SYSTEM ===== */
+
+/* Base Typography - Minimal approach to avoid conflicts */
+body:not([style*="font-family"]) {
+    font-family: var(--font-family-primary);
+}
+
+/* Design System Typography Classes */
+.heading-primary {
+    font-family: var(--font-family-headings);
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.heading-secondary {
+    font-family: var(--font-family-headings);
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-tight);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.heading-tertiary {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-normal);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.text-body {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height-relaxed);
+    color: var(--text-primary);
+}
+
+.text-body-small {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height-normal);
+    color: var(--text-secondary);
+}
+
+/* Font Family Utilities */
+.font-headings {
+    font-family: var(--font-family-headings) !important;
+}
+
+/* Utility classes for explicit use */
+.text-primary { color: var(--primary) !important; }
+.text-secondary { color: var(--secondary) !important; }
+.text-muted { color: var(--text-muted) !important; }
+
+/* Scalable Text System */
+.scalable-text {
+    font-size: clamp(0.8rem, 2.5vw, 1.1rem);
+    line-height: 1.3;
+    min-width: 0;
+    word-wrap: break-word;
+    font-weight: var(--font-weight-medium);
+}
+
+.scalable-text-sm {
+    font-size: clamp(0.7rem, 2vw, 0.9rem);
+    line-height: 1.4;
+    font-weight: var(--font-weight-normal);
+}
+
+.scalable-text-lg {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    line-height: 1.2;
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+    .heading-primary {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .heading-secondary {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .heading-tertiary {
+        font-size: var(--font-size-xl);
+    }
+}

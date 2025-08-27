@@ -1,4 +1,4 @@
-/********** Template CSS **********/
+/* ====== Mainstschool Custom Design System & Overrides ====== */
 :root {
     /* ===== COLOR SYSTEM ===== */
     /* Primary Brand Colors */
@@ -54,9 +54,8 @@
     --font-family-secondary: 'Inter', sans-serif;
     
     /* Font Sizes */
-    --font-size-xs: 0.75rem;    /* 12px */
-    --font-size-sm: 0.875rem;   /* 14px */
-    --font-size-base: 1rem;     /* 16px */
+    --font-size-base: 14px;     /* 14px base font size */
+    --font-size-sm: 0.875rem;   /* 14px * 0.875 = 12.25px, for small text */
     --font-size-lg: 1.125rem;   /* 18px */
     --font-size-xl: 1.25rem;    /* 20px */
     --font-size-2xl: 1.5rem;    /* 24px */
@@ -64,50 +63,8 @@
     --font-size-4xl: 2.25rem;   /* 36px */
     --font-size-5xl: 3rem;      /* 48px */
     --font-size-6xl: 3.75rem;   /* 60px */
-    
-    /* Font Weights */
-    --font-weight-light: 300;
-    --font-weight-normal: 400;
-    --font-weight-medium: 500;
-    --font-weight-semibold: 600;
-    --font-weight-bold: 700;
-    
-    /* Line Heights */
-    --line-height-tight: 1.25;
-    --line-height-normal: 1.5;
-    --line-height-relaxed: 1.75;
-    
-    /* ===== SPACING SYSTEM ===== */
-    --spacing-xs: 0.25rem;   /* 4px */
-    --spacing-sm: 0.5rem;    /* 8px */
-    --spacing-md: 1rem;      /* 16px */
-    --spacing-lg: 1.5rem;    /* 24px */
-    --spacing-xl: 2rem;      /* 32px */
-    --spacing-2xl: 3rem;     /* 48px */
-    --spacing-3xl: 4rem;     /* 64px */
-    --spacing-4xl: 6rem;     /* 96px */
-    
-    /* ===== BORDER SYSTEM ===== */
-    --border-radius-sm: 0.25rem;
-    --border-radius: 0.5rem;
-    --border-radius-lg: 1rem;
-    --border-radius-xl: 1.5rem;
-    --border-radius-pill: 50rem;
-    
-    --border-width: 1px;
-    --border-width-thick: 2px;
-    
-    /* ===== SHADOW SYSTEM ===== */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    
-    /* ===== TRANSITION SYSTEM ===== */
-    --transition-fast: 0.15s ease-in-out;
-    --transition-normal: 0.3s ease-in-out;
-    --transition-slow: 0.5s ease-in-out;
+
+
     
     /* ===== Z-INDEX SYSTEM ===== */
     --z-dropdown: 1000;
@@ -120,12 +77,14 @@
     --z-toast: 1080;
 }
 
-/* Ensure body background is white */
+
 body {
+    /* Ensure body background is always white, overriding Bootstrap if needed */
     background-color: white;
 }
 
 /* Updated back-to-top button - positioned within content column */
+/* Custom Back to Top Button Styles */
 .back-to-top {
     position: fixed;
     display: none;
@@ -144,40 +103,40 @@ body {
 
 
 
+/* Card hover effect for custom cards */
 .card-hover {
     transition: all 0.3s ease;
     cursor: pointer;
-  }
-  .card-hover:hover {
+}
+.card-hover:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  }
+}
   
-  /* Circle behind icons */
-  .icon-circle {
+/* Custom icon circle and shrink styles */
+.icon-circle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 50%;
-  }
-  .icon-circle i {
+}
+.icon-circle i {
     font-size: 1.5rem;
-  }
-
-  .icon-shrink {
+}
+.icon-shrink {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 50%;
-  }
-  .icon-shrink i {
+}
+.icon-shrink i {
     font-size: 1.5rem;
     color: #fff;
-  }
+}
 
 /* Hybrid layout system - full-width page headers, contained content sections */
 
@@ -310,22 +269,21 @@ body {
     }
 }
 
-/* Enhanced responsive behavior for existing Bootstrap containers */
+
+/* Custom container width override for site layout (Bootstrap's .container is already responsive, but this narrows it for this design) */
 .container {
     width: 95%;
     max-width: 95vw;
 }
-
-/* Ensure Bootstrap containers don't get too wide on ultra-wide screens */
 @media (min-width: 1400px) {
     .container {
         max-width: 1330px; /* 95% of 1400px */
     }
 }
 
-/* Ensure carousel and full-width elements work properly */
+
+/* .container-fluid is already 100% width in Bootstrap, but we add padding for site consistency */
 .container-fluid {
-    width: 100%;
     padding-left: 1rem;
     padding-right: 1rem;
 }
@@ -349,12 +307,11 @@ body {
     }
 }
 
-/* Responsive padding utilities */
+/* Responsive padding utilities for custom layouts */
 .px-responsive {
     padding-left: clamp(1rem, 3vw, 2rem);
     padding-right: clamp(1rem, 3vw, 2rem);
 }
-
 .py-responsive {
     padding-top: clamp(2rem, 5vw, 4rem);
     padding-bottom: clamp(2rem, 5vw, 4rem);
@@ -496,77 +453,19 @@ body {
     box-shadow: var(--shadow-md);
 }
 
-/* Button Sizes */
+
+/* Button size utilities: Only keep if they differ from Bootstrap or are used for custom sizing */
 .btn-sm {
     padding: var(--spacing-xs) var(--spacing-md);
     font-size: var(--font-size-sm);
 }
-
 .btn-lg {
     padding: var(--spacing-md) var(--spacing-xl);
     font-size: var(--font-size-lg);
 }
 
 /* Button Variants */
-.btn-rounded {
-    border-radius: var(--border-radius-pill);
-}
 
-.btn-square {
-    width: 38px;
-    height: 38px;
-    padding: 0;
-    border-radius: var(--border-radius);
-}
-
-.btn-sm-square {
-    width: 32px;
-    height: 32px;
-    padding: 0;
-    border-radius: var(--border-radius);
-}
-
-.btn-lg-square {
-    width: 48px;
-    height: 48px;
-    padding: 0;
-    border-radius: var(--border-radius);
-}
-
-.btn-square,
-.btn-sm-square,
-.btn-lg-square {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: var(--font-weight-normal);
-}
-
-.btn-square {
-    width: 38px;
-    height: 38px;
-}
-
-.btn-sm-square {
-    width: 32px;
-    height: 32px;
-}
-
-.btn-lg-square {
-    width: 48px;
-    height: 48px;
-}
-
-.btn-square,
-.btn-sm-square,
-.btn-lg-square {
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: normal;
-    border-radius: 50px;
-}
 
 /*** Typography System ***/
 /* Base Typography - Minimal approach to avoid conflicts */
@@ -620,18 +519,10 @@ body:not([style*="font-family"]) {
     font-family: var(--font-family-headings) !important;
 }
 
-/* Utility classes for explicit use */
+/* Utility classes for custom color system (overrides Bootstrap if needed) */
 .text-primary { color: var(--primary) !important; }
 .text-secondary { color: var(--secondary) !important; }
 .text-muted { color: var(--text-muted) !important; }
-
-.text-muted {
-    color: var(--text-muted) !important;
-}
-
-.text-secondary {
-    color: var(--text-secondary) !important;
-}
 
 /* Font Family Utilities */
 .font-primary {
@@ -646,8 +537,8 @@ body:not([style*="font-family"]) {
     font-family: var(--font-family-secondary) !important;
 }
 
-/* Font Size Utilities */
-.text-xs { font-size: var(--font-size-xs) !important; }
+
+/* Custom scalable font size utilities (not in Bootstrap) */
 .text-sm { font-size: var(--font-size-sm) !important; }
 .text-base { font-size: var(--font-size-base) !important; }
 .text-lg { font-size: var(--font-size-lg) !important; }
@@ -658,12 +549,6 @@ body:not([style*="font-family"]) {
 .text-5xl { font-size: var(--font-size-5xl) !important; }
 .text-6xl { font-size: var(--font-size-6xl) !important; }
 
-/* Font Weight Utilities */
-.font-light { font-weight: var(--font-weight-light) !important; }
-.font-normal { font-weight: var(--font-weight-normal) !important; }
-.font-medium { font-weight: var(--font-weight-medium) !important; }
-.font-semibold { font-weight: var(--font-weight-semibold) !important; }
-.font-bold { font-weight: var(--font-weight-bold) !important; }
 
 /*** Navbar ***/
 /* Add full-width border line for desktop/medium screens */
@@ -799,190 +684,6 @@ body:not([style*="font-family"]) {
 
 
 /*** Header ***/
-.header-carousel::before,
-.header-carousel::after,
-.page-header::before,
-.page-header::after {
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: 10px;
-    top: 0;
-    left: 0;
-    background: url(../img/bg-header-top.png) center center repeat-x;
-    z-index: 1;
-}
-
-.header-carousel::after,
-.page-header::after {
-    height: 19px;
-    top: auto;
-    bottom: 0;
-    background: url(../img/bg-header-bottom.png) center center repeat-x;
-}
-
-/* Carousel aspect ratio container */
-.carousel-image-container {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    overflow: hidden;
-}
-
-.carousel-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.header-carousel .owl-carousel-item {
-    position: relative;
-}
-
-/* Mobile-specific carousel adjustments */
-@media (max-width: 768px) {
-    .carousel-image-container {
-        padding-bottom: 75%; /* 4:3 aspect ratio for mobile */
-    }
-    
-    .header-carousel .owl-carousel-item p {
-        font-size: 16px !important;
-        font-weight: 400 !important;
-    }
-
-    .header-carousel .owl-carousel-item h1 {
-        font-size: 30px;
-        font-weight: 600;
-    }
-    
-    /* Ensure overlay covers entire carousel */
-    .header-carousel .owl-carousel-item .position-absolute {
-        height: 100% !important;
-    }
-    
-    /* Mobile carousel content positioning */
-    .carousel-content-mobile {
-        margin-left: 1% !important; /* Move content 15% from left */
-        max-width: 80% !important; /* Adjust width to prevent overflow */
-    }
-    
-    /* Ensure buttons align to left start position */
-    .carousel-buttons {
-        align-items: flex-start !important;
-    }
-    
-    .carousel-buttons .btn,
-    .carousel-buttons .dropdown {
-        align-self: flex-start;
-    }
-}
-
-/* Showcase Carousel Navigation Styling */
-.testimonial-carousel,
-#elementaryShowcase,
-#earlyChildhoodShowcase,
-#middleSchoolShowcase,
-#highSchoolShowcase {
-    position: relative;
-    margin-bottom: 2rem;
-}
-
-/* Simple navigation positioning - arrows below carousel */
-.testimonial-carousel .owl-nav,
-#elementaryShowcase .owl-nav,
-#earlyChildhoodShowcase .owl-nav,
-#middleSchoolShowcase .owl-nav,
-#highSchoolShowcase .owl-nav {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    transform: none !important;
-    width: 100% !important;
-    height: auto !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    margin: 1.5rem 0 0 0 !important;
-    padding: 0 !important;
-    z-index: auto !important;
-}
-
-.testimonial-carousel .owl-nav .owl-prev,
-.testimonial-carousel .owl-nav .owl-next,
-#elementaryShowcase .owl-nav .owl-prev,
-#elementaryShowcase .owl-nav .owl-next,
-#earlyChildhoodShowcase .owl-nav .owl-prev,
-#earlyChildhoodShowcase .owl-nav .owl-next,
-#middleSchoolShowcase .owl-nav .owl-prev,
-#middleSchoolShowcase .owl-nav .owl-next,
-#highSchoolShowcase .owl-nav .owl-prev,
-#highSchoolShowcase .owl-nav .owl-next {
-    position: relative !important;
-    margin: 0 0.75rem !important;
-    width: 50px !important;
-    height: 50px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    color: white !important;
-    background: var(--primary, #00B98E) !important;
-    border: none !important;
-    border-radius: 50% !important;
-    font-size: 1.25rem !important;
-    transition: all 0.3s ease !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
-}
-
-.testimonial-carousel .owl-nav .owl-prev:hover,
-.testimonial-carousel .owl-nav .owl-next:hover,
-#elementaryShowcase .owl-nav .owl-prev:hover,
-#elementaryShowcase .owl-nav .owl-next:hover,
-#earlyChildhoodShowcase .owl-nav .owl-prev:hover,
-#earlyChildhoodShowcase .owl-nav .owl-next:hover,
-#middleSchoolShowcase .owl-nav .owl-prev:hover,
-#middleSchoolShowcase .owl-nav .owl-next:hover,
-#highSchoolShowcase .owl-nav .owl-prev:hover,
-#highSchoolShowcase .owl-nav .owl-next:hover {
-    background: var(--dark, #1C1C1C) !important;
-    transform: scale(1.1) !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25) !important;
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-    .testimonial-carousel .owl-nav,
-    #elementaryShowcase .owl-nav,
-    #earlyChildhoodShowcase .owl-nav,
-    #middleSchoolShowcase .owl-nav,
-    #highSchoolShowcase .owl-nav {
-        margin: 1rem 0 0 0 !important;
-    }
-    
-    .testimonial-carousel .owl-nav .owl-prev,
-    .testimonial-carousel .owl-nav .owl-next,
-    #elementaryShowcase .owl-nav .owl-prev,
-    #elementaryShowcase .owl-nav .owl-next,
-    #earlyChildhoodShowcase .owl-nav .owl-prev,
-    #earlyChildhoodShowcase .owl-nav .owl-next,
-    #middleSchoolShowcase .owl-nav .owl-prev,
-    #middleSchoolShowcase .owl-nav .owl-next,
-    #highSchoolShowcase .owl-nav .owl-prev,
-    #highSchoolShowcase .owl-nav .owl-next {
-        width: 45px !important;
-        height: 45px !important;
-        font-size: 1.1rem !important;
-        margin: 0 0.5rem !important;
-    }
-}
-
-/* Carousel dots positioning */
-.testimonial-carousel .owl-dots,
 #elementaryShowcase .owl-dots,
 #earlyChildhoodShowcase .owl-dots,
 #middleSchoolShowcase .owl-dots,
@@ -1600,7 +1301,8 @@ body:not([style*="font-family"]) {
     }
 }
 
-/* Bootstrap utility classes for blue colors */
+
+/* Custom blue color utilities (Bootstrap does not provide these by default) */
 .text-blue { color: var(--blue) !important; }
 .text-blue-light { color: var(--blue-light) !important; }
 .text-blue-dark { color: var(--blue-dark) !important; }

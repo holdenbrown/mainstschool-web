@@ -1,0 +1,61 @@
+/* ================================= */
+/* MAIN STREET SCHOOL - MAIN CSS     */
+/* ================================= */
+
+
+:root {
+    --primary: #fe5d37;
+    --primary-dark: #e54a2b;
+    --secondary: #f39c12;
+    --dark: #2c3e50;
+    --light: #ecf0f1;
+    --success: #27ae60;
+    --info: #3498db;
+    --warning: #f1c40f;
+    --danger: #e74c3c;
+    --white: #ffffff;
+    --gray-100: #f8f9fa;
+    --gray-200: #e9ecef;
+    --gray-300: #dee2e6;
+    --gray-400: #ced4da;
+    --gray-500: #adb5bd;
+    --gray-600: #6c757d;
+    --gray-700: #495057;
+    --gray-800: #343a40;
+    --gray-900: #212529;
+    /* Responsive scalable font sizes in px */
+    --font-size-base: clamp(12px, 2vw, 16px);
+    --font-size-lg: clamp(16px, 3vw, 24px);
+    --font-size-xl: clamp(20px, 4vw, 32px);
+    --font-size-xxl: clamp(28px, 6vw, 48px);
+}
+
+/* Base styles */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--dark);
+    background-color: var(--white);
+}
+
+/* Responsive typography using scalable variables */
+h1 { font-size: var(--font-size-xxl); color: var(--primary); }
+h2 { font-size: var(--font-size-xl); color: var(--primary); }
+h3 { font-size: var(--font-size-lg); color: var(--dark); }
+h4, h5, h6 { font-size: var(--font-size-base); color: var(--dark); }
+
+/* Utility color classes for text */
+.text-primary { color: var(--primary) !important; }
+.text-dark { color: var(--dark) !important; }
+.text-secondary { color: var(--secondary) !important; }
+.text-success { color: var(--success) !important; }
+.text-info { color: var(--info) !important; }
+.text-warning { color: var(--warning) !important; }
+.text-danger { color: var(--danger) !important; }
+.text-white { color: var(--white) !important; }
+
+/* Add any other global resets or base styles here */
+
+/* Add any other global resets or base styles here */

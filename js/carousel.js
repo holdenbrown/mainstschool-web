@@ -110,55 +110,31 @@ $(document).ready(function () {
   // =================================
 
   function initializeShowcaseCarousel(carouselId, slides) {
-    const carousel = $(carouselId);
-
-    if (carousel.length) {
-      slides.forEach(function (slide) {
-        const learnMoreButton = slide.link ? `
-                                    <a href="${slide.link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm mt-2">
-                                        <i class="bi bi-arrow-right-circle me-1"></i>Learn More
-                                    </a>
-                                ` : '';
-        
-        const slideHtml = `
-                    <div class="showcase-item">
-                        <div class="showcase-image-container position-relative overflow-hidden rounded">
-                            <div class="carousel-image-container">
-                                <img class="carousel-image" src="${slide.image}" alt="${slide.title}">
-                            </div>
-                            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-end" style="background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));">
-                                <div class="p-4 w-100">
-                                    <h5 class="text-white mb-2">${slide.title}</h5>
-                                    <p class="text-white-50 mb-2">${slide.description}</p>
-                                    ${learnMoreButton}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-        carousel.append(slideHtml);
-      });
-
-      carousel.owlCarousel({
-        items: 1,
-        loop: true,
-        margin: 30,
-        nav: true,
-        dots: true,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        autoplayHoverPause: true,
-        smartSpeed: 1000,
-        navText: [
-          '<i class="bi bi-chevron-left"></i>',
-          '<i class="bi bi-chevron-right"></i>',
-        ],
-        responsive: {
-          0: { items: 1, margin: 15 },
-          768: { items: 2, margin: 30 },
-          992: { items: 3, margin: 30 },
-        },
-      });
+    const $carousel = $(carouselId);
+    if (!$carousel.length) return;
+    const $carouselInner = $carousel.find('.carousel-inner');
+    $carouselInner.empty();
+    slides.forEach(function (slide, idx) {
+      const isActive = idx === 0 ? 'active' : '';
+      const learnMoreButton = slide.link ? `
+        <a href="${slide.link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm mt-2">
+          <i class="bi bi-arrow-right-circle me-1"></i>Learn More
+        </a>
+      ` : '';
+      $carouselInner.append(`
+        <div class="carousel-item ${isActive}">
+          <img src="${slide.image}" class="d-block w-100" alt="${slide.title}">
+          <div class="carousel-caption d-none d-md-block text-start">
+            <h5>${slide.title}</h5>
+            <p>${slide.description}</p>
+            ${learnMoreButton}
+          </div>
+        </div>
+      `);
+    });
+    // Optionally, you can trigger the Bootstrap carousel (if not already auto)
+    if (typeof bootstrap !== 'undefined' && $carousel.carousel) {
+      $carousel.carousel();
     }
   }
 
@@ -292,33 +268,28 @@ $(document).ready(function () {
       {
         image: "img/carousel-7.webp",
         title: "Community Involvement",
-        description:
-          "Learning through community service and involvement.",
+        description: "Learning through community service and involvement."
       },
       {
         image: "img/carousel-4.webp",
         title: "Play Based Learning",
-        description:
-          "Children often learn best through play, exploration, and hands-on activities.",
+        description: "Children often learn best through play, exploration, and hands-on activities."
       },
       {
         image: "img/individualized_attention.JPG",
         title: "Individualized Attention",
-        description:
-          "Each child receives personalized care and instruction tailored to their unique needs.",
+        description: "Each child receives personalized care and instruction tailored to their unique needs."
       },
       {
         image: "img/lori_glasses.jpg",
         title: "Creative Expression",
-        description:
-          "Art, music, and creative activities encourage self-expression and imagination.",
+        description: "Art, music, and creative activities encourage self-expression and imagination."
       },
       {
         image: "img/carousel-10.webp",
         title: "Fostering Curiosity",
-        description:
-          "Children are naturally curious and we encourage that curiosity through hands-on learning.",
-      },
+        description: "Children are naturally curious and we encourage that curiosity through hands-on learning."
+      }
     ];
     initializeShowcaseCarousel("#earlyChildhoodShowcase", earlyChildhoodSlides);
 
@@ -327,57 +298,49 @@ $(document).ready(function () {
       {
         image: "img/elementary_community_involvment.jpeg",
         title: "Project Based Learning",
-        description:
-          "Students engage in meaningful, projects that make learning come alive.",
+        description: "Students engage in meaningful, projects that make learning come alive."
       },
       {
         image: "img/art_class.jpg",
         title: "Creative Expression",
-        description:
-          "Art, music, and creative projects are integral parts of our elementary curriculum.",
+        description: "Art, music, and creative projects are integral parts of our elementary curriculum."
       },
       {
         image: "img/outdoor-education.jpg",
         title: "Outdoor Education",
-        description:
-          "Our newly built playground provides opportunities for physical development and outdoor learning.",
+        description: "Our newly built playground provides opportunities for physical development and outdoor learning."
       },
       {
         image: "img/personalized_learning.jpg",
         title: "individualized curriculum",
-        description:
-          "Small class size allows for teachers to give individualized attention to each students needs and assign projects that are tailored to their interests.",
+        description: "Small class size allows for teachers to give individualized attention to each students needs and assign projects that are tailored to their interests."
       },
       {
         image: "img/community_involvement.jpg",
         title: "Community Involvement",
-        description:
-          "Students learn through projects that improve the community around them.",
-      },
+        description: "Students learn through projects that improve the community around them."
+      }
     ];
     initializeShowcaseCarousel("#elementaryShowcase", elementarySlides);
 
     // Middle school showcase
     const middleSchoolSlides = [
-    {
-            image: "img/elementary_community_involvment.jpeg",
-            title: "Project Based Learning",
-            description:
-              "Students engage in meaningful, projects that make learning come alive.",
-    },
+      {
+        image: "img/elementary_community_involvment.jpeg",
+        title: "Project Based Learning",
+        description: "Students engage in meaningful, projects that make learning come alive."
+      },
       {
         image: "img/middle-school-showcase.jpg",
         title: "IPR's Partnership with Young Journalists",
-        description:
-          "Students collaborated with Iowa Public Radio to create StoryCorps-style audio pieces, developing interviewing and storytelling skills.",
+        description: "Students collaborated with Iowa Public Radio to create StoryCorps-style audio pieces, developing interviewing and storytelling skills.",
         link: "https://www.iowapublicradio.org/collecting-histories-iprs-partnership-with-young-journalists"
       },
       {
         image: "img/discussion.jpg",
         title: "Communication Skills",
-        description:
-          "Students learn to communicate their ideas and opinions effectively through classroom discussion.",
-      },
+        description: "Students learn to communicate their ideas and opinions effectively through classroom discussion."
+      }
     ];
     initializeShowcaseCarousel("#middleSchoolShowcase", middleSchoolSlides);
 
@@ -386,15 +349,13 @@ $(document).ready(function () {
       {
         image: "img/high-school.jpg",
         title: "Learning Behond the Classroom",
-        description:
-          "Our high school students take their curiosity into the real world. Whether exploring science at a museum or observing nature outdoors, field experiences extend classroom discussions into hands-on learning opportunities.",
+        description: "Our high school students take their curiosity into the real world. Whether exploring science at a museum or observing nature outdoors, field experiences extend classroom discussions into hands-on learning opportunities."
       },
       {
         image: "img/high-school-exploring.jpg",
         title: "Exploring Together, Learning Together",
-        description:
-          "Advanced analytical and problem-solving skills development.",
-      },
+        description: "Advanced analytical and problem-solving skills development."
+      }
     ];
     initializeShowcaseCarousel("#highSchoolShowcase", highSchoolSlides);
 

@@ -88,19 +88,6 @@
     font-size: clamp(1rem, 2.5vw, 1.5rem);
 }
 
-.icon-shrink {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: clamp(2.5rem, 5vw, 3.5rem);
-    height: clamp(2.5rem, 5vw, 3.5rem);
-    border-radius: 50%;
-}
-
-.icon-shrink i {
-    font-size: clamp(2rem, 5vw, 1.5rem);
-    color: var(--white);
-}
 
 /* ===== TYPOGRAPHY UTILITIES ===== */
 .font-heading { font-family: var(--font-family-headings) !important; }

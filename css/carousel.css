@@ -1,0 +1,138 @@
+/* ===== AUTOMATIC RESPONSIVE TYPOGRAPHY FOR CAROUSEL ===== */
+.carousel-caption {
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    max-width: 80%;
+}
+
+.carousel-caption h3 {
+    font-size: clamp(1.25rem, 3vw, 2.5rem) !important;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+.carousel-caption h4 {
+    font-size: clamp(1rem, 2.5vw, 2rem) !important;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+}
+
+.carousel-caption p {
+    font-size: clamp(0.9rem, 2vw, 1.2rem) !important;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.carousel-caption .btn {
+    font-size: clamp(0.8rem, 1.8vw, 1rem) !important;
+    padding: clamp(0.4rem, 1.5vw, 0.6rem) clamp(0.8rem, 2vw, 1.2rem);
+}
+
+@media (max-width: 768px) {
+    .carousel-caption {
+        padding: 0.75rem;
+        max-width: 70%;
+    }
+    .carousel-caption h3 {
+        font-size: clamp(1.1rem, 4vw, 1.5rem) !important;
+        margin-bottom: 0.4rem;
+    }
+    .carousel-caption h4 {
+        font-size: clamp(0.95rem, 3.5vw, 1.25rem) !important;
+        margin-bottom: 0.5rem;
+    }
+    .carousel-caption p {
+        font-size: clamp(0.85rem, 2.5vw, 1rem) !important;
+        margin-bottom: 0.75rem;
+    }
+    .carousel-caption .btn {
+        font-size: clamp(0.75rem, 2.5vw, 0.9rem) !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-caption {
+        padding: 0.5rem;
+        max-width: 70%;
+    }
+    .carousel-caption h3 {
+        font-size: clamp(1rem, 4.5vw, 1.3rem) !important;
+    }
+    .carousel-caption h4 {
+        font-size: clamp(0.9rem, 4vw, 1.1rem) !important;
+    }
+    .carousel-caption p {
+        display: none; /* Hide description on very small screens */
+    }
+}
+/* ===== CAROUSEL LAYOUT STABILIZATION ===== */
+.carousel-container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Fixed aspect ratio container to prevent layout shifts */
+.carousel-inner {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-item {
+    aspect-ratio: 16/9; /* Fixed aspect ratio */
+    background-color: #f8f9fa; /* Placeholder color while loading */
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures images fill container without distortion */
+    display: block;
+}
+
+/* Carousel control styling */
+.carousel-control-prev,
+.carousel-control-next {
+    width: clamp(35px, 5vw, 50px);
+    height: clamp(35px, 5vw, 50px);
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    border: 2px solid #fe5d37;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.9;
+    transition: all 0.3s ease;
+    margin: clamp(0vw, 1vw, 2vw);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(35%) sepia(90%) saturate(1500%) hue-rotate(350deg) brightness(95%);
+    width: 25px;
+    height: 25px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background: #fe5d37;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    filter: invert(100%) brightness(200%);
+}
+
+
+.caption-top-left {
+    top: 25%;
+    left: 15%;
+    text-align: left;
+}

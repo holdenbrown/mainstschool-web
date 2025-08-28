@@ -1,378 +1,180 @@
-/* ================================= */
-/* CAROUSEL INITIALIZATION - MAIN STREET SCHOOL */
-/* ================================= */
 
-$(document).ready(function () {
-  "use strict";
-
-  // =================================
-  // HEADER CAROUSEL INITIALIZATION
-  // =================================
-
-  function initializeHeaderCarousel() {
-    const headerCarousel = $("#headerCarousel");
-
-    if (headerCarousel.length) {
-      const carouselSlides = [
-        {
-          image: "img/carousel-1.jpg",
-          title: "Welcome to Main Street School",
-          subtitle: "Nurturing Excellence, Building Character",
-          description:
-            "Where every child's unique potential is discovered and developed through personalized learning experiences.",
-        },
-        {
-          image: "img/carousel-2.jpg",
-          title: "Individualized Learning",
-          subtitle: "Every Child is Unique",
-          description:
-            "Our personalized curriculum adapts to each student's learning style, pace, and interests.",
-        },
-        {
-          image: "img/carousel-3.jpg",
-          title: "Whole Child Development",
-          subtitle: "Academic Excellence & Character Building",
-          description:
-            "We focus on developing not just academic skills, but also social, emotional, and character development.",
-        },
-        {
-          image: "img/carousel-4.webp",
-          title: "Project-Based Learning",
-          subtitle: "Hands-On Education",
-          description:
-            "Students learn through engaging, real-world projects that make education meaningful and memorable.",
-        },
-        {
-          image: "img/carousel-5.webp",
-          title: "Preschool to 12th Grade",
-          subtitle: "Complete Educational Journey",
-          description:
-            "From early childhood through high school graduation, we provide a continuous, supportive learning environment.",
-        },
-      ];
-
-      carouselSlides.forEach(function (slide) {
-        const slideHtml = `
-                    <div class="owl-carousel-item position-relative overflow-hidden">
-                        <div class="carousel-image-container">
-                            <img class="carousel-image" src="${slide.image}" alt="${slide.title}">
-                        </div>
-                        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 0, 0, .4);">
-                            <div class="container">
-                                <div class="row justify-content-start">
-                                    <div class="col-11 col-sm-10 col-lg-8">
-                                        <h1 class="display-4 display-sm-2 text-white animated slideInDown mb-3 mb-sm-4" style="font-size: clamp(1.5rem, 5vw, 3.5rem);">${slide.title}</h1>
-                                        <h2 class="text-white animated slideInDown mb-3 mb-sm-4" style="font-size: clamp(1rem, 3vw, 2rem);">${slide.subtitle}</h2>
-                                        <p class="fs-6 fs-sm-5 fw-medium text-white mb-3 mb-sm-4 pb-2 animated slideInDown" style="font-size: clamp(0.875rem, 2.5vw, 1.25rem);">${slide.description}</p>
-                                        <div class="dropdown animated slideInDown">
-                                            <button class="btn btn-primary py-2 py-sm-3 px-4 px-sm-5 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: clamp(0.875rem, 2vw, 1rem);">
-                                                Enroll Now
-                                            </button>
-                                            <ul class="dropdown-menu rounded text-center">
-                                                <li><a class="dropdown-item rounded text-center" href="contact.html#re-enroll">Re-enroll</a></li>
-                                                <li><a class="dropdown-item rounded text-center" href="contact.html#new-students">New Students</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-        headerCarousel.append(slideHtml);
-      });
-
-      headerCarousel.owlCarousel({
-        items: 1,
-        loop: true,
-        margin: 0,
-        nav: true,
-        dots: false,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        autoplayHoverPause: true,
-        smartSpeed: 1000,
-        navText: [
-          '<i class="bi bi-chevron-left"></i>',
-          '<i class="bi bi-chevron-right"></i>',
-        ],
-        responsive: {
-          0: { items: 1 },
-          768: { items: 1 },
-          992: { items: 1 },
-        },
-      });
+// ===== DynamicCarousel Class (Bootstrap 5) =====
+class DynamicCarousel {
+  constructor(containerId, options = {}) {
+    this.container = document.getElementById(containerId);
+    this.options = Object.assign({
+      data: [],
+      defaultPosition: 'center',
+      autoPlay: true,
+      interval: 5000,
+      indicators: true
+    }, options);
+    this.carousel = null;
+    this.init();
+  }
+  init() {
+    this.renderCarousel();
+    this.attachEventListeners();
+    if (this.options.autoPlay) {
+      this.startAutoPlay();
     }
   }
-
-  // =================================
-  // SHOWCASE CAROUSEL INITIALIZATION
-  // =================================
-
-  function initializeShowcaseCarousel(carouselId, slides) {
-    const $carousel = $(carouselId);
-    if (!$carousel.length) return;
-    const $carouselInner = $carousel.find('.carousel-inner');
-    $carouselInner.empty();
-    slides.forEach(function (slide, idx) {
-      const isActive = idx === 0 ? 'active' : '';
-      const learnMoreButton = slide.link ? `
-        <a href="${slide.link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm mt-2">
-          <i class="bi bi-arrow-right-circle me-1"></i>Learn More
-        </a>
-      ` : '';
-      $carouselInner.append(`
-        <div class="carousel-item ${isActive}">
-          <img src="${slide.image}" class="d-block w-100" alt="${slide.title}">
-          <div class="carousel-caption d-none d-md-block text-start">
-            <h5>${slide.title}</h5>
-            <p>${slide.description}</p>
-            ${learnMoreButton}
-          </div>
+  renderCarousel() {
+    this.container.innerHTML = `
+      <div id="mainCarousel" class="carousel slide" data-bs-ride="${this.options.autoPlay ? 'carousel' : 'false'}">
+        ${this.options.indicators ? this.renderIndicators() : ''}
+        <div class="carousel-inner">
+          ${this.renderCarouselItems()}
         </div>
-      `);
+        <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    `;
+    // Ensure the container has the correct class
+    this.container.classList.add('carousel-container');
+    this.carousel = new bootstrap.Carousel(this.container.querySelector('#mainCarousel'), {
+      interval: this.options.interval
     });
-    // Optionally, you can trigger the Bootstrap carousel (if not already auto)
-    if (typeof bootstrap !== 'undefined' && $carousel.carousel) {
-      $carousel.carousel();
+  }
+  renderIndicators() {
+    if (this.options.data.length <= 0) return '';
+    let indicators = '<div class="carousel-indicators">';
+    this.options.data.forEach((_, index) => {
+      indicators += `<button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="${index}" 
+        ${index === 0 ? 'class="active" aria-current="true"' : ''} aria-label="Slide ${index + 1}"></button>`;
+    });
+    indicators += '</div>';
+    return indicators;
+  }
+  renderCarouselItems() {
+    if (this.options.data.length <= 0) {
+      return '<div class="carousel-item active"><div class="d-flex align-items-center justify-content-center h-100">No slides available</div></div>';
+    }
+    return this.options.data.map((slide, index) => `
+      <div class="carousel-item ${index === 0 ? 'active' : ''}">
+        <img src="${slide.image}" alt="${slide.title}">
+        <div class="carousel-caption caption-${slide.position || this.options.defaultPosition}">
+          ${slide.title ? `<h3>${slide.title}</h3>` : ''}
+          ${slide.subtitle ? `<h4>${slide.subtitle}</h4>` : ''}
+          ${slide.description ? `<p>${slide.description}</p>` : ''}
+          ${slide.button ? `<a href="${slide.button.link}" class="btn btn-primary mt-2">${slide.button.text}</a>` : ''}
+        </div>
+      </div>
+    `).join('');
+  }
+  attachEventListeners() {
+    // Custom event listeners if needed
+  }
+  startAutoPlay() {
+    if (this.carousel) {
+      this.carousel.cycle();
     }
   }
-
-  // =================================
-  // TESTIMONIAL CAROUSEL INITIALIZATION
-  // =================================
-
-  function initializeTestimonialCarousel() {
-    const testimonialCarousel = $("#testimonialCarousel");
-
-    if (testimonialCarousel.length) {
-      const testimonials = [
-        {
-          quote:
-            "We couldn't be happier with the academic preparation that Main Street gave our daughter. She has since gone on to graduate high school and college and is now a teacher herself because of the inspiration of Tanya. It also appropriately prepared our youngest daughter for her high school experience. We also appreciated the lessons in citizenship that our children received. They learned the why behind the what in all instances and that made them better critical thinkers. Most importantly, they learned to love and respect people for who they are. This fit so well with our family philosophy. It was a Godsend to have our personal philosophy and our children's educational experience so aligned.",
-          author: "M.F.",
-          role: "Parent",
-        },
-        {
-          quote:
-            "We commuted from Ames to Main Street School when our son was in 7th and 8th grades. We sought individualized academics, experiential learning and a small class size. The experience was nothing short of transformative for him. He matured, he gained both study and social skills and he had the experience of teachers who would not give up on him and would not let him get away with not trying. Public school doesn't always work for all children. When a student needs an alternative, Main Street School is a shining example of what that can be. We were so relieved to find it, and so delighted with the results.",
-          author: "A.M.",
-          role: "Parent",
-        },
-        {
-          quote:
-            "We have been part of Main Street for 10 years now and both girls have benefited greatly from the experience. The classes are small, sometimes one-on-one, so individual needs are recognized and met. The adult-to-student ratio is high so misbehavior is quickly seen and discussed calmly and sometimes introspectively. All ages mingle, older students read to younger ones, and students work and play together at recess. The students learn to interact with all ages from 3 to adults. I would highly recommend Main Street School to anyone who wants their child(ren) to have a personal academic and life-skills education in a rich, caring, comfortable environment.",
-          author: "S.L.S",
-          role: "Parent",
-        },
-        {
-          quote:
-            "Main Street literally saved our child. He was completely disengaged in public school, truly believed that he couldn't do the work, and got in fights with his peers instead of working. The willingness of the Main Street teachers to get to know him as a person, a child, and a learner made such a difference in his life. He was challenged and succeeded for the first time in school. He was prepared for high school in a way that would have been impossible if he'd stayed in public school. And he learned how to deal with conflict and personality differences without violence.",
-          author: "B.C.",
-          role: "Parent",
-        },
-        {
-          quote:
-            "I started attending Main Street School at the age of 10 and was well behind my expected academic level, not even knowing how to read or do basic math. To say the least, I didn't have much hope for an academic future. However, the teachers and culture made me feel accepted and motivated to learn. Within the first week, I learned how to read at a basic level, improving confidence in myself and the instructors' ability to teach. Now, at 23, no one's the wiser about my rough start in academics. I completed my B.S. at ISU in Software Engineering and am pursuing an M.S. in Computer Engineering with a focus on Secure and Reliable Computing.",
-          author: "H.B.",
-          role: "Alumni",
-        },
-        {
-          quote:
-            "Main Street School is more than a school, it is a family. My experience at Main Street School helped me grow as a human and academically. I could not have asked for a safer or more accepting environment that also expanded my learning horizons.",
-          author: "C.B.",
-          role: "Alumni",
-        },
-        {
-          quote:
-            "It is incredibly special to feel inspired, seen, supported, creative and free in a learning environment. Main Street School helped me feel all of those things every day. I am immensely grateful for that education and highly recommend this school.",
-          author: "E.W.",
-          role: "Alumni",
-        },
-        {
-          quote:
-            "Looking back, I'm grateful for the unique experiences of being part of a small learning environment. It allowed for more hands-on learning with lessons tailored to the students interests and many field trips, things not possible in a large public school.",
-          author: "I.A.",
-          role: "Alumni",
-        },
-      ];
-
-      testimonials.forEach(function (testimonial) {
-        const testimonialHtml = `
-                    <div class="testimonial-item px-3 py-4">
-                        <div class="card bg-primary border-0 shadow rounded p-4 h-100 position-relative"> <!-- Changed bg-light to bg-primary -->
-                            <!-- Top-left quote -->
-                            <div class="position-absolute" style="top: 15px; left: 20px;">
-                                <i class="fa fa-quote-left text-white fs-3 fs-md-4" style="opacity: 0.6;"></i> <!-- Added responsive font-size classes -->
-                            </div>
-                            
-                            <!-- Bottom-right quote -->
-                            <div class="position-absolute" style="bottom: 15px; right: 20px;">
-                                <i class="fa fa-quote-right text-white fs-3 fs-md-4" style="opacity: 0.6;"></i> <!-- Added responsive font-size classes -->
-                            </div>
-                            
-                            <div class="testimonial-content">
-                                <div class="testimonial-text mb-2 pt-3 text-white"> <!-- Added text-white -->
-                                    <p class="mb-0 text-center">${testimonial.quote}</p>
-                                </div>
-                                <hr class="mx-auto mb-2 bg-white" style="width: 100px; height: 2px; border: none;"> <!-- Increased width, changed to white -->
-                            </div>
-                            <div class="testimonial-author text-center">
-                                <h5 class="mb-1 text-white">${testimonial.author}</h5> <!-- Changed to white -->
-                                <span class="text-light">${testimonial.role}</span> <!-- Changed to lighter text -->
-                            </div>
-                        </div>
-                    </div>
-                `;
-        testimonialCarousel.append(testimonialHtml);
-      });
-
-      testimonialCarousel.owlCarousel({
-        items: 1,
-        loop: true,
-        margin: 30,
-        nav: true,
-        dots: true,
-        autoplay: true,
-        autoplayTimeout: 6000,
-        autoplayHoverPause: true,
-        smartSpeed: 1000,
-        navText: [
-          '<i class="bi bi-chevron-left"></i>',
-          '<i class="bi bi-chevron-right"></i>',
-        ],
-        responsive: {
-          0: { items: 1, margin: 15 },
-          768: { items: 1, margin: 30 },
-          992: { items: 1, margin: 30 },
-        },
-      });
+  stopAutoPlay() {
+    if (this.carousel) {
+      this.carousel.pause();
     }
   }
-
-  // =================================
-  // INITIALIZATION
-  // =================================
-
-  function initializeCarousels() {
-    console.log("Initializing carousels...");
-
-    // Header carousel
-    initializeHeaderCarousel();
-
-    // Testimonial carousel
-    initializeTestimonialCarousel();
-
-    // Early childhood showcase
-    const earlyChildhoodSlides = [
-      {
-        image: "img/carousel-7.webp",
-        title: "Community Involvement",
-        description: "Learning through community service and involvement."
-      },
-      {
-        image: "img/carousel-4.webp",
-        title: "Play Based Learning",
-        description: "Children often learn best through play, exploration, and hands-on activities."
-      },
-      {
-        image: "img/individualized_attention.JPG",
-        title: "Individualized Attention",
-        description: "Each child receives personalized care and instruction tailored to their unique needs."
-      },
-      {
-        image: "img/lori_glasses.jpg",
-        title: "Creative Expression",
-        description: "Art, music, and creative activities encourage self-expression and imagination."
-      },
-      {
-        image: "img/carousel-10.webp",
-        title: "Fostering Curiosity",
-        description: "Children are naturally curious and we encourage that curiosity through hands-on learning."
-      }
-    ];
-    initializeShowcaseCarousel("#earlyChildhoodShowcase", earlyChildhoodSlides);
-
-    // Elementary showcase
-    const elementarySlides = [
-      {
-        image: "img/elementary_community_involvment.jpeg",
-        title: "Project Based Learning",
-        description: "Students engage in meaningful, projects that make learning come alive."
-      },
-      {
-        image: "img/art_class.jpg",
-        title: "Creative Expression",
-        description: "Art, music, and creative projects are integral parts of our elementary curriculum."
-      },
-      {
-        image: "img/outdoor-education.jpg",
-        title: "Outdoor Education",
-        description: "Our newly built playground provides opportunities for physical development and outdoor learning."
-      },
-      {
-        image: "img/personalized_learning.jpg",
-        title: "individualized curriculum",
-        description: "Small class size allows for teachers to give individualized attention to each students needs and assign projects that are tailored to their interests."
-      },
-      {
-        image: "img/community_involvement.jpg",
-        title: "Community Involvement",
-        description: "Students learn through projects that improve the community around them."
-      }
-    ];
-    initializeShowcaseCarousel("#elementaryShowcase", elementarySlides);
-
-    // Middle school showcase
-    const middleSchoolSlides = [
-      {
-        image: "img/elementary_community_involvment.jpeg",
-        title: "Project Based Learning",
-        description: "Students engage in meaningful, projects that make learning come alive."
-      },
-      {
-        image: "img/middle-school-showcase.jpg",
-        title: "IPR's Partnership with Young Journalists",
-        description: "Students collaborated with Iowa Public Radio to create StoryCorps-style audio pieces, developing interviewing and storytelling skills.",
-        link: "https://www.iowapublicradio.org/collecting-histories-iprs-partnership-with-young-journalists"
-      },
-      {
-        image: "img/discussion.jpg",
-        title: "Communication Skills",
-        description: "Students learn to communicate their ideas and opinions effectively through classroom discussion."
-      }
-    ];
-    initializeShowcaseCarousel("#middleSchoolShowcase", middleSchoolSlides);
-
-    // High school showcase
-    const highSchoolSlides = [
-      {
-        image: "img/high-school.jpg",
-        title: "Learning Behond the Classroom",
-        description: "Our high school students take their curiosity into the real world. Whether exploring science at a museum or observing nature outdoors, field experiences extend classroom discussions into hands-on learning opportunities."
-      },
-      {
-        image: "img/high-school-exploring.jpg",
-        title: "Exploring Together, Learning Together",
-        description: "Advanced analytical and problem-solving skills development."
-      }
-    ];
-    initializeShowcaseCarousel("#highSchoolShowcase", highSchoolSlides);
-
-    console.log("Carousels initialized successfully");
+  next() {
+    if (this.carousel) {
+      this.carousel.next();
+    }
   }
+  prev() {
+    if (this.carousel) {
+      this.carousel.prev();
+    }
+  }
+  goTo(index) {
+    if (this.carousel) {
+      this.carousel.to(index);
+    }
+  }
+  updateData(newData) {
+    this.options.data = newData;
+    this.renderCarousel();
+  }
+  addSlide(slideData) {
+    this.options.data.push(slideData);
+    this.renderCarousel();
+  }
+  removeSlide(index) {
+    if (index >= 0 && index < this.options.data.length) {
+      this.options.data.splice(index, 1);
+      this.renderCarousel();
+    }
+  }
+  changeCaptionPosition(position) {
+    const captions = this.container.querySelectorAll('.carousel-caption');
+    captions.forEach(caption => {
+      caption.classList.remove('caption-top-left', 'caption-top-right', 'caption-bottom-left', 'caption-bottom-right', 'caption-center', 'caption-custom');
+      caption.classList.add(`caption-${position}`);
+    });
+  }
+  destroy() {
+    if (this.carousel) {
+      this.carousel.dispose();
+      this.container.innerHTML = '';
+    }
+  }
+}
 
-  // Initialize carousels
-  initializeCarousels();
-
-  // Handle window resize
-  $(window).on("resize", function () {
-    setTimeout(function () {
-      $(".owl-carousel").each(function () {
-        if ($(this).hasClass("owl-loaded")) {
-          $(this).trigger("refresh.owl.carousel");
-        }
-      });
-    }, 200);
+// ===== Initialize the carousel with real homepage data =====
+document.addEventListener('DOMContentLoaded', function() {
+  const carouselData = [
+    {
+      image: "img/carousel-1.jpg",
+      title: "Welcome to Main Street School",
+      subtitle: "Nurturing Excellence, Building Character",
+      description: "Where every child's unique potential is discovered and developed through personalized learning experiences.",
+      position: "top-left",
+      button: { text: "Enroll Now", link: "contact.html#new-students" }
+    },
+    {
+      image: "img/carousel-2.jpg",
+      title: "Individualized Learning",
+      subtitle: "Every Child is Unique",
+      description: "Our personalized curriculum adapts to each student's learning style, pace, and interests.",
+      position: "top-left",
+      button: { text: "Enroll Now", link: "contact.html#new-students" }
+    },
+    {
+      image: "img/carousel-3.jpg",
+      title: "Whole Child Development",
+      subtitle: "Academic Excellence & Character Building",
+      description: "We focus on developing not just academic skills, but also social, emotional, and character development.",
+      position: "top-left",
+      button: { text: "Enroll Now", link: "contact.html#new-students" }
+    },
+    {
+      image: "img/carousel-4.webp",
+      title: "Project-Based Learning",
+      subtitle: "Hands-On Education",
+      description: "Students learn through engaging, real-world projects that make education meaningful and memorable.",
+      position: "top-left",
+      button: { text: "Enroll Now", link: "contact.html#new-students" }
+    },
+    {
+      image: "img/carousel-6.webp",
+      title: "Preschool to 12th Grade",
+      subtitle: "Complete Educational Journey",
+      description: "From early childhood through high school graduation, we provide a continuous, supportive learning environment.",
+      position: "top-left",
+      button: { text: "Enroll Now", link: "contact.html#new-students" }
+    }
+  ];
+  new DynamicCarousel('carousel-container', {
+    data: carouselData,
+    defaultPosition: 'top-left',
+    autoPlay: true,
+    interval: 5000,
+    indicators: true
   });
 });

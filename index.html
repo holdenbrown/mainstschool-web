@@ -1,421 +1,494 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>Kider - Preschool Website Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/favicon.ico" rel="icon" />
 
     <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Template Stylesheet -->
-    <link href="css/main.css" rel="stylesheet">
-    <link href="css/components.css" rel="stylesheet">
-    <link href="css/utilities.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
-    <link href="css/team-expansion.css" rel="stylesheet">
-</head>
+  <link href="css/main.css" rel="stylesheet" />
+  <link href="css/components.css" rel="stylesheet" />
+  <link href="css/utilities.css" rel="stylesheet" />
+  <link href="css/responsive.css" rel="stylesheet" />
+  <link href="css/team-expansion.css" rel="stylesheet" />
+  <link href="css/carousel.css" rel="stylesheet" />
+  </head>
 
-<body>
+  <body>
     <div class="bg-white p-0">
-            <!-- Spinner Start -->
-    <div id="spinner" class="bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
+      <!-- Spinner Start -->
+      <div
+        id="spinner"
+        class="bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
+      >
+        <div
+          class="spinner-border text-primary"
+          style="width: 3rem; height: 3rem"
+          role="status"
+        >
+          <span class="sr-only">Loading...</span>
         </div>
+      </div>
+      <!-- Spinner End -->
+
+      <!-- Header will be dynamically loaded here -->
+      <div id="header-placeholder"></div>
+
+  <div id="carousel-container"></div>
+
+      <!-- Quick Facts & ESA Start -->
+      <div class="container py-4 py-lg-5">
+        <div class="text-center mx-auto mb-5" style="max-width: 600px">
+          <h1
+            class="display-4 fw-bold text-primary"
+            style="font-family: 'Lobster Two', cursive"
+          >
+            Why Choose Main Street School?
+          </h1>
+        </div>
+
+        <!-- Quick Facts Grid -->
+        <div class="row g-2 g-sm-4 mb-5">
+          <div class="col-lg-4 col-md-6 col-6">
+            <div class="card-system-light h-100 p-2 p-sm-4">
+              <div class="d-flex align-items-start mb-2 mb-sm-3">
+                <div
+                  class="scalable-icon bg-primary me-2 me-sm-3 flex-shrink-0"
+                >
+                  <i class="fa fa-heart text-white"></i>
+                </div>
+                <h6 class="scalable-text mb-0 flex-grow-1">
+                  Culture as Hidden Curriculum
+                </h6>
+              </div>
+              <p class="text-body-small mb-0">
+                Our school culture serves as a powerful hidden curriculum.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-6">
+            <div class="card-system-light h-100 p-2 p-sm-4">
+              <div class="d-flex align-items-start mb-2 mb-sm-3">
+                <div
+                  class="scalable-icon bg-success me-2 me-sm-3 flex-shrink-0"
+                >
+                  <i class="fa fa-users text-white"></i>
+                </div>
+                <h6 class="scalable-text mb-0 flex-grow-1">
+                  Inclusive Environment
+                </h6>
+              </div>
+              <p class="text-body-small mb-0">
+                We create an inclusive environment where every student feels
+                valued regardless of background or learning style.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-6">
+            <div class="card-system-light h-100 p-2 p-sm-4">
+              <div class="d-flex align-items-start mb-2 mb-sm-3">
+                <div
+                  class="scalable-icon bg-warning me-2 me-sm-3 flex-shrink-0"
+                >
+                  <i class="fa fa-palette text-white"></i>
+                </div>
+                <h6 class="scalable-text mb-0 flex-grow-1">
+                  Diverse Learning Experiences
+                </h6>
+              </div>
+              <p class="text-body-small mb-0">
+                Students engage in art, music, and hands-on projects, providing
+                a well-rounded educational experience.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-6">
+            <div class="card-system-light h-100 p-2 p-sm-4">
+              <div class="d-flex align-items-start mb-2 mb-sm-3">
+                <div class="scalable-icon bg-info me-2 me-sm-3 flex-shrink-0">
+                  <i class="fa fa-hands-helping text-white"></i>
+                </div>
+                <h6 class="scalable-text mb-0 flex-grow-1">
+                  Hands-On Learning
+                </h6>
+              </div>
+              <p class="text-body-small mb-0">
+                Our students learn through hands-on experiences, and real-world
+                projects that make learning engaging.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-6">
+            <div class="card-system-light h-100 p-2 p-sm-4">
+              <div class="d-flex align-items-start mb-2 mb-sm-3">
+                <div class="scalable-icon bg-blue me-2 me-sm-3 flex-shrink-0">
+                  <i class="fa fa-user-graduate text-white"></i>
+                </div>
+                <h6 class="scalable-text mb-0 flex-grow-1">
+                  Personalized Curriculum
+                </h6>
+              </div>
+              <p class="text-body-small mb-0">
+                Each student receives a personalized curriculum tailored to
+                their individual needs, learning style, and academic goals.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-6">
+            <div class="card-system-light h-100 p-2 p-sm-4">
+              <div class="d-flex align-items-start mb-2 mb-sm-3">
+                <div
+                  class="scalable-icon bg-secondary me-2 me-sm-3 flex-shrink-0"
+                >
+                  <i class="fa fa-child text-white"></i>
+                </div>
+                <h6 class="scalable-text mb-0 flex-grow-1">
+                  Preschool to 12th Grade
+                </h6>
+              </div>
+              <p class="text-body-small mb-0">
+                We provide students a continuous educational journey from
+                preschool through 12th grade.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ISACS Accreditation & ESA Information Section -->
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6" data-wow-delay="0.1s">
+            <h2 class="heading-secondary">Pursuing ISACS Accreditation</h2>
+            <p class="text-body mb-4">
+              Main Street School is currently in the process of pursuing ISACS
+              (Independent Schools Association of the Central States)
+              accreditation. This accreditation will enable our families to
+              access Iowa Student First Educational Savings Account (ESA)
+              benefits.
+            </p>
+
+            <div class="row g-4 mb-4">
+              <div class="col-sm-6">
+                <div class="d-flex align-items-center">
+                  <div
+                    class="icon-circle icon-circle-primary icon-circle-sm me-3"
+                  >
+                    <i class="fa fa-certificate text-white"></i>
+                  </div>
+                  <div>
+                    <h6 class="heading-quaternary mb-1">ISACS Accreditation</h6>
+                    <small class="text-body-small"
+                      >Pursuing educational excellence certification</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="d-flex align-items-center">
+                  <div
+                    class="icon-circle icon-circle-success icon-circle-sm me-3"
+                  >
+                    <i class="fa fa-dollar-sign text-white"></i>
+                  </div>
+                  <div>
+                    <h6 class="heading-quaternary mb-1">Future ESA Access</h6>
+                    <small class="text-body-small"
+                      >Up to $7,598 per student annually</small
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex flex-column flex-sm-row gap-3">
+              <a
+                href="about.html#dei-statement"
+                class="btn-system-primary rounded-pill py-3 px-5"
+              >
+                Learn More About Our Mission
+                <i class="fa fa-arrow-right ms-2"></i>
+              </a>
+              <a
+                href="https://iowastudentfirst.org"
+                class="btn-system-secondary rounded-pill py-3 px-5"
+                target="_blank"
+              >
+                Learn About ESA Program
+                <i class="fa fa-external-link-alt ms-2"></i>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-6" data-wow-delay="0.5s">
+            <div class="bg-light rounded p-5">
+              <h4 class="mb-4">Benefits of ISACS Accreditation</h4>
+              <div class="row g-3">
+                <div class="col-12">
+                  <div class="d-flex align-items-start">
+                    <i class="fa fa-check-circle text-primary me-3 mt-1"></i>
+                    <div>
+                      <h6 class="mb-1">Educational Excellence</h6>
+                      <small class="text-muted"
+                        >Certified high-quality educational standards</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="d-flex align-items-start">
+                    <i class="fa fa-check-circle text-primary me-3 mt-1"></i>
+                    <div>
+                      <h6 class="mb-1">ESA Eligibility</h6>
+                      <small class="text-muted"
+                        >Access to Iowa Student First ESA benefits</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="d-flex align-items-start">
+                    <i class="fa fa-check-circle text-primary me-3 mt-1"></i>
+                    <div>
+                      <h6 class="mb-1">Financial Assistance</h6>
+                      <small class="text-muted"
+                        >Future access to educational funding for
+                        families</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="d-flex align-items-start">
+                    <i class="fa fa-check-circle text-primary me-3 mt-1"></i>
+                    <div>
+                      <h6 class="mb-1">Quality Assurance</h6>
+                      <small class="text-muted"
+                        >Independent verification of our educational
+                        program</small
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Quick Facts & ESA End -->
+
+      <!-- Special Teachers Start -->
+      <div class="container py-4 py-lg-5">
+        <div class="container">
+          <div
+            class="text-center mx-auto mb-5"
+            data-wow-delay="0.1s"
+            style="max-width: 600px"
+          >
+            <h2 class="mb-3">Special Teachers</h2>
+            <p class="mb-4">
+              Meet our talented specialty instructors who enrich our students'
+              educational experience through music, art, and creative expression
+              across all grade levels.
+            </p>
+          </div>
+
+          <!-- Special Teachers - Dynamically loaded -->
+          <div class="row g-2 g-sm-4" id="home-music-teachers">
+            <!-- Teacher cards will be dynamically loaded here -->
+          </div>
+        </div>
+      </div>
+      <!-- Special Teachers End -->
+
+      <!-- Classes Start -->
+      <div class="container py-4 py-lg-5">
+        <div
+          class="text-center mx-auto mb-5"
+          data-wow-delay="0.1s"
+          style="max-width: 600px"
+        >
+          <h1 class="mb-3">Weekly Specials</h1>
+          <p>
+            Our enrichment activities expose students to a variety of
+            experiences, helping them discover their passions and develop new
+            skills. These weekly specials are included in our program and
+            designed to spark curiosity and creativity.
+          </p>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6" data-wow-delay="0.1s">
+            <div class="classes-item">
+              <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                <img
+                  class="img-fluid rounded-circle"
+                  src="img/classes-1.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="bg-light rounded p-4 pt-5 mt-n5">
+                <a class="d-block text-center h3 mt-3 mb-4" href=""
+                  >Art & Creative Expression</a
+                >
+                <p class="text-center mb-4">
+                  Students explore various art mediums, create their own
+                  masterpieces, and discover their artistic voice through
+                  painting, drawing, sculpture, and mixed media projects.
+                </p>
+                <div class="row g-1">
+                  <div class="col-6">
+                    <div class="border-top border-3 border-primary pt-2">
+                      <h6 class="text-primary mb-1">Focus:</h6>
+                      <small>Creative Discovery</small>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="border-top border-3 border-success pt-2">
+                      <h6 class="text-success mb-1">Skills:</h6>
+                      <small>Self-Expression</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" data-wow-delay="0.3s">
+            <div class="classes-item">
+              <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                <img
+                  class="img-fluid rounded-circle"
+                  src="img/classes-2.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="bg-light rounded p-4 pt-5 mt-n5">
+                <a class="d-block text-center h3 mt-3 mb-4" href=""
+                  >Music & Sound Exploration</a
+                >
+                <p class="text-center mb-4">
+                  Students discover the joy of music through singing,
+                  instruments, rhythm activities, and even writing their own
+                  songs. A perfect introduction to musical expression and
+                  creativity.
+                </p>
+                <div class="row g-1">
+                  <div class="col-6">
+                    <div class="border-top border-3 border-primary pt-2">
+                      <h6 class="text-primary mb-1">Focus:</h6>
+                      <small>Musical Discovery</small>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="border-top border-3 border-success pt-2">
+                      <h6 class="text-success mb-1">Skills:</h6>
+                      <small>Rhythm & Melody</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" data-wow-delay="0.5s">
+            <div class="classes-item">
+              <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                <img
+                  class="img-fluid rounded-circle"
+                  src="img/classes-3.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="bg-light rounded p-4 pt-5 mt-n5">
+                <a class="d-block text-center h3 mt-3 mb-4" href=""
+                  >Physical Education & Movement</a
+                >
+                <p class="text-center mb-4">
+                  Students develop coordination, teamwork, and fitness through
+                  fun activities, games, sports, and movement exercises on our
+                  new playground and in our activity spaces.
+                </p>
+                <div class="row g-1">
+                  <div class="col-6">
+                    <div class="border-top border-3 border-primary pt-2">
+                      <h6 class="text-primary mb-1">Focus:</h6>
+                      <small>Physical Development</small>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="border-top border-3 border-success pt-2">
+                      <h6 class="text-success mb-1">Skills:</h6>
+                      <small>Teamwork & Fitness</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- Spinner End -->
+    <!-- Classes End -->
 
-
-        <!-- Navbar Start -->
-        <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
-            <a href="index.html" class="navbar-brand">
-                <h1 class="m-0 text-primary"><i class="fa fa-book-reader me-3"></i>Main Street SChool</h1>
-            </a>
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav mx-auto">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About Us</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Programs</a>
-                        <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-                            <a href="early-childhood.html" class="dropdown-item">Early Childhood</a>
-                            <a href="elementary.html" class="dropdown-item">Elementary</a>
-                            <a href="middle-school.html" class="dropdown-item">Middle School</a>
-                            <a href="high-school.html" class="dropdown-item">High School</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-                            <a href="facility.html" class="dropdown-item">School Facilities</a>
-                            <a href="team.html" class="dropdown-item">Meet Our Team</a>
-                            <a href="call-to-action.html" class="dropdown-item">Become A Teachers</a>
-                            <a href="appointment.html" class="dropdown-item">Make Appointment</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            <a href="404.html" class="dropdown-item">404 Error</a>
-                        </div>
-                    </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact Us</a>
-                </div>
-                <a href="https://app.tuiopay.com/donation/3a8c62fc819d1f645288f6ce955bfce0" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Donate Now!<i class="fa fa-arrow-right ms-3"></i></a>
-            </div>
-        </nav>
-        <!-- Navbar End -->
-
-
-                <!-- Carousel Start (Bootstrap 5) -->
-                <div id="carouselExampleAutoplaying" class="carousel slide mb-5" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="img/carousel-1.jpg" class="d-block w-100" alt="Welcome to Main Street School">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Welcome to Main Street School</h5>
-                                <p>Nurturing Excellence, Building Character</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img/carousel-2.jpg" class="d-block w-100" alt="Individualized Learning">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Individualized Learning</h5>
-                                <p>Every Child is Unique</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img/carousel-3.jpg" class="d-block w-100" alt="Whole Child Development">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Whole Child Development</h5>
-                                <p>Academic Excellence & Character Building</p>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-                <!-- Carousel End -->
-
-        <!-- Quick Facts & ESA Start -->
-        <div class="container py-4 py-lg-5">
-            <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-                <h1 class="display-4 fw-bold text-primary" style="font-family: 'Lobster Two', cursive;">Why Choose Main Street School?</h1>
-            </div>
-                
-                <!-- Quick Facts Grid -->
-                <div class="row g-2 g-sm-4 mb-5">
-                    <div class="col-lg-4 col-md-6 col-6">
-                        <div class="card-system-light h-100 p-2 p-sm-4">
-                            <div class="d-flex align-items-start mb-2 mb-sm-3">
-                                <div class="scalable-icon bg-primary me-2 me-sm-3 flex-shrink-0">
-                                    <i class="fa fa-heart text-white"></i>
-                                </div>
-                                <h6 class="scalable-text mb-0 flex-grow-1">Culture as Hidden Curriculum</h6>
-                            </div>
-                            <p class="text-body-small mb-0">Our school culture serves as a powerful hidden curriculum.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-6">
-                        <div class="card-system-light h-100 p-2 p-sm-4">
-                            <div class="d-flex align-items-start mb-2 mb-sm-3">
-                                <div class="scalable-icon bg-success me-2 me-sm-3 flex-shrink-0">
-                                    <i class="fa fa-users text-white"></i>
-                                </div>
-                                <h6 class="scalable-text mb-0 flex-grow-1">Inclusive Environment</h6>
-                            </div>
-                            <p class="text-body-small mb-0">We create an inclusive environment where every student feels valued regardless of background or learning style.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-6">
-                        <div class="card-system-light h-100 p-2 p-sm-4">
-                            <div class="d-flex align-items-start mb-2 mb-sm-3">
-                                <div class="scalable-icon bg-warning me-2 me-sm-3 flex-shrink-0">
-                                    <i class="fa fa-palette text-white"></i>
-                                </div>
-                                <h6 class="scalable-text mb-0 flex-grow-1">Diverse Learning Experiences</h6>
-                            </div>
-                            <p class="text-body-small mb-0">Students engage in art, music, and hands-on projects, providing a well-rounded educational experience.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-6">
-                        <div class="card-system-light h-100 p-2 p-sm-4">
-                            <div class="d-flex align-items-start mb-2 mb-sm-3">
-                                <div class="scalable-icon bg-info me-2 me-sm-3 flex-shrink-0">
-                                    <i class="fa fa-hands-helping text-white"></i>
-                                </div>
-                                <h6 class="scalable-text mb-0 flex-grow-1">Hands-On Learning</h6>
-                            </div>
-                            <p class="text-body-small mb-0">Our students learn through hands-on experiences, and real-world projects that make learning engaging.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-6">
-                        <div class="card-system-light h-100 p-2 p-sm-4">
-                            <div class="d-flex align-items-start mb-2 mb-sm-3">
-                                <div class="scalable-icon bg-blue me-2 me-sm-3 flex-shrink-0">
-                                    <i class="fa fa-user-graduate text-white"></i>
-                                </div>
-                                <h6 class="scalable-text mb-0 flex-grow-1">Personalized Curriculum</h6>
-                            </div>
-                            <p class="text-body-small mb-0">Each student receives a personalized curriculum tailored to their individual needs, learning style, and academic goals.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-6">
-                        <div class="card-system-light h-100 p-2 p-sm-4">
-                            <div class="d-flex align-items-start mb-2 mb-sm-3">
-                                <div class="scalable-icon bg-secondary me-2 me-sm-3 flex-shrink-0">
-                                    <i class="fa fa-child text-white"></i>
-                                </div>
-                                <h6 class="scalable-text mb-0 flex-grow-1">Preschool to 12th Grade</h6>
-                            </div>
-                            <p class="text-body-small mb-0">We provide students a continuous educational journey from preschool through 12th grade.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ISACS Accreditation & ESA Information Section -->
-                <div class="row g-5 align-items-center">
-                    <div class="col-lg-6" data-wow-delay="0.1s">
-                        <h2 class="heading-secondary">Pursuing ISACS Accreditation</h2>
-                        <p class="text-body mb-4">Main Street School is currently in the process of pursuing ISACS (Independent Schools Association of the Central States) accreditation. This accreditation will enable our families to access Iowa Student First Educational Savings Account (ESA) benefits.</p>
-                        
-                        <div class="row g-4 mb-4">
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center">
-                                    <div class="icon-circle icon-circle-primary icon-circle-sm me-3">
-                                        <i class="fa fa-certificate text-white"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="heading-quaternary mb-1">ISACS Accreditation</h6>
-                                        <small class="text-body-small">Pursuing educational excellence certification</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center">
-                                    <div class="icon-circle icon-circle-success icon-circle-sm me-3">
-                                        <i class="fa fa-dollar-sign text-white"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="heading-quaternary mb-1">Future ESA Access</h6>
-                                        <small class="text-body-small">Up to $7,598 per student annually</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="d-flex flex-column flex-sm-row gap-3">
-                            <a href="about.html#dei-statement" class="btn-system-primary rounded-pill py-3 px-5">
-                                Learn More About Our Mission <i class="fa fa-arrow-right ms-2"></i>
-                            </a>
-                            <a href="https://iowastudentfirst.org" class="btn-system-secondary rounded-pill py-3 px-5" target="_blank">
-                                Learn About ESA Program <i class="fa fa-external-link-alt ms-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6" data-wow-delay="0.5s">
-                        <div class="bg-light rounded p-5">
-                            <h4 class="mb-4">Benefits of ISACS Accreditation</h4>
-                            <div class="row g-3">
-                                <div class="col-12">
-                                    <div class="d-flex align-items-start">
-                                        <i class="fa fa-check-circle text-primary me-3 mt-1"></i>
-                                        <div>
-                                            <h6 class="mb-1">Educational Excellence</h6>
-                                            <small class="text-muted">Certified high-quality educational standards</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="d-flex align-items-start">
-                                        <i class="fa fa-check-circle text-primary me-3 mt-1"></i>
-                                        <div>
-                                            <h6 class="mb-1">ESA Eligibility</h6>
-                                            <small class="text-muted">Access to Iowa Student First ESA benefits</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="d-flex align-items-start">
-                                        <i class="fa fa-check-circle text-primary me-3 mt-1"></i>
-                                        <div>
-                                            <h6 class="mb-1">Financial Assistance</h6>
-                                            <small class="text-muted">Future access to educational funding for families</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="d-flex align-items-start">
-                                        <i class="fa fa-check-circle text-primary me-3 mt-1"></i>
-                                        <div>
-                                            <h6 class="mb-1">Quality Assurance</h6>
-                                            <small class="text-muted">Independent verification of our educational program</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Testimonial Start -->
+    <div class="container-fluid py-5">
+      <div class="container">
+        <div
+          class="text-center mx-auto mb-5"
+          data-wow-delay="0.1s"
+          style="max-width: 600px"
+        >
+          <h1 class="mb-3">
+            What Parents & Alumni Say About Main Street School
+          </h1>
+          <p>
+            Hear from our community of parents about their transformative
+            experiences with Main Street School.
+          </p>
         </div>
-        <!-- Quick Facts & ESA End -->
-
-
-        <!-- Special Teachers Start -->
-        <div class="container py-4 py-lg-5">
-            <div class="container">
-                <div class="text-center mx-auto mb-5" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <h2 class="mb-3">Special Teachers</h2>
-                    <p class="mb-4">Meet our talented specialty instructors who enrich our students' educational experience through music, art, and creative expression across all grade levels.</p>
-                </div>
-                
-                <!-- Special Teachers - Dynamically loaded -->
-                <div class="row g-2 g-sm-4" id="home-music-teachers">
-                    <!-- Teacher cards will be dynamically loaded here -->
-                </div>
-            </div>
+        <div
+          class="owl-carousel testimonial-carousel"
+          data-wow-delay="0.1s"
+          id="testimonialCarousel"
+        >
+          <!-- Testimonials will be dynamically generated by JavaScript -->
         </div>
-        <!-- Special Teachers End -->
-
-        <!-- Classes Start -->
-        <div class="container py-4 py-lg-5">
-            <div class="text-center mx-auto mb-5" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1 class="mb-3">Weekly Specials</h1>
-                <p>Our enrichment activities expose students to a variety of experiences, helping them discover their passions and develop new skills. These weekly specials are included in our program and designed to spark curiosity and creativity.</p>
-            </div>
-                <div class="row g-4">
-                    <div class="col-lg-4 col-md-6" data-wow-delay="0.1s">
-                        <div class="classes-item">
-                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
-                                <img class="img-fluid rounded-circle" src="img/classes-1.jpg" alt="">
-                            </div>
-                            <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                <a class="d-block text-center h3 mt-3 mb-4" href="">Art & Creative Expression</a>
-                                <p class="text-center mb-4">Students explore various art mediums, create their own masterpieces, and discover their artistic voice through painting, drawing, sculpture, and mixed media projects.</p>
-                                <div class="row g-1">
-                                    <div class="col-6">
-                                        <div class="border-top border-3 border-primary pt-2">
-                                            <h6 class="text-primary mb-1">Focus:</h6>
-                                            <small>Creative Discovery</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="border-top border-3 border-success pt-2">
-                                            <h6 class="text-success mb-1">Skills:</h6>
-                                            <small>Self-Expression</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6" data-wow-delay="0.3s">
-                        <div class="classes-item">
-                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
-                                <img class="img-fluid rounded-circle" src="img/classes-2.jpg" alt="">
-                            </div>
-                            <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                <a class="d-block text-center h3 mt-3 mb-4" href="">Music & Sound Exploration</a>
-                                <p class="text-center mb-4">Students discover the joy of music through singing, instruments, rhythm activities, and even writing their own songs. A perfect introduction to musical expression and creativity.</p>
-                                <div class="row g-1">
-                                    <div class="col-6">
-                                        <div class="border-top border-3 border-primary pt-2">
-                                            <h6 class="text-primary mb-1">Focus:</h6>
-                                            <small>Musical Discovery</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="border-top border-3 border-success pt-2">
-                                            <h6 class="text-success mb-1">Skills:</h6>
-                                            <small>Rhythm & Melody</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6" data-wow-delay="0.5s">
-                        <div class="classes-item">
-                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
-                                <img class="img-fluid rounded-circle" src="img/classes-3.jpg" alt="">
-                            </div>
-                            <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                <a class="d-block text-center h3 mt-3 mb-4" href="">Physical Education & Movement</a>
-                                <p class="text-center mb-4">Students develop coordination, teamwork, and fitness through fun activities, games, sports, and movement exercises on our new playground and in our activity spaces.</p>
-                                <div class="row g-1">
-                                    <div class="col-6">
-                                        <div class="border-top border-3 border-primary pt-2">
-                                            <h6 class="text-primary mb-1">Focus:</h6>
-                                            <small>Physical Development</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="border-top border-3 border-success pt-2">
-                                            <h6 class="text-success mb-1">Skills:</h6>
-                                            <small>Teamwork & Fitness</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                </div>
-            </div>
-        </div>
-        <!-- Classes End -->
-
-
-        <!-- Testimonial Start -->
-        <div class="container-fluid py-5">
-            <div class="container">
-                <div class="text-center mx-auto mb-5" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <h1 class="mb-3">What Parents & Alumni Say About Main Street School</h1>
-                    <p>Hear from our community of parents about their transformative experiences with Main Street School.</p>
-                </div>
-                <div class="owl-carousel testimonial-carousel" data-wow-delay="0.1s" id="testimonialCarousel">
-                    <!-- Testimonials will be dynamically generated by JavaScript -->
-                </div>
-            </div>
-        </div>
-        <!-- Testimonial End -->
-
-
-        <!-- Footer will be dynamically loaded here -->
-        <div id="footer-placeholder"></div>
-
-
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+      </div>
     </div>
+    <!-- Testimonial End -->
+
+    <!-- Footer will be dynamically loaded here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
+      ><i class="bi bi-arrow-up"></i
+    ></a>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -431,6 +504,5 @@
     <script src="js/carousel.js"></script>
     <script src="js/header-footer.js"></script>
     <script src="js/team.js"></script>
-</body>
-
+  </body>
 </html>

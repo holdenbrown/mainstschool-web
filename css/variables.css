@@ -1,0 +1,86 @@
+:root {
+  /* ===== COLOR SYSTEM ===== */
+  /* Primary Brand Colors */
+  --primary: #fe5d37;
+  --primary-light: #ff7a5a;
+  --primary-dark: #e54a2b;
+
+  /* Secondary Brand Colors */
+  --secondary: #f39c12;
+  --secondary-light: #f4b350;
+  --secondary-dark: #d68910;
+
+  /* Semantic Colors */
+  --success: #198754;
+  --info: #0dcaf0;
+  --warning: #ffc107;
+  --danger: #dc3545;
+
+  /* Blue Color System */
+  --blue: #007bff;
+  --blue-light: #66b3ff;
+  --blue-dark: #0056b3;
+
+  /* Neutral Colors */
+  --light: #fff5f3;
+  --dark: #103741;
+  --white: #ffffff;
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-400: #ced4da;
+  --gray-500: #adb5bd;
+  --gray-600: #6c757d;
+  --gray-700: #495057;
+  --gray-800: #343a40;
+  --gray-900: #212529;
+
+  /* Text Colors */
+  --text-primary: var(--dark);
+  --text-secondary: var(--gray-600);
+  --text-muted: var(--gray-500);
+  --text-light: var(--gray-400);
+
+  /* Background Colors */
+  --bg-primary: var(--white);
+  --bg-secondary: var(--light);
+  --bg-dark: var(--dark);
+
+  /* ===== TYPOGRAPHY SYSTEM ===== */
+  /* Font Families */
+  --font-family-primary: "Heebo", sans-serif;
+  --font-family-headings: "Lobster Two", cursive;
+  --font-family-secondary: "Inter", sans-serif;
+
+  /* Fluid typography scale - prevents text smaller than 12px */
+  --fs-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.8rem); /* 12-13px */
+  --fs-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.9rem); /* 13-14px */
+  --fs-base: clamp(0.9rem, 0.85rem + 0.25vw, 1rem); /* 14-16px */
+  --fs-lg: clamp(1rem, 0.9rem + 0.5vw, 1.25rem); /* 16-20px */
+  --fs-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem); /* 20-24px */
+  --fs-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2rem); /* 24-32px */
+  --fs-3xl: clamp(1.75rem, 1.4rem + 1.75vw, 2.5rem); /* 28-40px */
+
+  /* Line heights */
+  --lh-tight: 1.2;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.75;
+
+  /* Spacing scale */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+
+  /* ===== Z-INDEX SYSTEM ===== */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1080;
+}

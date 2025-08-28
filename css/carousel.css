@@ -1,3 +1,4 @@
+@import url('variables.css');
 /* ===== AUTOMATIC RESPONSIVE TYPOGRAPHY FOR CAROUSEL ===== */
 .carousel-caption {
     padding: 1rem;
@@ -104,7 +105,7 @@
     height: clamp(35px, 5vw, 50px);
     background: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
-    border: 2px solid #fe5d37;
+    border: 3px solid #fe5d37;
     top: 50%;
     transform: translateY(-50%);
     opacity: 0.9;
@@ -115,8 +116,6 @@
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     filter: invert(35%) sepia(90%) saturate(1500%) hue-rotate(350deg) brightness(95%);
-    width: 25px;
-    height: 25px;
 }
 
 .carousel-control-prev:hover,

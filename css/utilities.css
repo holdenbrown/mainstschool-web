@@ -1,4 +1,4 @@
-/* ===== DESIGN SYSTEM UTILITIES ===== */
+@import url('variables.css');
 
 /* Color Utilities */
 .text-primary { color: var(--primary) !important; }

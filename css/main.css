@@ -1,90 +1,13 @@
-/* ====== Mainstschool Custom Design System & Overrides ====== */
-:root {
-  /* ===== COLOR SYSTEM ===== */
-  /* Primary Brand Colors */
-  --primary: #fe5d37;
-  --primary-light: #ff7a5a;
-  --primary-dark: #e54a2b;
+/* ===== IMPORT ALL OTHER CSS FILES ===== */
+@import url('bootstrap.min.css');
+@import url('carousel.css');
+@import url('team-expansion.css');
+@import url('utilities.css');
+@import url('components/buttons.css');
+@import url('components/carousels.css');
+@import url('components/navigation.css');
+@import url('variables.css');
 
-  /* Secondary Brand Colors */
-  --secondary: #f39c12;
-  --secondary-light: #f4b350;
-  --secondary-dark: #d68910;
-
-  /* Semantic Colors */
-  --success: #198754;
-  --info: #0dcaf0;
-  --warning: #ffc107;
-  --danger: #dc3545;
-
-  /* Blue Color System */
-  --blue: #007bff;
-  --blue-light: #66b3ff;
-  --blue-dark: #0056b3;
-
-  /* Neutral Colors */
-  --light: #fff5f3;
-  --dark: #103741;
-  --white: #ffffff;
-  --gray-100: #f8f9fa;
-  --gray-200: #e9ecef;
-  --gray-300: #dee2e6;
-  --gray-400: #ced4da;
-  --gray-500: #adb5bd;
-  --gray-600: #6c757d;
-  --gray-700: #495057;
-  --gray-800: #343a40;
-  --gray-900: #212529;
-
-  /* Text Colors */
-  --text-primary: var(--dark);
-  --text-secondary: var(--gray-600);
-  --text-muted: var(--gray-500);
-  --text-light: var(--gray-400);
-
-  /* Background Colors */
-  --bg-primary: var(--white);
-  --bg-secondary: var(--light);
-  --bg-dark: var(--dark);
-
-  /* ===== TYPOGRAPHY SYSTEM ===== */
-  /* Font Families */
-  --font-family-primary: "Heebo", sans-serif;
-  --font-family-headings: "Lobster Two", cursive;
-  --font-family-secondary: "Inter", sans-serif;
-
-  /* Fluid typography scale - prevents text smaller than 12px */
-  --fs-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.8rem); /* 12-13px */
-  --fs-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.9rem); /* 13-14px */
-  --fs-base: clamp(0.9rem, 0.85rem + 0.25vw, 1rem); /* 14-16px */
-  --fs-lg: clamp(1rem, 0.9rem + 0.5vw, 1.25rem); /* 16-20px */
-  --fs-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem); /* 20-24px */
-  --fs-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2rem); /* 24-32px */
-  --fs-3xl: clamp(1.75rem, 1.4rem + 1.75vw, 2.5rem); /* 28-40px */
-
-  /* Line heights */
-  --lh-tight: 1.2;
-  --lh-normal: 1.5;
-  --lh-relaxed: 1.75;
-
-  /* Spacing scale */
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
-  --spacing-2xl: 3rem;
-
-  /* ===== Z-INDEX SYSTEM ===== */
-  --z-dropdown: 1000;
-  --z-sticky: 1020;
-  --z-fixed: 1030;
-  --z-modal-backdrop: 1040;
-  --z-modal: 1050;
-  --z-popover: 1060;
-  --z-tooltip: 1070;
-  --z-toast: 1080;
-}
 
 body {
   /* Ensure body background is always white, overriding Bootstrap if needed */
@@ -93,6 +16,7 @@ body {
   font-size: var(--fs-base);
   line-height: var(--lh-normal);
 }
+
 
 /* Headings with responsive sizes */
 h1,
@@ -188,24 +112,6 @@ small,
 }
 .text-3xl {
   font-size: var(--fs-3xl) !important;
-}
-
-/* Updated back-to-top button - positioned within content column */
-/* Custom Back to Top Button Styles */
-.back-to-top {
-  position: fixed;
-  display: none;
-  right: 2rem;
-  bottom: 2rem;
-  z-index: 99;
-  /* Enhanced styling for better visibility */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
-}
-
-.back-to-top:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Card hover effect for custom cards */
@@ -312,69 +218,7 @@ small,
   transform: translateX(5px) scale(0.98);
 }
 
-/* Carousel dropdown styling */
 
-/* ===== CAROUSEL LAYOUT STABILIZATION ===== */
-.carousel-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-/* Fixed aspect ratio container to prevent layout shifts */
-.carousel-inner {
-  width: 100%;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.carousel-item {
-  aspect-ratio: 16/9; /* Fixed aspect ratio */
-  background-color: #f8f9fa; /* Placeholder color while loading */
-}
-
-.carousel-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensures images fill container without distortion */
-  display: block;
-}
-
-/* Carousel control styling */
-.carousel-control-prev,
-.carousel-control-next {
-  width: 50px;
-  height: 50px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  border: 2px solid #fe5d37;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 0.9;
-  transition: all 0.3s ease;
-  margin: 0 20px;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  filter: invert(35%) sepia(90%) saturate(1500%) hue-rotate(350deg)
-    brightness(95%);
-  width: 25px;
-  height: 25px;
-}
-
-.carousel-control-prev:hover,
-.carousel-control-next:hover {
-  background: #fe5d37;
-  transform: translateY(-50%) scale(1.1);
-}
-
-.carousel-control-prev:hover .carousel-control-prev-icon,
-.carousel-control-next:hover .carousel-control-next-icon {
-  filter: invert(100%) brightness(200%);
-}
 
 /* Demo content styles */
 .content-section {
@@ -443,102 +287,6 @@ small,
   transition: opacity 0.5s ease-out, visibility 0s linear 0s;
   visibility: visible;
   opacity: 1;
-}
-
-/*** Button System ***/
-.btn {
-  font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-normal);
-  border-radius: var(--border-radius);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  transition: var(--transition-normal);
-  border: var(--border-width) solid transparent;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-xs);
-}
-
-/* Primary Button */
-.btn-primary {
-  background-color: var(--primary);
-  border-color: var(--primary);
-  color: var(--white);
-  border-top: none !important;
-}
-
-.btn-primary:hover {
-  background-color: var(--primary-dark);
-  border-color: var(--primary-dark);
-  color: var(--white);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-top: none !important;
-}
-
-.btn-primary:focus {
-  background-color: var(--primary-dark);
-  border-color: var(--primary-dark);
-  box-shadow: 0 0 0 0.2rem rgba(254, 93, 55, 0.25);
-  border-top: none !important;
-}
-
-/* Secondary Button */
-.btn-secondary {
-  background-color: var(--secondary);
-  border-color: var(--secondary);
-  color: var(--white);
-}
-
-.btn-secondary:hover {
-  background-color: var(--secondary-dark);
-  border-color: var(--secondary-dark);
-  color: var(--white);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-/* Outline Buttons */
-.btn-outline-primary {
-  background-color: transparent;
-  border-color: var(--primary);
-  color: var(--primary);
-}
-
-.btn-outline-primary:hover {
-  background-color: var(--primary);
-  border-color: var(--primary);
-  color: var(--white);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-outline-secondary {
-  background-color: transparent;
-  border-color: var(--secondary);
-  color: var(--secondary);
-}
-
-.btn-outline-secondary:hover {
-  background-color: var(--secondary);
-  border-color: var(--secondary);
-  color: var(--white);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-/* Button size utilities: Only keep if they differ from Bootstrap or are used for custom sizing */
-.btn-sm {
-  padding: var(--spacing-xs) var(--spacing-md);
-  font-size: var(--font-size-sm);
-}
-.btn-lg {
-  padding: var(--spacing-md) var(--spacing-xl);
-  font-size: var(--font-size-lg);
 }
 
 /* Button Variants */
@@ -981,8 +729,6 @@ body:not([style*="font-family"]) {
   }
 }
 
-}
-
 /* Scalable Text System */
 .scalable-text {
   font-size: clamp(0.875rem, 2.5vw, 1.25rem); /* 14px to 20px */
@@ -1001,42 +747,6 @@ body:not([style*="font-family"]) {
   font-weight: var(--font-weight-semibold);
 }
 
-/* Button System */
-.btn-system-primary {
-  background-color: var(--primary);
-  border-color: var(--primary);
-  color: white;
-  font-weight: var(--font-weight-medium);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border-radius: var(--border-radius);
-  transition: var(--transition-normal);
-  box-shadow: var(--shadow-sm);
-}
-
-.btn-system-primary:hover {
-  background-color: var(--primary-dark);
-  border-color: var(--primary-dark);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-system-secondary {
-  background-color: transparent;
-  border: 2px solid var(--primary);
-  color: var(--primary);
-  font-weight: var(--font-weight-medium);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border-radius: var(--border-radius);
-  transition: var(--transition-normal);
-}
-
-.btn-system-secondary:hover {
-  background-color: var(--primary);
-  border-color: var(--primary);
-  color: white;
-  transform: translateY(-2px);
-}
 
 /* Icon Circle System */
 .icon-circle {
